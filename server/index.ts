@@ -2,8 +2,8 @@ import path from "path";
 import express, { Request, Response, Application, NextFunction } from "express";
 import userRoutes from "./routes/userRoutes";
 import connectDB from "./config/db";
-import { notFound, errorHandler } from "./middleware/errorMiddleware";
 import dotenv from "dotenv";
+import { notFound, errorHandler } from "./middleware/errorMIddleWare";
 
 dotenv.config();
 
@@ -33,6 +33,12 @@ app.use(errorHandler);
 
 const PORT: number = Number(process.env.PORT) || 3000;
 
-app.listen(PORT, () =>
-  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
-);
+if (require.main === module) {
+  app.listen(PORT, () =>
+    console.log(
+      `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`
+    )
+  );
+}
+
+export default app;
