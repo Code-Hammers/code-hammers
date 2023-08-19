@@ -2,17 +2,9 @@ import expressAsyncHandler from 'express-async-handler';
 import User from '../models/userModel';
 import generateToken from '../utils/generateToken';
 import { Request, Response } from 'express';
+import { UserType } from '../types/user';
 
-// It seems you are using Mongoose. You might need some type declarations for the User model.
-// For now, I'll use a simple type, but it might need adjustments based on your schema.
-type UserType = {
-  _id: string;
-  name: string;
-  email: string;
-  password?: string;
-  matchPassword?: (password: string) => Promise<boolean>;
-  isAdmin?: boolean;
-};
+
 
 // ENDPOINT  POST api/users
 // PURPOSE   Register a new user
@@ -43,7 +35,7 @@ const registerUser = expressAsyncHandler(async (req: Request, res: Response) => 
       _id: user._id,
       name: user.name,
       email: user.email,
-      token: generateToken(user._id),
+      token: generateToken(user._id.toString()),
     });
   } else {
     res.status(400).json({ message: 'Invalid user data!' });
@@ -63,8 +55,7 @@ const authUser = expressAsyncHandler(async (req: Request, res: Response) => {
       _id: user._id,
       name: user.name,
       email: user.email,
-      isAdmin: user.isAdmin,
-      token: generateToken(user._id),
+      token: generateToken(user._id.toString()),
     });
   } else {
     res.status(400).json({ message: 'Invalid email or password!' });
