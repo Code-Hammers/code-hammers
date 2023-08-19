@@ -3,7 +3,7 @@ import generateToken from "../utils/generateToken";
 import { Request, Response, NextFunction } from "express";
 import { UserType } from "../types/user";
 
-// ENDPOINT  POST api/users
+// ENDPOINT  POST api/users/register
 // PURPOSE   Register a new user
 // ACCESS    Public
 const registerUser = async (
@@ -29,12 +29,13 @@ const registerUser = async (
     });
 
     if (user) {
-      res.status(201).json({
+      res.locals.user = {
         _id: user._id,
         name: user.name,
         email: user.email,
         token: generateToken(user._id.toString()),
-      });
+      };
+      return next();
     }
   } catch (error) {
     console.error("Error during user signup:", error);

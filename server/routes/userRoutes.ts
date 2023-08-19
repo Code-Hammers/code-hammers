@@ -7,7 +7,7 @@ router.post("/login", authUser, (req, res: Response) => {
   return res.status(200).json(res.locals.user);
 });
 router.post("/register", registerUser, (req, res: Response) => {
-  return res.status(200).json({ msg: "Successful register!" });
+  return res.status(201).json(res.locals.user);
 });
 
 export default router;
