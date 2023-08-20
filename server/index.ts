@@ -3,7 +3,7 @@ import express, { Request, Response, Application, NextFunction } from "express";
 import userRoutes from "./routes/userRoutes";
 import connectDB from "./config/db";
 import dotenv from "dotenv";
-import { notFound, errorHandler } from "./middleware/errorMIddleWare";
+import { notFound, errorHandler } from "./controllers/errorControllers";
 
 dotenv.config();
 
