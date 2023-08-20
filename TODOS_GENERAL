@@ -1,1 +1,3 @@
 # Review and refactor error handling.
+
+# Review types (Do we need separate types? Will this cause issues later on?)
