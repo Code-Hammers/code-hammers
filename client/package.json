@@ -4,6 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
+    "type-check": "tsc --noEmit",
     "start": "webpack serve --open --hot --mode development",
     "build": "webpack --mode production"
   },
@@ -19,5 +20,13 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.14.2",
     "style-loader": "^3.3.3"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.22.5",
+    "@types/jest": "^29.5.3",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
+    "ts-loader": "^9.4.4",
+    "typescript": "^5.1.6"
   }
 }
