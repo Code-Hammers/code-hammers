@@ -89,4 +89,54 @@ const authUser = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-export { registerUser, authUser };
+// ENDPOINT  GET api/users/:userId
+// PURPOSE   Get user by id
+// ACCESS    Private
+const getUserById = async (req: Request, res: Response, next: NextFunction) => {
+  const { userId } = req.params;
+
+  try {
+    const user: UserType | null = await User.findOne({ _id: userId });
+
+    if (!user) {
+      return res.status(401).json({ msg: "User not found!" });
+    }
+    res.locals.user = user;
+    return next();
+  } catch (error) {
+    return next({
+      log: "Express error in getUserById Middleware",
+      status: 500,
+      message: { err: "An error occurred during retrieval" },
+    });
+  }
+};
+
+// ENDPOINT  DELETE api/users/:email
+// PURPOSE   Delete user by email
+// ACCESS    Private
+const deleteUserByEmail = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { email } = req.params;
+
+  try {
+    const user: UserType | null = await User.findOneAndRemove({ email });
+
+    if (!user) {
+      return res.status(404).json({ msg: "User not found!" });
+    }
+
+    return next();
+  } catch (error) {
+    return next({
+      log: "Express error in getUserByEmail Middleware",
+      status: 500,
+      message: { err: "An error occurred during removal" },
+    });
+  }
+};
+
+export { registerUser, authUser, getUserById, deleteUserByEmail };
