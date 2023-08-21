@@ -5,12 +5,14 @@
   "main": "/dist/index.js",
   "scripts": {
     "build": "tsc",
-    "test": "jest --detectOpenHandles",
+    "test": "jest --detectOpenHandles --coverage",
     "client": "cd client && npm start",
     "server": "node server/index.js",
     "server-ts": "ts-node-dev server/index.ts",
     "dev-ts": "concurrently --kill-others \"npm run server-ts\" \"npm run client\"",
-    "dev": "concurrently --kill-others \"npm run server\" \"npm run client\""
+    "dev": "concurrently --kill-others \"npm run server\" \"npm run client\"",
+    "test:client": "cd client && npm test",
+    "test:all": "concurrently \"npm test\" \"npm run test:client\""
   },
   "repository": {
     "type": "git",
