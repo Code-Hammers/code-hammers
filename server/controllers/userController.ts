@@ -54,18 +54,18 @@ const authUser = async (req: Request, res: Response, next: NextFunction) => {
 
   const isValidEmail = email.match(/[\w\d\.]+@[a-z]+\.[\w]+$/gim);
   if (!isValidEmail) {
-    return res.status(400).json({ msg: "Please enter a valid email" });
+    return res.status(400).json({ msg: "Please enter a valid email" }); //TODO Move to global error handler
   }
 
   if (!email || !password) {
-    return res.status(400).json({ msg: "Email and password are required!" });
+    return res.status(400).json({ msg: "Email and password are required!" }); //TODO Move to global error handler
   }
 
   try {
     const user: UserType | null = await User.findOne({ email });
 
     if (!user) {
-      return res.status(401).json({ msg: "User not found!" });
+      return res.status(401).json({ msg: "User not found!" }); //TODO Move to global error handler
     }
 
     if (user && (await user.matchPassword!(password))) {
@@ -77,7 +77,7 @@ const authUser = async (req: Request, res: Response, next: NextFunction) => {
       };
       return next();
     } else {
-      return res.status(401).json({ msg: "Incorrect password" });
+      return res.status(401).json({ msg: "Incorrect password" }); //TODO Move to global error handler
     }
   } catch (error) {
     console.error("Error during user authentication:", error);
@@ -99,7 +99,7 @@ const getUserById = async (req: Request, res: Response, next: NextFunction) => {
     const user: UserType | null = await User.findOne({ _id: userId });
 
     if (!user) {
-      return res.status(401).json({ msg: "User not found!" });
+      return res.status(401).json({ msg: "User not found!" }); //TODO Move to global error handler
     }
     res.locals.user = user;
     return next();
@@ -126,7 +126,7 @@ const deleteUserByEmail = async (
     const user: UserType | null = await User.findOneAndRemove({ email });
 
     if (!user) {
-      return res.status(404).json({ msg: "User not found!" });
+      return res.status(404).json({ msg: "User not found!" }); //TODO Move to global error handler
     }
 
     return next();

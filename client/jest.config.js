@@ -11,7 +11,7 @@ module.exports = {
     "^.+\\.(ts|tsx)$": [
       "ts-jest",
       {
-        /* any ts-jest specific configuration here */
+        /*ANY TS-JEST SPECIFIC CONFIG GOES HERE */
       },
     ],
   },
