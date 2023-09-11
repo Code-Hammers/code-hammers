@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "A social platform for Codesmith Alumni to continue mentoring and learning together.",
   "main": "/dist/index.js",
-  "scripts": {
+    "scripts": {
     "build": "tsc",
     "test": "jest --detectOpenHandles --coverage",
     "client": "cd client && npm start",
-    "server": "node server/index.js",
+    "server": "node server/index.ts",
     "server-ts": "ts-node-dev server/index.ts",
     "dev-ts": "concurrently --kill-others \"npm run server-ts\" \"npm run client\"",
     "dev": "concurrently --kill-others \"npm run server\" \"npm run client\"",
