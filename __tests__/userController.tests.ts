@@ -33,12 +33,7 @@ describe("User Controller Tests", () => {
 
   describe("registerUser function", () => {
     it("should handle user registration", async () => {
-      User.findOne = jest.fn().mockResolvedValue({
-        _id: "someId",
-        name: "John",
-        email: "john@example.com",
-        password: "hashedPassword",
-      });
+      User.findOne = jest.fn().mockResolvedValue(null);
 
       // MOCKING USER CREATE TO RETURN A DUMMY USER OBJECT
       User.create = jest.fn().mockResolvedValue({
