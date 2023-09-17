@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainPage Component renders correctly 1`] = `
+<div
+  className="min-h-screen bg-gray-100 flex flex-col items-center justify-center"
+>
+  <h1
+    className="text-4xl font-extrabold mb-4"
+  >
+    TEST
+  </h1>
+  <h1>
+    TEST
+  </h1>
+</div>
+`;

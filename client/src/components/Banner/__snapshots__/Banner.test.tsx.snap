@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Banner Component renders correctly 1`] = `
+<div
+  className="w-full max-w-xs"
+>
+  BANNER
+</div>
+`;

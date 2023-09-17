@@ -7,6 +7,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "bundle.js",
+    publicPath: '/'
   },
 
   mode: process.env.NODE_ENV,
@@ -24,6 +25,13 @@ module.exports = {
     headers: {
       "Access-Control-Allow-Origin": "*",
     },
+    historyApiFallback: {
+      rewrites: [
+        {
+          from: /^\/app/, to: '/index.html'
+        }
+      ]
+    }
   },
   module: {
     rules: [
