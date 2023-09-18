@@ -15,7 +15,7 @@ const Login: React.FC = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("HIT!");
-    navigate("mainpage");
+    navigate("app/main");
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

@@ -33,12 +33,16 @@ app.use(errorHandler);
 
 const PORT: number = Number(process.env.PORT) || 3000;
 
-if (require.main === module) {
-  app.listen(PORT, () =>
+export const startServer = () => {
+  return app.listen(PORT, () =>
     console.log(
       `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`
     )
   );
+};
+
+if (require.main === module) {
+  startServer();
 }
 
 export default app;
