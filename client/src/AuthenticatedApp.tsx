@@ -4,6 +4,7 @@ import Banner from "./components/Banner/Banner";
 import Navbar from "./components/Navbar/Navbar";
 import { useAppSelector } from "./app/hooks";
 import MainPage from "./pages/MainPage/MainPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import { useNavigate } from "react-router-dom";
 
 const AuthenticatedApp = () => {
@@ -21,6 +22,7 @@ const AuthenticatedApp = () => {
       <Navbar />
       <Routes>
         <Route path="main" element={<MainPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
   );
