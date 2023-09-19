@@ -1,7 +1,7 @@
 import React from "react";
 import { useAppSelector } from "../../app/hooks";
 
-const MainPage: React.FC = () => {
+const MainPage = (): JSX.Element => {
   const user = useAppSelector((state) => state.user.userName);
 
   return (
