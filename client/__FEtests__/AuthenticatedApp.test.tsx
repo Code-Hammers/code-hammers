@@ -38,6 +38,6 @@ describe("AuthenticatedApp Component", () => {
   });
 
   test("renders with the BANNER placeholder text", () => {
-    expect(screen.getByText("BANNER")).toBeInTheDocument();
+    expect(screen.getByText("Code Hammers")).toBeInTheDocument();
   });
 });
