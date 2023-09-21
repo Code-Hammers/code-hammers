@@ -2,8 +2,32 @@
 
 exports[`Navbar Component renders correctly 1`] = `
 <div
-  className="w-full max-w-xs"
+  className="bg-rose-300 p-4 md:p-6 flex items-center w-full justify-center"
 >
-  NAVBAR
+  <div
+    className="flex space-x-4 md:space-x-6 justify-between w-2/3 md:w-1/2"
+  >
+    <a
+      className="text-teal-600 hover:text-teal-800 transition transform hover:scale-105"
+      href="/app/main"
+      onClick={[Function]}
+    >
+      MainPage
+    </a>
+    <a
+      className="text-teal-600 hover:text-teal-800 transition transform hover:scale-105"
+      href="/app/profiles"
+      onClick={[Function]}
+    >
+      Profiles
+    </a>
+    <a
+      className="text-teal-600 hover:text-teal-800 transition transform hover:scale-105"
+      href="/app/forums"
+      onClick={[Function]}
+    >
+      Forums
+    </a>
+  </div>
 </div>
 `;

@@ -9,7 +9,7 @@ exports[`Banner Component matches the snapshot 1`] = `
     <img
       alt="Code Hammers Logo"
       class="h-12 md:h-16"
-      src=""
+      src="test-file-stub"
     />
     <div
       class="flex-grow flex justify-center"

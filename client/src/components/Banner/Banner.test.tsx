@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Banner from "./Banner";
 
-xdescribe("Banner Component", () => {
+describe("Banner Component", () => {
   it("renders the logo image correctly", () => {
     const { getByAltText } = render(<Banner />);
     const logo = getByAltText("Code Hammers Logo") as HTMLImageElement;
