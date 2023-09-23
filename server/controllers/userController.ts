@@ -35,7 +35,7 @@ const registerUser = async (
         email: user.email,
         token: generateToken(user._id.toString()),
       };
-      return next();
+      return res.status(201).json(res.locals.user);
     }
   } catch (error) {
     console.error("Error during user signup:", error);
@@ -75,7 +75,7 @@ const authUser = async (req: Request, res: Response, next: NextFunction) => {
         email: user.email,
         token: generateToken(user._id.toString()),
       };
-      return next();
+      return res.status(200).json(res.locals.user);
     } else {
       return res.status(401).json({ msg: "Incorrect password" }); //TODO Move to global error handler
     }
@@ -102,7 +102,7 @@ const getUserById = async (req: Request, res: Response, next: NextFunction) => {
       return res.status(401).json({ msg: "User not found!" }); //TODO Move to global error handler
     }
     res.locals.user = user;
-    return next();
+    return res.status(200).json(res.locals.user);
   } catch (error) {
     return next({
       log: "Express error in getUserById Middleware",
@@ -129,7 +129,7 @@ const deleteUserByEmail = async (
       return res.status(404).json({ msg: "User not found!" }); //TODO Move to global error handler
     }
 
-    return next();
+    return res.status(200).json({ msg: "User successfully deleted!" });
   } catch (error) {
     return next({
       log: "Express error in getUserByEmail Middleware",
