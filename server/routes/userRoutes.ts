@@ -8,9 +8,7 @@ import {
 
 const router = express.Router();
 
-router.post("/login", authUser, (req, res: Response) => {
-  return res.status(200).json(res.locals.user);
-});
+router.post("/login", authUser);
 router.post("/register", registerUser, (req, res: Response) => {
   return res.status(201).json(res.locals.user);
 });
