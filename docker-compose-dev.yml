@@ -1,0 +1,17 @@
+version: "3"
+services:
+  dev:
+    image: codehammers/mm-dev
+    container_name: mm-ch-dev
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/usr/src/app
+      - node_modules:/usr/src/app/node_modules
+      - client_node_modules:/usr/src/app/client/node_modules
+    command: npm run dev-ts
+    environment:
+      - NODE_ENV=development
+volumes:
+  node_modules:
+  client_node_modules:
