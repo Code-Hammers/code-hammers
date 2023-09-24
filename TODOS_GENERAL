@@ -1,1 +1,5 @@
 # Review and refactor error handling.
+
+# Review types (Do we need separate types? Will this cause issues later on?)
+
+# Add much more thorough edge case tetsing on test files.
