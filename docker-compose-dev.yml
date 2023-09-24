@@ -1,10 +1,7 @@
 version: "3"
 services:
   dev:
-    build:
-      context: .
-      dockerfile: Dockerfile-dev
-    image: codehammers/mm-dev
+    image: brok3turtl3/codehammers:latest-dev
     container_name: mm-ch-dev
     ports:
       - "8080:8080"
