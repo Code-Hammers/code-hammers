@@ -1,7 +1,9 @@
 version: "3"
 services:
   dev:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
     image: codehammers/mm-dev
     container_name: mm-ch-dev
     ports:
