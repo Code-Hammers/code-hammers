@@ -6,10 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const userController_1 = require("../controllers/userController");
 const router = express_1.default.Router();
-router.post('/login', userController_1.authUser, (res) => {
-    return res.status(200).json({ msg: "Successful login!" });
-});
-router.post('/', userController_1.registerUser, (res) => {
-    return res.status(200).json({ msg: "Successful register!" });
-});
+router.post("/login", userController_1.authUser);
+router.post("/register", userController_1.registerUser);
+router.delete("/:email", userController_1.deleteUserByEmail);
+router.get("/:userId", userController_1.getUserById);
 exports.default = router;
