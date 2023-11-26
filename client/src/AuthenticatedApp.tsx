@@ -11,10 +11,10 @@ import { useNavigate } from "react-router-dom";
 
 const AuthenticatedApp = () => {
   const navigate = useNavigate();
-  const user = useAppSelector((state) => state.user.userName);
+  const user = useAppSelector((state) => state.user.userData);
 
   useEffect(() => {
-    if (user !== "TEST") {
+    if (user === "Sean") {
       navigate("/");
     }
   });
