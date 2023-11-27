@@ -10,6 +10,7 @@ const initialState = {
   user: {
     userData: null,
     status: "idle",
+    error: null,
   },
 };
 
