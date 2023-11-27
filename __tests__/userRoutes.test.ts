@@ -24,7 +24,7 @@ describe("User Routes", () => {
   describe("POST /api/users/login", () => {
     it("should login a user", async () => {
       const mockUserData = {
-        email: "sean@test.mail",
+        email: "sean@test.com",
         password: "123456",
       };
 
@@ -57,7 +57,7 @@ describe("User Routes", () => {
   describe("GET /api/users/:id", () => {
     it("should get a specific user", async () => {
       const userId = "64e0c6963707b139178a6c46";
-      const expectedEmail = "sean@test.mail";
+      const expectedEmail = "sean@test.com";
 
       const res = await request(app).get(`/api/users/${userId}`);
 
