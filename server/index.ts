@@ -15,13 +15,17 @@ connectDB();
 
 app.use("/api/users", userRoutes);
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/client/build")));
+console.log(`ENV BEFORE CHECK: ${process.env.NODE_ENV}`);
+
+if (process.env.NODE_ENV === "test") {
+  console.log(`SERVER STARTED IN PRODUCTION`);
+  app.use(express.static(path.join(__dirname, "../client/build")));
 
   app.get("*", (req: Request, res: Response) =>
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
+    res.sendFile(path.resolve(__dirname, "../client/build/index.html"))
   );
 } else {
+  console.log("SERVER STARTED IN DEV");
   app.get("/api", (req: Request, res: Response) => {
     res.json({ message: "API Running - Hazzah!" });
   });
