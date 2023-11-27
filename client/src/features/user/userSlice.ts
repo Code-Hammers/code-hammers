@@ -1,7 +1,8 @@
-import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+
 interface UserState {
-  userData: any;
+  userData: any; //TODO ADD PROPER TYPING ONCE USER OBJECT IS FINALIZED
   status: "idle" | "loading" | "failed";
 }
 
@@ -31,7 +32,12 @@ export const loginUser = createAsyncThunk(
 const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    logout: (state) => {
+      state.userData = null;
+      state.status = "idle";
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loginUser.pending, (state) => {
@@ -43,8 +49,10 @@ const userSlice = createSlice({
       })
       .addCase(loginUser.rejected, (state) => {
         state.status = "failed";
+        //TODO BUILD AN ERROR STATE TRACKER FOR CURRENT ERROR INFO
       });
   },
 });
 
+export const { logout } = userSlice.actions;
 export default userSlice.reducer;
