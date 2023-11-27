@@ -14,7 +14,6 @@ const AuthenticatedApp = () => {
   const user = useAppSelector((state) => state.user.userData);
 
   useEffect(() => {
-    console.log(user);
     if (!user?.name) {
       navigate("/");
     }
