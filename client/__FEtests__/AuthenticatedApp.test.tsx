@@ -8,20 +8,21 @@ import AuthenticatedApp from "../src/AuthenticatedApp";
 const mockStore = configureStore([]);
 const initialState = {
   user: {
-    userName: "TEST",
+    userData: null,
+    status: "idle",
   },
 };
 
 jest.mock("react-router-dom", () => {
-    const originalModule = jest.requireActual("react-router-dom");
-    return {
-      ...originalModule,
-      BrowserRouter: ({ children }: { children: React.ReactNode }) => (
-        <div>{children}</div>
-      ),
-      useNavigate: () => jest.fn(), 
-    };
-  });
+  const originalModule = jest.requireActual("react-router-dom");
+  return {
+    ...originalModule,
+    BrowserRouter: ({ children }: { children: React.ReactNode }) => (
+      <div>{children}</div>
+    ),
+    useNavigate: () => jest.fn(),
+  };
+});
 
 describe("AuthenticatedApp Component", () => {
   let component: RenderResult;

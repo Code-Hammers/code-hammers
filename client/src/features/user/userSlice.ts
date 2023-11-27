@@ -4,11 +4,13 @@ import axios from "axios";
 interface UserState {
   userData: any; //TODO ADD PROPER TYPING ONCE USER OBJECT IS FINALIZED
   status: "idle" | "loading" | "failed";
+  error: string | null;
 }
 
 const initialState: UserState = {
   userData: null,
   status: "idle",
+  error: null,
 };
 
 export const loginUser = createAsyncThunk(
@@ -24,7 +26,8 @@ export const loginUser = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      //TODO BUILD BETTER ERROR FEEDBACK FROM AXIOS OF TEHRE
+      return thunkAPI.rejectWithValue("Something blew up!");
     }
   }
 );
