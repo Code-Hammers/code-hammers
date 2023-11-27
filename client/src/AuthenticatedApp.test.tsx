@@ -3,7 +3,7 @@ import { render, RenderResult, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
-import AuthenticatedApp from "../src/AuthenticatedApp";
+import AuthenticatedApp from "./AuthenticatedApp";
 
 const mockStore = configureStore([]);
 const initialState = {
