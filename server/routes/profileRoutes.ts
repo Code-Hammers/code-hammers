@@ -6,11 +6,10 @@ import {
   deleteUserByEmail,
 } from "../controllers/userController";
 
+import { createProfile } from "../controllers/profileController";
+
 const router = express.Router();
 
-router.post("/login", authUser);
-router.post("/register", registerUser);
-router.delete("/:email", deleteUserByEmail);
-router.get("/:userId", getUserById);
+router.post("/create", createProfile);
 
 export default router;
