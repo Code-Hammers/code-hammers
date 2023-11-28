@@ -1,5 +1,3 @@
-// userController.test.ts
-
 import { Request, Response, NextFunction } from "express";
 import {
   registerUser,
@@ -19,6 +17,7 @@ jest.mock("../server/utils/generateToken", () => () => "someFakeToken");
 describe("User Controller Tests", () => {
   let mockRequest: Partial<Request>;
   let mockResponse: Partial<Response>;
+  //TODO Add some error test for global error handler
   let mockNext: NextFunction = jest.fn();
 
   beforeEach(() => {
