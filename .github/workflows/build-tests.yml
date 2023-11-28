@@ -1,0 +1,12 @@
+name: build-tests
+on:
+  pull_request:
+    branches:
+      - dev
+jobs:
+  unit-testing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      # - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - run: TEST_COMMAND=test:silent docker-compose -f docker-compose-test.yml up --abort-on-container-exit
