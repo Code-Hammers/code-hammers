@@ -1,21 +1,26 @@
-#SET NODE VERSION
+# Use the official Node.js 18 image as base
 FROM node:18.17.1
 
-#CONTAINER WORKING DIRECTORY
+# Set the working directory in the container
 WORKDIR /usr/src/app
 
-#COPY FILES INTO CONTANER AT /usr/src/app
-COPY . .
+# Copy the package.json and package-lock.json (if available)
+COPY package*.json ./
 
-#TYING TO EXPLICITLY COPY THE CLIENT FOLDER
-COPY ./client /usr/src/app/client
-
-#INSTALL ROOT PACKAGES
+# Install root packages
 RUN npm install
 
-#INSTAL CLIENT PACKAGES
-RUN cd client && npm install
+# Copy the rest of your app's source code from your host to your image filesystem.
+COPY . .
 
-#EXPOSE THE WEBPACK-DEV-SERVER PORT
+# Navigate to the client directory and install client packages
+WORKDIR /usr/src/app/client
+COPY client/package*.json ./
+RUN npm install
+
+# Navigate back to the main app directory
+WORKDIR /usr/src/app
+
+# Expose the port the app runs on
 EXPOSE 3000
 
