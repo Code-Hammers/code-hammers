@@ -21,6 +21,10 @@ RUN npm install
 # Navigate back to the main app directory
 WORKDIR /usr/src/app
 
+ENTRYPOINT []
+
 # Expose the port the app runs on
 EXPOSE 3000
+
+
 
