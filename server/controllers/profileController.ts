@@ -55,4 +55,28 @@ const getAllProfiles = async (
   }
 };
 
-export { createProfile, getAllProfiles };
+// ENDPOINT  GET api/profiles/:userID
+// PURPOSE   Get profile by ID
+// ACCESS    Private
+const getProfileById = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { userID } = req.params;
+  try {
+    const profile: IProfile | null = await Profile.findOne({ user: userID });
+
+    if (profile) {
+      return res.status(201).json(profile);
+    }
+  } catch (error) {
+    return next({
+      log: "Express error in getAllProfiles Middleware",
+      status: 500,
+      message: { err: "An error occurred during profile creation" },
+    });
+  }
+};
+
+export { createProfile, getAllProfiles, getProfileById };
