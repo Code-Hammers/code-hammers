@@ -32,4 +32,27 @@ const createProfile = async (
   }
 };
 
-export { createProfile };
+// ENDPOINT  GET api/profiles
+// PURPOSE   Get all profles
+// ACCESS    Private
+const getAllProfiles = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const profiles: IProfile[] = await Profile.find({});
+
+    if (profiles) {
+      return res.status(201).json(profiles);
+    }
+  } catch (error) {
+    return next({
+      log: "Express error in getAllProfiles Middleware",
+      status: 500,
+      message: { err: "An error occurred during profile creation" },
+    });
+  }
+};
+
+export { createProfile, getAllProfiles };
