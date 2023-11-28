@@ -54,9 +54,15 @@ const updateProfile = async (
       newProfile,
       { new: true }
     );
-
-    if (profile) {
-      return res.status(201).json(profile);
+    console.log(profile);
+    if (!profile) {
+      return next({
+        log: "Express error in updateProfile Middleware - NO PROFILE FOUND",
+        status: 404,
+        message: { err: "An error occurred during profile update" },
+      });
+    } else {
+      return res.status(200).json(profile);
     }
   } catch (error) {
     return next({
@@ -78,7 +84,13 @@ const getAllProfiles = async (
   try {
     const profiles: IProfile[] = await Profile.find({});
 
-    if (profiles) {
+    if (profiles.length === 0) {
+      return next({
+        log: "There are no profiles to retrieve",
+        status: 404,
+        message: { err: "There were no profiles to retrieve" },
+      });
+    } else {
       return res.status(201).json(profiles);
     }
   } catch (error) {
@@ -102,7 +114,13 @@ const getProfileById = async (
   try {
     const profile: IProfile | null = await Profile.findOne({ user: userID });
 
-    if (profile) {
+    if (!profile) {
+      return next({
+        log: "Profile does not exist",
+        status: 404,
+        message: { err: "An error occurred during profile retrieval" },
+      });
+    } else {
       return res.status(201).json(profile);
     }
   } catch (error) {
