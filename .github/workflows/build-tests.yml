@@ -8,5 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Build Docker Image
+        run: docker build -t brok3turtl3/codehammers:latest -f Dockerfile-dev .
       # - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - run: docker-compose -f docker-compose-test.yml up --abort-on-container-exit
