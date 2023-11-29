@@ -21,22 +21,6 @@ afterAll(async () => {
 });
 
 describe("User Routes", () => {
-  describe("POST /api/users/login", () => {
-    it("should login a user", async () => {
-      const mockUserData = {
-        email: "sean@test.com",
-        password: "123456",
-      };
-
-      const res = await request(app)
-        .post("/api/users/login")
-        .send(mockUserData);
-
-      expect(res.statusCode).toEqual(200);
-      expect(res.body).toHaveProperty("email");
-    });
-  });
-
   describe("POST /api/users/register", () => {
     it("should register a user", async () => {
       const mockNewUserData = {
@@ -50,6 +34,22 @@ describe("User Routes", () => {
         .send(mockNewUserData);
 
       expect(res.statusCode).toEqual(201);
+      expect(res.body).toHaveProperty("email");
+    });
+  });
+
+  describe("POST /api/users/login", () => {
+    it("should login a user", async () => {
+      const mockUserData = {
+        email: "john@test.com",
+        password: "testpassword",
+      };
+
+      const res = await request(app)
+        .post("/api/users/login")
+        .send(mockUserData);
+
+      expect(res.statusCode).toEqual(200);
       expect(res.body).toHaveProperty("email");
     });
   });
