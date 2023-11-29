@@ -21,22 +21,6 @@ afterAll(async () => {
 });
 
 describe("User Routes", () => {
-  describe("POST /api/users/login", () => {
-    it("should login a user", async () => {
-      const mockUserData = {
-        email: "sean@test.com",
-        password: "123456",
-      };
-
-      const res = await request(app)
-        .post("/api/users/login")
-        .send(mockUserData);
-
-      expect(res.statusCode).toEqual(200);
-      expect(res.body).toHaveProperty("email");
-    });
-  });
-
   describe("POST /api/users/register", () => {
     it("should register a user", async () => {
       const mockNewUserData = {
@@ -54,16 +38,44 @@ describe("User Routes", () => {
     });
   });
 
+  describe("POST /api/users/login", () => {
+    it("should login a user", async () => {
+      const mockUserData = {
+        email: "john@test.com",
+        password: "testpassword",
+      };
+
+      const res = await request(app)
+        .post("/api/users/login")
+        .send(mockUserData);
+
+      expect(res.statusCode).toEqual(200);
+      expect(res.body).toHaveProperty("email");
+    });
+  });
+
   describe("GET /api/users/:id", () => {
     it("should get a specific user", async () => {
-      const userId = "64e0c6963707b139178a6c46";
-      const expectedEmail = "sean@test.com";
+      // Create a user first
+      const newUser = {
+        name: "Test User",
+        email: "testuser@test.com",
+        password: "password123",
+      };
+      let createUserResponse = await request(app)
+        .post("/api/users/register")
+        .send(newUser);
 
+      const userId = createUserResponse.body._id;
+
+      // Now get the created user by ID
       const res = await request(app).get(`/api/users/${userId}`);
 
       expect(res.statusCode).toEqual(200);
       expect(res.body).toHaveProperty("email");
-      expect(res.body.email).toEqual(expectedEmail);
+      expect(res.body.email).toEqual(newUser.email);
+
+      await request(app).delete(`/api/users/${newUser.email}`);
     });
   });
 
