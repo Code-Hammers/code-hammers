@@ -9,4 +9,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       # - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-      - run: TEST_COMMAND=test:silent docker-compose -f docker-compose-test.yml up --abort-on-container-exit
+      - run: docker-compose -f docker-compose-test.yml up --abort-on-container-exit
