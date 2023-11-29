@@ -20,7 +20,7 @@ const connectDB = async (): Promise<void> => {
     console.log(`MongoDB is connected to: ${connection.connection.host}`);
   } catch (error: any) {
     console.error(error.message);
-    process.exit(1);
+    //process.exit(1);
   }
 };
 
