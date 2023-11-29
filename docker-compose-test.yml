@@ -13,6 +13,7 @@ services:
       - mongo
     environment:
       - MONGO_URI=mongodb://mongo:27017/ch-testdb
+      - JWT_SECRET=${JWT_SECRET}
     command: npm run test:all
 
   mongo:
