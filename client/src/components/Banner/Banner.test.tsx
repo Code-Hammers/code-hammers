@@ -2,12 +2,13 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Banner from "./Banner";
-import { useAppDispatch } from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { logout } from "../../features/user/userSlice";
 import { useNavigate } from "react-router-dom";
 
 jest.mock("../../app/hooks", () => ({
   useAppDispatch: jest.fn(),
+  useAppSelector: jest.fn(),
 }));
 jest.mock("../../features/user/userSlice", () => ({
   logout: jest.fn(),
@@ -19,10 +20,19 @@ jest.mock("react-router-dom", () => ({
 describe("Banner Component", () => {
   const mockDispatch = jest.fn();
   const mockNavigate = jest.fn();
+  const mockUserData = {
+    id: "123",
+    name: "John Doe",
+  };
 
   beforeEach(() => {
     (useAppDispatch as jest.Mock).mockReturnValue(mockDispatch);
     (useNavigate as jest.Mock).mockReturnValue(mockNavigate);
+    (useAppSelector as jest.Mock).mockImplementation((selector) =>
+      selector({
+        user: { userData: mockUserData },
+      })
+    );
   });
 
   afterEach(() => {
