@@ -14,9 +14,10 @@ const initialState: ProfileState = {
   error: null,
 };
 
-export const fetchProfile = createAsyncThunk(
-  "profile/fetchProfiles",
-  async (userID, thunkAPI) => {
+//TODO REVIEW TYPING
+export const fetchUserProfile = createAsyncThunk(
+  "profile/fetchUserProfile",
+  async (userID: string, thunkAPI) => {
     try {
       const response = await axios.get(`/api/profiles/${userID}`);
       return response.data;
@@ -31,11 +32,11 @@ export const fetchProfile = createAsyncThunk(
   }
 );
 
-const profilesSlice = createSlice({
-  name: "profiles",
+const userProfileSlice = createSlice({
+  name: "profile",
   initialState,
   reducers: {
-    resetProfilesState(state) {
+    resetProfileState(state) {
       state.profile = null;
       state.status = "idle";
       state.error = null;
@@ -43,19 +44,19 @@ const profilesSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchProfile.pending, (state) => {
+      .addCase(fetchUserProfile.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(fetchProfile.fulfilled, (state, action) => {
+      .addCase(fetchUserProfile.fulfilled, (state, action) => {
         state.profile = action.payload;
         state.status = "idle";
       })
-      .addCase(fetchProfile.rejected, (state, action) => {
+      .addCase(fetchUserProfile.rejected, (state, action) => {
         state.status = "failed";
-        //state.error = action.payload as string; WHAT WOULD PAYLOAD LOOK LIKE HERE?
-        //TODO BUILD AN ERROR STATE TRACKER FOR CURRENT ERROR INFO
+        //TODO state.error = action.payload as string; WHAT WOULD PAYLOAD LOOK LIKE HERE?
+        //TODO HOOK UP GOOD ERROR INFO TO ERROR STATE
       });
   },
 });
 
-export default profilesSlice.reducer;
+export default userProfileSlice.reducer;
