@@ -6,7 +6,6 @@ import { useAppDispatch } from "../../app/hooks";
 import { logout } from "../../features/user/userSlice";
 import { useNavigate } from "react-router-dom";
 
-// Mock the hooks and external dependencies
 jest.mock("../../app/hooks", () => ({
   useAppDispatch: jest.fn(),
 }));
@@ -42,18 +41,44 @@ describe("Banner Component", () => {
     expect(title).toBeInTheDocument();
   });
 
-  it("renders the logout button and handles logout on click", () => {
+  it("renders the Options button", () => {
     render(<Banner />);
-    const logoutButton = screen.getByRole("button", { name: "Logout" });
-    expect(logoutButton).toBeInTheDocument();
+    const optionsButton = screen.getByRole("button", { name: "Options" });
+    expect(optionsButton).toBeInTheDocument();
+  });
 
-    // Simulate a click on the logout button
-    fireEvent.click(logoutButton);
+  it("opens the dropdown and shows options when Options button is clicked", () => {
+    render(<Banner />);
+    const optionsButton = screen.getByRole("button", { name: "Options" });
+    fireEvent.click(optionsButton);
 
-    // Expect the logout action to be dispatched
+    const profileOption = screen.getByText("Go to Profile");
+    const logoutOption = screen.getByText("Logout");
+
+    expect(profileOption).toBeInTheDocument();
+    expect(logoutOption).toBeInTheDocument();
+  });
+
+  it("handles navigation to Profile on clicking Go to Profile", () => {
+    render(<Banner />);
+    const optionsButton = screen.getByRole("button", { name: "Options" });
+    fireEvent.click(optionsButton);
+
+    const profileOption = screen.getByText("Go to Profile");
+    fireEvent.click(profileOption);
+
+    expect(mockNavigate).toHaveBeenCalledWith("profile");
+  });
+
+  it("handles logout on clicking Logout", () => {
+    render(<Banner />);
+    const optionsButton = screen.getByRole("button", { name: "Options" });
+    fireEvent.click(optionsButton);
+
+    const logoutOption = screen.getByText("Logout");
+    fireEvent.click(logoutOption);
+
     expect(mockDispatch).toHaveBeenCalledWith(logout());
-
-    // Expect navigation to have been called with the root path
     expect(mockNavigate).toHaveBeenCalledWith("/");
   });
 });
