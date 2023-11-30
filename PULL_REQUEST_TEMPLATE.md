@@ -23,8 +23,6 @@ Please go through each item of this checklist carefully.
 - [ ] I added a descriptive title to this PR.
 - [ ] I filled out the **Description**, **Jira Task**, and **Testing Instructions** sections above.
 - [ ] I added or updated [Jest unit tests]for any changes to components, server-side controllers, etc.
-- [ ] I ran `npm run docker-lint:fix` to identify and fix any code issues.
-- [ ] I ran `npm run docker-test:snapshot-update` to update any snapshots, if necessary.
 - [ ] I ran `npm run docker-test` in my local environment to check that this PR passes all unit tests.
 - [ ] I did a quick check to make sure my code changes follow the recomended style guide.
 
