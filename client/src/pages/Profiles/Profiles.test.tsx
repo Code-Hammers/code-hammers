@@ -8,7 +8,7 @@ import Profiles from "./Profiles";
 interface State {
   profiles: {
     profiles: { user: string }[];
-    status: 'idle' | 'loading' | 'failed';
+    status: "idle" | "loading" | "failed";
     error: string | null;
   };
 }
@@ -16,13 +16,9 @@ interface State {
 const mockStore = configureStore<State>([]);
 const initialState: State = {
   profiles: {
-    profiles: [
-      { user: "User1" },
-      { user: "User2" }
-    ],
-    status: 'idle',
-    error: null
-  }
+    profiles: [{ user: "User1" }, { user: "User2" }],
+    status: "idle",
+    error: null,
   },
 };
 
@@ -37,4 +33,3 @@ describe("MainPage Component", () => {
     expect(tree).toMatchSnapshot();
   });
 });
-
