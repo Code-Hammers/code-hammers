@@ -17,6 +17,7 @@ interface IJob {
 
 export interface IProfile extends Document {
   user: ObjectId;
+  name: String;
   bio?: string;
   job?: IJob;
   socials?: ISocial;

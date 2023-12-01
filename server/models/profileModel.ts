@@ -10,6 +10,9 @@ const profileSchema = new mongoose.Schema<IProfile>({
   bio: {
     type: String,
   },
+  name: {
+    type: String,
+  },
   job: {
     title: String,
     company: String,
