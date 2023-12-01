@@ -10,11 +10,12 @@ const createProfile = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { user, bio, job, socials } = req.body;
+  const { user, name, bio, job, socials } = req.body;
 
   try {
     const profile: IProfile = await Profile.create({
       user,
+      name,
       bio,
       job,
       socials,
@@ -41,8 +42,9 @@ const updateProfile = async (
   next: NextFunction
 ) => {
   const { userID } = req.params;
-  const { bio, job, socials } = req.body;
+  const { name, bio, job, socials } = req.body;
   const newProfile = {
+    name,
     bio,
     job,
     socials,
