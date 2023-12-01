@@ -34,13 +34,15 @@ describe("User Controller Tests", () => {
       (User.findOne as jest.Mock).mockResolvedValue(null);
       (User.create as jest.Mock).mockResolvedValue({
         _id: "someId",
-        name: "John",
+        firstName: "John",
+        lastName: "Doh",
         email: "john@example.com",
         password: "hashedPassword",
       });
 
       mockRequest.body = {
-        name: "John",
+        firstName: "John",
+        lastName: "Doh",
         email: "john@example.com",
         password: "password",
       };
@@ -54,7 +56,8 @@ describe("User Controller Tests", () => {
       expect(mockResponse.json).toHaveBeenCalledWith(
         expect.objectContaining({
           _id: "someId",
-          name: "John",
+          firstName: "John",
+          lastName: "Doh",
           email: "john@example.com",
           token: "someFakeToken",
         })
@@ -66,7 +69,8 @@ describe("User Controller Tests", () => {
     it("should handle user authentication", async () => {
       (User.findOne as jest.Mock).mockResolvedValue({
         _id: "someId",
-        name: "John",
+        firstName: "John",
+        lastName: "Doh",
         email: "john@example.com",
         password: "hashedPassword",
         matchPassword: jest.fn().mockResolvedValue(true),
@@ -83,7 +87,8 @@ describe("User Controller Tests", () => {
       expect(mockResponse.json).toHaveBeenCalledWith(
         expect.objectContaining({
           _id: "someId",
-          name: "John",
+          firstName: "John",
+          lastName: "Doh",
           email: "john@example.com",
           token: "someFakeToken",
         })
@@ -95,7 +100,8 @@ describe("User Controller Tests", () => {
     it("should get a user by ID", async () => {
       (User.findOne as jest.Mock).mockResolvedValue({
         _id: "someId",
-        name: "John",
+        firstName: "John",
+        lastName: "Doh",
         email: "john@example.com",
       });
 
@@ -110,7 +116,8 @@ describe("User Controller Tests", () => {
       expect(mockResponse.json).toHaveBeenCalledWith(
         expect.objectContaining({
           _id: "someId",
-          name: "John",
+          firstName: "John",
+          lastName: "Doh",
           email: "john@example.com",
         })
       );
@@ -121,7 +128,8 @@ describe("User Controller Tests", () => {
     it("should delete a user by email", async () => {
       (User.findOneAndRemove as jest.Mock).mockResolvedValue({
         _id: "someId",
-        name: "John",
+        firstName: "John",
+        lastName: "Doh",
         email: "john@example.com",
       });
 

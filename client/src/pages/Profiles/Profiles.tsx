@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { fetchProfiles } from "../../features/profiles/profilesSlice";
+import ProfileThumb from "../../components/ProfileThumb/ProfileThumb";
 
 const Profiles = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -16,8 +17,8 @@ const Profiles = (): JSX.Element => {
         <h1 className="text-4xl font-extrabold mb-4">PROFILES</h1>
       </div>
       <div>
-        {profiles.map((profiles) => (
-          <div key={profiles.user}>{profiles.user}</div>
+        {profiles.map((profile) => (
+          <ProfileThumb key={profile.user} profile={profile} />
         ))}
       </div>
     </>

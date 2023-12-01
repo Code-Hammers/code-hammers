@@ -24,7 +24,8 @@ describe("User Routes", () => {
   describe("POST /api/users/register", () => {
     it("should register a user", async () => {
       const mockNewUserData = {
-        name: "John Doe",
+        firstName: "John",
+        lastName: "Doh",
         email: "john@test.com",
         password: "testpassword",
       };
@@ -58,7 +59,8 @@ describe("User Routes", () => {
     it("should get a specific user", async () => {
       // Create a user first
       const newUser = {
-        name: "Test User",
+        firstName: "Test",
+        lastName: "User",
         email: "testuser@test.com",
         password: "password123",
       };

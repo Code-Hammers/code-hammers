@@ -1,7 +1,8 @@
 import { ObjectId, Document } from "mongoose";
 //TODO Do I need both of these?
 export interface IUser extends Document {
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   profilePic?: string;
   password: string;
@@ -13,7 +14,8 @@ export interface IUser extends Document {
 
 export interface UserType {
   _id: ObjectId;
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
 
