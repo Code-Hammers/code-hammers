@@ -10,7 +10,10 @@ const profileSchema = new mongoose.Schema<IProfile>({
   bio: {
     type: String,
   },
-  name: {
+  firstName: {
+    type: String,
+  },
+  lastName: {
     type: String,
   },
   job: {

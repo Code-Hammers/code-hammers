@@ -15,6 +15,8 @@ interface IJob {
 
 export interface IProfile {
   user: string;
+  firstName: string;
+  lastName: string;
   bio?: string;
   job?: IJob;
   socials?: ISocial;

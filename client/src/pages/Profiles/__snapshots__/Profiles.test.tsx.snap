@@ -12,11 +12,25 @@ exports[`MainPage Component renders correctly 1`] = `
     </h1>
   </div>,
   <div>
-    <div>
-      User1
+    <div
+      className="min-h-screen bg-gray-100 flex flex-col items-center justify-center"
+    >
+      <h1
+        className="text-4xl font-extrabold mb-4"
+      />
+      <h2
+        className="text-4xl font-extrabold mb-4"
+      />
     </div>
-    <div>
-      User2
+    <div
+      className="min-h-screen bg-gray-100 flex flex-col items-center justify-center"
+    >
+      <h1
+        className="text-4xl font-extrabold mb-4"
+      />
+      <h2
+        className="text-4xl font-extrabold mb-4"
+      />
     </div>
   </div>,
 ]

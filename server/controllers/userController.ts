@@ -11,7 +11,7 @@ const registerUser = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { name, email, password } = req.body;
+  const { firstName, lastName, email, password } = req.body;
 
   try {
     const isValidEmail = email.match(/[\w\d\.]+@[a-z]+\.[\w]+$/gim);
@@ -23,7 +23,8 @@ const registerUser = async (
       return res.status(400).json({ message: "User already exists!" });
     }
     const user: UserType = await User.create({
-      name,
+      firstName,
+      lastName,
       email,
       password,
     });
@@ -31,7 +32,8 @@ const registerUser = async (
     if (user) {
       res.locals.user = {
         _id: user._id,
-        name: user.name,
+        firstName: user.firstName,
+        lastName: user.lastName,
         email: user.email,
         token: generateToken(user._id.toString()),
       };
@@ -71,7 +73,8 @@ const authUser = async (req: Request, res: Response, next: NextFunction) => {
     if (user && (await user.matchPassword!(password))) {
       res.locals.user = {
         _id: user._id,
-        name: user.name,
+        firstName: user.firstName,
+        lastName: user.lastName,
         email: user.email,
         token: generateToken(user._id.toString()),
       };
