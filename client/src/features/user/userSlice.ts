@@ -1,8 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { IUser } from "../../../types/user";
 
 export interface UserState {
-  userData: any; //TODO ADD PROPER TYPING ONCE USER OBJECT IS FINALIZED
+  userData: IUser | null;
   status: "idle" | "loading" | "failed";
   error: string | null;
 }
