@@ -5,6 +5,7 @@ import userReducer, {
   logout,
   UserState,
 } from "./userSlice";
+import { AppDispatch } from "../../app/store";
 
 import { IUser } from "../../../types/user";
 
@@ -39,6 +40,31 @@ describe("userSlice", () => {
       };
 
       expect(userReducer(startingState, logout())).toEqual(expectedState);
+    });
+  });
+
+  describe("loginUser async thunk", () => {
+    const mockUser = { name: "John Doh" };
+    const mockCredentials = { email: "john.doh@email.com", password: "123456" };
+
+    it("handles successful login", async () => {
+      (axios.post as jest.Mock).mockResolvedValue({ data: mockUser });
+
+      const thunk = loginUser(mockCredentials);
+      const dispatch = jest.fn();
+      const getState = jest.fn();
+
+      await thunk(dispatch, getState, null);
+
+      expect(dispatch).toHaveBeenCalledWith(
+        expect.objectContaining({ type: "user/login/pending" })
+      );
+      expect(dispatch).toHaveBeenCalledWith(
+        expect.objectContaining({
+          type: "user/login/fulfilled",
+          payload: mockUser,
+        })
+      );
     });
   });
 });
