@@ -1,5 +1,10 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import {
+  createSlice,
+  createAsyncThunk,
+  PayloadAction,
+  SerializedError,
+} from "@reduxjs/toolkit";
+import axios, { AxiosError } from "axios";
 import { IUser } from "../../../types/user";
 
 export interface UserState {
@@ -25,10 +30,20 @@ export const loginUser = createAsyncThunk(
         email,
         password,
       });
+
+      if (response.status === 400 || response.status === 401) {
+        const errorMessage =
+          response.data.msg || "An error occurred during login";
+        return thunkAPI.rejectWithValue(errorMessage);
+      }
+
       return response.data;
     } catch (error) {
-      //TODO BUILD BETTER ERROR FEEDBACK FROM AXIOS OF TEHRE
-      return thunkAPI.rejectWithValue("Something blew up!");
+      let errorMessage = "An error occurred during login";
+      if (axios.isAxiosError(error)) {
+        errorMessage = error.response?.data || errorMessage;
+      }
+      return thunkAPI.rejectWithValue(errorMessage);
     }
   }
 );
@@ -51,10 +66,28 @@ const userSlice = createSlice({
         state.status = "idle";
         state.userData = action.payload;
       })
-      .addCase(loginUser.rejected, (state) => {
-        state.status = "failed";
-        //TODO BUILD AN ERROR STATE TRACKER FOR CURRENT ERROR INFO
-      });
+      .addCase(
+        loginUser.rejected,
+        (
+          state,
+          action: PayloadAction<
+            unknown,
+            string,
+            {
+              arg: { email: string; password: string };
+              requestId: string;
+              requestStatus: "rejected";
+              aborted: boolean;
+              condition: boolean;
+            },
+            SerializedError
+          >
+        ) => {
+          state.status = "failed";
+          // Ensure the payload is treated as a strings
+          state.error = action.payload as string;
+        }
+      );
   },
 });
 

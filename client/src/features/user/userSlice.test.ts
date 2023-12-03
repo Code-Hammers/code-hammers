@@ -8,6 +8,7 @@ import userReducer, {
 import { AppDispatch } from "../../app/store";
 
 import { IUser } from "../../../types/user";
+import { error } from "console";
 
 jest.mock("axios");
 
@@ -51,7 +52,7 @@ describe("userSlice", () => {
       (axios.post as jest.Mock).mockResolvedValue({ data: mockUser });
 
       const thunk = loginUser(mockCredentials);
-      const dispatch = jest.fn();
+      const dispatch = jest.fn() as AppDispatch;
       const getState = jest.fn();
 
       await thunk(dispatch, getState, null);
@@ -63,6 +64,54 @@ describe("userSlice", () => {
         expect.objectContaining({
           type: "user/login/fulfilled",
           payload: mockUser,
+        })
+      );
+    });
+
+    it("handles login failure due to invalid credentials", async () => {
+      const invalidCredentialsMessage = "Invalid Credentials";
+
+      (axios.post as jest.Mock).mockResolvedValue({
+        status: 401,
+        data: { msg: invalidCredentialsMessage },
+      });
+
+      const thunk = loginUser(mockCredentials);
+      const dispatch = jest.fn() as AppDispatch;
+      const getState = jest.fn();
+
+      await thunk(dispatch, getState, null);
+
+      expect(dispatch).toHaveBeenCalledWith(
+        expect.objectContaining({ type: "user/login/pending" })
+      );
+      expect(dispatch).toHaveBeenCalledWith(
+        expect.objectContaining({
+          type: "user/login/rejected",
+          payload: invalidCredentialsMessage,
+        })
+      );
+    });
+
+    it("handles network errors during login", async () => {
+      const networkErrorMessage = "An error occurred during login";
+
+      // Simulate a network error
+      (axios.post as jest.Mock).mockRejectedValue(new Error("Network Error"));
+
+      const thunk = loginUser(mockCredentials);
+      const dispatch = jest.fn() as AppDispatch;
+      const getState = jest.fn();
+
+      await thunk(dispatch, getState, null);
+
+      expect(dispatch).toHaveBeenCalledWith(
+        expect.objectContaining({ type: "user/login/pending" })
+      );
+      expect(dispatch).toHaveBeenCalledWith(
+        expect.objectContaining({
+          type: "user/login/rejected",
+          payload: networkErrorMessage,
         })
       );
     });
