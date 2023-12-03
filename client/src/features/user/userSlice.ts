@@ -1,13 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-interface UserState {
+export interface UserState {
   userData: any; //TODO ADD PROPER TYPING ONCE USER OBJECT IS FINALIZED
   status: "idle" | "loading" | "failed";
   error: string | null;
 }
 
-const initialState: UserState = {
+export const initialState: UserState = {
   userData: null,
   status: "idle",
   error: null,
