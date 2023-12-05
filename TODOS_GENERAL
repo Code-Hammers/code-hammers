@@ -5,3 +5,5 @@
 # Add much more thorough edge case tetsing on test files.
 
 # Create a shared types environment for front and back.
+
+# Create User types for front end
