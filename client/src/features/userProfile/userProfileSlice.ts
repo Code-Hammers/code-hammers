@@ -2,13 +2,13 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { IProfile } from "../../../types/profile";
 
-interface ProfileState {
+export interface ProfileState {
   profile: IProfile | null; //TODO ADD PROPER TYPING ONCE OBJECT IS FINALIZED
   status: "idle" | "loading" | "failed";
   error: string | null;
 }
 
-const initialState: ProfileState = {
+export const initialState: ProfileState = {
   profile: null,
   status: "idle",
   error: null,
