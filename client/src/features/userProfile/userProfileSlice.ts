@@ -53,8 +53,7 @@ const userProfileSlice = createSlice({
       })
       .addCase(fetchUserProfile.rejected, (state, action) => {
         state.status = "failed";
-        //TODO state.error = action.payload as string; WHAT WOULD PAYLOAD LOOK LIKE HERE?
-        //TODO HOOK UP GOOD ERROR INFO TO ERROR STATE
+        state.error = action.payload as string;
       });
   },
 });

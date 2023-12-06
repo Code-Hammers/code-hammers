@@ -57,5 +57,29 @@ describe("userProfileSlice", () => {
         })
       );
     });
+
+    it("handles profile fetch failure when profile does not exist", async () => {
+      const errorMessage = "An error occurred during profile retrieval";
+
+      (axios.get as jest.Mock).mockRejectedValue({
+        response: { data: errorMessage },
+      });
+
+      const thunk = fetchUserProfile(userID);
+      const dispatch = jest.fn() as AppDispatch;
+      const getState = jest.fn();
+
+      await thunk(dispatch, getState, null);
+
+      expect(dispatch).toHaveBeenCalledWith(
+        expect.objectContaining({ type: "profile/fetchUserProfile/pending" })
+      );
+      expect(dispatch).toHaveBeenCalledWith(
+        expect.objectContaining({
+          type: "profile/fetchUserProfile/rejected",
+          payload: errorMessage,
+        })
+      );
+    });
   });
 });

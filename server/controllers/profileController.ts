@@ -125,13 +125,13 @@ const getProfileById = async (
         message: { err: "An error occurred during profile retrieval" },
       });
     } else {
-      return res.status(201).json(profile);
+      return res.status(200).json(profile);
     }
   } catch (error) {
     return next({
       log: "Express error in getProfileById Middleware",
       status: 500,
-      message: { err: "An error occurred during profile creation" },
+      message: { err: "An error occurred during profile retrieval" },
     });
   }
 };
