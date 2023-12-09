@@ -3,7 +3,7 @@ import axios from "axios";
 import { IProfile } from "../../../types/profile";
 
 interface ProfilesState {
-  profiles: IProfile[]; //TODO ADD PROPER TYPING ONCE OBJECT IS FINALIZED
+  profiles: IProfile[];
   status: "idle" | "loading" | "failed";
   error: string | null;
 }
@@ -52,8 +52,7 @@ const profilesSlice = createSlice({
       })
       .addCase(fetchProfiles.rejected, (state, action) => {
         state.status = "failed";
-        //state.error = action.payload as string; WHAT WOULD PAYLOAD LOOK LIKE HERE?
-        //TODO BUILD AN ERROR STATE TRACKER FOR CURRENT ERROR INFO
+        state.error = action.payload as string;
       });
   },
 });
