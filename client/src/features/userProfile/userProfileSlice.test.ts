@@ -60,10 +60,14 @@ describe("userProfileSlice", () => {
 
     it("handles profile fetch failure when profile does not exist", async () => {
       const errorMessage = "An error occurred during profile retrieval";
-
-      (axios.get as jest.Mock).mockRejectedValue({
-        response: { data: errorMessage },
-      });
+      const mockAxiosError = {
+        response: {
+          status: 404,
+          data: { message: { err: errorMessage } },
+        },
+        isAxiosError: true,
+      };
+      (axios.get as jest.Mock).mockRejectedValue(mockAxiosError);
 
       const thunk = fetchUserProfile(userID);
       const dispatch = jest.fn() as AppDispatch;

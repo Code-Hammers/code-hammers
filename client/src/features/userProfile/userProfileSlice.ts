@@ -3,7 +3,7 @@ import axios from "axios";
 import { IProfile } from "../../../types/profile";
 
 export interface ProfileState {
-  profile: IProfile | null; //TODO ADD PROPER TYPING ONCE OBJECT IS FINALIZED
+  profile: IProfile | null;
   status: "idle" | "loading" | "failed";
   error: string | null;
 }
@@ -22,12 +22,11 @@ export const fetchUserProfile = createAsyncThunk(
       const response = await axios.get(`/api/profiles/${userID}`);
       return response.data;
     } catch (error) {
+      let errorMessage = "An error occurred during profile retrieval";
       if (axios.isAxiosError(error)) {
-        return thunkAPI.rejectWithValue(
-          error.response?.data || "Error fetching profiles"
-        );
+        errorMessage = error.response?.data || errorMessage;
       }
-      return thunkAPI.rejectWithValue("An unexpected error occurred");
+      return thunkAPI.rejectWithValue(errorMessage);
     }
   }
 );
