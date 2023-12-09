@@ -2,13 +2,13 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { IProfile } from "../../../types/profile";
 
-interface ProfileState {
-  profile: IProfile | null; //TODO ADD PROPER TYPING ONCE OBJECT IS FINALIZED
+export interface ProfileState {
+  profile: IProfile | null;
   status: "idle" | "loading" | "failed";
   error: string | null;
 }
 
-const initialState: ProfileState = {
+export const initialState: ProfileState = {
   profile: null,
   status: "idle",
   error: null,
@@ -22,12 +22,11 @@ export const fetchUserProfile = createAsyncThunk(
       const response = await axios.get(`/api/profiles/${userID}`);
       return response.data;
     } catch (error) {
+      let errorMessage = "An error occurred during profile retrieval";
       if (axios.isAxiosError(error)) {
-        return thunkAPI.rejectWithValue(
-          error.response?.data || "Error fetching profiles"
-        );
+        errorMessage = error.response?.data || errorMessage;
       }
-      return thunkAPI.rejectWithValue("An unexpected error occurred");
+      return thunkAPI.rejectWithValue(errorMessage);
     }
   }
 );
@@ -53,8 +52,7 @@ const userProfileSlice = createSlice({
       })
       .addCase(fetchUserProfile.rejected, (state, action) => {
         state.status = "failed";
-        //TODO state.error = action.payload as string; WHAT WOULD PAYLOAD LOOK LIKE HERE?
-        //TODO HOOK UP GOOD ERROR INFO TO ERROR STATE
+        state.error = action.payload as string;
       });
   },
 });

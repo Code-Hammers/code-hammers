@@ -271,7 +271,7 @@ describe("Profile Controller Tests", () => {
         mockNext
       );
 
-      expect(mockResponse.status).toHaveBeenCalledWith(201);
+      expect(mockResponse.status).toHaveBeenCalledWith(200);
       expect(mockResponse.json).toHaveBeenCalledWith(mockProfile);
     });
 
@@ -307,7 +307,7 @@ describe("Profile Controller Tests", () => {
         expect.objectContaining({
           log: "Express error in getProfileById Middleware",
           status: 500,
-          message: { err: "An error occurred during profile creation" },
+          message: { err: "An error occurred during profile retrieval" },
         })
       );
     });
