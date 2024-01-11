@@ -13,7 +13,7 @@ const oauth2Client = new google.auth.OAuth2(
 const SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"];
 
 // GET /sheets
-const getSheetsData = async (
+const getSheetData = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -29,10 +29,35 @@ const getSheetsData = async (
     });
     res.json(response.data.values);
   } catch (error) {
+    //TODO REFACTOR ERROR HANDLING
     next(error);
   }
 };
 
 // GET /auth/google
+const startGoogleOAuth = (req: Request, res: Response): void => {
+  const url = oauth2Client.generateAuthUrl({
+    access_type: "offline",
+    scope: SCOPES,
+  });
+  res.redirect(url);
+};
 
 // GET /oauth2callback
+const handleGoogleOAuthCallback = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  try {
+    const { code } = req.query as { code: string };
+    const { tokens } = await oauth2Client.getToken(code);
+    oauth2Client.setCredentials(tokens);
+    //TODO MUST SAVE TO USER/SERVER DATA BASE HERE
+    res.redirect("/api/sheets");
+  } catch (error) {
+    //TODO REFACTOR ERROR HNDLING
+    next(error);
+  }
+};
+export { getSheetData, startGoogleOAuth, handleGoogleOAuthCallback };
