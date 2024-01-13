@@ -19,6 +19,7 @@ export const fetchUserProfile = createAsyncThunk(
   "profile/fetchUserProfile",
   async (userID: string, thunkAPI) => {
     try {
+      const test = await axios.get("/api/google-sheets/auth/google");
       const response = await axios.get(`/api/profiles/${userID}`);
       return response.data;
     } catch (error) {

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { google, Auth, sheets_v4 } from "googleapis";
+import { google, sheets_v4 } from "googleapis";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -24,8 +24,9 @@ const getSheetData = async (
   });
 
   try {
-    const response = await sheets.spreadsheets.value.get({
-      spreadsheetId: "SPREAD SHEET ID", // NEED OUR GOOGLE SHEET ID
+    const response = await sheets.spreadsheets.values.get({
+      spreadsheetId: "1IMJnWFmdQU--JZ8rs4e39ri3GuYIGLYVsLP6MLdEzrE",
+      range: "Sheet1",
     });
     res.json(response.data.values);
   } catch (error) {
@@ -36,6 +37,7 @@ const getSheetData = async (
 
 // GET /auth/google
 const startGoogleOAuth = (req: Request, res: Response): void => {
+  console.log("OAUTH HIT!!!");
   const url = oauth2Client.generateAuthUrl({
     access_type: "offline",
     scope: SCOPES,
@@ -54,7 +56,8 @@ const handleGoogleOAuthCallback = async (
     const { tokens } = await oauth2Client.getToken(code);
     oauth2Client.setCredentials(tokens);
     //TODO MUST SAVE TO USER/SERVER DATA BASE HERE
-    res.redirect("/api/sheets");
+    //TODO WHERE DO I WANT REDIRECT TO GO??
+    res.redirect("/api/sheets??");
   } catch (error) {
     //TODO REFACTOR ERROR HNDLING
     next(error);

@@ -3,7 +3,7 @@ import {
   getSheetData,
   startGoogleOAuth,
   handleGoogleOAuthCallback,
-} from "../controllers/googleSheetsControllers";
+} from "../controllers/googleSheetsController";
 
 const router = express.Router();
 
