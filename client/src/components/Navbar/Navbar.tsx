@@ -33,6 +33,15 @@ const Navbar = (): JSX.Element => {
             Forums
           </Link>
         )}
+
+        {location.pathname !== "/app/directory" && (
+          <Link
+            to="/app/directory"
+            className="text-teal-600 hover:text-teal-800 transition transform hover:scale-105"
+          >
+            Directory
+          </Link>
+        )}
       </div>
     </div>
   );
