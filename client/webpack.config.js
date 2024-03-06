@@ -1,13 +1,13 @@
-const path = require("path");
-const HtmlWebPackPlugin = require("html-webpack-plugin");
-require("dotenv").config();
+const path = require("path")
+const HtmlWebPackPlugin = require("html-webpack-plugin")
+require("dotenv").config()
 
 module.exports = {
   entry: "./src/index.tsx",
   output: {
-    path: path.resolve(__dirname, "build"),
+    path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
-    publicPath: '/'
+    publicPath: "/",
   },
 
   mode: process.env.NODE_ENV,
@@ -19,19 +19,18 @@ module.exports = {
     }),
   ],
   devServer: {
-    proxy: {
-      "/api": "http://localhost:3000",
-    },
+    proxy: [{ "/api": "http://localhost:3000" }],
     headers: {
       "Access-Control-Allow-Origin": "*",
     },
-    historyApiFallback: {
-      rewrites: [
-        {
-          from: /^\/app/, to: '/index.html'
-        }
-      ]
-    }
+    // historyApiFallback: {
+    //   rewrites: [
+    //     {
+    //       from: /^\/app/,
+    //       to: "/index.html",
+    //     },
+    //   ],
+    // },
   },
   module: {
     rules: [
@@ -57,11 +56,11 @@ module.exports = {
 
       {
         test: /\.(png|jpe?g|gif|webp)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
     ],
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".jsx"],
   },
-};
+}
