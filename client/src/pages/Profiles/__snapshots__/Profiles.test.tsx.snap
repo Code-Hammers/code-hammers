@@ -1,15 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Profiles Page matches the snapshot 1`] = `
-<DocumentFragment>
+exports[`MainPage Component renders correctly 1`] = `
+[
   <div
-    class="min-h-screen bg-gray-100 flex flex-col items-center justify-center"
+    className="min-h-screen bg-gray-100 flex flex-col items-center justify-center"
   >
     <h1
-      class="text-4xl font-extrabold mb-4"
+      className="text-4xl font-extrabold mb-4"
     >
       PROFILES
     </h1>
-  </div>
-</DocumentFragment>
+  </div>,
+  <div>
+    <div
+      className="min-h-screen bg-gray-100 flex flex-col items-center justify-center"
+    >
+      <h1
+        className="text-4xl font-extrabold mb-4"
+      />
+      <h2
+        className="text-4xl font-extrabold mb-4"
+      />
+    </div>
+    <div
+      className="min-h-screen bg-gray-100 flex flex-col items-center justify-center"
+    >
+      <h1
+        className="text-4xl font-extrabold mb-4"
+      />
+      <h2
+        className="text-4xl font-extrabold mb-4"
+      />
+    </div>
+  </div>,
+]
 `;

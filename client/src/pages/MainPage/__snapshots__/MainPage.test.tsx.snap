@@ -7,10 +7,11 @@ exports[`MainPage Component renders correctly 1`] = `
   <h1
     className="text-4xl font-extrabold mb-4"
   >
-    TEST
+    Main Page
   </h1>
   <h1>
-    TEST
+    Welcome 
+     !
   </h1>
 </div>
 `;

@@ -1,0 +1,23 @@
+name: build-tests
+on:
+  pull_request:
+    branches:
+      - dev
+jobs:
+  unit-testing:
+    runs-on: ubuntu-latest
+    env:
+      JWT_SECRET: ${{ secrets.JWT_SECRET }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build Docker Image
+        run: docker build -t brok3turtl3/codehammers:latest -f Dockerfile-dev .
+      - name: Install Root Dependencies
+        run: docker run brok3turtl3/codehammers:latest npm install
+      - name: Install Client Dependencies
+        run: docker run brok3turtl3/codehammers:latest /bin/sh -c "cd client && npm install"
+      #- name: List node_modules
+      #run: docker run brok3turtl3/codehammers:latest /bin/sh -c "ls node_modules && cd client && ls node_modules"
+      - run: docker-compose -f docker-compose-test.yml up --abort-on-container-exit
+        env:
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}

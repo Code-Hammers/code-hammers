@@ -7,19 +7,18 @@ import {
 } from "../server/controllers/userController";
 import User from "../server/models/userModel";
 
-require("dotenv").config();
-
-console.log("env working...", process.env.JWT_SECRET);
-
-jest.mock("../server/models/userModel");
-jest.mock("../server/utils/generateToken", () => {
-  return () => "someFakeToken";
-});
+jest.mock("../server/models/userModel", () => ({
+  findOne: jest.fn(),
+  create: jest.fn(),
+  findOneAndRemove: jest.fn(),
+}));
+jest.mock("../server/utils/generateToken", () => () => "someFakeToken");
 
 describe("User Controller Tests", () => {
   let mockRequest: Partial<Request>;
   let mockResponse: Partial<Response>;
-  let mockNext: NextFunction;
+  //TODO Add some error test for global error handler
+  let mockNext: NextFunction = jest.fn();
 
   beforeEach(() => {
     mockRequest = {};
@@ -28,23 +27,22 @@ describe("User Controller Tests", () => {
       json: jest.fn(),
       locals: {},
     };
-    mockNext = jest.fn();
   });
 
   describe("registerUser function", () => {
     it("should handle user registration", async () => {
-      User.findOne = jest.fn().mockResolvedValue(null);
-
-      // MOCKING USER CREATE TO RETURN A DUMMY USER OBJECT
-      User.create = jest.fn().mockResolvedValue({
+      (User.findOne as jest.Mock).mockResolvedValue(null);
+      (User.create as jest.Mock).mockResolvedValue({
         _id: "someId",
-        name: "John",
+        firstName: "John",
+        lastName: "Doh",
         email: "john@example.com",
         password: "hashedPassword",
       });
 
       mockRequest.body = {
-        name: "John",
+        firstName: "John",
+        lastName: "Doh",
         email: "john@example.com",
         password: "password",
       };
@@ -55,16 +53,24 @@ describe("User Controller Tests", () => {
         mockNext
       );
 
-      expect(mockNext).toHaveBeenCalled();
+      expect(mockResponse.json).toHaveBeenCalledWith(
+        expect.objectContaining({
+          _id: "someId",
+          firstName: "John",
+          lastName: "Doh",
+          email: "john@example.com",
+          token: "someFakeToken",
+        })
+      );
     });
   });
 
   describe("authUser function", () => {
     it("should handle user authentication", async () => {
-      // MOCKING USER>FINDONE TO RETURN A DUMMY USER
-      User.findOne = jest.fn().mockResolvedValue({
+      (User.findOne as jest.Mock).mockResolvedValue({
         _id: "someId",
-        name: "John",
+        firstName: "John",
+        lastName: "Doh",
         email: "john@example.com",
         password: "hashedPassword",
         matchPassword: jest.fn().mockResolvedValue(true),
@@ -78,16 +84,24 @@ describe("User Controller Tests", () => {
         mockNext
       );
 
-      expect(mockNext).toHaveBeenCalled();
+      expect(mockResponse.json).toHaveBeenCalledWith(
+        expect.objectContaining({
+          _id: "someId",
+          firstName: "John",
+          lastName: "Doh",
+          email: "john@example.com",
+          token: "someFakeToken",
+        })
+      );
     });
   });
 
   describe("getUserById function", () => {
     it("should get a user by ID", async () => {
-      // MOCKING USER.FINDONE TO RETURN A DUMMY USER
-      User.findOne = jest.fn().mockResolvedValue({
+      (User.findOne as jest.Mock).mockResolvedValue({
         _id: "someId",
-        name: "John",
+        firstName: "John",
+        lastName: "Doh",
         email: "john@example.com",
       });
 
@@ -99,14 +113,25 @@ describe("User Controller Tests", () => {
         mockNext
       );
 
-      expect(mockNext).toHaveBeenCalled();
+      expect(mockResponse.json).toHaveBeenCalledWith(
+        expect.objectContaining({
+          _id: "someId",
+          firstName: "John",
+          lastName: "Doh",
+          email: "john@example.com",
+        })
+      );
     });
   });
 
   describe("deleteUserByEmail function", () => {
     it("should delete a user by email", async () => {
-      // MOCK USE.FINDONEANDREMOVE TO IMITATE SUCCESSFUL DELETE
-      User.findOneAndRemove = jest.fn().mockResolvedValue(true);
+      (User.findOneAndRemove as jest.Mock).mockResolvedValue({
+        _id: "someId",
+        firstName: "John",
+        lastName: "Doh",
+        email: "john@example.com",
+      });
 
       mockRequest.params = { email: "john@example.com" };
 
@@ -116,7 +141,12 @@ describe("User Controller Tests", () => {
         mockNext
       );
 
-      expect(mockNext).toHaveBeenCalled();
+      expect(mockResponse.status).toHaveBeenCalledWith(200);
+      expect(mockResponse.json).toHaveBeenCalledWith(
+        expect.objectContaining({
+          msg: "User successfully deleted!",
+        })
+      );
     });
   });
 });

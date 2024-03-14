@@ -7,7 +7,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "bundle.js",
-    publicPath: '/'
+    publicPath: "/",
   },
 
   mode: process.env.NODE_ENV,
@@ -19,6 +19,9 @@ module.exports = {
     }),
   ],
   devServer: {
+    //REQUIRED FOR DOCKER
+    host: "0.0.0.0",
+    port: 8080,
     proxy: {
       "/api": "http://localhost:3000",
     },
@@ -28,10 +31,11 @@ module.exports = {
     historyApiFallback: {
       rewrites: [
         {
-          from: /^\/app/, to: '/index.html'
-        }
-      ]
-    }
+          from: /^\/app/,
+          to: "/index.html",
+        },
+      ],
+    },
   },
   module: {
     rules: [
@@ -57,7 +61,7 @@ module.exports = {
 
       {
         test: /\.(png|jpe?g|gif|webp)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
     ],
   },

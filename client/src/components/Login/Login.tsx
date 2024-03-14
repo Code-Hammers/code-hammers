@@ -1,8 +1,11 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../app/hooks";
+import { loginUser } from "../../features/user/userSlice";
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const [formData, setFormData] = useState<{ email: string; password: string }>(
     {
       email: "",
@@ -14,8 +17,17 @@ const Login: React.FC = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("HIT!");
-    navigate("app/main");
+    // Dispatch the loginUser async thunk with formData
+    dispatch(loginUser({ email, password }))
+      .unwrap()
+      .then((user) => {
+        console.log("User logged in:", user);
+        navigate("/app/main"); // navigate to the main app
+      })
+      .catch((error) => {
+        console.error("Login failed:", error);
+        // Handle login failure (e.g., show error message)
+      });
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
