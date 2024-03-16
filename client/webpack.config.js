@@ -3,6 +3,9 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 require("dotenv").config();
 
 module.exports = {
+  watchOptions: {
+    poll: 1000,
+  },
   entry: "./src/index.tsx",
   output: {
     path: path.resolve(__dirname, "build"),
