@@ -13,5 +13,8 @@ exports[`MainPage Component renders correctly 1`] = `
     Welcome 
      !
   </h1>
+  <h2>
+    Directory
+  </h2>
 </div>
 `;
