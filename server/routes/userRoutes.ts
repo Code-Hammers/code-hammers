@@ -9,7 +9,7 @@ import {
 const router = express.Router();
 
 router.post("/login", authUser);
-router.post("/register", registerUser);
+router.post("/register/:token", registerUser);
 router.delete("/:email", deleteUserByEmail);
 router.get("/:userId", getUserById);
 
