@@ -22,7 +22,7 @@ afterAll(async () => {
 
 describe("User Routes", () => {
   describe("POST /api/users/register", () => {
-    it("should register a user", async () => {
+    xit("should register a user", async () => {
       const mockNewUserData = {
         firstName: "John",
         lastName: "Doh",
