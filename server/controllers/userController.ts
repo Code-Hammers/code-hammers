@@ -13,7 +13,7 @@ const registerUser = async (
   next: NextFunction
 ) => {
   const { firstName, lastName, email, password } = req.body;
-  const { token } = req.params;
+  const { token } = req.query;
 
   try {
     const isValidEmail = email.match(/[\w\d\.]+@[a-z]+\.[\w]+$/gim);
@@ -27,6 +27,8 @@ const registerUser = async (
       tokenExpiry: { $gt: new Date() },
       isRegistered: false,
     });
+
+    //TODO Needs better error handling - this can trigger with situaions other than bad or missing token
     if (!invitation) {
       return res
         .status(400)
