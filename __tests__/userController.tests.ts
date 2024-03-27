@@ -29,9 +29,8 @@ describe("User Controller Tests", () => {
     };
   });
 
-  //TODO This test needs to be refactored to accomodate new controller code
   describe("registerUser function", () => {
-    xit("should handle user registration", async () => {
+    it("should handle user registration", async () => {
       (User.findOne as jest.Mock).mockResolvedValue(null);
       (User.create as jest.Mock).mockResolvedValue({
         _id: "someId",
@@ -67,7 +66,7 @@ describe("User Controller Tests", () => {
   });
 
   describe("authUser function", () => {
-    xit("should handle user authentication", async () => {
+    it("should handle user authentication", async () => {
       (User.findOne as jest.Mock).mockResolvedValue({
         _id: "someId",
         firstName: "John",
@@ -98,7 +97,7 @@ describe("User Controller Tests", () => {
   });
 
   describe("getUserById function", () => {
-    xit("should get a user by ID", async () => {
+    it("should get a user by ID", async () => {
       (User.findOne as jest.Mock).mockResolvedValue({
         _id: "someId",
         firstName: "John",
@@ -126,7 +125,7 @@ describe("User Controller Tests", () => {
   });
 
   describe("deleteUserByEmail function", () => {
-    xit("should delete a user by email", async () => {
+    it("should delete a user by email", async () => {
       (User.findOneAndRemove as jest.Mock).mockResolvedValue({
         _id: "someId",
         firstName: "John",
