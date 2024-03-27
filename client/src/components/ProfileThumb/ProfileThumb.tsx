@@ -11,8 +11,8 @@ const ProfileThumb = ({ profile }: ProfileThumbProps): JSX.Element => {
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center">
-      <h1 className="text-4xl font-extrabold mb-4">{profile.firstName}</h1>
-      <h2 className="text-4xl font-extrabold mb-4">{profile.bio}</h2>
+      <h1 className="text-4xl font-extrabold mb-4">{profile.fullName}</h1>
+      <h2 className="text-4xl font-extrabold mb-4">{profile.personalBio}</h2>
     </div>
   );
 };
