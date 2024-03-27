@@ -69,7 +69,7 @@ const createProfile = async (
   } catch (error) {
     console.error(error);
     return next({
-      log: "Express error handler caught exception in createProfile",
+      log: "Express error in createProfile Middleware",
       status: 500,
       message: {
         err: "An error occurred during profile creation. Please try again.",
