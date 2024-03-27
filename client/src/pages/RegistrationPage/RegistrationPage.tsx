@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../app/hooks";
+import { loginUser } from "../../features/user/userSlice";
 
 const RegistrationPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +12,8 @@ const RegistrationPage: React.FC = () => {
   });
 
   const location = useLocation();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const query = new URLSearchParams(location.search);
   const token = query.get("token");
@@ -42,9 +46,18 @@ const RegistrationPage: React.FC = () => {
         );
       }
       console.log("Registration successful", data);
-      //TODO Handle redirect here
+      dispatch(
+        loginUser({ email: formData.email, password: formData.password })
+      )
+        .unwrap()
+        .then(() => {
+          navigate("/app/main");
+        })
+        .catch((error) => {
+          console.error("Error adding user to state:", error);
+        });
     } catch (error) {
-      //TODO Needs better error handling
+      //TODO Needs better error handling and user feedback
       console.error("Registration error:", error);
     }
   };
