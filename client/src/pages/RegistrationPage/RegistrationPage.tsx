@@ -57,7 +57,7 @@ const RegistrationPage: React.FC = () => {
           console.error("Error adding user to state:", error);
         });
     } catch (error) {
-      //TODO Needs better error handling
+      //TODO Needs better error handling and user feedback
       console.error("Registration error:", error);
     }
   };
