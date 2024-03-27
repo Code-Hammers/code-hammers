@@ -22,7 +22,7 @@ afterAll(async () => {
 
 describe("User Routes", () => {
   describe("POST /api/users/register", () => {
-    xit("should register a user", async () => {
+    it("should register a user", async () => {
       const mockNewUserData = {
         firstName: "John",
         lastName: "Doh",
@@ -40,7 +40,7 @@ describe("User Routes", () => {
   });
 
   describe("POST /api/users/login", () => {
-    xit("should login a user", async () => {
+    it("should login a user", async () => {
       const mockUserData = {
         email: "john@test.com",
         password: "testpassword",
@@ -56,7 +56,7 @@ describe("User Routes", () => {
   });
 
   describe("GET /api/users/:id", () => {
-    xit("should get a specific user", async () => {
+    it("should get a specific user", async () => {
       // Create a user first
       const newUser = {
         firstName: "Test",
@@ -82,7 +82,7 @@ describe("User Routes", () => {
   });
 
   describe("DELETE /api/users/:email", () => {
-    xit("should delete a specific user by email", async () => {
+    it("should delete a specific user by email", async () => {
       const email = "john@test.com";
 
       const res = await request(app).delete(`/api/users/${email}`);

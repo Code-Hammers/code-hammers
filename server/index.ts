@@ -2,7 +2,6 @@ import path from "path";
 import express, { Request, Response, Application, NextFunction } from "express";
 import userRoutes from "./routes/userRoutes";
 import profileRoutes from "./routes/profileRoutes";
-import devRoutes from "./routes/devRoutes";
 import connectDB from "./config/db";
 import dotenv from "dotenv";
 import { notFound, errorHandler } from "./controllers/errorControllers";
@@ -17,7 +16,6 @@ connectDB();
 
 app.use("/api/users", userRoutes);
 app.use("/api/profiles", profileRoutes);
-app.use("/api/devRoutes", devRoutes);
 
 console.log(`ENV BEFORE CHECK: ${process.env.NODE_ENV}`);
 
