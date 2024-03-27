@@ -10,7 +10,6 @@ const createProfile = async (
   res: Response,
   next: NextFunction
 ) => {
-  // Now expecting more complex data structure based on the new IProfile interface
   const {
     user,
     fullName,
@@ -38,7 +37,6 @@ const createProfile = async (
   } = req.body;
 
   try {
-    // Create the profile with all the provided data
     const profile = await Profile.create({
       user,
       fullName,
