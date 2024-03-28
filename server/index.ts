@@ -4,6 +4,7 @@ import userRoutes from "./routes/userRoutes";
 import profileRoutes from "./routes/profileRoutes";
 import connectDB from "./config/db";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 import { notFound, errorHandler } from "./controllers/errorControllers";
 
 dotenv.config();
@@ -11,6 +12,7 @@ dotenv.config();
 const app: Application = express();
 
 app.use(express.json());
+app.use(cookieParser());
 
 connectDB();
 
