@@ -1,4 +1,3 @@
-// profileModel.ts
 import mongoose, { Schema } from "mongoose";
 import { IProfile } from "../types/profile";
 
