@@ -18,7 +18,7 @@ const Profiles = (): JSX.Element => {
       </div>
       <div>
         {profiles.map((profile) => (
-          <ProfileThumb key={profile.user} profile={profile} />
+          <ProfileThumb key={profile._id} profile={profile} />
         ))}
       </div>
     </>

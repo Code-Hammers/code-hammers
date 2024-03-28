@@ -10,26 +10,70 @@ const createProfile = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { user, firstName, lastName, bio, job, socials } = req.body;
+  const {
+    user,
+    fullName,
+    profilePhoto,
+    cohort,
+    graduationYear,
+    email,
+    linkedInProfile,
+    professionalSummary,
+    skills,
+    specializations,
+    careerInformation,
+    education,
+    projects,
+    personalBio,
+    testimonials,
+    socialMediaLinks,
+    availabilityForNetworking,
+    bootcampExperience,
+    achievementsAndCertifications,
+    volunteerWork,
+    eventParticipation,
+    gallery,
+    blogOrWriting,
+  } = req.body;
 
   try {
-    const profile: IProfile = await Profile.create({
+    const profile = await Profile.create({
       user,
-      firstName,
-      lastName,
-      bio,
-      job,
-      socials,
+      fullName,
+      profilePhoto,
+      cohort,
+      graduationYear,
+      email,
+      linkedInProfile,
+      professionalSummary,
+      skills,
+      specializations,
+      careerInformation,
+      education,
+      projects,
+      personalBio,
+      testimonials,
+      socialMediaLinks,
+      availabilityForNetworking,
+      bootcampExperience,
+      achievementsAndCertifications,
+      volunteerWork,
+      eventParticipation,
+      gallery,
+      blogOrWriting,
     });
 
     if (profile) {
       return res.status(201).json(profile);
     }
   } catch (error) {
+    console.error(error);
     return next({
       log: "Express error in createProfile Middleware",
       status: 500,
-      message: { err: "An error occurred during profile creation" },
+      message: {
+        err: "An error occurred during profile creation. Please try again.",
+      },
     });
   }
 };

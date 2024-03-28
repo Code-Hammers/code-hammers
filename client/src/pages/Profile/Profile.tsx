@@ -14,7 +14,7 @@ const Profile = (): JSX.Element => {
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center">
       <h1 className="text-4xl font-extrabold mb-4">Profile</h1>
       <h2 className="text-4xl font-extrabold mb-4">{user?._id}</h2>
-      <h2 className="text-4xl font-extrabold mb-4">{userProfile?.bio}</h2>
+      <h2 className="text-4xl font-extrabold mb-4">{userProfile?.fullName}</h2>
     </div>
   );
 };
