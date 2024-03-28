@@ -8,7 +8,7 @@ import {
 const EditProfilePage = () => {
   const dispatch = useAppDispatch();
   const { profile, status } = useAppSelector((state) => state.userProfile);
-  const userID = useAppSelector((state) => state.user.userData._id);
+  const userID = useAppSelector((state) => state.user.userData?._id);
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -17,7 +17,7 @@ const EditProfilePage = () => {
   });
 
   useEffect(() => {
-    dispatch(fetchUserProfile(userID));
+    if (userID) dispatch(fetchUserProfile(userID as string));
   }, [dispatch]);
 
   useEffect(() => {
@@ -25,6 +25,7 @@ const EditProfilePage = () => {
       setFormData({
         fullName: profile.fullName || "",
         email: profile.email || "",
+        personalBio: profile.personalBio || "",
       });
     }
   }, [profile]);
@@ -39,12 +40,14 @@ const EditProfilePage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Again, assuming you have a way to include the user ID
-    const userID = "currentUser_ID";
+    if (!userID) {
+      console.error("UserID is undefined.");
+      return;
+    }
     dispatch(updateUserProfile({ ...formData, userID }));
   };
 
-  if (status === "loading") {
+  if (status === "loading" || !userID) {
     return <div>Loading...</div>;
   }
 
