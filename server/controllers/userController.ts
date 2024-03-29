@@ -112,7 +112,7 @@ const getUserById = async (req: Request, res: Response, next: NextFunction) => {
     if (!user) {
       return res.status(401).json({ msg: "User not found!" }); //TODO Move to global error handler
     }
-    // res.locals.user = user;
+    res.locals.user = user;
     return res.status(200).json(res.locals.user);
   } catch (error) {
     return next({

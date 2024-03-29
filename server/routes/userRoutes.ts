@@ -12,6 +12,6 @@ const router = express.Router();
 router.post("/login", authUser);
 router.post("/register", registerUser);
 router.delete("/:email", deleteUserByEmail);
-router.get("/:userId", protect, getUserById);
+router.get("/:userId", getUserById);
 
 export default router;
