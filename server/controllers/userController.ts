@@ -35,7 +35,6 @@ const registerUser = async (
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
-        token: generateToken(user._id.toString()),
       };
 
       res.cookie("token", generateToken(user._id.toString()));

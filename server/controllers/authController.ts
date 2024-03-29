@@ -1,9 +1,8 @@
 import jwt from "jsonwebtoken";
 import User from "../models/userModel";
 import asyncHandler from "express-async-handler";
-import { Request } from "express";
 
-const protect = asyncHandler(async (req, res, next) => {
+const authSession = asyncHandler(async (req, res, next) => {
   let token;
   console.log("PROTECT HIT");
   console.log(req.headers);
@@ -40,4 +39,4 @@ const protect = asyncHandler(async (req, res, next) => {
   }
 });
 
-export { protect };
+export { authSession };
