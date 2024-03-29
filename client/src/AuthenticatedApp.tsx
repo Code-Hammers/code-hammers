@@ -7,6 +7,7 @@ import MainPage from "./pages/MainPage/MainPage";
 import Forums from "./pages/Forums/Forums";
 import Profiles from "./pages/Profiles/Profiles";
 import Profile from "./pages/Profile/Profile";
+import EditProfilePage from "./pages/EditProfilePage/EditProfilePage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import { useNavigate } from "react-router-dom";
 
@@ -27,6 +28,7 @@ const AuthenticatedApp = () => {
         <Route path="main" element={<MainPage />} />
         <Route path="/profiles" element={<Profiles />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/editProfile" element={<EditProfilePage />} />
         <Route path="/forums" element={<Forums />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

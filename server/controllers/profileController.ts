@@ -78,7 +78,7 @@ const createProfile = async (
   }
 };
 
-// ENDPOINT  PATCH api/profiles/:UserID
+// ENDPOINT  PUT api/profiles/:UserID
 // PURPOSE   Update an existing profile
 // ACCESS    Private
 const updateProfile = async (
@@ -87,13 +87,11 @@ const updateProfile = async (
   next: NextFunction
 ) => {
   const { userID } = req.params;
-  const { firstName, lastName, bio, job, socials } = req.body;
+  const { fullName, email, personalBio } = req.body;
   const newProfile = {
-    firstName,
-    lastName,
-    bio,
-    job,
-    socials,
+    fullName,
+    email,
+    personalBio,
   };
 
   try {

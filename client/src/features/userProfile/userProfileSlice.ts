@@ -4,7 +4,7 @@ import { IProfile } from "../../../types/profile";
 
 export interface ProfileState {
   profile: IProfile | null;
-  status: "idle" | "loading" | "failed";
+  status: "idle" | "loading" | "failed" | "updating";
   error: string | null;
 }
 
@@ -23,6 +23,25 @@ export const fetchUserProfile = createAsyncThunk(
       return response.data;
     } catch (error) {
       let errorMessage = "An error occurred during profile retrieval";
+      if (axios.isAxiosError(error)) {
+        errorMessage = error.response?.data || errorMessage;
+      }
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const updateUserProfile = createAsyncThunk(
+  "profile/updateUserProfile",
+  async (
+    { userID, ...updateData }: Partial<IProfile> & { userID: string },
+    thunkAPI
+  ) => {
+    try {
+      const response = await axios.put(`/api/profiles/${userID}`, updateData);
+      return response.data;
+    } catch (error) {
+      let errorMessage = "An error occurred during profile update";
       if (axios.isAxiosError(error)) {
         errorMessage = error.response?.data || errorMessage;
       }
@@ -51,6 +70,17 @@ const userProfileSlice = createSlice({
         state.status = "idle";
       })
       .addCase(fetchUserProfile.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload as string;
+      })
+      .addCase(updateUserProfile.pending, (state) => {
+        state.status = "updating";
+      })
+      .addCase(updateUserProfile.fulfilled, (state, action) => {
+        state.profile = action.payload; // Assuming the backend returns the updated profile
+        state.status = "idle";
+      })
+      .addCase(updateUserProfile.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload as string;
       });
