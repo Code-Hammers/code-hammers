@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import User from "../models/userModel";
 import asyncHandler from "express-async-handler";
 
-const authSession = asyncHandler(async (req, res, next) => {
+const authSession = asyncHandler(async (req, res) => {
   let token;
   console.log("PROTECT HIT");
   console.log(req.headers);
@@ -25,7 +25,7 @@ const authSession = asyncHandler(async (req, res, next) => {
       if (!user) throw new Error("User not found");
 
       res.locals.user = user;
-      next();
+      res.json({ isAuthenticated: true, user: res.locals.user });
     } catch (error) {
       console.error(error);
       res.status(401);
