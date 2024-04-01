@@ -1,6 +1,15 @@
 import Profile from "../models/profileModel";
 import { Request, Response, NextFunction } from "express";
 import { IProfile } from "../types/profile";
+import AWS from "aws-sdk";
+
+AWS.config.update({
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REGION,
+});
+
+const s3 = new AWS.S3();
 
 // ENDPOINT  POST api/profiles/create
 // PURPOSE   Create a new profile
@@ -88,6 +97,7 @@ const updateProfile = async (
 ) => {
   const { userID } = req.params;
   const { fullName, email, personalBio } = req.body;
+
   const newProfile = {
     fullName,
     email,
@@ -166,9 +176,17 @@ const getProfileById = async (
         status: 404,
         message: { err: "An error occurred during profile retrieval" },
       });
-    } else {
-      return res.status(200).json(profile);
     }
+    if (profile.profilePhoto) {
+      const presignedUrl = s3.getSignedUrl("getObject", {
+        Bucket: process.env.BUCKET_NAME,
+        Key: profile.profilePhoto,
+        Expires: 60 * 5,
+      });
+      profile.profilePhoto = presignedUrl;
+    }
+
+    return res.status(200).json(profile);
   } catch (error) {
     return next({
       log: "Express error in getProfileById Middleware",

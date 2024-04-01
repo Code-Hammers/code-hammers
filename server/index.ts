@@ -3,6 +3,7 @@ import express, { Request, Response, Application, NextFunction } from "express";
 import userRoutes from "./routes/userRoutes";
 import profileRoutes from "./routes/profileRoutes";
 import authRoutes from "./routes/authRoutes";
+import imageRoutes from "./routes/imageRoutes";
 import connectDB from "./config/db";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
@@ -20,6 +21,7 @@ connectDB();
 app.use("/api/users", userRoutes);
 app.use("/api/profiles", profileRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/images", imageRoutes);
 
 console.log(`ENV BEFORE CHECK: ${process.env.NODE_ENV}`);
 

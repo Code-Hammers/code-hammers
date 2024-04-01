@@ -3,6 +3,7 @@ import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import {
   fetchUserProfile,
   updateUserProfile,
+  uploadProfilePicture,
 } from "../../features/userProfile/userProfileSlice";
 
 const EditProfilePage = () => {
@@ -15,6 +16,8 @@ const EditProfilePage = () => {
     email: "",
     personalBio: "",
   });
+
+  const [file, setFile] = useState<File | null>(null);
 
   useEffect(() => {
     if (userID) dispatch(fetchUserProfile(userID as string));
@@ -38,6 +41,12 @@ const EditProfilePage = () => {
     }));
   };
 
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const fileList = e.target.files;
+    if (!fileList) return;
+    setFile(fileList[0]);
+  };
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!userID) {
@@ -47,6 +56,18 @@ const EditProfilePage = () => {
     dispatch(updateUserProfile({ ...formData, userID }));
   };
 
+  const handleImageUpload = () => {
+    if (!file || !userID) {
+      console.error("File or UserID is undefined.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("profilePicture", file);
+
+    dispatch(uploadProfilePicture({ formData, userID }));
+  };
+
   if (status === "loading" || !userID) {
     return <div>Loading...</div>;
   }
@@ -54,6 +75,15 @@ const EditProfilePage = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center">
       <div className="w-full max-w-xs">
+        {profile?.profilePhoto && (
+          <div className="mb-4 text-center">
+            <img
+              src={profile.profilePhoto}
+              alt="Profile"
+              className="rounded-full h-32 w-32 object-cover mx-auto"
+            />
+          </div>
+        )}
         <h2 className="text-4xl font-extrabold mb-4 text-center">
           Edit Profile
         </h2>
@@ -109,6 +139,7 @@ const EditProfilePage = () => {
               onChange={handleChange}
             />
           </div>
+
           <div className="flex items-center justify-between">
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
@@ -118,6 +149,16 @@ const EditProfilePage = () => {
             </button>
           </div>
         </form>
+        <div>
+          <h3 className="text-2xl font-bold mb-4">Upload Profile Picture</h3>
+          <input type="file" onChange={handleFileChange} />
+          <button
+            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4"
+            onClick={handleImageUpload}
+          >
+            Upload Image
+          </button>
+        </div>
       </div>
     </div>
   );
