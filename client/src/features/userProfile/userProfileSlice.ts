@@ -50,6 +50,33 @@ export const updateUserProfile = createAsyncThunk(
   }
 );
 
+export const uploadProfilePicture = createAsyncThunk(
+  "profile/uploadProfilePicture",
+  async (
+    { formData, userID }: { formData: FormData; userID: string },
+    thunkAPI
+  ) => {
+    try {
+      const response = await axios.post(
+        `/api/images/profile-picture/${userID}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      let errorMessage = "An error occurred during profile picture upload";
+      if (axios.isAxiosError(error)) {
+        errorMessage = error.response?.data || errorMessage;
+      }
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
+  }
+);
+
 const userProfileSlice = createSlice({
   name: "profile",
   initialState,
@@ -77,10 +104,21 @@ const userProfileSlice = createSlice({
         state.status = "updating";
       })
       .addCase(updateUserProfile.fulfilled, (state, action) => {
-        state.profile = action.payload; // Assuming the backend returns the updated profile
+        state.profile = action.payload;
         state.status = "idle";
       })
       .addCase(updateUserProfile.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload as string;
+      })
+      .addCase(uploadProfilePicture.pending, (state) => {
+        state.status = "updating";
+      })
+      .addCase(uploadProfilePicture.fulfilled, (state, action) => {
+        state.profile = action.payload;
+        state.status = "idle";
+      })
+      .addCase(uploadProfilePicture.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload as string;
       });
