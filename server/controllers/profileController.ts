@@ -147,7 +147,21 @@ const getAllProfiles = async (
         message: { err: "There were no profiles to retrieve" },
       });
     } else {
-      return res.status(201).json(profiles);
+      const processedProfiles = await Promise.all(
+        profiles.map(async (profile) => {
+          if (profile.profilePhoto) {
+            const presignedUrl = s3.getSignedUrl("getObject", {
+              Bucket: process.env.BUCKET_NAME,
+              Key: profile.profilePhoto,
+              Expires: 60 * 5,
+            });
+            profile.profilePhoto = presignedUrl;
+          }
+          return profile.toObject();
+        })
+      );
+
+      return res.status(201).json(processedProfiles);
     }
   } catch (error) {
     return next({
