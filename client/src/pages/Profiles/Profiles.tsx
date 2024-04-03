@@ -18,8 +18,8 @@ const Profiles = (): JSX.Element => {
         <h1 className="text-4xl font-extrabold mb-4">PROFILES</h1>
       </div>
       <div>
-        {profiles.map((profile) => (
-          <Link to={`/app/profile/${profile.user}`} key={profile._id}>
+        {profiles.map((profile, index) => (
+          <Link to={`/app/profile/${profile.user}`} key={index}>
             <ProfileThumb profile={profile} />
           </Link>
         ))}
