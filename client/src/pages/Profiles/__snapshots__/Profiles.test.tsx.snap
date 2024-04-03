@@ -12,26 +12,36 @@ exports[`MainPage Component renders correctly 1`] = `
     </h1>
   </div>,
   <div>
-    <div
-      className="min-h-screen bg-gray-100 flex flex-col items-center justify-center"
+    <a
+      href="/app/profile/User1"
+      onClick={[Function]}
     >
-      <h1
-        className="text-4xl font-extrabold mb-4"
-      />
-      <h2
-        className="text-4xl font-extrabold mb-4"
-      />
-    </div>
-    <div
-      className="min-h-screen bg-gray-100 flex flex-col items-center justify-center"
+      <div
+        className="min-h-screen bg-gray-100 flex flex-col items-center justify-center"
+      >
+        <h1
+          className="text-4xl font-extrabold mb-4"
+        />
+        <h2
+          className="text-4xl font-extrabold mb-4"
+        />
+      </div>
+    </a>
+    <a
+      href="/app/profile/User2"
+      onClick={[Function]}
     >
-      <h1
-        className="text-4xl font-extrabold mb-4"
-      />
-      <h2
-        className="text-4xl font-extrabold mb-4"
-      />
-    </div>
+      <div
+        className="min-h-screen bg-gray-100 flex flex-col items-center justify-center"
+      >
+        <h1
+          className="text-4xl font-extrabold mb-4"
+        />
+        <h2
+          className="text-4xl font-extrabold mb-4"
+        />
+      </div>
+    </a>
   </div>,
 ]
 `;
