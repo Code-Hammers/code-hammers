@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { fetchProfiles } from "../../features/profiles/profilesSlice";
 import ProfileThumb from "../../components/ProfileThumb/ProfileThumb";
@@ -17,9 +18,10 @@ const Profiles = (): JSX.Element => {
         <h1 className="text-4xl font-extrabold mb-4">PROFILES</h1>
       </div>
       <div>
-        {/* TODO Look at better key for this */}
-        {profiles.map((profile, index) => (
-          <ProfileThumb key={index} profile={profile} />
+        {profiles.map((profile) => (
+          <Link to={`/app/profile/${profile.user}`} key={profile._id}>
+            <ProfileThumb profile={profile} />
+          </Link>
         ))}
       </div>
     </>
