@@ -1,6 +1,7 @@
 import express from "express";
 import {
   addForum,
+  deleteForum,
   getAllForums,
   getForumById,
   updateForum,
@@ -9,9 +10,10 @@ import { protect } from "../middleware/authMiddleware"; //TODO Add admin auth mi
 
 const router = express.Router();
 
-router.post("/", addForum);
+router.post("/", addForum); //TODO Protect with admin auth
 router.get("/", getAllForums);
 router.get("/:forumId", getForumById);
-router.put("/:forumId", updateForum);
+router.put("/:forumId", updateForum); //TODO Protect with admin auth
+router.delete("/:forumId", deleteForum); //TODO Protect with admin auth
 
 export default router;
