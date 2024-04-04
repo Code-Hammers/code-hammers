@@ -1,4 +1,4 @@
-import Forum from "../models/forumModel";
+import Post from "../models/postModel";
 import Thread from "../models/threadModel";
 import { Request, Response, NextFunction } from "express";
 import { CustomRequest } from "../types/customRequest";
@@ -62,4 +62,37 @@ const listThreadsByForumId = async (
   }
 };
 
-export { createThread, listThreadsByForumId };
+// ENDPOINT  GET api/forums/:forumId/threads/:threadId
+// PURPOSE   Retrieve a specific thread and all of its posts
+// ACCESS    Private
+const getThreadById = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { forumId, threadId } = req.params;
+
+  try {
+    const thread = await Thread.findOne({ _id: threadId, forum: forumId })
+      .populate("user", "firstName lastName")
+      .exec();
+
+    if (!thread) {
+      return res.status(404).json({ message: "Thread not found" });
+    }
+
+    const posts = await Post.find({ thread: threadId })
+      .populate("user", "firstName lastName")
+      .exec();
+
+    res.status(200).json({ thread, posts });
+  } catch (error) {
+    next({
+      log: `Express error in getThreadById controller: ${error}`,
+      status: 500,
+      message: { err: "Server error fetching thread details" },
+    });
+  }
+};
+
+export { createThread, listThreadsByForumId, getThreadById };

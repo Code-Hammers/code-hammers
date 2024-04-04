@@ -9,6 +9,7 @@ import {
 
 import {
   createThread,
+  getThreadById,
   listThreadsByForumId,
 } from "../controllers/threadController";
 import { protect } from "../middleware/authMiddleware"; //TODO Add admin auth middleware
@@ -23,5 +24,6 @@ router.delete("/:forumId", protect, deleteForum); //TODO Protect with admin auth
 
 router.post("/:forumId/threads", protect, createThread);
 router.get("/:forumId/threads", protect, listThreadsByForumId);
+router.get("/:forumId/threads/:threadId", protect, getThreadById);
 
 export default router;
