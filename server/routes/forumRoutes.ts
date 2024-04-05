@@ -15,7 +15,7 @@ import {
   updateThread,
 } from "../controllers/threadController";
 
-import { listPostsByThreadId } from "../controllers/postController";
+import { listPostsByThreadId, createPost } from "../controllers/postController";
 
 import { protect } from "../middleware/authMiddleware"; //TODO Add admin auth middleware
 
@@ -37,5 +37,6 @@ router.delete("/:forumId/threads/:threadId", protect, deleteThread); //TODO Prot
 
 //Post Routes
 router.get("/:forumId/threads/:threadId/posts", protect, listPostsByThreadId);
+router.post("/:forumId/threads/:threadId/posts", protect, createPost);
 
 export default router;
