@@ -17,7 +17,7 @@ const createThread = async (
   if (!req.user) {
     return res.status(401).json({ message: "Not authenticated" });
   }
-  const userId = req.user;
+  const userId = req.user.id;
 
   try {
     const thread = await Thread.create({
@@ -95,4 +95,43 @@ const getThreadById = async (
   }
 };
 
-export { createThread, listThreadsByForumId, getThreadById };
+// ENDPOINT  PUT api/forums/:forumId/threads/:threadId
+// PURPOSE   Update a specific thread
+// ACCESS    Private/Admin
+const updateThread = async (
+  req: CustomRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  const { forumId, threadId } = req.params;
+  const { title, content } = req.body;
+
+  try {
+    const thread = await Thread.findOne({ _id: threadId, forum: forumId });
+    if (!thread) {
+      return res.status(404).json({ message: "Thread not found" });
+    }
+
+    if (!req.user || thread.user._id.toString() !== req.user.id) {
+      return res
+        .status(403)
+        .json({ message: "Not authorized to update this thread" });
+    }
+
+    const updatedThread = await Thread.findByIdAndUpdate(
+      threadId,
+      { $set: { title, content } },
+      { new: true, runValidators: true }
+    ).populate("user", "firstName lastName");
+
+    res.status(200).json(updatedThread);
+  } catch (error) {
+    next({
+      log: `Express error in updateThread controller: ${error}`,
+      status: 500,
+      message: { err: "Server error updating thread" },
+    });
+  }
+};
+
+export { createThread, listThreadsByForumId, getThreadById, updateThread };
