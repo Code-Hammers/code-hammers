@@ -134,4 +134,53 @@ const updateThread = async (
   }
 };
 
-export { createThread, listThreadsByForumId, getThreadById, updateThread };
+// ENDPOINT  DELETE api/forums/:forumId/threads/:threadId
+// PURPOSE   Delete a specific thread
+// ACCESS    Private/Admin
+const deleteThread = async (
+  req: CustomRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  const { forumId, threadId } = req.params;
+
+  try {
+    const threadToCheck = await Thread.findById(threadId);
+    if (!threadToCheck) {
+      return res.status(404).json({ message: "Thread not found" });
+    }
+    //TODO Add admin auth check
+    if (!req.user || threadToCheck.user.toString() !== req.user.id) {
+      return res
+        .status(403)
+        .json({ message: "Not authorized to delete this thread" });
+    }
+
+    const deletedThread = await Thread.findByIdAndDelete({
+      _id: threadId,
+      forum: forumId,
+    });
+
+    if (!deletedThread) {
+      return res
+        .status(404)
+        .json({ message: "Thread not found or already deleted" });
+    }
+
+    res.status(200).json({ message: "Thread deleted successfully" });
+  } catch (error) {
+    next({
+      log: `Express error in deleteThread controller: ${error}`,
+      status: 500,
+      message: { err: "Server error deleting thread" },
+    });
+  }
+};
+
+export {
+  createThread,
+  listThreadsByForumId,
+  getThreadById,
+  updateThread,
+  deleteThread,
+};

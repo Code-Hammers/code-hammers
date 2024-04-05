@@ -9,6 +9,7 @@ import {
 
 import {
   createThread,
+  deleteThread,
   getThreadById,
   listThreadsByForumId,
   updateThread,
@@ -28,6 +29,7 @@ router.delete("/:forumId", protect, deleteForum); //TODO Protect with admin auth
 router.post("/:forumId/threads", protect, createThread);
 router.get("/:forumId/threads", protect, listThreadsByForumId);
 router.get("/:forumId/threads/:threadId", protect, getThreadById);
-router.put("/:forumId/threads/:threadId", protect, updateThread);
+router.put("/:forumId/threads/:threadId", protect, updateThread); //TODO Protect with admin auth
+router.delete("/:forumId/threads/:threadId", protect, deleteThread); //TODO Protect with admin auth
 
 export default router;
