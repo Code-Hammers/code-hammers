@@ -14,6 +14,9 @@ import {
   listThreadsByForumId,
   updateThread,
 } from "../controllers/threadController";
+
+import { listPostsByThreadId } from "../controllers/postController";
+
 import { protect } from "../middleware/authMiddleware"; //TODO Add admin auth middleware
 
 const router = express.Router();
@@ -31,5 +34,8 @@ router.get("/:forumId/threads", protect, listThreadsByForumId);
 router.get("/:forumId/threads/:threadId", protect, getThreadById);
 router.put("/:forumId/threads/:threadId", protect, updateThread); //TODO Protect with admin auth
 router.delete("/:forumId/threads/:threadId", protect, deleteThread); //TODO Protect with admin auth
+
+//Post Routes
+router.get("/:forumId/threads/:threadId/posts", protect, listPostsByThreadId);
 
 export default router;
