@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Banner from "./components/Banner/Banner";
 import Navbar from "./components/Navbar/Navbar";
+import Header from "./components/Header/Header";
 import MainPage from "./pages/MainPage/MainPage";
 import Forums from "./pages/Forums/Forums";
 import Profiles from "./pages/Profiles/Profiles";
@@ -38,8 +39,9 @@ const AuthenticatedApp = () => {
 
   return (
     <div>
-      <Banner />
-      <Navbar />
+      {/* <Banner />
+      <Navbar /> */}
+      <Header />
       <Routes>
         <Route path="main" element={<MainPage />} />
         <Route path="/profiles" element={<Profiles />} />
