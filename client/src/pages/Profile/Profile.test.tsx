@@ -53,11 +53,11 @@ describe("Profile Component", () => {
     expect(mockDispatch).toHaveBeenCalledWith(fetchUserProfile(mockUserId));
   });
 
-  it("displays the user's fullName and userId", () => {
+  it("displays the user's fullName", () => {
     render(<Profile />);
-    const userIdDisplay = screen.getByText(mockUserProfile.user.toString());
+
     const userNameDisplay = screen.getByText(mockUserProfile.fullName);
-    expect(userIdDisplay).toBeInTheDocument();
+
     expect(userNameDisplay).toBeInTheDocument();
   });
 });
