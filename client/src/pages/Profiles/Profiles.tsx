@@ -14,8 +14,8 @@ const Profiles = (): JSX.Element => {
 
   return (
     <>
-      <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center p-4">
-        <h1 className="text-4xl font-extrabold mb-4">PROFILES</h1>
+      <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-start pt-20 p-4">
+        <h1 className="text-4xl font-extrabold mb-4 mt-16">PROFILES</h1>
 
         <div className="w-full max-w-6xl p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {profiles.map((profile, index) => (
