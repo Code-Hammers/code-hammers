@@ -1,4 +1,10 @@
-import React, { useEffect, useState, ChangeEvent, FormEvent } from "react";
+import React, {
+  useEffect,
+  useState,
+  useRef,
+  ChangeEvent,
+  FormEvent,
+} from "react";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import {
   fetchUserProfile,
@@ -10,6 +16,7 @@ const EditProfilePage = () => {
   const dispatch = useAppDispatch();
   const { profile, status } = useAppSelector((state) => state.userProfile);
   const userID = useAppSelector((state) => state.user.userData?._id);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -68,6 +75,10 @@ const EditProfilePage = () => {
     dispatch(uploadProfilePicture({ formData, userID }));
   };
 
+  const handleFileInputClick = () => {
+    fileInputRef.current?.click();
+  };
+
   if (status === "loading" || !userID) {
     return <div>Loading...</div>;
   }
@@ -120,7 +131,7 @@ const EditProfilePage = () => {
             />
           </label>
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            className="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
             type="submit"
           >
             Save Changes
@@ -128,9 +139,21 @@ const EditProfilePage = () => {
         </form>
         <div className="mt-6">
           <h3 className="text-2xl font-bold mb-4">Upload Profile Picture</h3>
-          <input type="file" onChange={handleFileChange} />
+          <input
+            ref={fileInputRef}
+            type="file"
+            onChange={handleFileChange}
+            style={{ display: "none" }}
+          />
+          {file && <p className="text-lg mt-2">{file.name}</p>}
           <button
-            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-4"
+            className="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded mt-4 mr-2"
+            onClick={handleFileInputClick}
+          >
+            Choose File
+          </button>
+          <button
+            className="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded mt-4 ml-2"
             onClick={handleImageUpload}
           >
             Upload Image
