@@ -35,42 +35,42 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-xs">
+    <div className="w-full max-w-md">
       <form
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        className="bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 shadow-lg rounded px-8 pt-6 pb-8 mb-4"
         onSubmit={handleSubmit}
       >
         <div className="mb-4">
           <label
-            className="block text-gray-700 text-sm font-bold mb-2"
+            className="block text-gray-300 text-sm font-bold mb-2"
             htmlFor="email"
           >
             Email
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="appearance-none border-2 border-gray-700 rounded w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:border-blue-500"
             id="email"
             name="email"
             type="email"
             value={email}
-            placeholder="Email"
+            placeholder="Enter your Email"
             onChange={handleChange}
           />
         </div>
         <div className="mb-6">
           <label
-            className="block text-gray-700 text-sm font-bold mb-2"
+            className="block text-gray-300 text-sm font-bold mb-2"
             htmlFor="password"
           >
             Password
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+            className="appearance-none border-2 border-gray-700 rounded w-full py-2 px-3 text-gray-300 mb-3 leading-tight focus:outline-none focus:border-blue-500"
             id="password"
             name="password"
             type="password"
             value={password}
-            placeholder="******************"
+            placeholder="Enter your password"
             onChange={handleChange}
           />
         </div>
