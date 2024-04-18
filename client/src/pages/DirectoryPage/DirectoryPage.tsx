@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { fetchAlumni } from "../../features/alumni/alumniSlice";
 import Modal from "../../components/modals/AlumniModal/AlumniModal";
+import { Alum } from "../../../types/alum";
 
 const DirectoryPage = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -11,8 +12,7 @@ const DirectoryPage = (): JSX.Element => {
   const [nameSearch, setNameSearch] = useState("");
   const [companySearch, setCompanySearch] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedAlum, setSelectedAlum] = useState(null);
-
+  const [selectedAlum, setSelectedAlum] = useState<Alum | null>(null);
   useEffect(() => {
     dispatch(fetchAlumni({ page, name: nameSearch, company: companySearch }));
   }, [dispatch, page, nameSearch, companySearch]);
@@ -41,7 +41,7 @@ const DirectoryPage = (): JSX.Element => {
     }
   };
 
-  const handleAlumClick = (alum) => {
+  const handleAlumClick = (alum: Alum) => {
     setSelectedAlum(alum);
     setModalOpen(true);
   };

@@ -1,16 +1,5 @@
 import React from "react";
-
-interface Alum {
-  name: string;
-  company: string;
-  email: string;
-  linkedIn?: string;
-  campus?: string;
-  cohort: string | number;
-  jobTitle?: string;
-  industry?: string;
-  cities: string[];
-}
+import { Alum } from "../../../../types/alum";
 
 interface ModalProps {
   isOpen: boolean;
