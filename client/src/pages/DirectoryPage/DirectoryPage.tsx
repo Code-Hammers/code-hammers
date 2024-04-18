@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { fetchAlumni } from "../../features/alumni/alumniSlice";
+import Modal from "../../components/modals/AlumniModal/AlumniModal";
 
 const DirectoryPage = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -9,6 +10,8 @@ const DirectoryPage = (): JSX.Element => {
   );
   const [nameSearch, setNameSearch] = useState("");
   const [companySearch, setCompanySearch] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedAlum, setSelectedAlum] = useState(null);
 
   useEffect(() => {
     dispatch(fetchAlumni({ page, name: nameSearch, company: companySearch }));
@@ -36,6 +39,16 @@ const DirectoryPage = (): JSX.Element => {
         })
       );
     }
+  };
+
+  const handleAlumClick = (alum) => {
+    setSelectedAlum(alum);
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    setSelectedAlum(null);
   };
 
   return (
@@ -70,7 +83,11 @@ const DirectoryPage = (): JSX.Element => {
             <p>Loading...</p>
           ) : (
             alumni.map((alum) => (
-              <div key={alum._id} className="grid grid-cols-3 text-center py-2">
+              <div
+                key={alum._id}
+                className="grid grid-cols-3 text-center py-2 cursor-pointer"
+                onClick={() => handleAlumClick(alum)}
+              >
                 <div>{alum.name}</div>
                 <div>{alum.company}</div>
                 <div>{alum.email}</div>
@@ -87,6 +104,11 @@ const DirectoryPage = (): JSX.Element => {
           </button>
         </div>
       </div>
+      <Modal
+        isOpen={modalOpen}
+        onClose={handleCloseModal}
+        alum={selectedAlum}
+      />
     </div>
   );
 };
