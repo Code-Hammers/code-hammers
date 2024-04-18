@@ -6,15 +6,21 @@ import configureStore from "redux-mock-store";
 import DirectoryPage from "./DirectoryPage";
 
 interface State {
-  user: {
-    userName: string;
+  alumni: {
+    alumni: any[];
+    status: "idle" | "loading" | "failed";
+    page: number;
+    totalPages: number;
   };
 }
 
 const mockStore = configureStore<State>([]);
 const initialState: State = {
-  user: {
-    userName: "TEST",
+  alumni: {
+    alumni: [],
+    status: "idle",
+    page: 1,
+    totalPages: 1,
   },
 };
 
