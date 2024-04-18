@@ -32,6 +32,7 @@ const getAllAlumniData = async (
       totalPages: Math.ceil(count / limit),
       currentPage: page,
     });
+
   } catch (error) {
     console.log("Awesome error handling");
   }
