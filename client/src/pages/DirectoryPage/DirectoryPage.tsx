@@ -14,19 +14,6 @@ const DirectoryPage = (): JSX.Element => {
     dispatch(fetchAlumni({ page, name: nameSearch, company: companySearch }));
   }, [dispatch, page, nameSearch, companySearch]);
 
-  useEffect(() => {
-    const getAlumniData = async () => {
-      try {
-        const response = await axios.get("/api/alumni");
-        console.log(response);
-      } catch (error) {
-        console.log("Something just caught fire in Directory useEffect");
-      }
-    };
-
-    getAlumniData();
-  }, []);
-
   return (
     <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center p-4">
       <h1 className="text-4xl font-extrabold mb-4">Alumni Directory</h1>
