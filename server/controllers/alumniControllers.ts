@@ -8,7 +8,7 @@ const getAllAlumniData = async (
   next: NextFunction
 ) => {
   const page = parseInt(req.query.page as string) || 1;
-  const limit = parseInt(req.query.limit as string) || 20;
+  const limit = parseInt(req.query.limit as string) || 10;
   const nameSearch = (req.query.name as string) || "";
   const companySearch = (req.query.company as string) || "";
 
@@ -32,7 +32,6 @@ const getAllAlumniData = async (
       totalPages: Math.ceil(count / limit),
       currentPage: page,
     });
-
   } catch (error) {
     console.log("Awesome error handling");
   }
