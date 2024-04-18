@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import Banner from "./components/Banner/Banner";
-import Navbar from "./components/Navbar/Navbar";
-import { useAppSelector } from "./app/hooks";
+import Header from "./components/Header/Header";
 import MainPage from "./pages/MainPage/MainPage";
 import Forums from "./pages/Forums/Forums";
 import Profiles from "./pages/Profiles/Profiles";
@@ -13,17 +11,34 @@ import { useNavigate } from "react-router-dom";
 
 const AuthenticatedApp = () => {
   const navigate = useNavigate();
-  const user = useAppSelector((state) => state.user.userData);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    if (!user?.firstName) {
-      navigate("/");
-    }
-  });
+    const validateSession = async () => {
+      try {
+        const response = await fetch("/api/auth/validate-session", {
+          method: "GET",
+          credentials: "include",
+        });
+
+        const data = await response.json();
+        if (response.ok && data.isAuthenticated) {
+          setIsAuthenticated(true);
+        } else {
+          navigate("/");
+        }
+      } catch (error) {
+        console.error("Session validation failed:", error);
+        navigate("/");
+      }
+    };
+
+    validateSession();
+  }, [navigate]);
+
   return (
     <div>
-      <Banner />
-      <Navbar />
+      <Header />
       <Routes>
         <Route path="main" element={<MainPage />} />
         <Route path="/profiles" element={<Profiles />} />

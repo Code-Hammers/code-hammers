@@ -2,9 +2,11 @@ import path from "path";
 import express, { Request, Response, Application, NextFunction } from "express";
 import userRoutes from "./routes/userRoutes";
 import profileRoutes from "./routes/profileRoutes";
+import authRoutes from "./routes/authRoutes";
 import alumniRoutes from "./routes/alumniRoutes";
 import connectDB from "./config/db";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 import { notFound, errorHandler } from "./controllers/errorControllers";
 
 dotenv.config();
@@ -12,11 +14,13 @@ dotenv.config();
 const app: Application = express();
 
 app.use(express.json());
+app.use(cookieParser());
 
 connectDB();
 
 app.use("/api/users", userRoutes);
 app.use("/api/profiles", profileRoutes);
+app.use("/api/auth", authRoutes);
 app.use("/api/alumni", alumniRoutes);
 
 console.log(`ENV BEFORE CHECK: ${process.env.NODE_ENV}`);
