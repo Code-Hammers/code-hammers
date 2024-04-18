@@ -47,12 +47,12 @@ const Header = (): JSX.Element => {
       <div className="flex-grow mx-10">
         <div className="flex justify-evenly space-x-4 md:space-x-6 lg:space-x-10">
           <Link
-            to="/app/main"
+            to="/app/directory"
             className={`text-lg md:text-xl ${
               currentPath === "main" ? "text-gray-300" : "hover:text-gray-300"
             } transition transform hover:scale-105`}
           >
-            MainPage
+            Alumni
           </Link>
           <Link
             to="/app/profiles"
