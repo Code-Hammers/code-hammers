@@ -92,10 +92,10 @@ const getThreadById = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { forumId, threadId } = req.params;
+  const { threadId } = req.params;
 
   try {
-    const thread = await Thread.findOne({ _id: threadId, forum: forumId })
+    const thread = await Thread.findOne({ _id: threadId })
       .populate("user", "firstName lastName")
       .exec();
 

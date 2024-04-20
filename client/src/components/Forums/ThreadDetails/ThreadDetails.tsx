@@ -3,7 +3,7 @@ import axios from "axios";
 import { Thread, IPost } from "../../../../types/forums";
 
 interface ThreadDetailProps {
-  forumId: string;
+  forumId: string | null;
   threadId: string;
 }
 
@@ -17,14 +17,13 @@ const ThreadDetail: React.FC<ThreadDetailProps> = ({ forumId, threadId }) => {
     const fetchThreadDetails = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(
-          `/api/forums/${forumId}/threads/${threadId}`,
-          {
-            withCredentials: true,
-          }
-        );
+        const endpoint = forumId
+          ? `/api/forums/${forumId}/threads/${threadId}`
+          : `/api/forums/threads/${threadId}`;
+        const response = await axios.get(endpoint, { withCredentials: true });
         setThread(response.data.thread);
-        setPosts(response.data.posts);
+        setPosts(response.data.posts || []);
+
         setLoading(false);
       } catch (err) {
         const error = err as Error;
