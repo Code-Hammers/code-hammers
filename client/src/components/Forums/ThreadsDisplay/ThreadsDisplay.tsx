@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Thread } from "../../../../types/forums";
+import { Thread, IForum } from "../../../../types/forums";
 
 interface ThreadsDisplayProps {
   forumId?: string | null;
@@ -8,20 +8,27 @@ interface ThreadsDisplayProps {
 
 const ThreadsDisplay: React.FC<ThreadsDisplayProps> = ({ forumId }) => {
   const [threads, setThreads] = useState<Thread[]>([]);
+  const [forum, setForum] = useState<IForum | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchThreads = async () => {
+    const fetchForumAndThreads = async () => {
       setLoading(true);
       try {
         const endpoint = forumId
-          ? `/api/forums/${forumId}/threads`
+          ? `/api/forums/${forumId}`
           : "/api/forums/threads";
         const { data } = await axios.get(endpoint, {
           withCredentials: true,
         });
-        setThreads(data);
+        if (forumId) {
+          setForum(data.forum);
+          setThreads(data.threads);
+        } else {
+          setForum(null);
+          setThreads(data);
+        }
         setLoading(false);
       } catch (err) {
         const error = err as Error;
@@ -30,7 +37,7 @@ const ThreadsDisplay: React.FC<ThreadsDisplayProps> = ({ forumId }) => {
       }
     };
 
-    fetchThreads();
+    fetchForumAndThreads();
   }, [forumId]);
 
   if (loading) return <div>Loading...</div>;
@@ -39,9 +46,7 @@ const ThreadsDisplay: React.FC<ThreadsDisplayProps> = ({ forumId }) => {
   return (
     <div>
       <h3 className="text-xl font-bold mb-4">
-        {forumId
-          ? `Showing threads for forum ${forumId}`
-          : "Showing all threads"}
+        {forum ? `Showing threads for ${forum.title}` : "Showing all threads"}
       </h3>
       <ul>
         {threads.map((thread) => (

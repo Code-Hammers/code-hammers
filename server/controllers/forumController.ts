@@ -47,7 +47,7 @@ const getAllForums = async (
 };
 
 // ENDPOINT  GET api/forums/:forumId
-// PURPOSE   Retrieve a list of all forums
+// PURPOSE   Retrieve a specific forum and its threads
 // ACCESS    all users
 const getForumById = async (
   req: Request,

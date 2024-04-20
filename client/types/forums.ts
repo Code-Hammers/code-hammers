@@ -13,3 +13,8 @@ export interface Thread {
   user: IUser;
   createdAt: string;
 }
+
+export interface IForum {
+  _id: string;
+  title: string;
+}
