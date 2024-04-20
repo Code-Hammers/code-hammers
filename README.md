@@ -9,7 +9,7 @@ As you know, alums have access to the Codesmith intranet. While, the intranet is
 Building and contributing is the best way to learn how to code! We wanted to provide the opportunity for those looking to sharpen their skills to contribute to a large codebase.
 
 1. Experience the development workflow on a much greater scale
-2. Recieve code reviews and guidance on tasks
+2. Receive code reviews and guidance on tasks
 3. Work with engineers currently in the industry (get those referrals!)
 4. It's FUN!!!
 
