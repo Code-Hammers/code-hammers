@@ -1,6 +1,6 @@
 # Welcome to Code Hammers!
 
-We believe that the journey of learning to code continues after graduation. Code Hammers was created to give Codesmith alumni the opportunity to work together and build something useful for the community.
+The journey of learning to code continues after graduation. Code Hammers was created to give Codesmith alumni the opportunity to work together and build something useful for the community.
 
 As you know, alums have access to the Codesmith intranet. While, the intranet is a staple for many during the job search, it lacks a bit of flair. Thus the idea to create a robust intranet for alumni. Enter Code Hammers!
 
@@ -8,7 +8,7 @@ As you know, alums have access to the Codesmith intranet. While, the intranet is
 
 Building and contributing is the best way to learn how to code! We wanted to provide the opportunity for those looking to sharpen their skills to contribute to a large codebase.
 
-1. Eperience the development workflow on a much greater scale
+1. Experience the development workflow on a much greater scale
 2. Recieve code reviews and guidance on tasks
 3. Work with engineers currently in the industry (get those referrals!)
 4. It's FUN!!!
@@ -16,7 +16,7 @@ Building and contributing is the best way to learn how to code! We wanted to pro
 ## Table of Contents
 
 1. [Dev Environment Setup](#dev-environment-setup)
-2. [Startings the Application](#starting-the-application)
+2. [Starting the Application](#starting-the-application)
 3. [Style Guide](#style-guide)
 
 ## Dev Environment Setup
@@ -30,7 +30,7 @@ With any large codebase, there is always going to be some sort of environment se
 - Run the initial tailwind script
   - `cd` to the `./client`folder and run `npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch` in your terminal.
   - You will be prompted to install Tailwind - Choose YES.
-  - This will run the inital css build. It will also leave it running and provide live compiles for any changes to styling.
+  - This will run the initial CSS build. It will also leave it running and provide live compiles for any changes to styling.
 
 ## Starting the Application
 
@@ -59,17 +59,17 @@ const myFunction = () => {
 ### Destructure objects ([why?](https://github.com/airbnb/javascript?tab=readme-ov-file#destructuring--object))
 
 ```
-// good
+// Good
 const MyComponent = ({prop1, prop2}) => {
   ...
 }
 
-// bad
+// Bad
 const MyComponent = (props) => {
   const {prop1, prop2} = props;
 }
 
-// worse
+// Worse
 const MyComponent = (props) => {
   ...
   props.prop1
