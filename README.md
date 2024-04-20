@@ -1,12 +1,18 @@
 # Welcome to Code Hammers!
 
-The journey of learning to code continues after graduation. Code Hammers was created to give Codesmith alumni the opportunity to work together and build something useful for the community.
+The journey of learning to code continues after graduation. Code Hammers was
+created to give Codesmith alumni the opportunity to work together and build
+something useful for the community.
 
-As you know, alums have access to the Codesmith intranet. While, the intranet is a staple for many during the job search, it lacks a bit of flair. Thus the idea to create a robust intranet for alumni. Enter Code Hammers!
+As you know, alums have access to the Codesmith intranet. While, the intranet is
+a staple for many during the job search, it lacks a bit of flair. Thus the idea
+to create a robust intranet for alumni. Enter Code Hammers!
 
 ## Why Contribute?
 
-Building and contributing is the best way to learn how to code! We wanted to provide the opportunity for those looking to sharpen their skills to contribute to a large codebase.
+Building and contributing is the best way to learn how to code! We wanted to
+provide the opportunity for those looking to sharpen their skills to contribute
+to a large codebase.
 
 1. Experience the development workflow on a much greater scale
 2. Receive code reviews and guidance on tasks
@@ -21,32 +27,45 @@ Building and contributing is the best way to learn how to code! We wanted to pro
 
 ## Dev Environment Setup
 
-With any large codebase, there is always going to be some sort of environment setup. Code Hammers is a [monorepo](https://en.wikipedia.org/wiki/Monorepo), the repo for the frontend code and backend code are contained within one repo. You will notice there are multiple `package.json` files. This is not always the case!
+With any large codebase, there is always going to be some sort of environment
+setup. Code Hammers is a [monorepo](https://en.wikipedia.org/wiki/Monorepo), the
+repo for the frontend code and backend code are contained within one repo. You
+will notice there are multiple `package.json` files. This is not always the
+case!
 
 - Clone the repo
 - Install packages
 - Create an `.env` file
   - Reach out Sean or Jimmy for all secret variables
 - Run the initial tailwind script
-  - `cd` to the `./client`folder and run `npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch` in your terminal.
+  - `cd` to the `./client`folder and run
+    `npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch` in your
+    terminal.
   - You will be prompted to install Tailwind - Choose YES.
-  - This will run the initial CSS build. It will also leave it running and provide live compiles for any changes to styling.
+  - This will run the initial CSS build. It will also leave it running and
+    provide live compiles for any changes to styling.
 
 ## Starting the Application
 
-There are a few ways to spin up Code Hammers. Scripts are provided for your convenience.
+There are a few ways to spin up Code Hammers. Scripts are provided for your
+convenience.
 
 - `npm run docker-dev`
   - This will build containers for the entire application
 - `npm run dev-ts`
-  - This will start both the webpack-dev-server for frontend and the backend server
+  - This will start both the webpack-dev-server for frontend and the backend
+    server
 - Login credentials
   - **Email:** tester@codehammers.com
   - **Password:** ilovetesting
 
+<!-- ## How to Contribute -->
+
 ## Style Guide
 
-We follow the [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript?tab=readme-ov-file). Here is a brief refresher as well as additional style rules we ask contributors to adhere to.
+We follow the
+[Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript?tab=readme-ov-file).
+Here is a brief refresher, including additional conventions we follow.
 
 ### Prefer function expressions with arrow syntax ([why?](https://github.com/airbnb/javascript?tab=readme-ov-file#functions--declarations))
 
@@ -77,6 +96,42 @@ const MyComponent = (props) => {
 }
 ```
 
+### Params
+
+- Never mutate or reassign parameters, instead use a default parameter
+- Place default parameters at the end of the function signature
+
+```
+// Good
+const myFunc = (a, b, c = 3) => {
+  ...
+}
+
+// Bad
+const myFunc = (a = 3, b, c) => {
+  ...
+  b = 5
+}
+```
+
+### Semicolons
+
+- Add a semicolon at the end of each statement.
+  ([why?](https://github.com/airbnb/javascript?tab=readme-ov-file#semicolons--required))
+
+### Single Quotes
+
+- Prefer single quotes for string literals
+
+### Names
+
+- Variables should be `camelCase`, while global constants (i.e. action types)
+  should be `SCREAMING_SNAKE_CASE`
+- Functions should also be in `camelCase`, but names of components should be
+  `PascalCase`
+- Testing IDs, when used, should be in `kebab-case`
+- Names of objects and classes should be `PascalCase`
+
 ### Imports
 
 - Imports should be placed at the top of each file
@@ -85,23 +140,33 @@ const MyComponent = (props) => {
   - Libraries
   - Modules
   - Styles
-  - Side-effects ([?](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#import_a_module_for_its_side_effects_only))
+  - Side-effects
+    ([?](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#import_a_module_for_its_side_effects_only))
 
 ```
-import {useState, useEffect} from 'react'; // Framework
-import { useNavigate } from 'react-router-dom'; // Library
-import SomeComponent from '../../SomeComponent' // Modules
-import helperFunction from '../../utils/helperFunction'
-import styles from './MyComponent.module.scss' // Styles
-import '../../utils/coolEffects' // Side-effect
+// Framework
+import {useState, useEffect} from 'react';
+
+// Library
+import { useNavigate } from 'react-router-dom';
+
+// Modules
+import SomeComponent from '../../SomeComponent';
+import helperFunction from '../../utils/helperFunction';
+
+// Styles
+import styles from './MyComponent.module.scss';
+
+// Side-effect
+import '../../utils/coolEffects';
 ```
 
 ### Styles
 
-When writing CSS, order the properties in alphabetical order. When using tailwind, order the classes in alphabetical order. There are no performance benefits for doing so, but makes the codebase much more consistent!
+Order CSS styles and JSX class names alphabetically
 
 ```
-// styles.css 
+// styles.css
 .button {
     display: inline-block;
     font-size: 16px;
