@@ -37,6 +37,28 @@ const createThread = async (
   }
 };
 
+// ENDPOINT  GET api/threads
+// PURPOSE   Retrieve all threads
+// ACCESS    Private
+const getAllThreads = async (
+  req: CustomRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const threads = await Thread.find({})
+      .populate("user", "firstName lastName")
+      .exec();
+    res.status(200).json(threads);
+  } catch (error) {
+    next({
+      log: `Express error in getAllThreads controller: ${error}`,
+      status: 500,
+      message: { err: "Server error fetching all threads" },
+    });
+  }
+};
+
 // ENDPOINT  GET api/:forumId/threads
 // PURPOSE   Retrieve all threads for a specific forum
 // ACCESS    Private
@@ -183,4 +205,5 @@ export {
   getThreadById,
   updateThread,
   deleteThread,
+  getAllThreads,
 };

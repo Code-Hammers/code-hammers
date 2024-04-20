@@ -13,6 +13,7 @@ import {
   getThreadById,
   listThreadsByForumId,
   updateThread,
+  getAllThreads,
 } from "../controllers/threadController";
 
 import {
@@ -26,6 +27,8 @@ import { protect } from "../middleware/authMiddleware"; //TODO Add admin auth mi
 
 const router = express.Router();
 
+router.get("/threads", getAllThreads);
+
 //Forum Routes
 router.post("/", protect, addForum); //TODO Protect with admin auth
 router.get("/", protect, getAllForums);
@@ -34,6 +37,7 @@ router.put("/:forumId", protect, updateForum); //TODO Protect with admin auth
 router.delete("/:forumId", protect, deleteForum); //TODO Protect with admin auth
 
 //Thread Routes
+
 router.post("/:forumId/threads", protect, createThread);
 router.get("/:forumId/threads", protect, listThreadsByForumId);
 router.get("/:forumId/threads/:threadId", protect, getThreadById);
