@@ -7,7 +7,15 @@ interface Forum {
   description?: string;
 }
 
-const ForumsList = () => {
+interface ForumsListProps {
+  onForumSelect: (forumId: string | null) => void;
+  selectedForumId: string | null;
+}
+
+const ForumsList: React.FC<ForumsListProps> = ({
+  onForumSelect,
+  selectedForumId,
+}) => {
   const [forums, setForums] = useState<Forum[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -36,10 +44,26 @@ const ForumsList = () => {
 
   return (
     <div>
-      <h2>Forums</h2>
+      <h2 className="text-xl font-bold mb-4">Forums</h2>
       <ul>
+        <li
+          onClick={() => onForumSelect(null)}
+          className={`cursor-pointer p-2 hover:bg-gray-800 rounded-md ${
+            selectedForumId === null ? "bg-gray-700" : ""
+          }`}
+        >
+          All Forums
+        </li>
         {forums.map((forum) => (
-          <li key={forum._id}>{forum.title}</li>
+          <li
+            key={forum._id}
+            onClick={() => onForumSelect(forum._id)}
+            className={`cursor-pointer p-2 hover:bg-gray-800 rounded-md ${
+              selectedForumId === forum._id ? "bg-gray-700" : ""
+            }`}
+          >
+            {forum.title}
+          </li>
         ))}
       </ul>
     </div>
