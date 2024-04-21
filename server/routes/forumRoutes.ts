@@ -28,6 +28,7 @@ import { protect } from "../middleware/authMiddleware"; //TODO Add admin auth mi
 const router = express.Router();
 
 router.get("/threads", getAllThreads);
+router.get("/threads/:threadId", protect, getThreadById);
 
 //Forum Routes
 router.post("/", protect, addForum); //TODO Protect with admin auth

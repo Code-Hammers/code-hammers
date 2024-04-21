@@ -4,9 +4,13 @@ import { Thread, IForum } from "../../../../types/forums";
 
 interface ThreadsDisplayProps {
   forumId?: string | null;
+  onThreadSelect: (threadId: string) => void;
 }
 
-const ThreadsDisplay: React.FC<ThreadsDisplayProps> = ({ forumId }) => {
+const ThreadsDisplay: React.FC<ThreadsDisplayProps> = ({
+  forumId,
+  onThreadSelect,
+}) => {
   const [threads, setThreads] = useState<Thread[]>([]);
   const [forum, setForum] = useState<IForum | null>(null);
   const [loading, setLoading] = useState(false);
@@ -50,7 +54,11 @@ const ThreadsDisplay: React.FC<ThreadsDisplayProps> = ({ forumId }) => {
       </h3>
       <ul>
         {threads.map((thread) => (
-          <li key={thread._id} className="mb-2 p-2 bg-gray-800 rounded-lg">
+          <li
+            key={thread._id}
+            className="mb-2 p-2 bg-gray-800 rounded-lg cursor-pointer"
+            onClick={() => onThreadSelect(thread._id)}
+          >
             <h4 className="font-bold">{thread.title}</h4>
             <p>{thread.content}</p>
             <small>

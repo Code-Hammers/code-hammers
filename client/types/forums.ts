@@ -18,3 +18,10 @@ export interface IForum {
   _id: string;
   title: string;
 }
+
+export interface IPost {
+  _id: string;
+  user: IUser;
+  content: string;
+  createdAt: string;
+}
