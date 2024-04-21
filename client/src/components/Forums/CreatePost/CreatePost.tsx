@@ -3,7 +3,7 @@ import axios from "axios";
 
 interface CreatePostProps {
   threadId: string;
-  forumId: string;
+  forumId: string | null;
   onClose: () => void;
 }
 
