@@ -3,10 +3,15 @@ import axios from "axios";
 
 interface CreatePostProps {
   threadId: string;
+  forumId: string;
   onClose: () => void;
 }
 
-const CreatePost: React.FC<CreatePostProps> = ({ threadId, onClose }) => {
+const CreatePost: React.FC<CreatePostProps> = ({
+  forumId,
+  threadId,
+  onClose,
+}) => {
   const [content, setContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -20,17 +25,21 @@ const CreatePost: React.FC<CreatePostProps> = ({ threadId, onClose }) => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post(`/api/forums/threads/${threadId}/posts`, {
-        content
-      }, {
-        withCredentials: true
-      });
-      setContent(''); 
-      onClose(); 
+      const response = await axios.post(
+        `/api/forums/${forumId}/threads/${threadId}/posts`,
+        {
+          content,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+      setContent("");
+      onClose();
       setIsLoading(false);
     } catch (error) {
-      console.error('Failed to create post:', error);
-      setError('Failed to create post');
+      console.error("Failed to create post:", error);
+      setError("Failed to create post");
       setIsLoading(false);
     }
   };
@@ -50,12 +59,10 @@ const CreatePost: React.FC<CreatePostProps> = ({ threadId, onClose }) => {
         disabled={isLoading}
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
       >
-        {isLoading ? 'Posting...' : 'Post Reply'}
+        {isLoading ? "Posting..." : "Post Reply"}
       </button>
     </form>
   );
 };
 
 export default CreatePost;
-
-      <

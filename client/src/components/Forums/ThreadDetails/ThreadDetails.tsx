@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import CreatePost from "../CreatePost/CreatePost";
 import { Thread, IPost } from "../../../../types/forums";
 
 interface ThreadDetailProps {
@@ -12,6 +13,7 @@ const ThreadDetail: React.FC<ThreadDetailProps> = ({ forumId, threadId }) => {
   const [posts, setPosts] = useState<IPost[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [creatingPost, setCreatingPost] = useState(false);
 
   useEffect(() => {
     const fetchThreadDetails = async () => {
@@ -33,7 +35,11 @@ const ThreadDetail: React.FC<ThreadDetailProps> = ({ forumId, threadId }) => {
     };
 
     fetchThreadDetails();
-  }, [forumId, threadId]);
+  }, [forumId, threadId, creatingPost]);
+
+  const toggleCreatePost = () => {
+    setCreatingPost(!creatingPost);
+  };
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -43,6 +49,19 @@ const ThreadDetail: React.FC<ThreadDetailProps> = ({ forumId, threadId }) => {
     <div>
       <h2 className="text-3xl font-bold">{thread.title}</h2>
       <p className="my-4">{thread.content}</p>
+      <button
+        onClick={toggleCreatePost}
+        className="mb-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        {creatingPost ? "Cancel" : "Add Reply"}
+      </button>
+      {creatingPost && (
+        <CreatePost
+          forumId={forumId}
+          threadId={threadId}
+          onClose={toggleCreatePost}
+        />
+      )}
       <div>
         <h3 className="text-2xl font-bold">Replies</h3>
         {posts.map((post) => (
