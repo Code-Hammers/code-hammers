@@ -66,9 +66,9 @@ const ThreadsDisplay: React.FC<ThreadsDisplayProps> = ({
           {creatingThread ? "Cancel" : "Create New Thread"}
         </button>
       )}
-      {creatingThread && (
+      {creatingThread && forumId ? (
         <CreateThread forumId={forumId} onClose={toggleCreateThread} />
-      )}
+      ) : null}
 
       <ul>
         {threads.map((thread) => (
