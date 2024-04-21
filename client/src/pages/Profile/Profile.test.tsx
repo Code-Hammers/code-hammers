@@ -4,10 +4,16 @@ import "@testing-library/jest-dom";
 import Profile from "./Profile";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { fetchUserProfile } from "../../features/userProfile/userProfileSlice";
+import { useParams } from "react-router-dom";
 
 jest.mock("../../app/hooks", () => ({
   useAppDispatch: jest.fn(),
   useAppSelector: jest.fn(),
+}));
+
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useParams: jest.fn(),
 }));
 
 jest.mock("../../features/userProfile/userProfileSlice", () => ({
@@ -16,17 +22,18 @@ jest.mock("../../features/userProfile/userProfileSlice", () => ({
 
 describe("Profile Component", () => {
   const mockDispatch = jest.fn();
-  const mockUser = {
-    _id: "12345",
-    name: "John Doe",
+  const mockUserId = "123456";
+  const mockUserProfile = {
+    user: mockUserId,
+    fullName: "John Doe",
   };
-  //TODO MOCK BETTER USERPROFILE DATA
+  //TODO MOCK BETTER USERPROFILE DATA??
   beforeEach(() => {
     (useAppDispatch as jest.Mock).mockReturnValue(mockDispatch);
+    (useParams as jest.Mock).mockReturnValue({ userId: mockUserId });
     (useAppSelector as jest.Mock).mockImplementation((selector) =>
       selector({
-        user: { userData: mockUser },
-        userProfile: { profile: null },
+        userProfile: { profile: mockUserProfile },
       })
     );
   });
@@ -43,12 +50,14 @@ describe("Profile Component", () => {
 
   it("dispatches fetchUserProfile on component mount", () => {
     render(<Profile />);
-    expect(mockDispatch).toHaveBeenCalledWith(fetchUserProfile(mockUser._id));
+    expect(mockDispatch).toHaveBeenCalledWith(fetchUserProfile(mockUserId));
   });
 
-  it("displays the user's ID", () => {
+  it("displays the user's fullName", () => {
     render(<Profile />);
-    const userIdDisplay = screen.getByText(mockUser._id);
-    expect(userIdDisplay).toBeInTheDocument();
+
+    const userNameDisplay = screen.getByText(mockUserProfile.fullName);
+
+    expect(userNameDisplay).toBeInTheDocument();
   });
 });

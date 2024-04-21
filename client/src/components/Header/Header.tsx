@@ -90,11 +90,11 @@ const Header = (): JSX.Element => {
               href="#!"
               className="block px-4 py-2 text-sm text-white hover:bg-gray-800"
               onClick={() => {
-                navigate("/app/profile");
+                navigate("/app/editProfile");
                 setShowDropdown(false);
               }}
             >
-              Go to Profile
+              Edit Profile
             </a>
             <a
               href="#!"

@@ -1,23 +1,71 @@
-interface ISocial {
-  linkedIn?: string;
-  github?: string;
+import { Document, ObjectId } from "mongoose";
+
+interface ISocialLinks {
   twitter?: string;
-  facebook?: string;
-  instagram?: string;
+  blog?: string;
+  other?: string[];
 }
 
-interface IJob {
+interface IProject {
+  name: string;
+  description?: string;
+  link?: string;
+}
+
+interface ICareerPosition {
   title?: string;
   company?: string;
-  description?: string;
-  date?: Date;
+  startDate?: Date;
+  endDate?: Date;
 }
 
-export interface IProfile {
-  user: string;
-  firstName: string;
-  lastName: string;
-  bio?: string;
-  job?: IJob;
-  socials?: ISocial;
+interface IEducation {
+  institution: string;
+  degree?: string;
+  fieldOfStudy?: string;
+  startDate?: Date;
+  endDate?: Date;
+}
+
+interface ITestimonial {
+  from: string;
+  relation?: string;
+  text: string;
+}
+
+interface IBlogOrWriting {
+  title: string;
+  link: string;
+}
+
+export interface IProfile extends Document {
+  user: ObjectId;
+  fullName: string;
+  profilePhoto?: string;
+  cohort?: string;
+  graduationYear?: number;
+  email?: string;
+  linkedInProfile?: string;
+  professionalSummary?: string;
+  skills?: string[];
+  specializations?: string[];
+  careerInformation?: {
+    currentPosition?: {
+      title?: string;
+      company?: string;
+    };
+    pastPositions?: ICareerPosition[];
+  };
+  education?: IEducation[];
+  projects?: IProject[];
+  personalBio?: string;
+  testimonials?: ITestimonial[];
+  socialMediaLinks?: ISocialLinks;
+  availabilityForNetworking?: boolean;
+  bootcampExperience?: string;
+  achievementsAndCertifications?: string[];
+  volunteerWork?: string[];
+  eventParticipation?: string[];
+  gallery?: string[];
+  blogOrWriting?: IBlogOrWriting[];
 }
