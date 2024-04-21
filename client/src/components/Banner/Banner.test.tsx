@@ -62,7 +62,7 @@ describe("Banner Component", () => {
     const optionsButton = screen.getByRole("button", { name: "Options" });
     fireEvent.click(optionsButton);
 
-    const profileOption = screen.getByText("Go to Profile");
+    const profileOption = screen.getByText("Edit Profile");
     const logoutOption = screen.getByText("Logout");
 
     expect(profileOption).toBeInTheDocument();
@@ -74,10 +74,10 @@ describe("Banner Component", () => {
     const optionsButton = screen.getByRole("button", { name: "Options" });
     fireEvent.click(optionsButton);
 
-    const profileOption = screen.getByText("Go to Profile");
+    const profileOption = screen.getByText("Edit Profile");
     fireEvent.click(profileOption);
 
-    expect(mockNavigate).toHaveBeenCalledWith("profile");
+    expect(mockNavigate).toHaveBeenCalledWith("editProfile");
   });
 
   it("handles logout on clicking Logout", () => {

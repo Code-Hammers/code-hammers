@@ -2,6 +2,7 @@ import React from "react";
 import { create } from "react-test-renderer";
 import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
+import { BrowserRouter } from "react-router-dom";
 
 import Profiles from "./Profiles";
 
@@ -27,7 +28,9 @@ describe("MainPage Component", () => {
     const store = mockStore(initialState);
     const tree = create(
       <Provider store={store}>
-        <Profiles />
+        <BrowserRouter>
+          <Profiles />
+        </BrowserRouter>
       </Provider>
     ).toJSON();
     expect(tree).toMatchSnapshot();

@@ -1,6 +1,15 @@
 import Profile from "../models/profileModel";
 import { Request, Response, NextFunction } from "express";
 import { IProfile } from "../types/profile";
+import AWS from "aws-sdk";
+
+AWS.config.update({
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REGION,
+});
+
+const s3 = new AWS.S3();
 
 // ENDPOINT  POST api/profiles/create
 // PURPOSE   Create a new profile
@@ -10,31 +19,75 @@ const createProfile = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { user, firstName, lastName, bio, job, socials } = req.body;
+  const {
+    user,
+    fullName,
+    profilePhoto,
+    cohort,
+    graduationYear,
+    email,
+    linkedInProfile,
+    professionalSummary,
+    skills,
+    specializations,
+    careerInformation,
+    education,
+    projects,
+    personalBio,
+    testimonials,
+    socialMediaLinks,
+    availabilityForNetworking,
+    bootcampExperience,
+    achievementsAndCertifications,
+    volunteerWork,
+    eventParticipation,
+    gallery,
+    blogOrWriting,
+  } = req.body;
 
   try {
-    const profile: IProfile = await Profile.create({
+    const profile = await Profile.create({
       user,
-      firstName,
-      lastName,
-      bio,
-      job,
-      socials,
+      fullName,
+      profilePhoto,
+      cohort,
+      graduationYear,
+      email,
+      linkedInProfile,
+      professionalSummary,
+      skills,
+      specializations,
+      careerInformation,
+      education,
+      projects,
+      personalBio,
+      testimonials,
+      socialMediaLinks,
+      availabilityForNetworking,
+      bootcampExperience,
+      achievementsAndCertifications,
+      volunteerWork,
+      eventParticipation,
+      gallery,
+      blogOrWriting,
     });
 
     if (profile) {
       return res.status(201).json(profile);
     }
   } catch (error) {
+    console.error(error);
     return next({
       log: "Express error in createProfile Middleware",
       status: 500,
-      message: { err: "An error occurred during profile creation" },
+      message: {
+        err: "An error occurred during profile creation. Please try again.",
+      },
     });
   }
 };
 
-// ENDPOINT  PATCH api/profiles/:UserID
+// ENDPOINT  PUT api/profiles/:UserID
 // PURPOSE   Update an existing profile
 // ACCESS    Private
 const updateProfile = async (
@@ -43,13 +96,12 @@ const updateProfile = async (
   next: NextFunction
 ) => {
   const { userID } = req.params;
-  const { firstName, lastName, bio, job, socials } = req.body;
+  const { fullName, email, personalBio } = req.body;
+
   const newProfile = {
-    firstName,
-    lastName,
-    bio,
-    job,
-    socials,
+    fullName,
+    email,
+    personalBio,
   };
 
   try {
@@ -95,7 +147,21 @@ const getAllProfiles = async (
         message: { err: "There were no profiles to retrieve" },
       });
     } else {
-      return res.status(201).json(profiles);
+      const processedProfiles = await Promise.all(
+        profiles.map(async (profile) => {
+          if (profile.profilePhoto) {
+            const presignedUrl = s3.getSignedUrl("getObject", {
+              Bucket: process.env.BUCKET_NAME,
+              Key: profile.profilePhoto,
+              Expires: 60 * 5,
+            });
+            profile.profilePhoto = presignedUrl;
+          }
+          return profile.toObject();
+        })
+      );
+
+      return res.status(201).json(processedProfiles);
     }
   } catch (error) {
     return next({
@@ -124,9 +190,17 @@ const getProfileById = async (
         status: 404,
         message: { err: "An error occurred during profile retrieval" },
       });
-    } else {
-      return res.status(200).json(profile);
     }
+    if (profile.profilePhoto) {
+      const presignedUrl = s3.getSignedUrl("getObject", {
+        Bucket: process.env.BUCKET_NAME,
+        Key: profile.profilePhoto,
+        Expires: 60 * 5,
+      });
+      profile.profilePhoto = presignedUrl;
+    }
+
+    return res.status(200).json(profile);
   } catch (error) {
     return next({
       log: "Express error in getProfileById Middleware",
