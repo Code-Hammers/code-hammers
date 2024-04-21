@@ -11,6 +11,7 @@ const createThread = async (
   res: Response,
   next: NextFunction
 ) => {
+  console.log("TEST!");
   const { forumId } = req.params;
   const { title, content } = req.body;
 
