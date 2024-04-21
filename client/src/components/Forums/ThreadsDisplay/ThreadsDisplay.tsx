@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import CreateThread from "../CreateThread/CreateThread";
 import { Thread, IForum } from "../../../../types/forums";
 
 interface ThreadsDisplayProps {
@@ -15,6 +16,7 @@ const ThreadsDisplay: React.FC<ThreadsDisplayProps> = ({
   const [forum, setForum] = useState<IForum | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [creatingThread, setCreatingThread] = useState(false);
 
   useEffect(() => {
     const fetchForumAndThreads = async () => {
@@ -42,7 +44,11 @@ const ThreadsDisplay: React.FC<ThreadsDisplayProps> = ({
     };
 
     fetchForumAndThreads();
-  }, [forumId]);
+  }, [forumId, creatingThread]);
+
+  const toggleCreateThread = () => {
+    setCreatingThread(!creatingThread);
+  };
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -52,6 +58,18 @@ const ThreadsDisplay: React.FC<ThreadsDisplayProps> = ({
       <h3 className="text-xl font-bold mb-4">
         {forum ? `Showing threads for ${forum.title}` : "Showing all threads"}
       </h3>
+      {forumId && (
+        <button
+          onClick={toggleCreateThread}
+          className="mb-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          {creatingThread ? "Cancel" : "Create New Thread"}
+        </button>
+      )}
+      {creatingThread && (
+        <CreateThread forumId={forumId} onClose={toggleCreateThread} />
+      )}
+
       <ul>
         {threads.map((thread) => (
           <li
