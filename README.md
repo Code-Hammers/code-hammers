@@ -1,11 +1,182 @@
-# Code Hammers
+# Welcome to Code Hammers!
 
-## dev environment setup
+The journey of learning to code continues after graduation. Code Hammers was
+created to give Codesmith alumni the opportunity to work together and build
+something useful for the community.
 
-- Clone the repo down to your local machine.
-- Before servers are spun up you will need to run the initial tailwind script.
-  - In the **client** folder run **npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch** in your terminal. You will be prompted to install Tailwind - Choose YES. This will run the inital css build. It will also leave it running and provide live compiles for any changes to styling.
-- Open a new terminal and in the **root** run **npm run docker-dev**. This will spin up the containerized backend server and a localhost render on 8080.
-- Login credentials for testing are email: tester@codehammers.com, password: ilovetesting
+As you know, alums have access to the Codesmith intranet. While, the intranet is
+a staple for many during the job search, it lacks a bit of flair. Thus the idea
+to create a robust intranet for alumni. Enter Code Hammers!
 
-You will need to set up the .env file. This should include **"NODE_ENV=development"** as well as any database connection strings, api keys, seeder phrases as required.
+## Why Contribute?
+
+Building and contributing is the best way to learn how to code! We wanted to
+provide the opportunity for those looking to sharpen their skills to contribute
+to a large codebase.
+
+1. Experience the development workflow on a much greater scale
+2. Receive code reviews and guidance on tasks
+3. Work with engineers currently in the industry (get those referrals!)
+4. It's FUN!!!
+
+## Table of Contents
+
+1. [Dev Environment Setup](#dev-environment-setup)
+2. [Starting the Application](#starting-the-application)
+3. [Style Guide](#style-guide)
+
+## Dev Environment Setup
+
+With any large codebase, there is always going to be some sort of environment
+setup. Code Hammers is a [monorepo](https://en.wikipedia.org/wiki/Monorepo), the
+repo for the frontend code and backend code are contained within one repo. You
+will notice there are multiple `package.json` files. This is not always the
+case!
+
+- Clone the repo
+- Install packages
+- Create an `.env` file
+  - Reach out Sean or Jimmy for all secret variables
+- Run the initial tailwind script
+  - `cd` to the `./client`folder and run
+    `npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch` in your
+    terminal.
+  - You will be prompted to install Tailwind - Choose YES.
+  - This will run the initial CSS build. It will also leave it running and
+    provide live compiles for any changes to styling.
+
+## Starting the Application
+
+There are a few ways to spin up Code Hammers. Scripts are provided for your
+convenience.
+
+- `npm run docker-dev`
+  - This will build containers for the entire application
+- `npm run dev-ts`
+  - This will start both the webpack-dev-server for frontend and the backend
+    server
+- Login credentials
+  - **Email:** tester@codehammers.com
+  - **Password:** ilovetesting
+
+<!-- ## How to Contribute -->
+
+## Style Guide
+
+We follow the
+[Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript?tab=readme-ov-file).
+Here is a brief refresher, including additional conventions we follow.
+
+### Prefer function expressions with arrow syntax ([why?](https://github.com/airbnb/javascript?tab=readme-ov-file#functions--declarations))
+
+```
+const myFunction = () => {
+  ...
+}
+```
+
+### Destructure objects ([why?](https://github.com/airbnb/javascript?tab=readme-ov-file#destructuring--object))
+
+```
+// Good
+const MyComponent = ({prop1, prop2}) => {
+  ...
+}
+
+// Bad
+const MyComponent = (props) => {
+  const {prop1, prop2} = props;
+}
+
+// Worse
+const MyComponent = (props) => {
+  ...
+  props.prop1
+  props.prop2
+}
+```
+
+### Params
+
+- Never mutate or reassign parameters, instead use a default parameter
+- Place default parameters at the end of the function signature
+
+```
+// Good
+const myFunc = (a, b, c = 3) => {
+  ...
+}
+
+// Bad
+const myFunc = (a = 3, b, c) => {
+  ...
+  b = 5
+}
+```
+
+### Semicolons
+
+- Add a semicolon at the end of each statement.
+  ([why?](https://github.com/airbnb/javascript?tab=readme-ov-file#semicolons--required))
+
+### Single Quotes
+
+- Prefer single quotes for string literals
+
+### Names
+
+- Variables should be `camelCase`, while global constants (i.e. action types)
+  should be `SCREAMING_SNAKE_CASE`
+- Functions should also be in `camelCase`, but names of components should be
+  `PascalCase`
+- Testing IDs, when used, should be in `kebab-case`
+- Names of objects and classes should be `PascalCase`
+
+### Imports
+
+- Imports should be placed at the top of each file
+- Order of preference for imports
+  - Frameworks
+  - Libraries
+  - Modules
+  - Styles
+  - Side-effects
+    ([?](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#import_a_module_for_its_side_effects_only))
+
+```
+// Framework
+import {useState, useEffect} from 'react';
+
+// Library
+import { useNavigate } from 'react-router-dom';
+
+// Modules
+import SomeComponent from '../../SomeComponent';
+import helperFunction from '../../utils/helperFunction';
+
+// Styles
+import styles from './MyComponent.module.scss';
+
+// Side-effect
+import '../../utils/coolEffects';
+```
+
+### Styles
+
+Order CSS styles and JSX class names alphabetically
+
+```
+// styles.css
+.button {
+    display: inline-block;
+    font-size: 16px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+}
+
+// Button.jsx
+...
+<Button className='bg-white border border-green-500 font-semibold rounded shadow'>
+...
+```

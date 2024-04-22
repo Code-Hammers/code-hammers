@@ -4,7 +4,7 @@ import { IProfile } from "../../../types/profile";
 
 export interface ProfileState {
   profile: IProfile | null;
-  status: "idle" | "loading" | "failed";
+  status: "idle" | "loading" | "failed" | "updating";
   error: string | null;
 }
 
@@ -23,6 +23,52 @@ export const fetchUserProfile = createAsyncThunk(
       return response.data;
     } catch (error) {
       let errorMessage = "An error occurred during profile retrieval";
+      if (axios.isAxiosError(error)) {
+        errorMessage = error.response?.data || errorMessage;
+      }
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const updateUserProfile = createAsyncThunk(
+  "profile/updateUserProfile",
+  async (
+    { userID, ...updateData }: Partial<IProfile> & { userID: string },
+    thunkAPI
+  ) => {
+    try {
+      const response = await axios.put(`/api/profiles/${userID}`, updateData);
+      return response.data;
+    } catch (error) {
+      let errorMessage = "An error occurred during profile update";
+      if (axios.isAxiosError(error)) {
+        errorMessage = error.response?.data || errorMessage;
+      }
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const uploadProfilePicture = createAsyncThunk(
+  "profile/uploadProfilePicture",
+  async (
+    { formData, userID }: { formData: FormData; userID: string },
+    thunkAPI
+  ) => {
+    try {
+      const response = await axios.post(
+        `/api/images/profile-picture/${userID}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      let errorMessage = "An error occurred during profile picture upload";
       if (axios.isAxiosError(error)) {
         errorMessage = error.response?.data || errorMessage;
       }
@@ -51,6 +97,28 @@ const userProfileSlice = createSlice({
         state.status = "idle";
       })
       .addCase(fetchUserProfile.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload as string;
+      })
+      .addCase(updateUserProfile.pending, (state) => {
+        state.status = "updating";
+      })
+      .addCase(updateUserProfile.fulfilled, (state, action) => {
+        state.profile = action.payload;
+        state.status = "idle";
+      })
+      .addCase(updateUserProfile.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload as string;
+      })
+      .addCase(uploadProfilePicture.pending, (state) => {
+        state.status = "updating";
+      })
+      .addCase(uploadProfilePicture.fulfilled, (state, action) => {
+        state.profile = action.payload;
+        state.status = "idle";
+      })
+      .addCase(uploadProfilePicture.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload as string;
       });

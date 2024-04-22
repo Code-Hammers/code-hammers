@@ -28,6 +28,13 @@ exports[`Navbar Component renders correctly 1`] = `
     >
       Forums
     </a>
+    <a
+      className="text-teal-600 hover:text-teal-800 transition transform hover:scale-105"
+      href="/app/directory"
+      onClick={[Function]}
+    >
+      Directory
+    </a>
   </div>
 </div>
 `;

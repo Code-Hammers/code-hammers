@@ -10,7 +10,7 @@ import {
 const router = express.Router();
 
 router.post("/", createProfile);
-router.patch("/:userID", updateProfile);
+router.put("/:userID", updateProfile);
 router.get("/:userID", getProfileById);
 router.get("/", getAllProfiles);
 

@@ -16,8 +16,8 @@ const Banner = (): JSX.Element => {
     //TODO CLEAR ALL STATE
   };
 
-  const goToProfile = () => {
-    navigate("profile");
+  const goToEditProfile = () => {
+    navigate("editProfile");
     setShowDropdown(false);
   };
   return (
@@ -40,9 +40,9 @@ const Banner = (): JSX.Element => {
             <a
               href="#!"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              onClick={goToProfile}
+              onClick={goToEditProfile}
             >
-              Go to Profile
+              Edit Profile
             </a>
             <a
               href="#!"
