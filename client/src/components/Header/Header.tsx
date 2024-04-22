@@ -47,12 +47,12 @@ const Header = (): JSX.Element => {
       <div className="flex-grow mx-10">
         <div className="flex justify-evenly space-x-4 md:space-x-6 lg:space-x-10">
           <Link
-            to="/app/main"
+            to="/app/directory"
             className={`text-lg md:text-xl ${
               currentPath === "main" ? "text-gray-300" : "hover:text-gray-300"
             } transition transform hover:scale-105`}
           >
-            MainPage
+            Alumni
           </Link>
           <Link
             to="/app/profiles"
@@ -90,11 +90,11 @@ const Header = (): JSX.Element => {
               href="#!"
               className="block px-4 py-2 text-sm text-white hover:bg-gray-800"
               onClick={() => {
-                navigate("/app/profile");
+                navigate("/app/editProfile");
                 setShowDropdown(false);
               }}
             >
-              Go to Profile
+              Edit Profile
             </a>
             <a
               href="#!"

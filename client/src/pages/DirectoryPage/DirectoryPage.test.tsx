@@ -2,24 +2,25 @@ import React from "react";
 import { create } from "react-test-renderer";
 import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
-import { BrowserRouter } from "react-router-dom";
 
-import Profiles from "./Profiles";
+import DirectoryPage from "./DirectoryPage";
 
 interface State {
-  profiles: {
-    profiles: { user: string }[];
+  alumni: {
+    alumni: any[];
     status: "idle" | "loading" | "failed";
-    error: string | null;
+    page: number;
+    totalPages: number;
   };
 }
 
 const mockStore = configureStore<State>([]);
 const initialState: State = {
-  profiles: {
-    profiles: [{ user: "User1" }, { user: "User2" }],
+  alumni: {
+    alumni: [],
     status: "idle",
-    error: null,
+    page: 1,
+    totalPages: 1,
   },
 };
 
@@ -28,9 +29,7 @@ describe("MainPage Component", () => {
     const store = mockStore(initialState);
     const tree = create(
       <Provider store={store}>
-        <BrowserRouter>
-          <Profiles />
-        </BrowserRouter>
+        <DirectoryPage />
       </Provider>
     ).toJSON();
     expect(tree).toMatchSnapshot();

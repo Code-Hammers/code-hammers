@@ -1,8 +1,8 @@
-import mongoose, { Document } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import bcrypt from "bcryptjs";
 import { IUser } from "../types/user";
 
-const userSchema = new mongoose.Schema<IUser>({
+const userSchema = new Schema<IUser>({
   firstName: {
     type: String,
     required: true,
