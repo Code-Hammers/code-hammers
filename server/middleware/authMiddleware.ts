@@ -1,9 +1,9 @@
 import jwt from "jsonwebtoken";
 import User from "../models/userModel";
 import asyncHandler from "express-async-handler";
-import { Request } from "express";
+import { CustomRequest } from "../types/customRequest";
 
-const protect = asyncHandler(async (req, res, next) => {
+const protect = asyncHandler(async (req: CustomRequest, res, next) => {
   let token;
   console.log("PROTECT HIT");
   console.log(req.headers);
@@ -24,7 +24,7 @@ const protect = asyncHandler(async (req, res, next) => {
       const user = await User.findById(decoded.id).select("-password");
 
       if (!user) throw new Error("User not found");
-
+      req.user = { id: user._id.toString() };
       res.locals.user = user;
       next();
     } catch (error) {
