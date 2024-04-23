@@ -1,8 +1,8 @@
 version: "3"
 services:
   dev:
-    image: brok3turtl3/codehammers:latest
-    container_name: mm-ch-dev
+    image: codehammers/ch-dev:latest
+    container_name: ch-dev
     ports:
       - "8080:8080"
     volumes:
