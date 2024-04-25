@@ -30,13 +30,16 @@ app.use("/api/forums", forumRoutes);
 app.use("/api/devRoutes", devRoutes);
 
 console.log(`ENV BEFORE CHECK: ${process.env.NODE_ENV}`);
+console.log("TEST");
+console.log(path.join(__dirname, "../../client/build"));
+console.log(path.resolve(__dirname, "../../client/build/index.html"));
 
-if (process.env.NODE_ENV === "test") {
+if (process.env.NODE_ENV === "production") {
   console.log(`SERVER STARTED IN PRODUCTION`);
-  app.use(express.static(path.join(__dirname, "../client/build")));
+  app.use(express.static(path.join(__dirname, "../../client/build")));
 
   app.get("*", (req: Request, res: Response) =>
-    res.sendFile(path.resolve(__dirname, "../client/build/index.html"))
+    res.sendFile(path.resolve(__dirname, "../../client/build/index.html"))
   );
 } else {
   console.log("SERVER STARTED IN DEV");
