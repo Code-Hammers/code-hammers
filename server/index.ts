@@ -21,6 +21,10 @@ app.use(cookieParser());
 
 connectDB();
 
+app.get("/health", (req: Request, res: Response) => {
+  res.status(200).send("OK");
+});
+
 app.use("/api/users", userRoutes);
 app.use("/api/profiles", profileRoutes);
 app.use("/api/auth", authRoutes);
