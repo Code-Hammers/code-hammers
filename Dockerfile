@@ -1,30 +1,47 @@
-#SET NODE VERSION
+# Set Node.js version
 FROM node:18.17.1 as builder
 
-#CONTAINER WORKING DIRECTORY
+# Set the working directory
 WORKDIR /usr/src/app
 
-#COPY FILES INTO CONTAINER AT /usr/src/app
+# Copy the package.json files
+COPY package*.json ./
+COPY client/package*.json ./client/
+
+# Install dependencies
+RUN npm install
 COPY . .
 
-#INSTALL ROOT PACKAGES
-RUN npm install
 
-#INSTALL CLIENT PACKAGES
-RUN cd client && npm install && npm run build
+RUN cd client && npm install
 
-#SERVE BUILT FILES
-FROM node:18.17.1
+# Build the client application
+RUN cd client && npm run build
 
-#SET WORKING DIRECTORY
+# Change working directory back to root
 WORKDIR /usr/src/app
 
-#COPY FROM BUILDER STAGE
+# Copy all files
+COPY . .
+
+# Build the server
+RUN npm run build
+
+# Set up the final image
+FROM node:18.17.1
+
+# Set the working directory
+WORKDIR /usr/src/app
+
+# Copy built files from the builder stage
+COPY --from=builder /usr/src/app/dist ./dist
 COPY --from=builder /usr/src/app/client/build ./client/build
 COPY --from=builder /usr/src/app/node_modules ./node_modules
 
-#EXPOSE PORT
+# Expose port
 EXPOSE 80
 
-#DEFAULT CMD TO SERVE BUILT FILES
-CMD ["npx", "serve", "-s", "client/build", "-l", "80"]
+# Start the server
+CMD ["node", "dist/server/index.js"]
+
+

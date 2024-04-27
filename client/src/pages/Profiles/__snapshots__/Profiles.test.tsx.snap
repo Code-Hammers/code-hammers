@@ -1,37 +1,59 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MainPage Component renders correctly 1`] = `
-[
-  <div
-    className="min-h-screen bg-gray-100 flex flex-col items-center justify-center"
+<div
+  className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-start pt-20 p-4"
+>
+  <h1
+    className="text-4xl font-extrabold mb-4 mt-16"
   >
-    <h1
-      className="text-4xl font-extrabold mb-4"
+    PROFILES
+  </h1>
+  <div
+    className="w-full max-w-6xl p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+  >
+    <a
+      className="shadow-lg rounded-lg overflow-hidden transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl"
+      href="/app/profile/User1"
+      onClick={[Function]}
     >
-      PROFILES
-    </h1>
-  </div>,
-  <div>
-    <div
-      className="min-h-screen bg-gray-100 flex flex-col items-center justify-center"
+      <div
+        className="bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 text-white p-4 rounded-lg flex flex-col items-center justify-center h-64 w-64"
+      >
+        <img
+          alt="Default Profile"
+          className="rounded-full h-24 w-24 object-cover mb-4"
+          src="https://picsum.photos/200"
+        />
+        <h1
+          className="text-xl font-bold mb-2"
+        />
+        <h2
+          className="text-md mb-2"
+        />
+      </div>
+    </a>
+    <a
+      className="shadow-lg rounded-lg overflow-hidden transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl"
+      href="/app/profile/User2"
+      onClick={[Function]}
     >
-      <h1
-        className="text-4xl font-extrabold mb-4"
-      />
-      <h2
-        className="text-4xl font-extrabold mb-4"
-      />
-    </div>
-    <div
-      className="min-h-screen bg-gray-100 flex flex-col items-center justify-center"
-    >
-      <h1
-        className="text-4xl font-extrabold mb-4"
-      />
-      <h2
-        className="text-4xl font-extrabold mb-4"
-      />
-    </div>
-  </div>,
-]
+      <div
+        className="bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 text-white p-4 rounded-lg flex flex-col items-center justify-center h-64 w-64"
+      >
+        <img
+          alt="Default Profile"
+          className="rounded-full h-24 w-24 object-cover mb-4"
+          src="https://picsum.photos/200"
+        />
+        <h1
+          className="text-xl font-bold mb-2"
+        />
+        <h2
+          className="text-md mb-2"
+        />
+      </div>
+    </a>
+  </div>
+</div>
 `;

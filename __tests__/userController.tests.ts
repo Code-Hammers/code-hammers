@@ -26,6 +26,7 @@ describe("User Controller Tests", () => {
       status: jest.fn().mockReturnThis(),
       json: jest.fn(),
       locals: {},
+      cookie: jest.fn().mockReturnThis(),
     };
   });
 
@@ -53,14 +54,17 @@ describe("User Controller Tests", () => {
         mockNext
       );
 
-      expect(mockResponse.json).toHaveBeenCalledWith(
-        expect.objectContaining({
-          _id: "someId",
-          firstName: "John",
-          lastName: "Doh",
-          email: "john@example.com",
-          token: "someFakeToken",
-        })
+      expect(mockResponse.json).toHaveBeenCalledWith({
+        _id: "someId",
+        firstName: "John",
+        lastName: "Doh",
+        email: "john@example.com",
+      });
+
+      expect(mockResponse.cookie).toHaveBeenCalledWith(
+        "token",
+        "someFakeToken",
+        expect.any(Object)
       );
     });
   });
@@ -84,14 +88,16 @@ describe("User Controller Tests", () => {
         mockNext
       );
 
-      expect(mockResponse.json).toHaveBeenCalledWith(
-        expect.objectContaining({
-          _id: "someId",
-          firstName: "John",
-          lastName: "Doh",
-          email: "john@example.com",
-          token: "someFakeToken",
-        })
+      expect(mockResponse.json).toHaveBeenCalledWith({
+        _id: "someId",
+        firstName: "John",
+        lastName: "Doh",
+        email: "john@example.com",
+      });
+      expect(mockResponse.cookie).toHaveBeenCalledWith(
+        "token",
+        "someFakeToken",
+        expect.any(Object)
       );
     });
   });

@@ -1,8 +1,8 @@
-import mongoose, { Document } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import bcrypt from "bcryptjs";
 import { IUser } from "../types/user";
 
-const userSchema = new mongoose.Schema<IUser>({
+const userSchema = new Schema<IUser>({
   firstName: {
     type: String,
     required: true,
@@ -50,6 +50,6 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
-const User = mongoose.model<IUser>("users", userSchema);
+const User = mongoose.model<IUser>("User", userSchema);
 
 export default User;

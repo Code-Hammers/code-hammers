@@ -2,6 +2,7 @@ import User from "../models/userModel";
 import generateToken from "../utils/generateToken";
 import { Request, Response, NextFunction } from "express";
 import { UserType } from "../types/user";
+import GraduateInvitation from "../models/graduateInvitationModel";
 
 // ENDPOINT  POST api/users/register
 // PURPOSE   Register a new user
@@ -12,11 +13,26 @@ const registerUser = async (
   next: NextFunction
 ) => {
   const { firstName, lastName, email, password } = req.body;
+  const { token } = req.query;
 
   try {
     const isValidEmail = email.match(/[\w\d\.]+@[a-z]+\.[\w]+$/gim);
     if (!isValidEmail) {
       return res.status(400).json("Invalid Email");
+    }
+
+    const invitation = await GraduateInvitation.findOne({
+      email,
+      token,
+      tokenExpiry: { $gt: new Date() },
+      isRegistered: false,
+    });
+
+    //TODO Needs better error handling - this can trigger with situaions other than bad or missing token
+    if (!invitation) {
+      return res
+        .status(400)
+        .json({ message: "Invalid or expired registration token" });
     }
     const userExists: UserType | null = await User.findOne({ email });
     if (userExists) {
@@ -30,13 +46,16 @@ const registerUser = async (
     });
 
     if (user) {
+      invitation.isRegistered = true;
+      await invitation?.save();
       res.locals.user = {
         _id: user._id,
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
-        token: generateToken(user._id.toString()),
       };
+
+      res.cookie("token", generateToken(user._id.toString()));
       return res.status(201).json(res.locals.user);
     }
   } catch (error) {
@@ -76,8 +95,15 @@ const authUser = async (req: Request, res: Response, next: NextFunction) => {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
-        token: generateToken(user._id.toString()),
       };
+      const token = generateToken(user._id.toString());
+
+      res.cookie("token", token, {
+        httpOnly: true,
+        expires: new Date(Date.now() + 3600000),
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+      });
       return res.status(200).json(res.locals.user);
     } else {
       return res.status(401).json({ msg: "Incorrect password" }); //TODO Move to global error handler
