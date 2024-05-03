@@ -25,7 +25,8 @@ describe("Profile Component", () => {
   const mockUserId = "123456";
   const mockUserProfile = {
     user: mockUserId,
-    fullName: "John Doe",
+    firstName: "John",
+    lastName: "Doh",
   };
   //TODO MOCK BETTER USERPROFILE DATA??
   beforeEach(() => {
@@ -56,7 +57,9 @@ describe("Profile Component", () => {
   it("displays the user's fullName", () => {
     render(<Profile />);
 
-    const userNameDisplay = screen.getByText(mockUserProfile.fullName);
+    const userNameDisplay = screen.getByText(
+      `${mockUserProfile.firstName} ${mockUserProfile.lastName}`
+    );
 
     expect(userNameDisplay).toBeInTheDocument();
   });

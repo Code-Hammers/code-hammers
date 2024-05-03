@@ -3,7 +3,8 @@ import { IProfile } from "../types/profile";
 
 const profileSchema = new Schema<IProfile>({
   user: { type: Schema.Types.ObjectId, ref: "User", required: true },
-  fullName: { type: String, required: true },
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true },
   profilePhoto: String,
   cohort: String,
   graduationYear: Number,

@@ -1,4 +1,5 @@
 import User from "../models/userModel";
+import Profile from "../models/profileModel";
 import generateToken from "../utils/generateToken";
 import { Request, Response, NextFunction } from "express";
 import { UserType } from "../types/user";
@@ -39,8 +40,8 @@ const registerUser = async (
       return res.status(400).json({ message: "User already exists!" });
     }
     const user: UserType = await User.create({
-      firstName,
-      lastName,
+      firstName: invitation.firstName,
+      lastName: invitation.lastName,
       email,
       password,
     });
@@ -48,6 +49,11 @@ const registerUser = async (
     if (user) {
       invitation.isRegistered = true;
       await invitation?.save();
+      await Profile.create({
+        user: user._id,
+        firstName: invitation.firstName,
+        lastName: invitation.lastName,
+      });
       res.locals.user = {
         _id: user._id,
         firstName: user.firstName,
