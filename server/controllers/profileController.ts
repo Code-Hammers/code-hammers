@@ -96,10 +96,11 @@ const updateProfile = async (
   next: NextFunction
 ) => {
   const { userID } = req.params;
-  const { fullName, email, personalBio } = req.body;
+  const { firstName, lastName, email, personalBio } = req.body;
 
   const newProfile = {
-    fullName,
+    firstName,
+    lastName,
     email,
     personalBio,
   };

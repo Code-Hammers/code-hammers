@@ -6,7 +6,8 @@ export interface IGraduateInvitation extends Document {
   tokenExpiry: Date;
   isRegistered: boolean;
   createdAt?: Date;
-  name?: string;
+  firstName: string;
+  lastName: string;
   registeredAt?: Date;
   lastEmailSent?: Date;
 }

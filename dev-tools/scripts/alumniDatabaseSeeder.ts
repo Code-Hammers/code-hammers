@@ -3,8 +3,8 @@ import GraduateInvitation from "../../server/models/graduateInvitationModel";
 import crypto from "crypto";
 
 const alumniList = [
-  { email: "J@email.com", name: "Jane Doe" },
-  { email: "Jh@email.com", name: "John Doe" },
+  { email: "jane@codehammers.com", firstName: "Jane", lastName: "Doh" },
+  { email: "john@codehammers.com", firstName: "John", lastName: "Doh" },
 ];
 
 const generateToken = () => {
@@ -20,7 +20,8 @@ export const seedDatabase = async () => {
     tokenExpiry: new Date(Date.now() + 48 * 60 * 60 * 1000),
     isRegistered: false,
     createdAt: new Date(),
-    name: alumnus.name,
+    firstName: alumnus.firstName,
+    lastName: alumnus.lastName,
     lastEmailSent: new Date(),
   }));
 
