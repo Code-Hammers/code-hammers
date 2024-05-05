@@ -83,7 +83,7 @@ const RegistrationPage: React.FC = () => {
               First Name
             </label>
             <input
-              className="appearance-none border-2 border-gray-700 rounded w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:border-blue-500"
+              className="appearance-none border-2 border-gray-700 rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:border-blue-500"
               id="firstName"
               name="firstName"
               type="text"
@@ -100,7 +100,7 @@ const RegistrationPage: React.FC = () => {
               Last Name
             </label>
             <input
-              className="appearance-none border-2 border-gray-700 rounded w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:border-blue-500"
+              className="appearance-none border-2 border-gray-700 rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:border-blue-500"
               id="lastName"
               name="lastName"
               type="text"
@@ -117,7 +117,7 @@ const RegistrationPage: React.FC = () => {
               Email
             </label>
             <input
-              className="appearance-none border-2 border-gray-700 rounded w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:border-blue-500"
+              className="appearance-none border-2 border-gray-700 rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:border-blue-500"
               id="email"
               name="email"
               type="email"
@@ -134,7 +134,7 @@ const RegistrationPage: React.FC = () => {
               Password
             </label>
             <input
-              className="appearance-none border-2 border-gray-700 rounded w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:border-blue-500"
+              className="appearance-none border-2 border-gray-700 rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:border-blue-500"
               id="password"
               name="password"
               type="password"
@@ -151,7 +151,7 @@ const RegistrationPage: React.FC = () => {
               Password
             </label>
             <input
-              className="appearance-none border-2 border-gray-700 rounded w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:border-blue-500"
+              className="appearance-none border-2 border-gray-700 rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:border-blue-500"
               id="password2"
               name="password2"
               type="password"
