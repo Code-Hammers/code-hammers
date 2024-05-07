@@ -39,10 +39,10 @@ const Header = (): JSX.Element => {
       className="fixed top-0 left-0 right-0 bg-gray-600 text-white p-4 md:p-6 flex items-center justify-between"
       style={{ margin: "10px 20px 0 20px", zIndex: 1000 }}
     >
-      <div className="flex items-center">
+      <Link to="/app/main" className="flex items-center">
         <img src={logo} alt="Code Hammers Logo" className="h-12 md:h-16" />
         <h1 className="ml-3 text-xl md:text-2xl font-bold">Code Hammers</h1>
-      </div>
+      </Link>
 
       <div className="flex-grow mx-10">
         <div className="flex justify-evenly space-x-4 md:space-x-6 lg:space-x-10">
