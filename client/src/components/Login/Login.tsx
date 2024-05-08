@@ -48,7 +48,7 @@ const Login: React.FC = () => {
             Email
           </label>
           <input
-            className="appearance-none border-2 border-gray-700 rounded w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:border-blue-500"
+            className="appearance-none border-2 border-gray-700 rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:border-blue-500"
             id="email"
             name="email"
             type="email"
@@ -65,7 +65,7 @@ const Login: React.FC = () => {
             Password
           </label>
           <input
-            className="appearance-none border-2 border-gray-700 rounded w-full py-2 px-3 text-gray-300 mb-3 leading-tight focus:outline-none focus:border-blue-500"
+            className="appearance-none border-2 border-gray-700 rounded w-full py-2 px-3 text-gray-900 mb-3 leading-tight focus:outline-none focus:border-blue-500"
             id="password"
             name="password"
             type="password"

@@ -40,7 +40,8 @@ interface IBlogOrWriting {
 
 export interface IProfile extends Document {
   user: ObjectId;
-  fullName: string;
+  firstName: string;
+  lastName: string;
   profilePhoto?: string;
   cohort?: string;
   graduationYear?: number;

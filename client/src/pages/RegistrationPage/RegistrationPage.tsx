@@ -9,6 +9,7 @@ const RegistrationPage: React.FC = () => {
     lastName: "",
     email: "",
     password: "",
+    password2: "",
   });
 
   const location = useLocation();
@@ -31,6 +32,8 @@ const RegistrationPage: React.FC = () => {
       console.error("Token is missing.");
       return; //TODO Display error feedback for user
     }
+    //TODO User feedback needed
+    if (formData.password !== formData.password2) return;
     try {
       const response = await fetch(`/api/users/register?token=${token}`, {
         method: "POST",
@@ -63,24 +66,24 @@ const RegistrationPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center">
+    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-xs">
         <h1 className="text-4xl font-extrabold mb-4 text-center">
           Registration Page
         </h1>
         <form
-          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+          className="bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 shadow-lg rounded px-8 pt-6 pb-8 mb-4"
           onSubmit={handleSubmit}
         >
           <div className="mb-4">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-gray-300 text-sm font-bold mb-2"
               htmlFor="firstName"
             >
               First Name
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="appearance-none border-2 border-gray-700 rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:border-blue-500"
               id="firstName"
               name="firstName"
               type="text"
@@ -91,13 +94,13 @@ const RegistrationPage: React.FC = () => {
           </div>
           <div className="mb-4">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-gray-300 text-sm font-bold mb-2"
               htmlFor="lastName"
             >
               Last Name
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="appearance-none border-2 border-gray-700 rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:border-blue-500"
               id="lastName"
               name="lastName"
               type="text"
@@ -108,13 +111,13 @@ const RegistrationPage: React.FC = () => {
           </div>
           <div className="mb-4">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-gray-300 text-sm font-bold mb-2"
               htmlFor="email"
             >
               Email
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="appearance-none border-2 border-gray-700 rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:border-blue-500"
               id="email"
               name="email"
               type="email"
@@ -125,17 +128,34 @@ const RegistrationPage: React.FC = () => {
           </div>
           <div className="mb-6">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-gray-300 text-sm font-bold mb-2"
               htmlFor="password"
             >
               Password
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              className="appearance-none border-2 border-gray-700 rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:border-blue-500"
               id="password"
               name="password"
               type="password"
               value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="mb-6">
+            <label
+              className="block text-gray-300 text-sm font-bold mb-2"
+              htmlFor="password2"
+            >
+              Password
+            </label>
+            <input
+              className="appearance-none border-2 border-gray-700 rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:border-blue-500"
+              id="password2"
+              name="password2"
+              type="password"
+              value={formData.password2}
               onChange={handleChange}
               required
             />
