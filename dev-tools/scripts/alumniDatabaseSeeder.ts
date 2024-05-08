@@ -2,8 +2,24 @@ import GraduateInvitation from "../../server/models/graduateInvitationModel";
 import crypto from "crypto";
 
 const alumniList = [
-  { email: "jane@codehammers.com", firstName: "Jane", lastName: "Doh" },
-  { email: "john@codehammers.com", firstName: "John", lastName: "Doh" },
+  {
+    email: "jane@codehammers.com",
+    firstName: "Jane",
+    lastName: "Doh",
+    cohort: "ECRI-TEST",
+  },
+  {
+    email: "john@codehammers.com",
+    firstName: "John",
+    lastName: "Doh",
+    cohort: "ECRI-TEST",
+  },
+  {
+    email: "test@codehammers.com",
+    firstName: "TEST",
+    lastName: "Doh",
+    cohort: "ECRI-TEST",
+  },
 ];
 
 const generateToken = () => {
@@ -37,11 +53,12 @@ export const seedDatabase = async () => {
       newInvitations.push({
         email: alumnus.email,
         token: generateToken(),
-        tokenExpiry: new Date(Date.now() + 48 * 60 * 60 * 1000),
+        tokenExpiry: new Date(Date.now() + 72 * 60 * 60 * 1000),
         isRegistered: false,
         createdAt: new Date(),
         firstName: alumnus.firstName,
         lastName: alumnus.lastName,
+        cohort: alumnus.cohort,
         lastEmailSent: new Date(),
       });
     }

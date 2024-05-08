@@ -8,6 +8,7 @@ export interface IGraduateInvitation extends Document {
   createdAt?: Date;
   firstName: string;
   lastName: string;
+  cohort: string;
   registeredAt?: Date;
   lastEmailSent?: Date;
 }
