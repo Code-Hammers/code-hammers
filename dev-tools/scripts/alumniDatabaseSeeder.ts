@@ -26,6 +26,13 @@ export const seedDatabase = async () => {
         Date.now() + 72 * 60 * 60 * 1000
       );
       existingInvitation.lastEmailSent = new Date();
+
+      try {
+        await existingInvitation.save();
+        console.log(`Updated invitation for ${alumnus.email}`);
+      } catch (error) {
+        console.error(`Error updating invitation for ${alumnus.email}:`, error);
+      }
     } else if (!existingInvitation) {
       newInvitations.push({
         email: alumnus.email,
