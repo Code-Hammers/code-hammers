@@ -53,6 +53,7 @@ const registerUser = async (
         user: user._id,
         firstName: invitation.firstName,
         lastName: invitation.lastName,
+        cohort: invitation.cohort,
       });
       res.locals.user = {
         _id: user._id,

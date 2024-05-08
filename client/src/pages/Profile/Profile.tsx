@@ -24,6 +24,7 @@ const Profile = (): JSX.Element => {
         <h2 className="text-xl font-bold mb-2">
           {userProfile?.firstName} {userProfile?.lastName}
         </h2>
+        <h3>{userProfile?.cohort}</h3>
         <p className="text-lg mb-4">{userProfile?.personalBio}</p>
       </div>
     </div>

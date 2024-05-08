@@ -26,6 +26,7 @@ const graduateInvitationSchema = new mongoose.Schema<IGraduateInvitation>({
   },
   firstName: String,
   lastName: String,
+  cohort: String,
   registeredAt: Date,
   lastEmailSent: {
     type: Date,
