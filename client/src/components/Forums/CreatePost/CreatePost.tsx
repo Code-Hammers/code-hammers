@@ -47,7 +47,7 @@ const CreatePost: React.FC<CreatePostProps> = ({
   return (
     <form onSubmit={handleSubmit}>
       <textarea
-        className="w-full rounded border p-2"
+        className="w-full rounded border p-2 text-gray-900"
         placeholder="Write your response..."
         value={content}
         onChange={handleChange}
