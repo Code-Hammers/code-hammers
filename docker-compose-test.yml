@@ -2,7 +2,7 @@ version: "3"
 
 services:
   test:
-    image: brok3turtl3/codehammers:latest
+    image: codehammers/cd-testv1:latest
     container_name: ch-test
     ports:
       - "3000:3000"
