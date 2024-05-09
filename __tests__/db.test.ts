@@ -10,14 +10,14 @@ jest.mock("mongoose", () => ({
 }));
 
 describe("connectDB", () => {
-  let mockExit: jest.SpyInstance<void, [code?: string | number | undefined | null]>;
+  let mockExit: jest.SpyInstance;
   let mockConsoleError: jest.SpyInstance;
   let mockConsoleLog: jest.SpyInstance;
 
   beforeEach(() => {
     mockExit = jest
       .spyOn(process, "exit")
-      .mockImplementation((code?) => undefined as never);
+      .mockImplementation((_code) => undefined as never);
     mockConsoleError = jest.spyOn(console, "error").mockImplementation();
     mockConsoleLog = jest.spyOn(console, "log").mockImplementation();
   });
