@@ -9,6 +9,7 @@ services:
     volumes:
       - ./:/usr/src/app
       - node_modules:/usr/src/app/node_modules
+      - client_node_modules:/usr/src/app/client/node_modules
     depends_on:
       - mongo
     environment:
@@ -25,4 +26,5 @@ services:
 
 volumes:
   node_modules:
+  client_node_modules:
   mongodata:
