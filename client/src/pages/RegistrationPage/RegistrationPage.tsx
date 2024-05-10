@@ -5,8 +5,6 @@ import { loginUser } from "../../features/user/userSlice";
 
 const RegistrationPage: React.FC = () => {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
     email: "",
     password: "",
     password2: "",
