@@ -76,40 +76,6 @@ const RegistrationPage: React.FC = () => {
           <div className="mb-4">
             <label
               className="block text-gray-300 text-sm font-bold mb-2"
-              htmlFor="firstName"
-            >
-              First Name
-            </label>
-            <input
-              className="appearance-none border-2 border-gray-700 rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:border-blue-500"
-              id="firstName"
-              name="firstName"
-              type="text"
-              value={formData.firstName}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              className="block text-gray-300 text-sm font-bold mb-2"
-              htmlFor="lastName"
-            >
-              Last Name
-            </label>
-            <input
-              className="appearance-none border-2 border-gray-700 rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:border-blue-500"
-              id="lastName"
-              name="lastName"
-              type="text"
-              value={formData.lastName}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              className="block text-gray-300 text-sm font-bold mb-2"
               htmlFor="email"
             >
               Email
