@@ -13,6 +13,7 @@ const upload = multer({ storage: storage });
 
 router.post(
   "/profile-picture/:userID",
+  protect,
   upload.single("profilePicture"),
   uploadProfilePicture
 );
