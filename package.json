@@ -5,7 +5,7 @@
   "main": "/dist/index.js",
   "scripts": {
     "start": "node dist/server/index.js",
-    "build": "tsc --build --clean",
+    "build": "tsc --build",
     "test": "jest --detectOpenHandles --coverage",
     "client": "cd client && npm start",
     "server": "node server/index.ts",

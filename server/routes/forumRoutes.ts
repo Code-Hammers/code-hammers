@@ -1,4 +1,6 @@
 import express from "express";
+import { protect } from "../middleware/authMiddleware";
+
 import {
   addForum,
   deleteForum,
@@ -23,11 +25,9 @@ import {
   deletePost,
 } from "../controllers/postController";
 
-import { protect } from "../middleware/authMiddleware"; //TODO Add admin auth middleware
-
 const router = express.Router();
 
-router.get("/threads", getAllThreads);
+router.get("/threads", protect, getAllThreads);
 router.get("/threads/:threadId", protect, getThreadById);
 
 //Forum Routes
