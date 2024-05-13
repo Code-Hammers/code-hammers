@@ -10,7 +10,7 @@ import User from "../server/models/userModel";
 jest.mock("../server/models/userModel", () => ({
   findOne: jest.fn(),
   create: jest.fn(),
-  findOneAndRemove: jest.fn(),
+  findOneAndDelete: jest.fn(),
 }));
 jest.mock("../server/utils/generateToken", () => () => "someFakeToken");
 
@@ -132,7 +132,7 @@ describe("User Controller Tests", () => {
 
   describe("deleteUserByEmail function", () => {
     it("should delete a user by email", async () => {
-      (User.findOneAndRemove as jest.Mock).mockResolvedValue({
+      (User.findOneAndDelete as jest.Mock).mockResolvedValue({
         _id: "someId",
         firstName: "John",
         lastName: "Doh",
