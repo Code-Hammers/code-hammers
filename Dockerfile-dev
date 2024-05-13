@@ -1,24 +1,23 @@
-#SET NODE VERSION
+# Set Node version
 FROM node:18.17.1
 
-#INSTALL WEBPACK GLOBALLY
+# Install webpack globally
 RUN npm install webpack -g
 
-#CONTAINER WORKING DIRECTORY
+# Set the working directory
 WORKDIR /usr/src/app
 
-#COPY FILES INTO CONTANER AT /usr/src/app
-COPY . .
+# Copy both package.json files
+COPY package.json .
+COPY ./client/package.json ./client/
 
-#TYING TO EXPLICITLY COPY THE CLIENT FOLDER
-COPY ./client /usr/src/app/client
-
-#INSTALL ROOT PACKAGES
+# Install root packages
 RUN npm install
 
-#INSTAL CLIENT PACKAGES
+# Install client packages
 RUN cd client && npm install
 
-#EXPOSE THE WEBPACK-DEV-SERVER PORT
+# Expose the webpack-dev-server port
 EXPOSE 3000
+
 

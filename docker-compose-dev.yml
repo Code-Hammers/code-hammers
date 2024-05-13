@@ -1,7 +1,8 @@
 version: "3"
 services:
   dev:
-    image: codehammers/ch-dev:latest
+    #image: codehammers/ch-dev:latest
+    image: codehammers/ch-dev-dep-test:latest
     container_name: ch-dev
     ports:
       - "8080:8080"
