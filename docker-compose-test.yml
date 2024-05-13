@@ -23,6 +23,8 @@ services:
       - "27017:27017"
     environment:
       - MONGO_INITDB_DATABASE=ch-testdb
+    # mute mongo container logs
+    command: mongod --quiet --logpath /dev/null
 
 volumes:
   node_modules:
