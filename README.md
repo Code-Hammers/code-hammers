@@ -34,7 +34,7 @@ will notice there are multiple `package.json` files. This is not always the
 case!
 
 - Clone the repo
-- Create an `.env` file
+- Create an `.env` file in the root
   - Reach out Sean or Jimmy for all secret variables. These will be provided after engineering onboarding is complete.
 
 ## Starting the Application
