@@ -13,6 +13,19 @@ services:
     command: npm run dev-ts
     environment:
       - NODE_ENV=development
+      - DATABASE_URL=postgres://codehammers:ch-dev@postgres:5432/ch-dev-database
+  postgres:
+    image: postgres
+    container_name: codehammers-postgres
+    environment:
+      POSTGRES_DB: ch-dev-database
+      POSTGRES_USER: codehammers
+      POSTGRES_PASSWORD: ch-dev
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
 volumes:
   node_modules:
   client_node_modules:
+  postgres-data:
