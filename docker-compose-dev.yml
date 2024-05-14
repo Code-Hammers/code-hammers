@@ -14,6 +14,8 @@ services:
     environment:
       - NODE_ENV=development
       - DATABASE_URL=postgres://codehammers:ch-dev@postgres:5432/ch-dev-database
+    depends_on:
+      - postgres
   postgres:
     image: postgres
     container_name: codehammers-postgres
