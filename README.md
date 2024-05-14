@@ -34,16 +34,8 @@ will notice there are multiple `package.json` files. This is not always the
 case!
 
 - Clone the repo
-- Install packages
-- Create an `.env` file
-  - Reach out Sean or Jimmy for all secret variables
-- Run the initial tailwind script
-  - `cd` to the `./client`folder and run
-    `npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch` in your
-    terminal.
-  - You will be prompted to install Tailwind - Choose YES.
-  - This will run the initial CSS build. It will also leave it running and
-    provide live compiles for any changes to styling.
+- Create an `.env` file in the root
+  - Reach out Sean or Jimmy for all secret variables. These will be provided after engineering onboarding is complete.
 
 ## Starting the Application
 
@@ -54,7 +46,7 @@ convenience.
   - This will build containers for the entire application
 - `npm run dev-ts`
   - This will start both the webpack-dev-server for frontend and the backend
-    server
+    server and run the app locally. Using this option will require package installs in both the root and client folders.
 - Login credentials
   - **Email:** tester@codehammers.com
   - **Password:** ilovetesting

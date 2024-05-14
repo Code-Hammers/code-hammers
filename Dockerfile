@@ -10,19 +10,13 @@ COPY client/package*.json ./client/
 
 # Install dependencies
 RUN npm install
-COPY . .
-
-
 RUN cd client && npm install
+
+# Copy files
+COPY . .
 
 # Build the client application
 RUN cd client && npm run build
-
-# Change working directory back to root
-WORKDIR /usr/src/app
-
-# Copy all files
-COPY . .
 
 # Build the server
 RUN npm run build

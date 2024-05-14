@@ -25,9 +25,10 @@ module.exports = {
     //REQUIRED FOR DOCKER
     host: "0.0.0.0",
     port: 8080,
-    proxy: {
-      "/api": "http://localhost:3000",
-    },
+    proxy: [{
+      context: ["/api"],
+      target: "http://localhost:3000",
+    }],
     headers: {
       "Access-Control-Allow-Origin": "*",
     },
@@ -59,7 +60,8 @@ module.exports = {
 
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        include: path.resolve(__dirname, 'src'),
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
 
       {

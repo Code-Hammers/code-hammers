@@ -159,7 +159,7 @@ const deleteUserByEmail = async (
   const { email } = req.params;
 
   try {
-    const user: UserType | null = await User.findOneAndRemove({ email });
+    const user: UserType | null = await User.findOneAndDelete({ email });
 
     if (!user) {
       return res.status(404).json({ msg: "User not found!" }); //TODO Move to global error handler

@@ -2,13 +2,14 @@ version: "3"
 
 services:
   test:
-    image: brok3turtl3/codehammers:latest
+    image: codehammers/cd-testv1:latest
     container_name: ch-test
     ports:
       - "3000:3000"
     volumes:
       - ./:/usr/src/app
       - node_modules:/usr/src/app/node_modules
+      - client_node_modules:/usr/src/app/client/node_modules
     depends_on:
       - mongo
     environment:
@@ -22,7 +23,10 @@ services:
       - "27017:27017"
     environment:
       - MONGO_INITDB_DATABASE=ch-testdb
+    # mute mongo container logs
+    command: mongod --quiet --logpath /dev/null
 
 volumes:
   node_modules:
+  client_node_modules:
   mongodata:
