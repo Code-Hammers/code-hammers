@@ -8,6 +8,7 @@ import alumniRoutes from "./routes/alumniRoutes";
 import forumRoutes from "./routes/forumRoutes";
 import devRoutes from "./routes/devRoutes";
 import connectDB from "./config/db";
+import { pool } from "./config/sql-db";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import { notFound, errorHandler } from "./controllers/errorControllers";
@@ -23,6 +24,17 @@ connectDB();
 
 app.get("/health", (req: Request, res: Response) => {
   res.status(200).send("OK");
+});
+
+app.get("/test-db", async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    // Use the pool to check the database connection
+    const result = await pool.query("SELECT NOW()");
+    res.json({ message: "PostgreSQL is connected", result: result.rows });
+  } catch (error) {
+    console.error("Error connecting to PostgreSQL:", error);
+    next(error);
+  }
 });
 
 app.use("/api/users", userRoutes);
