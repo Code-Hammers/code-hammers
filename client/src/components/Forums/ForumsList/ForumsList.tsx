@@ -39,29 +39,13 @@ const ForumsList: React.FC<ForumsListProps> = ({
     fetchForums();
   }, []);
 
-  const testConnection = async () => {
-    try {
-      const response = await axios.get("/api/test-db", {
-        withCredentials: true,
-      });
-      console.log(response.data);
-    } catch (error) {
-      console.error("Error testing database connection:", error);
-    }
-  };
-
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
   return (
     <div>
       <h2 className="text-xl font-bold mb-4">Forums</h2>
-      <button
-        onClick={testConnection}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-        Test Database Connection
-      </button>
+
       <ul>
         <li
           onClick={() => onForumSelect(null)}

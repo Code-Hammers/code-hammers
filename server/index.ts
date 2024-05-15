@@ -7,9 +7,8 @@ import imageRoutes from "./routes/imageRoutes";
 import alumniRoutes from "./routes/alumniRoutes";
 import forumRoutes from "./routes/forumRoutes";
 import devRoutes from "./routes/devRoutes";
-import sqlTest from "./routes/sqlTest";
 import connectDB from "./config/db";
-import { pool } from "./config/sql-db";
+import { connectPG } from "./config/sql-db";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import { notFound, errorHandler } from "./controllers/errorControllers";
@@ -22,21 +21,11 @@ app.use(express.json());
 app.use(cookieParser());
 
 connectDB();
+connectPG();
 
 app.get("/health", (req: Request, res: Response) => {
   res.status(200).send("OK");
 });
-
-// app.get("/test-db", async (req: Request, res: Response, next: NextFunction) => {
-//   try {
-//     // Use the pool to check the database connection
-//     const result = await pool.query("SELECT NOW()");
-//     res.json({ message: "PostgreSQL is connected", result: result.rows });
-//   } catch (error) {
-//     console.error("Error connecting to PostgreSQL:", error);
-//     next(error);
-//   }
-// });
 
 app.use("/api/users", userRoutes);
 app.use("/api/profiles", profileRoutes);
@@ -45,7 +34,6 @@ app.use("/api/images", imageRoutes);
 app.use("/api/alumni", alumniRoutes);
 app.use("/api/forums", forumRoutes);
 app.use("/api/devRoutes", devRoutes);
-app.use("/api/test-db", sqlTest);
 
 console.log(`ENV BEFORE CHECK: ${process.env.NODE_ENV}`);
 console.log("TEST");
