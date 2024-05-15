@@ -62,11 +62,11 @@ const ThreadDetail: React.FC<ThreadDetailProps> = ({ forumId, threadId }) => {
 
   return (
     <div>
-      <h2 className="text-3xl font-bold">{thread.title}</h2>
+      <h2 className="font-bold text-3xl">{thread.title}</h2>
       <p className="my-4">{thread.content}</p>
       <button
         onClick={toggleCreatePost}
-        className="mb-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        className="bg-blue-500 font-bold hover:bg-blue-700 mb-2 py-2 px-4 rounded text-white"
       >
         {creatingPost ? "Cancel" : "Add Reply"}
       </button>
@@ -78,7 +78,7 @@ const ThreadDetail: React.FC<ThreadDetailProps> = ({ forumId, threadId }) => {
         />
       )}
       <div>
-        <h3 className="text-2xl font-bold">Replies</h3>
+        <h3 className="font-bold text-2xl">Replies</h3>
         {posts.map((post) => (
           <div key={post._id} className="mb-4">
             <p>{post.content}</p>
@@ -89,7 +89,7 @@ const ThreadDetail: React.FC<ThreadDetailProps> = ({ forumId, threadId }) => {
             {userID === post.user._id && (
               <button
                 onClick={() => handleDeletePost(post._id)}
-                className="ml-2 bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
+                className="ml-2 bg-red-500 font-bold hover:bg-red-700 py-1 px-2 rounded text-white"
               >
                 Delete
               </button>
