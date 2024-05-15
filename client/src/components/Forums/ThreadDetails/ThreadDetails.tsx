@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useAppSelector } from "../../../app/hooks";
 import CreatePost from "../CreatePost/CreatePost";
 import { Thread, IPost } from "../../../../types/forums";
 
@@ -9,6 +10,7 @@ interface ThreadDetailProps {
 }
 
 const ThreadDetail: React.FC<ThreadDetailProps> = ({ forumId, threadId }) => {
+  const userID = useAppSelector((state) => state.user.userData?._id);
   const [thread, setThread] = useState<Thread | null>(null);
   const [posts, setPosts] = useState<IPost[]>([]);
   const [loading, setLoading] = useState(false);
@@ -84,12 +86,14 @@ const ThreadDetail: React.FC<ThreadDetailProps> = ({ forumId, threadId }) => {
               By {post.user.firstName} {post.user.lastName} on{" "}
               {new Date(post.createdAt).toLocaleDateString()}
             </small>
-            <button
-              onClick={() => handleDeletePost(post._id)}
-              className="ml-2 bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
-            >
-              Delete
-            </button>
+            {userID === post.user._id && (
+              <button
+                onClick={() => handleDeletePost(post._id)}
+                className="ml-2 bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
+              >
+                Delete
+              </button>
+            )}
           </div>
         ))}
       </div>
