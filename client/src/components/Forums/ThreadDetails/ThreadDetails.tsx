@@ -43,7 +43,10 @@ const ThreadDetail: React.FC<ThreadDetailProps> = ({ forumId, threadId }) => {
 
   const handleDeletePost = async (postId: string) => {
     try {
-      await axios.delete(`/api/posts/${postId}`, { withCredentials: true });
+      await axios.delete(
+        `/api/forums/${forumId}/threads/${threadId}/posts/${postId}`,
+        { withCredentials: true }
+      );
       setPosts(posts.filter((post: IPost) => post._id !== postId));
     } catch (err) {
       const error = err as Error;
