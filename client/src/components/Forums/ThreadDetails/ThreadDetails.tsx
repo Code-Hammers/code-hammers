@@ -14,6 +14,7 @@ const ThreadDetail: React.FC<ThreadDetailProps> = ({ forumId, threadId }) => {
   const [thread, setThread] = useState<Thread | null>(null);
   const [posts, setPosts] = useState<IPost[]>([]);
   const [loading, setLoading] = useState(false);
+  const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [creatingPost, setCreatingPost] = useState(false);
 
@@ -44,15 +45,18 @@ const ThreadDetail: React.FC<ThreadDetailProps> = ({ forumId, threadId }) => {
   };
 
   const handleDeletePost = async (postId: string) => {
+    setPending(true);
     try {
       await axios.delete(
         `/api/forums/${forumId}/threads/${threadId}/posts/${postId}`,
         { withCredentials: true }
       );
       setPosts(posts.filter((post: IPost) => post._id !== postId));
+      setPending(false);
     } catch (err) {
       const error = err as Error;
       setError(error.message);
+      setPending(false);
     }
   };
 
