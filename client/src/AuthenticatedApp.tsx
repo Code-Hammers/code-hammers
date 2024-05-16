@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Header from "./components/Header/Header";
 import MainPage from "./pages/MainPage/MainPage";
 import Forums from "./pages/Forums/Forums";
@@ -9,7 +9,6 @@ import EditProfilePage from "./pages/EditProfilePage/EditProfilePage";
 import Directory from "./pages/DirectoryPage/DirectoryPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import ApplicationsPage from "./pages/ApplicationsPage/ApplicationsPage";
-import { useNavigate } from "react-router-dom";
 
 const AuthenticatedApp = () => {
   const navigate = useNavigate();

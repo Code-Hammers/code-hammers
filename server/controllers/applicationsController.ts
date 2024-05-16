@@ -7,7 +7,6 @@ const getAllApplications = async (
   next: NextFunction
 ) => {
   try {
-    console.log("Middleware hit!!!");
     const query = `
       SELECT
         applications.id,
