@@ -18,7 +18,7 @@ services:
     depends_on:
       - postgres
   postgres:
-    image: postgres
+    image: codehammers/postgres-dev:latest
     container_name: codehammers-postgres
     environment:
       #- NODE_ENV=development
