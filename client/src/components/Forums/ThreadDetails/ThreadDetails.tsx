@@ -89,7 +89,7 @@ const ThreadDetail: React.FC<ThreadDetailProps> = ({ forumId, threadId }) => {
             {userID === post.user._id && (
               <button
                 onClick={() => handleDeletePost(post._id)}
-                className=" bg-red-500 font-bold hover:bg-red-700 ml-2 py-1 px-2 rounded text-white"
+                className="bg-red-500 font-bold hover:bg-red-700 ml-2 py-1 px-2 rounded text-white"
               >
                 Delete
               </button>
