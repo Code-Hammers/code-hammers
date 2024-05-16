@@ -8,6 +8,7 @@ import Profile from "./pages/Profile/Profile";
 import EditProfilePage from "./pages/EditProfilePage/EditProfilePage";
 import Directory from "./pages/DirectoryPage/DirectoryPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import ApplicationsPage from "./pages/ApplicationsPage/ApplicationsPage";
 import { useNavigate } from "react-router-dom";
 
 const AuthenticatedApp = () => {
@@ -47,6 +48,7 @@ const AuthenticatedApp = () => {
         <Route path="/editProfile" element={<EditProfilePage />} />
         <Route path="/forums" element={<Forums />} />
         <Route path="/directory" element={<Directory />} />
+        <Route path="/applications" element={<ApplicationsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
