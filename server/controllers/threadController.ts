@@ -48,6 +48,7 @@ const getAllThreads = async (
 ) => {
   try {
     const threads = await Thread.find({})
+      .sort({ createdAt: -1 })
       .populate("user", "firstName lastName")
       .exec();
     res.status(200).json(threads);
@@ -72,6 +73,7 @@ const listThreadsByForumId = async (
 
   try {
     const threads = await Thread.find({ forum: forumId })
+      .sort({ createdAt: -1 })
       .populate("user", "firstName lastName")
       .exec();
 
@@ -105,6 +107,7 @@ const getThreadById = async (
     }
 
     const posts = await Post.find({ thread: threadId })
+      .sort({ createdAt: -1 })
       .populate("user", "firstName lastName")
       .exec();
 

@@ -62,10 +62,9 @@ const getForumById = async (
       return res.status(404).json({ message: "Forum not found" });
     }
 
-    const threads = await Thread.find({ forum: forumId }).populate(
-      "user",
-      "firstName lastName"
-    );
+    const threads = await Thread.find({ forum: forumId })
+      .sort({ createdAt: -1 })
+      .populate("user", "firstName lastName");
 
     res.status(200).json({ forum, threads });
   } catch (error) {
