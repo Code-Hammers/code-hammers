@@ -5,12 +5,8 @@ import { CustomRequest } from "../types/customRequest";
 
 const protect = asyncHandler(async (req: CustomRequest, res, next) => {
   let token;
-  console.log("PROTECT HIT");
-  console.log(req.headers);
-  console.log("cookies:", req.cookies);
 
   if (req.cookies.token) {
-    console.log(req.headers);
     try {
       console.log("try block hit!");
       token = req.cookies.token;
