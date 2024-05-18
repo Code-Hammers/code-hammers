@@ -112,8 +112,7 @@ const CreateApplicationPage = (): JSX.Element => {
             onChange={handleChange}
           />
         </label>
-        TODO Disabled until status fetch is built */}
-<label className="block text-sm font-bold mb-2" htmlFor="status_id">
+        <label className="block text-sm font-bold mb-2" htmlFor="status_id">
           Status
           <select
             className="w-full p-2 rounded bg-gray-800 text-white"
