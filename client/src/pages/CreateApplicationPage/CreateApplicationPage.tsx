@@ -63,7 +63,6 @@ const CreateApplicationPage = (): JSX.Element => {
           Create Application
         </button>
       </form>
-      .
     </div>
   );
 };
