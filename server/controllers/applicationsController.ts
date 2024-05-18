@@ -29,4 +29,14 @@ const getAllApplications = async (
   }
 };
 
-export { getAllApplications };
+const getStatuses = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { rows } = await pool.query("SELECT * FROM statuses");
+    res.json(rows);
+  } catch (error) {
+    console.error("Error fetching statuses:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+export { getAllApplications, getStatuses };

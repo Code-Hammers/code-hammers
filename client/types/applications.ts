@@ -17,3 +17,8 @@ export interface IApplicationFormData {
   date_applied: string;
   general_notes: string;
 }
+
+export interface IStatus {
+  id: number;
+  name: string;
+}
