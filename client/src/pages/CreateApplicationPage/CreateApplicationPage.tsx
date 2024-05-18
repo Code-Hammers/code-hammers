@@ -100,6 +100,60 @@ const CreateApplicationPage = (): JSX.Element => {
             onChange={handleChange}
           />
         </label>
+        {/*TODO Disabled until status fetch is built */}
+        {/* <label className="block text-sm font-bold mb-2" htmlFor="status_id">
+          Status
+          <select
+            className="w-full p-2 rounded bg-gray-800 text-white"
+            id="status_id"
+            name="status_id"
+            value={formData.status_id}
+            onChange={handleChange}
+            required
+          >
+            <option value="" disabled>
+              Select Status
+            </option>
+            {statuses.map((status) => (
+              <option key={status.id} value={status.id}>
+                {status.name}
+              </option>
+            ))}
+          </select>
+        </label> */}
+        <label className="block text-sm font-bold mb-2" htmlFor="quick_apply">
+          Quick Apply
+          <input
+            className="ml-2"
+            id="quick_apply"
+            name="quick_apply"
+            type="checkbox"
+            checked={formData.quick_apply}
+            onChange={handleChange}
+          />
+        </label>
+        <label className="block text-sm font-bold mb-2" htmlFor="date_applied">
+          Date Applied
+          <input
+            className="w-full p-2 rounded bg-gray-800 text-white"
+            id="date_applied"
+            name="date_applied"
+            type="date"
+            value={formData.date_applied}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <label className="block text-sm font-bold mb-2" htmlFor="general_notes">
+          General Notes
+          <textarea
+            className="w-full p-2 rounded bg-gray-800 text-white"
+            id="general_notes"
+            name="general_notes"
+            value={formData.general_notes}
+            onChange={handleChange}
+          />
+        </label>
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="submit"
