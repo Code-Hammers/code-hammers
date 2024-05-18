@@ -5,3 +5,8 @@ export interface IApplication {
   status: string;
   notes: string;
 }
+
+export interface IStatus {
+  id: number;
+  name: string;
+}

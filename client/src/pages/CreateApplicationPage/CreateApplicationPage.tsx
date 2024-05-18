@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useAppSelector } from "../../app/hooks";
-import { IApplication } from "../../../types/applications";
+import { IApplication, IStatus } from "../../../types/applications";
 
 const CreateApplicationPage = (): JSX.Element => {
   const user = useAppSelector((state) => state.user.userData);
 
+  const [statuses, setStatuses] = useState<IStatus[]>([]);
   const [formData, setFormData] = useState({
     title: "",
     company: "",
@@ -18,7 +19,18 @@ const CreateApplicationPage = (): JSX.Element => {
     general_notes: "",
   });
 
-  //TODO build useEffect to get statuses
+  useEffect(() => {
+    async function fetchStatuses() {
+      try {
+        const response = await axios.get("/api/applications/statuses");
+        setStatuses(response.data);
+      } catch (error) {
+        console.error("Error fetching statuses:", error);
+      }
+    }
+
+    fetchStatuses();
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -100,8 +112,8 @@ const CreateApplicationPage = (): JSX.Element => {
             onChange={handleChange}
           />
         </label>
-        {/*TODO Disabled until status fetch is built */}
-        {/* <label className="block text-sm font-bold mb-2" htmlFor="status_id">
+        TODO Disabled until status fetch is built */}
+<label className="block text-sm font-bold mb-2" htmlFor="status_id">
           Status
           <select
             className="w-full p-2 rounded bg-gray-800 text-white"
@@ -120,7 +132,7 @@ const CreateApplicationPage = (): JSX.Element => {
               </option>
             ))}
           </select>
-        </label> */}
+        </label>
         <label className="block text-sm font-bold mb-2" htmlFor="quick_apply">
           Quick Apply
           <input
