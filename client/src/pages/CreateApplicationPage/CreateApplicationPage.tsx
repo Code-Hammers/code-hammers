@@ -56,6 +56,50 @@ const CreateApplicationPage = (): JSX.Element => {
             required
           />
         </label>
+        <label className="block text-sm font-bold mb-2" htmlFor="company">
+          Company
+          <input
+            className="w-full p-2 rounded bg-gray-800 text-white"
+            id="company"
+            name="company"
+            type="text"
+            value={formData.company}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <label className="block text-sm font-bold mb-2" htmlFor="location">
+          Location
+          <input
+            className="w-full p-2 rounded bg-gray-800 text-white"
+            id="location"
+            name="location"
+            type="text"
+            value={formData.location}
+            onChange={handleChange}
+          />
+        </label>
+        <label className="block text-sm font-bold mb-2" htmlFor="description">
+          Description
+          <textarea
+            className="w-full p-2 rounded bg-gray-800 text-white"
+            id="description"
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+          />
+        </label>
+        <label className="block text-sm font-bold mb-2" htmlFor="url">
+          URL
+          <input
+            className="w-full p-2 rounded bg-gray-800 text-white"
+            id="url"
+            name="url"
+            type="text"
+            value={formData.url}
+            onChange={handleChange}
+          />
+        </label>
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="submit"
