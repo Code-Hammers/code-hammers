@@ -1,23 +1,31 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useAppSelector } from "../../app/hooks";
-import { IApplication, IStatus } from "../../../types/applications";
+import { useAppSelector, useAppDispatch } from "../../app/hooks";
+import { createApplication } from "../../features/applications/applicationSlice";
+import {
+  IApplication,
+  IStatus,
+  IApplicationFormData,
+} from "../../../types/applications";
 
 const CreateApplicationPage = (): JSX.Element => {
   const user = useAppSelector((state) => state.user.userData);
+  const { status } = useAppSelector((state) => state.application);
 
   const [statuses, setStatuses] = useState<IStatus[]>([]);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<IApplicationFormData>({
     title: "",
     company: "",
     location: "",
     description: "",
     url: "",
-    status_id: "",
+    status_id: 1,
     quick_apply: false,
     date_applied: new Date().toISOString().split("T")[0],
     general_notes: "",
   });
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     async function fetchStatuses() {
@@ -31,6 +39,11 @@ const CreateApplicationPage = (): JSX.Element => {
 
     fetchStatuses();
   }, []);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    dispatch(createApplication(formData));
+  };
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -55,7 +68,7 @@ const CreateApplicationPage = (): JSX.Element => {
   return (
     <div className="pt-40 min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center p-4">
       <h1 className="text-4xl font-extrabold mb-4">Create Applications</h1>
-      <form className="w-full max-w-lg">
+      <form className="w-full max-w-lg" onSubmit={handleSubmit}>
         <label className="block text-sm font-bold mb-2" htmlFor="title">
           Job Title
           <input
@@ -169,7 +182,7 @@ const CreateApplicationPage = (): JSX.Element => {
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="submit"
         >
-          Create Application
+          {status === "creating" ? "Creating..." : "Create Application"}
         </button>
       </form>
     </div>
