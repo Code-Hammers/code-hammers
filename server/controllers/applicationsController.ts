@@ -55,6 +55,7 @@ const createApplication = async (
       quick_apply,
       date_applied,
       general_notes,
+      user_id,
     } = req.body;
 
     const jobQuery = `
@@ -67,13 +68,14 @@ const createApplication = async (
     const job_id = jobResult.rows[0].id;
 
     const applicationQuery = `
-      INSERT INTO applications (job_id, status_id, quick_apply, date_applied, notes)
-      VALUES ($1, $2, $3, $4, $5)
+      INSERT INTO applications (job_id, status_id, user_id, quick_apply, date_applied, general_notes)
+      VALUES ($1, $2, $3, $4, $5, $6)
       RETURNING id
     `;
     const applicationValues = [
       job_id,
       status_id,
+      user_id,
       quick_apply,
       date_applied,
       general_notes,

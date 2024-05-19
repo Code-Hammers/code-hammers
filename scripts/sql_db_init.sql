@@ -1,13 +1,13 @@
--- CREATE A USERS TABLE
-CREATE TABLE IF NOT EXISTS users (
-  id SERIAL PRIMARY KEY,
-  username VARCHAR(255) NOT NULL,
-  email VARCHAR(255) NOT FULL,
-  created_at TIMESTAMPTZ DEFAULT NOW()  
-);
+-- DROP EXISTING TABLES
+DROP TABLE IF EXISTS follow_ups;
+DROP TABLE IF EXISTS applications;
+DROP TABLE IF EXISTS jobs;
+DROP TABLE IF EXISTS statuses;
+DROP TABLE IF EXISTS follow_up_types;
+
 
 -- CREATE JOBS TABLE
-CREATE TABLE IF NOT EXISTS jobs (
+CREATE TABLE jobs (
     id SERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     company VARCHAR(255) NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS jobs (
 );
 
 -- CREATE STATUSES TABLE
-CREATE TABLE IF NOT EXISTS statuses (
+CREATE TABLE statuses (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL
 );
@@ -33,7 +33,7 @@ INSERT INTO statuses (name) VALUES
     ('Withdrawn');
 
 -- CREATE FOLLOW-UPS TABLE
-CREATE TABLE IF NOT EXISTS follow_ups (
+CREATE TABLE follow_ups (
     id SERIAL PRIMARY KEY,
     application_id INT NOT NULL,
     follow_up_date TIMESTAMPTZ DEFAULT NOW(),
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS follow_ups (
 );
 
 -- CREATE FOLLOW-UP TYPES TABLE
-CREATE TABLE IF NOT EXISTS follow_up_types (
+CREATE TABLE follow_up_types (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL
 );
@@ -60,7 +60,7 @@ INSERT INTO follow_up_types (name) VALUES
     ('After Withdrawal');
 
 -- CREATE APPLICATIONS TABLE
-CREATE TABLE IF NOT EXISTS applications (
+CREATE TABLE applications (
     id SERIAL PRIMARY KEY,
     job_id INT NOT NULL,
     status_id INT NOT NULL,
@@ -80,7 +80,7 @@ INSERT INTO jobs (title, company, location, description, url) VALUES
     ('Project Manager', 'Calabogie Zoo', 'Calabogie, ON', 'Developing new website', 'https://www.torontozoo.com');
 
 
-INSERT INTO applications (job_id, status_id, date_applied, notes) VALUES
-    (1, 1, NOW(), 'Quick applied for Software Engineer at Dogs R Us.'),
-    (2, 1, NOW(), 'Full CS style application.'),
-    (3, 2, NOW(), 'Phone screen scheduled!');
+INSERT INTO applications (job_id, status_id, user_id, quick_apply, date_applied, general_notes) VALUES
+    (1, 1, '6644c602515c654def9b2ae7', true, NOW(), 'Quick applied for Software Engineer at Dogs R Us.'),
+    (2, 1, '6644c768515c654def9b2b09', true, NOW(), 'Full CS style application.'),
+    (3, 2, '6644c7f7515c654def9b2b18', true, NOW(), 'Phone screen scheduled!');

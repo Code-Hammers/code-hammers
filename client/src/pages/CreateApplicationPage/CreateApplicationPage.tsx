@@ -20,6 +20,7 @@ const CreateApplicationPage = (): JSX.Element => {
     description: "",
     url: "",
     status_id: 1,
+    user_id: user?._id || "",
     quick_apply: false,
     date_applied: new Date().toISOString().split("T")[0],
     general_notes: "",
