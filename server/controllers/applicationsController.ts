@@ -13,7 +13,7 @@ const getAllApplications = async (
         jobs.company,
         jobs.title,
         statuses.name AS status,
-        applications.notes
+        applications.general_notes
       FROM
         applications
         INNER JOIN jobs ON applications.job_id = jobs.id

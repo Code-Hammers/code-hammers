@@ -5,7 +5,6 @@ DROP TABLE IF EXISTS jobs;
 DROP TABLE IF EXISTS statuses;
 DROP TABLE IF EXISTS follow_up_types;
 
-
 -- CREATE JOBS TABLE
 CREATE TABLE jobs (
     id SERIAL PRIMARY KEY,
@@ -31,17 +30,6 @@ INSERT INTO statuses (name) VALUES
     ('Offer Received'),
     ('Rejected'),
     ('Withdrawn');
-
--- CREATE FOLLOW-UPS TABLE
-CREATE TABLE follow_ups (
-    id SERIAL PRIMARY KEY,
-    application_id INT NOT NULL,
-    follow_up_date TIMESTAMPTZ DEFAULT NOW(),
-    follow_up_type_id INT NOT NULL,
-    notes TEXT,
-    FOREIGN KEY (application_id) REFERENCES applications(id)
-    FOREIGN KEY (follow_up_type_id) REFERENCES follow_up_types(id)
-);
 
 -- CREATE FOLLOW-UP TYPES TABLE
 CREATE TABLE follow_up_types (
@@ -70,6 +58,17 @@ CREATE TABLE applications (
     general_notes TEXT,
     FOREIGN KEY (job_id) REFERENCES jobs(id),
     FOREIGN KEY (status_id) REFERENCES statuses(id)
+);
+
+-- CREATE FOLLOW-UPS TABLE
+CREATE TABLE follow_ups (
+    id SERIAL PRIMARY KEY,
+    application_id INT NOT NULL,
+    follow_up_date TIMESTAMPTZ DEFAULT NOW(),
+    follow_up_type_id INT NOT NULL,
+    notes TEXT,
+    FOREIGN KEY (application_id) REFERENCES applications(id),
+    FOREIGN KEY (follow_up_type_id) REFERENCES follow_up_types(id)
 );
 
 -- SEED APPLICATION DATA

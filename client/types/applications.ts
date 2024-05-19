@@ -3,7 +3,7 @@ export interface IApplication {
   title: string;
   company: string;
   status: string;
-  notes: string;
+  general_notes: string;
 }
 
 export interface IApplicationFormData {

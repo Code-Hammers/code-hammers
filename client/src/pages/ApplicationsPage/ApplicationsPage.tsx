@@ -42,7 +42,7 @@ const ApplicationsPage = (): JSX.Element => {
                 Status: {application.status}
               </div>
               <div className="text-sm text-gray-400">
-                Notes: {application.notes}
+                Notes: {application.general_notes}
               </div>
             </li>
           ))}
