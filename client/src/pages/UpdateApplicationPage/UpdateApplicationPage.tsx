@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { IApplicationFormData, IStatus } from "../../../types/applications";
@@ -7,8 +7,11 @@ import { IApplicationFormData, IStatus } from "../../../types/applications";
 const UpdateApplicationPage = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
   const user = useAppSelector((state) => state.user.userData);
-  const { status } = useAppSelector((state) => state.application);
+  const { application, status, error } = useAppSelector(
+    (state) => state.application
+  );
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const [statuses, setStatuses] = useState<IStatus[]>([]);
   const [formData, setFormData] = useState<IApplicationFormData>({
@@ -24,28 +27,34 @@ const UpdateApplicationPage = (): JSX.Element => {
     general_notes: "",
   });
 
-  //   useEffect(() => {
-  //     async function fetchStatuses() {
-  //       try {
-  //         const response = await axios.get("/api/applications/statuses");
-  //         setStatuses(response.data);
-  //       } catch (error) {
-  //         console.error("Error fetching statuses:", error);
-  //       }
-  //     }
+  useEffect(() => {
+    async function fetchStatuses() {
+      try {
+        const response = await axios.get("/api/applications/statuses");
+        setStatuses(response.data);
+      } catch (error) {
+        console.error("Error fetching statuses:", error);
+      }
+    }
 
-  //     async function fetchApplication() {
-  //       try {
-  //         const response = await axios.get(`/api/applications/${id}`);
-  //         setFormData(response.data);
-  //       } catch (error) {
-  //         console.error("Error fetching application:", error);
-  //       }
-  //     }
+    async function fetchApplication() {
+      try {
+        const response = await axios.get(`/api/applications/${id}`);
+        setFormData(response.data);
+      } catch (error) {
+        console.error("Error fetching application:", error);
+      }
+    }
 
-  //     fetchStatuses();
-  //     fetchApplication();
-  //   }, [id]);
+    fetchStatuses();
+    if (id) fetchApplication();
+  }, [id]);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    dispatch(updateApplication({ id: Number(id), ...formData }));
+    navigate("/applications");
+  };
 
   const handleChange = (
     e: React.ChangeEvent<
