@@ -92,4 +92,45 @@ const createApplication = async (
   }
 };
 
-export { getAllApplications, getStatuses, createApplication };
+const updateApplication = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { id } = req.params;
+    const {
+      job_id,
+      status_id,
+      user_id,
+      quick_apply,
+      date_applied,
+      general_notes,
+    } = req.body;
+    const query = `
+      UPDATE applications
+      SET job_id = $1, status_id = $2, user_id = $3, quick_apply = $4, date_applied = $5, general_notes = $6
+      WHERE id = $7
+    `;
+    await pool.query(query, [
+      job_id,
+      status_id,
+      user_id,
+      quick_apply,
+      date_applied,
+      general_notes,
+      id,
+    ]);
+    res.status(200).json({ message: "Application updated successfully" });
+  } catch (error) {
+    console.error("Error updating application:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+export {
+  getAllApplications,
+  getStatuses,
+  createApplication,
+  updateApplication,
+};
