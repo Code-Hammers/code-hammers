@@ -44,6 +44,14 @@ const ApplicationsPage = (): JSX.Element => {
               <div className="text-gray-400 text-sm ">
                 Notes: {application.general_notes}
               </div>
+              <button
+                className="bg-blue-500 focus:outline-none focus:shadow-outline font-bold hover:bg-blue-700 mt-2 px-4 py-2 rounded text-white"
+                onClick={() =>
+                  navigate(`/update-application/${application.id}`)
+                }
+              >
+                Update Application
+              </button>
             </li>
           ))}
         </ul>
