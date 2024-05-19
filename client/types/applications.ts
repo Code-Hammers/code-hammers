@@ -3,7 +3,7 @@ export interface IApplication {
   title: string;
   company: string;
   status: string;
-  notes: string;
+  general_notes: string;
 }
 
 export interface IApplicationFormData {
@@ -13,6 +13,7 @@ export interface IApplicationFormData {
   description: string;
   url: string;
   status_id: number;
+  user_id: string;
   quick_apply: boolean;
   date_applied: string;
   general_notes: string;
