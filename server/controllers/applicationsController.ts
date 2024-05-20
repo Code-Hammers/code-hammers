@@ -7,6 +7,9 @@ const getAllApplications = async (
   next: NextFunction
 ) => {
   try {
+    console.log("getAllApplications controller hit!!");
+    const userId = req.query.user_id;
+    console.log("userId :", userId);
     const query = `
       SELECT
         applications.id,
@@ -18,10 +21,12 @@ const getAllApplications = async (
         applications
         INNER JOIN jobs ON applications.job_id = jobs.id
         INNER JOIN statuses ON applications.status_id = statuses.id
+      WHERE
+        applications.user_id = $1
     `;
 
-    const { rows } = await pool.query(query);
-
+    const { rows } = await pool.query(query, [userId]);
+    console.log(rows);
     res.json(rows);
   } catch (error) {
     console.error("Error fetching job applications:", error);

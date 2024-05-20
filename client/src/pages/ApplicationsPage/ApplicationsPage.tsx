@@ -12,7 +12,9 @@ const ApplicationsPage = (): JSX.Element => {
   useEffect(() => {
     async function fetchApplications() {
       try {
-        const response = await axios.get("/api/applications");
+        const response = await axios.get(
+          `/api/applications?user_id=${user?._id}`
+        );
         setApplications(response.data);
       } catch (error) {
         console.error("Error fetching applications:", error);
