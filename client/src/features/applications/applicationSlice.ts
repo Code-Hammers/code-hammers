@@ -40,7 +40,6 @@ export const updateApplication = createAsyncThunk(
     thunkAPI
   ) => {
     try {
-      console.log("updateApplication - slice id:", id);
       const response = await axios.put(`/api/applications/${id}`, formData);
       return response.data;
     } catch (error) {

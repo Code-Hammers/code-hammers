@@ -7,9 +7,8 @@ const getAllApplications = async (
   next: NextFunction
 ) => {
   try {
-    console.log("getAllApplications controller hit!!");
     const userId = req.query.user_id;
-    console.log("userId :", userId);
+
     const query = `
       SELECT
         applications.id,
@@ -26,7 +25,6 @@ const getAllApplications = async (
     `;
 
     const { rows } = await pool.query(query, [userId]);
-    console.log(rows);
     res.json(rows);
   } catch (error) {
     console.error("Error fetching job applications:", error);
@@ -102,7 +100,6 @@ const getApplicationById = async (
   res: Response,
   next: NextFunction
 ) => {
-  console.log("getApplicationBYId controller hit!");
   try {
     const { id } = req.params;
     const query = `
@@ -147,8 +144,6 @@ const updateApplication = async (
 ) => {
   try {
     const { id } = req.params;
-    console.log("UPDATE APPLICATION CONTROLLER HIT - ID: ", id);
-    console.log("JOB ID: ", req.body.job_id);
 
     const {
       job_id,
