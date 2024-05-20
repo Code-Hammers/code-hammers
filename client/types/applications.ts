@@ -17,6 +17,7 @@ export interface IApplicationFormData {
   quick_apply: boolean;
   date_applied: string;
   general_notes: string;
+  job_id: number;
 }
 
 export interface IStatus {

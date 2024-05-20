@@ -4,13 +4,15 @@ import {
   getAllApplications,
   getStatuses,
   updateApplication,
+  getApplicationById,
 } from "../controllers/applicationsController";
 
 const router = express.Router();
 
-router.get("/", getAllApplications);
-router.post("/", createApplication);
-router.put("/", updateApplication);
 router.get("/statuses", getStatuses);
+router.get("/", getAllApplications);
+router.get("/:id", getApplicationById);
+router.post("/", createApplication);
+router.put("/:id", updateApplication);
 
 export default router;

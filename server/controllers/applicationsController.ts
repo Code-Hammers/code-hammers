@@ -92,6 +92,49 @@ const createApplication = async (
   }
 };
 
+const getApplicationById = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  console.log("getApplicationBYId controller hit!");
+  try {
+    const { id } = req.params;
+    const query = `
+      SELECT
+        applications.id,
+        jobs.title,
+        jobs.company,
+        jobs.location,
+        jobs.description,
+        jobs.url,
+        statuses.id AS status_id,
+        statuses.name AS status,
+        applications.quick_apply,
+        applications.date_applied,
+        applications.general_notes,
+        applications.job_id,
+        applications.user_id
+      FROM
+        applications
+        INNER JOIN jobs ON applications.job_id = jobs.id
+        INNER JOIN statuses ON applications.status_id = statuses.id
+      WHERE
+        applications.id = $1
+    `;
+    const { rows } = await pool.query(query, [id]);
+
+    if (rows.length === 0) {
+      return res.status(404).json({ message: "Application not found" });
+    }
+
+    res.json(rows[0]);
+  } catch (error) {
+    console.error("Error fetching application by id:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
 const updateApplication = async (
   req: Request,
   res: Response,
@@ -99,6 +142,9 @@ const updateApplication = async (
 ) => {
   try {
     const { id } = req.params;
+    console.log("UPDATE APPLICATION CONTROLLER HIT - ID: ", id);
+    console.log("JOB ID: ", req.body.job_id);
+
     const {
       job_id,
       status_id,
@@ -133,4 +179,5 @@ export {
   getStatuses,
   createApplication,
   updateApplication,
+  getApplicationById,
 };

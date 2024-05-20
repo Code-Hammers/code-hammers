@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
+import { updateApplication } from "../../features/applications/applicationSlice";
 import { IApplicationFormData, IStatus } from "../../../types/applications";
 
 const UpdateApplicationPage = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
+  console.log("id:", id);
   const user = useAppSelector((state) => state.user.userData);
   const { application, status, error } = useAppSelector(
     (state) => state.application
@@ -25,6 +27,7 @@ const UpdateApplicationPage = (): JSX.Element => {
     quick_apply: false,
     date_applied: new Date().toISOString().split("T")[0],
     general_notes: "",
+    job_id: 0,
   });
 
   useEffect(() => {
@@ -39,8 +42,14 @@ const UpdateApplicationPage = (): JSX.Element => {
 
     async function fetchApplication() {
       try {
+        console.log("HITTT!!!!!");
         const response = await axios.get(`/api/applications/${id}`);
-        setFormData(response.data);
+        const applicationData = response.data;
+        applicationData.date_applied = new Date(applicationData.date_applied)
+          .toISOString()
+          .split("T")[0];
+
+        setFormData(applicationData);
       } catch (error) {
         console.error("Error fetching application:", error);
       }
@@ -53,7 +62,7 @@ const UpdateApplicationPage = (): JSX.Element => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     dispatch(updateApplication({ id: Number(id), ...formData }));
-    navigate("/applications");
+    navigate("/app/applications");
   };
 
   const handleChange = (
@@ -79,7 +88,7 @@ const UpdateApplicationPage = (): JSX.Element => {
   return (
     <div className="pt-40 min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center p-4">
       <h1 className="text-4xl font-extrabold mb-4">Update Application</h1>
-      <form className="w-full max-w-lg">
+      <form className="w-full max-w-lg" onSubmit={handleSubmit}>
         <label className="block text-sm font-bold mb-2" htmlFor="title">
           Job Title
           <input
@@ -90,6 +99,7 @@ const UpdateApplicationPage = (): JSX.Element => {
             value={formData.title}
             onChange={handleChange}
             required
+            readOnly
           />
         </label>
         <label className="block text-sm font-bold mb-2" htmlFor="company">
@@ -102,6 +112,7 @@ const UpdateApplicationPage = (): JSX.Element => {
             value={formData.company}
             onChange={handleChange}
             required
+            readOnly
           />
         </label>
         <label className="block text-sm font-bold mb-2" htmlFor="location">
