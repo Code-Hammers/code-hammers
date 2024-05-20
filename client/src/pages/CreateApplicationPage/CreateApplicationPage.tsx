@@ -24,6 +24,7 @@ const CreateApplicationPage = (): JSX.Element => {
     quick_apply: false,
     date_applied: new Date().toISOString().split("T")[0],
     general_notes: "",
+    job_id: 0,
   });
 
   const dispatch = useAppDispatch();
