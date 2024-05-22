@@ -48,7 +48,7 @@ convenience.
   - This will start both the webpack-dev-server for frontend and the backend
     server and run the app locally. Using this option will require package installs in both the root and client folders.
 - Login credentials
-  - **Email:** tester@codehammers.com
+  - **Emails:** john@codehammers.com / jane@codehammers.com / jaime@codehammers.com
   - **Password:** ilovetesting
 
 <!-- ## How to Contribute -->
