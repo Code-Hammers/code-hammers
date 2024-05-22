@@ -77,7 +77,7 @@ const Header = (): JSX.Element => {
       <div className="relative">
         <button
           onClick={() => setShowDropdown(!showDropdown)}
-          className="bg-gray-700 hover:bg-gray-800 font-bold py-2 px-4 rounded"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" 
         >
           Account
         </button>
