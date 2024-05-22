@@ -119,7 +119,7 @@ const EditProfilePage = () => {
             />
           </label>
           <button
-            className="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             type="submit"
           >
             Save Changes
@@ -135,13 +135,13 @@ const EditProfilePage = () => {
           />
           {file && <p className="text-lg mt-2">{file.name}</p>}
           <button
-            className="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded mt-4 mr-2"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 mr-2"
             onClick={handleFileInputClick}
           >
             Choose File
           </button>
           <button
-            className="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded mt-4 ml-2"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 ml-2"
             onClick={handleImageUpload}
           >
             Upload Image
