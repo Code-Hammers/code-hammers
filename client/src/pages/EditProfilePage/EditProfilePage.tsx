@@ -30,7 +30,6 @@ const EditProfilePage = () => {
   useEffect(() => {
     if (userID) dispatch(fetchUserProfile(userID as string));
   }, [dispatch]);
-  // Micah was here
   useEffect(() => {
     if (profile) {
       setFormData({
