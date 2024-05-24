@@ -6,6 +6,7 @@ import React, {
   FormEvent,
 } from "react";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
+import { useNavigate } from "react-router-dom";
 import {
   fetchUserProfile,
   updateUserProfile,
@@ -14,6 +15,7 @@ import {
 
 const EditProfilePage = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { profile, status } = useAppSelector((state) => state.userProfile);
   const userID = useAppSelector((state) => state.user.userData?._id);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -58,7 +60,7 @@ const EditProfilePage = () => {
       console.error("UserID is undefined.");
       return;
     }
-    dispatch(updateUserProfile({ ...formData, userID }));
+    dispatch(updateUserProfile({ ...formData, userID, navigate }));
   };
 
   const handleImageUpload = () => {
