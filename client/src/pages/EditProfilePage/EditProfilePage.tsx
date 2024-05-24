@@ -23,6 +23,7 @@ const EditProfilePage = () => {
   const [formData, setFormData] = useState({
     email: "",
     personalBio: "",
+    nickname: "",
   });
 
   const [file, setFile] = useState<File | null>(null);
@@ -36,6 +37,7 @@ const EditProfilePage = () => {
       setFormData({
         email: profile.email || "",
         personalBio: profile.personalBio || "",
+        nickname: profile.nickname || "",
       });
     }
   }, [profile]);
@@ -118,6 +120,17 @@ const EditProfilePage = () => {
               type="text"
               value={formData.personalBio}
               onChange={handleChange}
+            />
+          </label>
+          <label className="block text-sm font-bold mb-2" htmlFor="nickname">
+            Nickname
+            <input
+            className="bg-gray-800 p-2 rounded text-white w-full"
+            id="nickname"
+            name="nickname"
+            type="text"
+            value={formData.nickname}
+            onChange={handleChange}
             />
           </label>
           <button
