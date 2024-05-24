@@ -33,7 +33,26 @@ export const createApplication = createAsyncThunk(
   }
 );
 
-//TODO Build out update and delete thunks
+export const updateApplication = createAsyncThunk(
+  "applications/updateApplication",
+  async (
+    { id, ...formData }: Partial<IApplicationFormData> & { id: number },
+    thunkAPI
+  ) => {
+    try {
+      const response = await axios.put(`/api/applications/${id}`, formData);
+      return response.data;
+    } catch (error) {
+      let errorMessage = "An error occurred during application update";
+      if (axios.isAxiosError(error)) {
+        errorMessage = error.response?.data || errorMessage;
+      }
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+//TODO Build out delete thunks
 
 const applicationSlice = createSlice({
   name: "application",
@@ -55,6 +74,17 @@ const applicationSlice = createSlice({
         state.status = "idle";
       })
       .addCase(createApplication.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload as string;
+      })
+      .addCase(updateApplication.pending, (state) => {
+        state.status = "updating";
+      })
+      .addCase(updateApplication.fulfilled, (state, action) => {
+        state.application = action.payload;
+        state.status = "idle";
+      })
+      .addCase(updateApplication.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload as string;
       });

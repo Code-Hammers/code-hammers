@@ -12,7 +12,9 @@ const ApplicationsPage = (): JSX.Element => {
   useEffect(() => {
     async function fetchApplications() {
       try {
-        const response = await axios.get("/api/applications");
+        const response = await axios.get(
+          `/api/applications?user_id=${user?._id}`
+        );
         setApplications(response.data);
       } catch (error) {
         console.error("Error fetching applications:", error);
@@ -44,6 +46,14 @@ const ApplicationsPage = (): JSX.Element => {
               <div className="text-gray-400 text-sm ">
                 Notes: {application.general_notes}
               </div>
+              <button
+                className="bg-blue-500 focus:outline-none focus:shadow-outline font-bold hover:bg-blue-700 mt-2 px-4 py-2 rounded text-white"
+                onClick={() =>
+                  navigate(`/app/update-application/${application.id}`)
+                }
+              >
+                Update Application
+              </button>
             </li>
           ))}
         </ul>

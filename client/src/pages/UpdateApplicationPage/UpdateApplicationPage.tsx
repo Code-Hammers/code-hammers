@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { createApplication } from "../../features/applications/applicationSlice";
-import {
-  IApplication,
-  IStatus,
-  IApplicationFormData,
-} from "../../../types/applications";
+import { updateApplication } from "../../features/applications/applicationSlice";
+import { IApplicationFormData, IStatus } from "../../../types/applications";
 
-const CreateApplicationPage = (): JSX.Element => {
+const UpdateApplicationPage = (): JSX.Element => {
+  const { id } = useParams<{ id: string }>();
+  console.log("id:", id);
   const user = useAppSelector((state) => state.user.userData);
-  const { status } = useAppSelector((state) => state.application);
+  const { application, status, error } = useAppSelector(
+    (state) => state.application
+  );
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const [statuses, setStatuses] = useState<IStatus[]>([]);
   const [formData, setFormData] = useState<IApplicationFormData>({
@@ -27,8 +30,6 @@ const CreateApplicationPage = (): JSX.Element => {
     job_id: 0,
   });
 
-  const dispatch = useAppDispatch();
-
   useEffect(() => {
     async function fetchStatuses() {
       try {
@@ -39,13 +40,29 @@ const CreateApplicationPage = (): JSX.Element => {
       }
     }
 
+    async function fetchApplication() {
+      try {
+        console.log("HITTT!!!!!");
+        const response = await axios.get(`/api/applications/${id}`);
+        const applicationData = response.data;
+        applicationData.date_applied = new Date(applicationData.date_applied)
+          .toISOString()
+          .split("T")[0];
+
+        setFormData(applicationData);
+      } catch (error) {
+        console.error("Error fetching application:", error);
+      }
+    }
+
     fetchStatuses();
-  }, []);
+    if (id) fetchApplication();
+  }, [id]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(createApplication(formData));
-    console.log(formData);
+    dispatch(updateApplication({ id: Number(id), ...formData }));
+    navigate("/app/applications");
   };
 
   const handleChange = (
@@ -70,7 +87,7 @@ const CreateApplicationPage = (): JSX.Element => {
 
   return (
     <div className="pt-40 min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center p-4">
-      <h1 className="text-4xl font-extrabold mb-4">Create Applications</h1>
+      <h1 className="text-4xl font-extrabold mb-4">Update Application</h1>
       <form className="w-full max-w-lg" onSubmit={handleSubmit}>
         <label className="block text-sm font-bold mb-2" htmlFor="title">
           Job Title
@@ -82,6 +99,7 @@ const CreateApplicationPage = (): JSX.Element => {
             value={formData.title}
             onChange={handleChange}
             required
+            readOnly
           />
         </label>
         <label className="block text-sm font-bold mb-2" htmlFor="company">
@@ -94,6 +112,7 @@ const CreateApplicationPage = (): JSX.Element => {
             value={formData.company}
             onChange={handleChange}
             required
+            readOnly
           />
         </label>
         <label className="block text-sm font-bold mb-2" htmlFor="location">
@@ -185,11 +204,11 @@ const CreateApplicationPage = (): JSX.Element => {
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="submit"
         >
-          {status === "creating" ? "Creating..." : "Create Application"}
+          {status === "updating" ? "Updating..." : "Update Application"}
         </button>
       </form>
     </div>
   );
 };
 
-export default CreateApplicationPage;
+export default UpdateApplicationPage;

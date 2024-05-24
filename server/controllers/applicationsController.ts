@@ -7,6 +7,8 @@ const getAllApplications = async (
   next: NextFunction
 ) => {
   try {
+    const userId = req.query.user_id;
+
     const query = `
       SELECT
         applications.id,
@@ -18,10 +20,11 @@ const getAllApplications = async (
         applications
         INNER JOIN jobs ON applications.job_id = jobs.id
         INNER JOIN statuses ON applications.status_id = statuses.id
+      WHERE
+        applications.user_id = $1
     `;
 
-    const { rows } = await pool.query(query);
-
+    const { rows } = await pool.query(query, [userId]);
     res.json(rows);
   } catch (error) {
     console.error("Error fetching job applications:", error);
@@ -92,4 +95,89 @@ const createApplication = async (
   }
 };
 
-export { getAllApplications, getStatuses, createApplication };
+const getApplicationById = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { id } = req.params;
+    const query = `
+      SELECT
+        applications.id,
+        jobs.title,
+        jobs.company,
+        jobs.location,
+        jobs.description,
+        jobs.url,
+        statuses.id AS status_id,
+        statuses.name AS status,
+        applications.quick_apply,
+        applications.date_applied,
+        applications.general_notes,
+        applications.job_id,
+        applications.user_id
+      FROM
+        applications
+        INNER JOIN jobs ON applications.job_id = jobs.id
+        INNER JOIN statuses ON applications.status_id = statuses.id
+      WHERE
+        applications.id = $1
+    `;
+    const { rows } = await pool.query(query, [id]);
+
+    if (rows.length === 0) {
+      return res.status(404).json({ message: "Application not found" });
+    }
+
+    res.json(rows[0]);
+  } catch (error) {
+    console.error("Error fetching application by id:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+const updateApplication = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { id } = req.params;
+
+    const {
+      job_id,
+      status_id,
+      user_id,
+      quick_apply,
+      date_applied,
+      general_notes,
+    } = req.body;
+    const query = `
+      UPDATE applications
+      SET job_id = $1, status_id = $2, user_id = $3, quick_apply = $4, date_applied = $5, general_notes = $6
+      WHERE id = $7
+    `;
+    await pool.query(query, [
+      job_id,
+      status_id,
+      user_id,
+      quick_apply,
+      date_applied,
+      general_notes,
+      id,
+    ]);
+    res.status(200).json({ message: "Application updated successfully" });
+  } catch (error) {
+    console.error("Error updating application:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+export {
+  getAllApplications,
+  getStatuses,
+  createApplication,
+  updateApplication,
+  getApplicationById,
+};

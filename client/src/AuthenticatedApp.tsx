@@ -10,6 +10,7 @@ import Directory from "./pages/DirectoryPage/DirectoryPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import ApplicationsPage from "./pages/ApplicationsPage/ApplicationsPage";
 import CreateApplicationPage from "./pages/CreateApplicationPage/CreateApplicationPage";
+import UpdateApplicationPage from "./pages/UpdateApplicationPage/UpdateApplicationPage";
 
 const AuthenticatedApp = () => {
   const navigate = useNavigate();
@@ -50,6 +51,10 @@ const AuthenticatedApp = () => {
         <Route path="/directory" element={<Directory />} />
         <Route path="/applications" element={<ApplicationsPage />} />
         <Route path="/create-application" element={<CreateApplicationPage />} />
+        <Route
+          path="/update-application/:id"
+          element={<UpdateApplicationPage />}
+        />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
