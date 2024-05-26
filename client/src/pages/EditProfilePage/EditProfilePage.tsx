@@ -28,13 +28,42 @@ const EditProfilePage = () => {
     lastname: "",
     cohort: "", 
     linkedin: "",
+    skills: [] as String[],
   });
+
+  const [skillInput, setSkillInput] = useState("");
+
+  const handleSkillChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSkillInput(e.target.value);
+  };
+
+  const handleSkillKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && skillInput.trim() !== "") {
+      e.preventDefault();
+      if (!formData.skills.includes(skillInput.trim())) {
+        setFormData((prevData) => ({
+          ...prevData,
+          skills: [...prevData.skills, skillInput.trim()],
+        }));
+      }
+      setSkillInput("");
+    }
+  };
+
+
+  const handleSkillRemove = (skill: string) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      skills: prevData.skills.filter((s) => s !== skill),
+    }));
+  };
 
   const [file, setFile] = useState<File | null>(null);
 
   useEffect(() => {
     if (userID) dispatch(fetchUserProfile(userID as string));
   }, [dispatch]);
+
   useEffect(() => {
     if (profile) {
       setFormData({
@@ -45,6 +74,7 @@ const EditProfilePage = () => {
         lastname: profile.lastname || "",
         cohort: profile.cohort || "",
         linkedin: profile.linkedin || "",
+        skills: profile.skills || [],
       });
     }
   }, [profile]);
@@ -181,6 +211,19 @@ const EditProfilePage = () => {
               type="text"
               value={formData.linkedin}
               onChange={handleChange}
+            />
+          </label>
+          <label className="block font-bold mb-2 text-sm" htmlFor="skills">
+            Skills 
+            <input
+              className="bg-gray-800 p-2 rounded text-white w-full"
+              id="skills"
+              name="skills"
+              type="text"
+              value={skillInput}
+              onChange={handleSkillChange}
+              onKeyDown={handleSkillKeyDown}
+              placeholder="Type a skill and press Enter"
             />
           </label>
 
