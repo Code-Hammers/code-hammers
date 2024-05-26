@@ -24,6 +24,8 @@ const EditProfilePage = () => {
     email: "",
     personalBio: "",
     nickname: "",
+    firstname: "",
+    lastname: "",
   });
 
   const [file, setFile] = useState<File | null>(null);
@@ -38,6 +40,8 @@ const EditProfilePage = () => {
         email: profile.email || "",
         personalBio: profile.personalBio || "",
         nickname: profile.nickname || "",
+        firstname: profile.firstname || "",
+        lastname: profile.lastname || "",
       });
     }
   }, [profile]);
@@ -99,7 +103,39 @@ const EditProfilePage = () => {
               />
             </div>
           )}
-
+          <label className="block text-sm font-bold mb-2" htmlFor="nickname">
+            First Name
+            <input
+            className="bg-gray-800 p-2 rounded text-white w-full"
+            id="nickname"
+            name="nickname"
+            type="text"
+            value={formData.firstname}
+            onChange={handleChange}
+            />
+          </label>
+          <label className="block text-sm font-bold mb-2" htmlFor="nickname">
+            Last Name
+            <input
+            className="bg-gray-800 p-2 rounded text-white w-full"
+            id="nickname"
+            name="nickname"
+            type="text"
+            value={formData.lastname}
+            onChange={handleChange}
+            />
+          </label>
+          <label className="block text-sm font-bold mb-2" htmlFor="nickname">
+            Nickname
+            <input
+            className="bg-gray-800 p-2 rounded text-white w-full"
+            id="nickname"
+            name="nickname"
+            type="text"
+            value={formData.nickname}
+            onChange={handleChange}
+            />
+          </label>
           <label className="block text-sm font-bold mb-2" htmlFor="email">
             Email
             <input
@@ -122,17 +158,7 @@ const EditProfilePage = () => {
               onChange={handleChange}
             />
           </label>
-          <label className="block text-sm font-bold mb-2" htmlFor="nickname">
-            Nickname
-            <input
-            className="bg-gray-800 p-2 rounded text-white w-full"
-            id="nickname"
-            name="nickname"
-            type="text"
-            value={formData.nickname}
-            onChange={handleChange}
-            />
-          </label>
+
           <button
             className="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
             type="submit"
