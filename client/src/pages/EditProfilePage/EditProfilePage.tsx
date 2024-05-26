@@ -26,6 +26,8 @@ const EditProfilePage = () => {
     nickname: "",
     firstname: "",
     lastname: "",
+    cohort: "", 
+    linkedin: "",
   });
 
   const [file, setFile] = useState<File | null>(null);
@@ -41,6 +43,8 @@ const EditProfilePage = () => {
         nickname: profile.nickname || "",
         firstname: profile.firstname || "",
         lastname: profile.lastname || "",
+        cohort: profile.cohort || "",
+        linkedin: profile.linkedin || "",
       });
     }
   }, [profile]);
@@ -102,36 +106,25 @@ const EditProfilePage = () => {
               />
             </div>
           )}
-          <label className="block text-sm font-bold mb-2" htmlFor="nickname">
+          <label className="block text-sm font-bold mb-2" htmlFor="firstname">
             First Name
             <input
             className="bg-gray-800 p-2 rounded text-white w-full"
-            id="nickname"
-            name="nickname"
+            id="firstname"
+            name="firstname"
             type="text"
             value={formData.firstname}
             onChange={handleChange}
             />
           </label>
-          <label className="block text-sm font-bold mb-2" htmlFor="nickname">
+          <label className="block text-sm font-bold mb-2" htmlFor="lastname">
             Last Name
             <input
             className="bg-gray-800 p-2 rounded text-white w-full"
-            id="nickname"
-            name="nickname"
+            id="lastname"
+            name="lastname"
             type="text"
             value={formData.lastname}
-            onChange={handleChange}
-            />
-          </label>
-          <label className="block text-sm font-bold mb-2" htmlFor="nickname">
-            Nickname
-            <input
-            className="bg-gray-800 p-2 rounded text-white w-full"
-            id="nickname"
-            name="nickname"
-            type="text"
-            value={formData.nickname}
             onChange={handleChange}
             />
           </label>
@@ -146,6 +139,28 @@ const EditProfilePage = () => {
               onChange={handleChange}
             />
           </label>
+          <label className="block text-sm font-bold mb-2" htmlFor="nickname">
+            Nickname
+            <input
+            className="bg-gray-800 p-2 rounded text-white w-full"
+            id="nickname"
+            name="nickname"
+            type="text"
+            value={formData.nickname}
+            onChange={handleChange}
+            />
+          </label>
+          <label className="block text-sm font-bold mb-2" htmlFor="cohor">
+            Cohort
+            <input
+            className="bg-gray-800 p-2 rounded text-white w-full"
+            id="cohort"
+            name="cohort"
+            type="text"
+            value={formData.cohort}
+            onChange={handleChange}
+            />
+          </label>
           <label className="block font-bold mb-2 text-sm" htmlFor="personalBio">
             Personal Bio
             <input
@@ -154,6 +169,17 @@ const EditProfilePage = () => {
               name="personalBio"
               type="text"
               value={formData.personalBio}
+              onChange={handleChange}
+            />
+          </label>
+          <label className="block font-bold mb-2 text-sm" htmlFor="linkedin">
+            LinkedIn 
+            <input
+              className="bg-gray-800 p-2 rounded text-white w-full"
+              id="linkedin"
+              name="linkedin"
+              type="text"
+              value={formData.linkedin}
               onChange={handleChange}
             />
           </label>
