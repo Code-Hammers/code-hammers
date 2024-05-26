@@ -12,7 +12,11 @@ const profileSchema = new Schema<IProfile>({
   email: String,
   linkedInProfile: String,
   professionalSummary: String,
-  skills: [String],
+  //skills: [String],
+  skills: {
+    type: [String],
+    default: [],
+  },
   specializations: [String],
   careerInformation: {
     currentPosition: {
