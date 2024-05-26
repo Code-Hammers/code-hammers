@@ -33,7 +33,6 @@ const EditProfilePage = () => {
   useEffect(() => {
     if (userID) dispatch(fetchUserProfile(userID as string));
   }, [dispatch]);
-
   useEffect(() => {
     if (profile) {
       setFormData({
@@ -90,16 +89,16 @@ const EditProfilePage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-start pt-20 p-4">
-      <h1 className="text-4xl font-extrabold mb-4 mt-16">Edit Profile</h1>
-      <div className="w-full max-w-4xl bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 pt-6 pb-6 pl-6 pr-6 rounded-lg shadow-lg flex flex-col items-center">
+    <div className="bg-gray-900 flex flex-col items-center justify-start min-h-screen p-4 pt-20 text-white">
+      <h1 className="font-extrabold mb-4 mt-16 text-4xl">Edit Profile</h1>
+      <div className="bg-gradient-to-r flex flex-col from-gray-700 items-center max-w-4xl pb-6 pl-6 pr-6 pt-6 rounded-lg shadow-lg to-gray-900 via-gray-800 w-full">
         <form onSubmit={handleSubmit} className=" w-full">
           {profile?.profilePhoto && (
             <div className="mb-4 text-center">
               <img
                 src={profile.profilePhoto}
                 alt="Profile"
-                className="rounded-full h-32 w-32 object-cover mx-auto"
+                className="h-32 mx-auto object-cover rounded-full w-32"
               />
             </div>
           )}
@@ -136,10 +135,10 @@ const EditProfilePage = () => {
             onChange={handleChange}
             />
           </label>
-          <label className="block text-sm font-bold mb-2" htmlFor="email">
+          <label className="block font-bold mb-2 text-sm" htmlFor="email">
             Email
             <input
-              className="w-full p-2 rounded bg-gray-800 text-white"
+              className="bg-gray-800 p-2 rounded text-white w-full"
               id="email"
               name="email"
               type="email"
@@ -147,10 +146,10 @@ const EditProfilePage = () => {
               onChange={handleChange}
             />
           </label>
-          <label className="block text-sm font-bold mb-2" htmlFor="personalBio">
+          <label className="block font-bold mb-2 text-sm" htmlFor="personalBio">
             Personal Bio
             <input
-              className="w-full p-2 rounded bg-gray-800 text-white"
+              className="bg-gray-800 p-2 rounded text-white w-full"
               id="personalBio"
               name="personalBio"
               type="text"
@@ -160,29 +159,29 @@ const EditProfilePage = () => {
           </label>
 
           <button
-            className="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
+            className="bg-blue-500 font-bold hover:bg-blue-700 px-4 py-2 rounded text-white"
             type="submit"
           >
             Save Changes
           </button>
         </form>
         <div className="mt-6">
-          <h3 className="text-2xl font-bold mb-4">Upload Profile Picture</h3>
+          <h3 className="font-bold mb-4 text-2xl">Upload Profile Picture</h3>
           <input
             ref={fileInputRef}
             type="file"
             onChange={handleFileChange}
             style={{ display: "none" }}
           />
-          {file && <p className="text-lg mt-2">{file.name}</p>}
+          {file && <p className="mt-2 text-lg">{file.name}</p>}
           <button
-            className="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded mt-4 mr-2"
+            className="bg-blue-500 font-bold hover:bg-blue-700 mr-2 mt-4 px-4 py-2 rounded text-white"
             onClick={handleFileInputClick}
           >
             Choose File
           </button>
           <button
-            className="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded mt-4 ml-2"
+            className="bg-blue-500 font-bold hover:bg-blue-700 ml-2 mt-4 px-4 py-2 rounded text-white"
             onClick={handleImageUpload}
           >
             Upload Image
