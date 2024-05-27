@@ -31,29 +31,39 @@ const EditProfilePage = () => {
     skills: [] as String[],
   });
 
+  // THIS MIGHT BE ABLE TO BE REPLACED BY ALREADY EXSITING CODE
+  // State for skills input
   const [skillInput, setSkillInput] = useState("");
 
+  // THIS MIGHT BE ABLE TO BE REPLACED BY ALREADY EXSITING CODE
+  // Handling the addition of characters in the "Skills" field
   const handleSkillChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSkillInput(e.target.value);
   };
 
+  // Handling the addition of a new skill
   const handleSkillKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && skillInput.trim() !== "") {
       e.preventDefault();
+      console.log('handleSkillKeyDown')
+      // ensuring the current skills array does not already include the typed skill
       if (!formData.skills.includes(skillInput.trim())) {
         setFormData((prevData) => ({
           ...prevData,
           skills: [...prevData.skills, skillInput.trim()],
         }));
       }
+      // emptying the Skill input box when typed skill is officially added
       setSkillInput("");
     }
   };
 
-
+  // Handling the removal of a skill
   const handleSkillRemove = (skill: string) => {
+    console.log("handleSkillRemove")
     setFormData((prevData) => ({
       ...prevData,
+      // Filtering skills array to no longer include the removed skill
       skills: prevData.skills.filter((s) => s !== skill),
     }));
   };
@@ -226,9 +236,30 @@ const EditProfilePage = () => {
               placeholder="Type a skill and press Enter"
             />
           </label>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {formData.skills.map((skill, index) => (
+              <div key={index} className="mr-2 mb-2">
+              <span
+             // kept to avoid key warning
+                key={index}
+                className="bg-blue-500 incline-flex items-center px-4 py-1 rounded-full text-sm text-white"
+              >
+                {skill}
+                <button
+                type="button"
+                className="ml-2 text-white"
+                onClick={() => handleSkillRemove(skill)}
+                >
+                  {/* HTML entity for multiplication sign */}
+                  &times;
+                  </button>
+                </span>
+              </div>
+            ))}
+          </div>
 
           <button
-            className="bg-blue-500 font-bold hover:bg-blue-700 px-4 py-2 rounded text-white"
+            className="bg-blue-500 font-bold hover:bg-blue-700 mt-4 px-4 py-2 rounded text-white"
             type="submit"
           >
             Save Changes

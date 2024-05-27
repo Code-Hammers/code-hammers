@@ -14,7 +14,7 @@ const profileSchema = new Schema<IProfile>({
   professionalSummary: String,
   //skills: [String],
   skills: {
-    type: String[],
+    type: [String],
     default: [],
   },
   specializations: [String],
