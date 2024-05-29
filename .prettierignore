@@ -1,7 +1,5 @@
 # These files should always be ignored by Prettier.
 
-.ebextensions/
-.elasticbeanstalk/
 build/
 coverage/
 dist/
