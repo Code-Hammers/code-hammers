@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "A social platform for Codesmith Alumni to continue mentoring and learning together.",
   "main": "/dist/index.js",
+  "type": "module",
   "scripts": {
     "start": "node dist/server/index.js",
     "build": "tsc --build",
+    "lint": "bash ./scripts/lint.sh",
+    "lint:fix": "bash ./scripts/lint.sh --fix",
     "test": "jest --detectOpenHandles --coverage",
     "client": "cd client && npm start",
     "server": "node server/index.ts",
@@ -40,6 +43,7 @@
     "multer": "^1.4.5-lts.1"
   },
   "devDependencies": {
+    "@eslint/js": "^9.3.0",
     "@types/bcryptjs": "^2.4.6",
     "@types/cookie-parser": "^1.4.7",
     "@types/jest": "^29.5.12",
@@ -48,11 +52,17 @@
     "@types/node": "^20.12.11",
     "@types/supertest": "^6.0.2",
     "concurrently": "^8.2.2",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react": "^7.34.2",
+    "globals": "^15.3.0",
     "jest": "^29.7.0",
     "nodemon": "^3.1.0",
+    "prettier": "^3.2.5",
     "supertest": "^7.0.0",
     "ts-jest": "^29.1.2",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.11.0"
   }
 }
