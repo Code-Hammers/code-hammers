@@ -6,7 +6,7 @@ services:
     ports:
       - '3333:3333'
     volumes:
-      - .:/usr/src/app
+      - ./:/usr/src/app
       - node_modules:/usr/src/app/node_modules
       - client_node_modules:/usr/src/app/client/node_modules
     environment:
