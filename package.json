@@ -16,6 +16,8 @@
     "dev-ts": "concurrently --kill-others \"npm run server-ts\" \"npm run client\"",
     "dev": "concurrently --kill-others \"npm run server\" \"npm run client\"",
     "docker-dev": "docker-compose -f docker-compose-dev.yml up --build",
+    "docker-lint": "LINT_COMMAND=lint docker-compose -f docker-compose-lint.yml up --abort-on-container-exit",
+    "docker-lint:fix": "LINT_COMMAND=lint:fix docker-compose -f docker-compose-lint.yml up --abort-on-container-exit",
     "docker-test:all": "docker-compose -f docker-compose-test.yml up --abort-on-container-exit",
     "docker-remove-all": "bash ./scripts/docker-remove-all.sh ch ch-dev-dep-test cd-testv1 code-hammers",
     "test:client": "cd client && npm test",
