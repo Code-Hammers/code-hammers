@@ -25,7 +25,6 @@ module.exports = [
         },
         ignores: [
           "**/*.config.js",
-          "derp.js",
         ]
       }
     } else {
