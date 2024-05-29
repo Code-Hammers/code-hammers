@@ -1,0 +1,18 @@
+version: '3'
+services:
+  dev:
+    image: codehammers/ch-dev-dep-test:latest
+    container_name: ch-lint
+    ports:
+      - '3333:3333'
+    volumes:
+      - .:/usr/src/app
+      - node_modules:/usr/src/app/node_modules
+      - client_node_modules:/usr/src/app/client/node_modules
+    environment:
+      - NODE_ENV=development
+      - LINT_COMMAND=${LINT_COMMAND}
+    command: npm run ${LINT_COMMAND}
+volumes:
+  node_modules:
+  client_node_modules:
