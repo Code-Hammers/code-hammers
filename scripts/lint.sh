@@ -1,17 +1,25 @@
 #!/bin/bash
 
 # Color variables
-RED='\033[0;31m'
-GREEN='\033[32;1m'
-YELLOW='\033[1;33m'
+RED="\033[1;31m"
+ORANGE="\033[1;38;5;208m"
+YELLOW="\033[1;33m"
+GREEN="\033[1;32m"
+BLUE="\033[1;34m"
+INDIGO="\033[1;38;5;75m"
+VIOLET="\033[1;38;5;69m"
+CORNBLUE="\033[1;3;38;5;69m"
+PURP="\033[1;3;34m"
 NC='\033[0m' # No color
 
 PRETTIER_STATUS=0
 ESLINT_STATUS=0
 
+source ./scripts/util/decorate.sh
+
 if [[ $1 == "--fix" ]]; then
   # Warn user that their files may be modified
-  echo -e "${RED}Running lint checks in --fix mode. This may modify your files!\n${NC}"
+  echo -e "\n${RED}Running lint checks in --fix mode. This may modify your files!\n${NC}"
 
   # Run Prettier in fix mode and store status
   echo -e "${YELLOW}Running Prettier to fix code formatting issues...${NC}\n"
@@ -24,12 +32,12 @@ if [[ $1 == "--fix" ]]; then
   ESLINT_STATUS=$?
 else
   # Run Prettier in check mode and store status
-  echo -e "${YELLOW}Running Prettier to identify code formatting issues...${NC}\n"
+  echo -e "\n${CORNBLUE}Running Prettier to identify code formatting issues...${NC}\n"
   prettier --check .
   PRETTIER_STATUS=$?
 
   # Run ESLint in check mode and store status
-  echo -e "\n${YELLOW}Running ESLint to identify code quality issues...${NC}"
+  echo -e "\n${PURP}Running ESLint to identify code quality issues...${NC}"
   npx eslint .
   ESLINT_STATUS=$?
 fi
