@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "A social platform for Codesmith Alumni to continue mentoring and learning together.",
   "main": "/dist/index.js",
-  "type": "module",
   "scripts": {
     "start": "node dist/server/index.js",
     "build": "tsc --build",
