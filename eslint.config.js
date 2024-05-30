@@ -3,6 +3,7 @@ import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import reactPlugin from 'eslint-plugin-react';
 import pluginReactConfig from 'eslint-plugin-react/configs/recommended.js';
+import jestPlugin from 'eslint-plugin-jest';
 import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default [
@@ -12,7 +13,6 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.node,
-        ...globals.jest,
       },
     },
   },
@@ -41,8 +41,9 @@ export default [
   {
     name: 'typescript-eslint overrides',
     rules: {
-      '@typescript-eslint/no-explicit-any': 0,
-      '@typescript-eslint/no-var-requires': 0,
+      // TODO - do we want these rules?
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-unused-vars': 'warn',
     },
   },
   // React Recommended Rules
@@ -76,6 +77,32 @@ export default [
         // Must set manually - cannot auto-detect from /client/package.json
         version: '18.3.1',
       },
+    },
+  },
+  // Jest Recommended Rules
+  {
+    name: 'eslint-plugin-jest:recommended',
+    files: ['**/*.test.ts', '**/*.test.tsx'],
+    ...jestPlugin.configs['flat/recommended'],
+  },
+  // Jest Recommended Rule Overrides
+  {
+    name: 'eslint-plugin-jest:overrides',
+    files: ['**/*.test.ts', '**/*.test.tsx'],
+    // TODO - are these settings needed
+    // plugins: {
+    //   jestPlugin,
+    // },
+    // languageOptions: {
+    //   globals: {
+    //     ...globals.jest,
+    //   },
+    // },
+    rules: {
+      // TODO - do we want these rules?
+      'jest/no-disabled-tests': 'off',
+      'jest/no-test-prefixes': 'off',
+      'jest/no-done-callback': 'off',
     },
   },
   // Turns of Rules to Allow prettier to format
