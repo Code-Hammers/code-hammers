@@ -1,12 +1,12 @@
-import globals from 'globals';
-import js from '@eslint/js';
-import tseslint from 'typescript-eslint';
-import reactPlugin from 'eslint-plugin-react';
-import pluginReactConfig from 'eslint-plugin-react/configs/recommended.js';
-import jestPlugin from 'eslint-plugin-jest';
-import eslintConfigPrettier from 'eslint-config-prettier';
+const globals = require('globals');
+const js = require('@eslint/js');
+const tseslint = require('typescript-eslint');
+const reactPlugin = require('eslint-plugin-react');
+const pluginReactConfig = require('eslint-plugin-react/configs/recommended.js');
+const jestPlugin = require('eslint-plugin-jest');
+const eslintConfigPrettier = require('eslint-config-prettier');
 
-export default [
+module.exports = [
   {
     languageOptions: {
       // Global identifiers from different JavaScript environments
