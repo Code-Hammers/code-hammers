@@ -25,7 +25,7 @@ const EditProfilePage = () => {
     email: "",
     firstName: "",
     linkedin: "",
-    nickname: "",
+    nickName: "",
     personalBio: "",
     skills: [] as String[],
   });
@@ -80,7 +80,7 @@ const EditProfilePage = () => {
         email: profile.email || "",
         firstName: profile.firstName || "",
         linkedin: profile.linkedin || "",
-        nickname: profile.nickname || "",
+        nickName: profile.nickName || "",
         personalBio: profile.personalBio || "",
         skills: profile.skills || [],
       });
@@ -128,7 +128,7 @@ const EditProfilePage = () => {
 
   const getDisplayName = () => {
     console.log('PROFILE HERE', profile);
-    return profile?.nickname || profile?.firstName;
+    return profile?.nickName || profile?.firstName;
   }
 
   if (status === "loading" || !userID) {
@@ -160,18 +160,18 @@ const EditProfilePage = () => {
               onChange={handleChange}
             />
           </label>
-          <label className="block text-sm font-bold mb-2" htmlFor="nickname">
+          <label className="block text-sm font-bold mb-2" htmlFor="nickName">
             Nickname
             <input
             className="bg-gray-800 p-2 rounded text-white w-full"
-            id="nickname"
-            name="nickname"
+            id="nickName"
+            name="nickName"
             type="text"
-            value={formData.nickname}
+            value={formData.nickName}
             onChange={handleChange}
             />
           </label>
-          <label className="block text-sm font-bold mb-2" htmlFor="cohor">
+          <label className="block text-sm font-bold mb-2" htmlFor="cohort">
             Cohort
             <input
             className="bg-gray-800 p-2 rounded text-white w-full"
