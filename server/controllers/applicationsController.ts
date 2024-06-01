@@ -174,10 +174,48 @@ const updateApplication = async (
   }
 };
 
+const getAggregatedUserStats = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const userId = req.query.user_id;
+
+    const totalApplicationsQuery =
+      "SELECT COUNT(*) FROM applications WHERE user_id = $1";
+    const totalApplicationsResult = await pool.query(totalApplicationsQuery, [
+      userId,
+    ]);
+    const totalApplications = totalApplicationsResult.rows[0].count;
+
+    const applicationsByStatusQuery = `
+      SELECT statuses.name AS status, COUNT(*) 
+      FROM applications 
+      JOIN statuses ON applications.status_id = statuses.id 
+      WHERE applications.user_id = $1 
+      GROUP BY statuses.name
+    `;
+    const applicationsByStatusResult = await pool.query(
+      applicationsByStatusQuery,
+      [userId]
+    );
+
+    res.json({
+      totalApplications,
+      applicationsByStatus: applicationsByStatusResult.rows,
+    });
+  } catch (error) {
+    console.error("Error fetching aggregated data:", error);
+    res.status(500).send("Internal server error");
+  }
+};
+
 export {
   getAllApplications,
   getStatuses,
   createApplication,
   updateApplication,
   getApplicationById,
+  getAggregatedUserStats,
 };

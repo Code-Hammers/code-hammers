@@ -5,11 +5,13 @@ import {
   getStatuses,
   updateApplication,
   getApplicationById,
+  getAggregatedUserStats,
 } from "../controllers/applicationsController";
 
 const router = express.Router();
 
 router.get("/statuses", getStatuses);
+router.get("/aggregated-user-stats", getAggregatedUserStats);
 router.get("/", getAllApplications);
 router.get("/:id", getApplicationById);
 router.post("/", createApplication);
