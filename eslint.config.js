@@ -37,48 +37,39 @@ module.exports = [
       return config;
     }
   }),
-  // TypeScript Recommended Configurationm Overrides & Additional Rules
-  {
-    name: 'typescript-eslint overrides',
-    rules: {
-      // TODO - do we want these rules?
-      '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/no-unused-vars': 'warn',
-    },
-  },
   // React Recommended Rules
   {
     name: 'eslint-plugin-react:recommended',
     ...pluginReactConfig,
   },
   // React Additional Rules
-  {
-    name: 'eslint-plugin-react:additional',
-    files: ['**/*.{js,jsx,ts,tsx}'],
-    plugins: {
-      reactPlugin,
-    },
-    languageOptions: {
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
-      globals: {
-        ...globals.browser,
-      },
-    },
-    rules: {
-      'react/jsx-uses-react': 'error',
-      'react/jsx-uses-vars': 'error',
-    },
-    settings: {
-      react: {
-        // Must set manually - cannot auto-detect from /client/package.json
-        version: '18.3.1',
-      },
-    },
-  },
+  // {
+  //   name: 'eslint-plugin-react:additional',
+  //   files: ['**/*.{js,jsx,ts,tsx}'],
+  //   plugins: {
+  //     reactPlugin,
+  //   },
+  //   languageOptions: {
+  //     parserOptions: {
+  //       ecmaFeatures: {
+  //         jsx: true,
+  //       },
+  //     },
+  //     globals: {
+  //       ...globals.browser,
+  //     },
+  //   },
+  //   rules: {
+  //     'react/jsx-uses-react': 'error',
+  //     'react/jsx-uses-vars': 'error',
+  //   },
+  //   settings: {
+  //     react: {
+  //       // Must set manually - cannot auto-detect from /client/package.json
+  //       version: '18.3.1',
+  //     },
+  //   },
+  // },
   // Jest Recommended Rules
   {
     name: 'eslint-plugin-jest:recommended',
@@ -89,18 +80,9 @@ module.exports = [
   {
     name: 'eslint-plugin-jest:overrides',
     files: ['**/*.test.ts', '**/*.test.tsx'],
-    // TODO - are these settings needed
-    // plugins: {
-    //   jestPlugin,
-    // },
-    // languageOptions: {
-    //   globals: {
-    //     ...globals.jest,
-    //   },
-    // },
     rules: {
       // TODO - do we want these rules?
-      'jest/no-disabled-tests': 'off',
+      'jest/no-disabled-tests': 'warn',
       'jest/no-test-prefixes': 'off',
       'jest/no-done-callback': 'off',
     },
