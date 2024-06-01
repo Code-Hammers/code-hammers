@@ -20,9 +20,10 @@ const EditProfilePage = () => {
   const userID = useAppSelector((state) => state.user.userData?._id);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({ 
     cohort: "",
     email: "",
+    firstName: "",
     linkedin: "",
     nickname: "",
     personalBio: "",
@@ -77,6 +78,7 @@ const EditProfilePage = () => {
       setFormData({
         cohort: profile.cohort || "",
         email: profile.email || "",
+        firstName: profile.firstName || "",
         linkedin: profile.linkedin || "",
         nickname: profile.nickname || "",
         personalBio: profile.personalBio || "",
@@ -124,13 +126,18 @@ const EditProfilePage = () => {
     fileInputRef.current?.click();
   };
 
+  const getDisplayName = () => {
+    console.log('PROFILE HERE', profile);
+    return profile?.nickname || profile?.firstName;
+  }
+
   if (status === "loading" || !userID) {
     return <div>Loading...</div>;
   }
 
   return (
     <div className="bg-gray-900 flex flex-col items-center justify-start min-h-screen p-4 pt-20 text-white">
-      <h1 className="font-extrabold mb-4 mt-16 text-4xl">Edit Profile</h1>
+      <h1 className="font-extrabold mb-4 mt-16 text-4xl">Hello {getDisplayName()}, Edit Your Profile Here</h1>
       <div className="bg-gradient-to-r flex flex-col from-gray-700 items-center max-w-4xl pb-6 pl-6 pr-6 pt-6 rounded-lg shadow-lg to-gray-900 via-gray-800 w-full">
         <form onSubmit={handleSubmit} className=" w-full">
           {profile?.profilePhoto && (

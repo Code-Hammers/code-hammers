@@ -22,6 +22,7 @@ const createProfile = async (
   const {
     user,
     fullName,
+    nickname,
     profilePhoto,
     cohort,
     graduationYear,
@@ -49,6 +50,7 @@ const createProfile = async (
     const profile = await Profile.create({
       user,
       fullName,
+      nickname,
       profilePhoto,
       cohort,
       graduationYear,
@@ -96,11 +98,12 @@ const updateProfile = async (
   next: NextFunction
 ) => {
   const { userID } = req.params;
-  const { firstName, lastName, email, personalBio } = req.body;
+  const { firstName, lastName, nickName, email, personalBio } = req.body;
 
   const newProfile = {
     firstName,
     lastName,
+    nickName,
     email,
     personalBio,
   };
@@ -111,7 +114,7 @@ const updateProfile = async (
       newProfile,
       { new: true }
     );
-    console.log(profile);
+    console.log('Updating profile', profile);
     if (!profile) {
       return next({
         log: "Express error in updateProfile Middleware - NO PROFILE FOUND",
