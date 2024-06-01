@@ -24,7 +24,8 @@ const EditProfilePage = () => {
     cohort: "",
     email: "",
     firstName: "",
-    linkedin: "",
+    linkedInProfile: "",
+    gitHubProfile: "",
     nickName: "",
     personalBio: "",
     skills: [] as string[],
@@ -79,7 +80,8 @@ const EditProfilePage = () => {
         cohort: profile.cohort || "",
         email: profile.email || "",
         firstName: profile.firstName || "",
-        linkedin: profile.linkedin || "",
+        linkedInProfile: profile.linkedInProfile || "",
+        gitHubProfile: profile.gitHubProfile || "",
         nickName: profile.nickName || "",
         personalBio: profile.personalBio || "",
         skills: profile.skills || [],
@@ -196,14 +198,25 @@ const EditProfilePage = () => {
               maxLength={1000}
             />
           </label>
-          <label className="block font-bold mb-2 text-sm" htmlFor="linkedin">
-            LinkedIn 
+          <label className="block font-bold mb-2 text-sm" htmlFor="linkedInProfile">
+            LinkedIn Profile
             <input
               className="bg-gray-800 p-2 rounded text-white w-full"
-              id="linkedin"
-              name="linkedin"
+              id="linkedInProfile"
+              name="linkedInProfile"
               type="text"
-              value={formData.linkedin}
+              value={formData.linkedInProfile}
+              onChange={handleChange}
+            />
+          </label>
+          <label className="block font-bold mb-2 text-sm" htmlFor="gitHubProfile">
+            GitHub Profile
+            <input
+              className="bg-gray-800 p-2 rounded text-white w-full"
+              id="gitHubProfile"
+              name="gitHubProfile"
+              type="text"
+              value={formData.gitHubProfile}
               onChange={handleChange}
             />
           </label>

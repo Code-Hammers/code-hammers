@@ -11,6 +11,7 @@ const profileSchema = new Schema<IProfile>({
   graduationYear: Number,
   email: String,
   linkedInProfile: String,
+  gitHubProfile: String,
   professionalSummary: String,
   skills: [String],
   specializations: [String],
