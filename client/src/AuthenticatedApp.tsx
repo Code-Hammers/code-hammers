@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
-import Header from "./components/Header/Header";
-import MainPage from "./pages/MainPage/MainPage";
-import Forums from "./pages/Forums/Forums";
-import Profiles from "./pages/Profiles/Profiles";
-import Profile from "./pages/Profile/Profile";
-import EditProfilePage from "./pages/EditProfilePage/EditProfilePage";
-import Directory from "./pages/DirectoryPage/DirectoryPage";
-import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Header from './components/Header/Header';
+import MainPage from './pages/MainPage/MainPage';
+import Forums from './pages/Forums/Forums';
+import Profiles from './pages/Profiles/Profiles';
+import Profile from './pages/Profile/Profile';
+import EditProfilePage from './pages/EditProfilePage/EditProfilePage';
+import Directory from './pages/DirectoryPage/DirectoryPage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import { useNavigate } from 'react-router-dom';
 
 const AuthenticatedApp = () => {
   const navigate = useNavigate();
@@ -17,20 +17,20 @@ const AuthenticatedApp = () => {
   useEffect(() => {
     const validateSession = async () => {
       try {
-        const response = await fetch("/api/auth/validate-session", {
-          method: "GET",
-          credentials: "include",
+        const response = await fetch('/api/auth/validate-session', {
+          method: 'GET',
+          credentials: 'include',
         });
 
         const data = await response.json();
         if (response.ok && data.isAuthenticated) {
           setIsAuthenticated(true);
         } else {
-          navigate("/");
+          navigate('/');
         }
       } catch (error) {
-        console.error("Session validation failed:", error);
-        navigate("/");
+        console.error('Session validation failed:', error);
+        navigate('/');
       }
     };
 

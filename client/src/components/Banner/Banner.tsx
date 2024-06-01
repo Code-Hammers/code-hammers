@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import logo from "../../assets/hammer.png";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { logout } from "../../features/user/userSlice";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import logo from '../../assets/hammer.png';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { logout } from '../../features/user/userSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Banner = (): JSX.Element => {
   const user = useAppSelector((state) => state.user.userData);
@@ -12,21 +12,19 @@ const Banner = (): JSX.Element => {
 
   const handleLogout = () => {
     dispatch(logout());
-    navigate("/");
+    navigate('/');
     //TODO CLEAR ALL STATE
   };
 
   const goToEditProfile = () => {
-    navigate("editProfile");
+    navigate('editProfile');
     setShowDropdown(false);
   };
   return (
     <div className="bg-rose-300 p-4 md:p-6 flex items-center w-full justify-between">
       <img src={logo} alt="Code Hammers Logo" className="h-12 md:h-16" />
       <div className="flex-grow flex justify-center">
-        <h1 className="text-2xl md:text-4xl font-semibold text-teal-600">
-          Code Hammers
-        </h1>
+        <h1 className="text-2xl md:text-4xl font-semibold text-teal-600">Code Hammers</h1>
       </div>
       <div className="relative">
         <button

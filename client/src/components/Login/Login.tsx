@@ -1,17 +1,15 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../app/hooks";
-import { loginUser } from "../../features/user/userSlice";
+import React, { useState, ChangeEvent, FormEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../app/hooks';
+import { loginUser } from '../../features/user/userSlice';
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const [formData, setFormData] = useState<{ email: string; password: string }>(
-    {
-      email: "",
-      password: "",
-    }
-  );
+  const [formData, setFormData] = useState<{ email: string; password: string }>({
+    email: '',
+    password: '',
+  });
 
   const { email, password } = formData;
 
@@ -21,11 +19,11 @@ const Login: React.FC = () => {
     dispatch(loginUser({ email, password }))
       .unwrap()
       .then((user) => {
-        console.log("User logged in:", user);
-        navigate("/app/main"); // navigate to the main app
+        console.log('User logged in:', user);
+        navigate('/app/main'); // navigate to the main app
       })
       .catch((error) => {
-        console.error("Login failed:", error);
+        console.error('Login failed:', error);
         // Handle login failure (e.g., show error message)
       });
   };
@@ -41,10 +39,7 @@ const Login: React.FC = () => {
         onSubmit={handleSubmit}
       >
         <div className="mb-4">
-          <label
-            className="block text-gray-300 text-sm font-bold mb-2"
-            htmlFor="email"
-          >
+          <label className="block text-gray-300 text-sm font-bold mb-2" htmlFor="email">
             Email
           </label>
           <input
@@ -58,10 +53,7 @@ const Login: React.FC = () => {
           />
         </div>
         <div className="mb-6">
-          <label
-            className="block text-gray-300 text-sm font-bold mb-2"
-            htmlFor="password"
-          >
+          <label className="block text-gray-300 text-sm font-bold mb-2" htmlFor="password">
             Password
           </label>
           <input

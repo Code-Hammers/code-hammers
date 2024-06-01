@@ -1,25 +1,21 @@
-import User from "../models/userModel";
-import Profile from "../models/profileModel";
-import generateToken from "../utils/generateToken";
-import { Request, Response, NextFunction } from "express";
-import { UserType } from "../types/user";
-import GraduateInvitation from "../models/graduateInvitationModel";
+import User from '../models/userModel';
+import Profile from '../models/profileModel';
+import generateToken from '../utils/generateToken';
+import { Request, Response, NextFunction } from 'express';
+import { UserType } from '../types/user';
+import GraduateInvitation from '../models/graduateInvitationModel';
 
 // ENDPOINT  POST api/users/register
 // PURPOSE   Register a new user
 // ACCESS    Public
-const registerUser = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+const registerUser = async (req: Request, res: Response, next: NextFunction) => {
   const { firstName, lastName, email, password } = req.body;
   const { token } = req.query;
 
   try {
     const isValidEmail = email.match(/[\w\d\.]+@[a-z]+\.[\w]+$/gim);
     if (!isValidEmail) {
-      return res.status(400).json("Invalid Email");
+      return res.status(400).json('Invalid Email');
     }
 
     const invitation = await GraduateInvitation.findOne({
@@ -31,13 +27,11 @@ const registerUser = async (
 
     //TODO Needs better error handling - this can trigger with situaions other than bad or missing token
     if (!invitation) {
-      return res
-        .status(400)
-        .json({ message: "Invalid or expired registration token" });
+      return res.status(400).json({ message: 'Invalid or expired registration token' });
     }
     const userExists: UserType | null = await User.findOne({ email });
     if (userExists) {
-      return res.status(400).json({ message: "User already exists!" });
+      return res.status(400).json({ message: 'User already exists!' });
     }
     const user: UserType = await User.create({
       firstName: invitation.firstName,
@@ -62,15 +56,15 @@ const registerUser = async (
         email: user.email,
       };
 
-      res.cookie("token", generateToken(user._id.toString()));
+      res.cookie('token', generateToken(user._id.toString()));
       return res.status(201).json(res.locals.user);
     }
   } catch (error) {
-    console.error("Error during user signup:", error);
+    console.error('Error during user signup:', error);
     return next({
-      log: "Express error in createUser Middleware",
+      log: 'Express error in createUser Middleware',
       status: 503,
-      message: { err: "An error occurred during sign-up" },
+      message: { err: 'An error occurred during sign-up' },
     });
   }
 };
@@ -82,18 +76,18 @@ const authUser = async (req: Request, res: Response, next: NextFunction) => {
 
   const isValidEmail = email.match(/[\w\d\.]+@[a-z]+\.[\w]+$/gim);
   if (!isValidEmail) {
-    return res.status(400).json({ msg: "Please enter a valid email" }); //TODO Move to global error handler
+    return res.status(400).json({ msg: 'Please enter a valid email' }); //TODO Move to global error handler
   }
 
   if (!email || !password) {
-    return res.status(400).json({ msg: "Email and password are required!" }); //TODO Move to global error handler
+    return res.status(400).json({ msg: 'Email and password are required!' }); //TODO Move to global error handler
   }
 
   try {
     const user: UserType | null = await User.findOne({ email });
 
     if (!user) {
-      return res.status(401).json({ msg: "User not found!" }); //TODO Move to global error handler
+      return res.status(401).json({ msg: 'User not found!' }); //TODO Move to global error handler
     }
 
     if (user && (await user.matchPassword!(password))) {
@@ -105,22 +99,22 @@ const authUser = async (req: Request, res: Response, next: NextFunction) => {
       };
       const token = generateToken(user._id.toString());
 
-      res.cookie("token", token, {
+      res.cookie('token', token, {
         httpOnly: true,
         expires: new Date(Date.now() + 3600000),
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "strict",
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'strict',
       });
       return res.status(200).json(res.locals.user);
     } else {
-      return res.status(401).json({ msg: "Incorrect password" }); //TODO Move to global error handler
+      return res.status(401).json({ msg: 'Incorrect password' }); //TODO Move to global error handler
     }
   } catch (error) {
-    console.error("Error during user authentication:", error);
+    console.error('Error during user authentication:', error);
     return next({
-      log: "Express error in createUser Middleware",
+      log: 'Express error in createUser Middleware',
       status: 503,
-      message: { err: "An error occurred during login" },
+      message: { err: 'An error occurred during login' },
     });
   }
 };
@@ -135,15 +129,15 @@ const getUserById = async (req: Request, res: Response, next: NextFunction) => {
     const user: UserType | null = await User.findOne({ _id: userId });
 
     if (!user) {
-      return res.status(401).json({ msg: "User not found!" }); //TODO Move to global error handler
+      return res.status(401).json({ msg: 'User not found!' }); //TODO Move to global error handler
     }
     res.locals.user = user;
     return res.status(200).json(res.locals.user);
   } catch (error) {
     return next({
-      log: "Express error in getUserById Middleware",
+      log: 'Express error in getUserById Middleware',
       status: 500,
-      message: { err: "An error occurred during retrieval" },
+      message: { err: 'An error occurred during retrieval' },
     });
   }
 };
@@ -151,26 +145,22 @@ const getUserById = async (req: Request, res: Response, next: NextFunction) => {
 // ENDPOINT  DELETE api/users/:email
 // PURPOSE   Delete user by email
 // ACCESS    Private
-const deleteUserByEmail = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+const deleteUserByEmail = async (req: Request, res: Response, next: NextFunction) => {
   const { email } = req.params;
 
   try {
     const user: UserType | null = await User.findOneAndDelete({ email });
 
     if (!user) {
-      return res.status(404).json({ msg: "User not found!" }); //TODO Move to global error handler
+      return res.status(404).json({ msg: 'User not found!' }); //TODO Move to global error handler
     }
 
-    return res.status(200).json({ msg: "User successfully deleted!" });
+    return res.status(200).json({ msg: 'User successfully deleted!' });
   } catch (error) {
     return next({
-      log: "Express error in getUserByEmail Middleware",
+      log: 'Express error in getUserByEmail Middleware',
       status: 500,
-      message: { err: "An error occurred during removal" },
+      message: { err: 'An error occurred during removal' },
     });
   }
 };

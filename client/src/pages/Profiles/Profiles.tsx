@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { fetchProfiles } from "../../features/profiles/profilesSlice";
-import ProfileThumb from "../../components/ProfileThumb/ProfileThumb";
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { fetchProfiles } from '../../features/profiles/profilesSlice';
+import ProfileThumb from '../../components/ProfileThumb/ProfileThumb';
 
 const Profiles = (): JSX.Element => {
   const dispatch = useAppDispatch();

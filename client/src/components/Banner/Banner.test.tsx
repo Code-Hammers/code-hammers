@@ -1,28 +1,28 @@
-import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
-import "@testing-library/jest-dom";
-import Banner from "./Banner";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { logout } from "../../features/user/userSlice";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import Banner from './Banner';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { logout } from '../../features/user/userSlice';
+import { useNavigate } from 'react-router-dom';
 
-jest.mock("../../app/hooks", () => ({
+jest.mock('../../app/hooks', () => ({
   useAppDispatch: jest.fn(),
   useAppSelector: jest.fn(),
 }));
-jest.mock("../../features/user/userSlice", () => ({
+jest.mock('../../features/user/userSlice', () => ({
   logout: jest.fn(),
 }));
-jest.mock("react-router-dom", () => ({
+jest.mock('react-router-dom', () => ({
   useNavigate: jest.fn(),
 }));
 
-describe("Banner Component", () => {
+describe('Banner Component', () => {
   const mockDispatch = jest.fn();
   const mockNavigate = jest.fn();
   const mockUserData = {
-    id: "123",
-    name: "John Doe",
+    id: '123',
+    name: 'John Doe',
   };
 
   beforeEach(() => {
@@ -31,7 +31,7 @@ describe("Banner Component", () => {
     (useAppSelector as jest.Mock).mockImplementation((selector) =>
       selector({
         user: { userData: mockUserData },
-      })
+      }),
     );
   });
 
@@ -39,56 +39,56 @@ describe("Banner Component", () => {
     jest.clearAllMocks();
   });
 
-  it("renders the logo image correctly", () => {
+  it('renders the logo image correctly', () => {
     render(<Banner />);
-    const logo = screen.getByAltText("Code Hammers Logo");
+    const logo = screen.getByAltText('Code Hammers Logo');
     expect(logo).toBeInTheDocument();
   });
 
-  it("renders the title text correctly", () => {
+  it('renders the title text correctly', () => {
     render(<Banner />);
-    const title = screen.getByText("Code Hammers");
+    const title = screen.getByText('Code Hammers');
     expect(title).toBeInTheDocument();
   });
 
-  it("renders the Options button", () => {
+  it('renders the Options button', () => {
     render(<Banner />);
-    const optionsButton = screen.getByRole("button", { name: "Options" });
+    const optionsButton = screen.getByRole('button', { name: 'Options' });
     expect(optionsButton).toBeInTheDocument();
   });
 
-  it("opens the dropdown and shows options when Options button is clicked", () => {
+  it('opens the dropdown and shows options when Options button is clicked', () => {
     render(<Banner />);
-    const optionsButton = screen.getByRole("button", { name: "Options" });
+    const optionsButton = screen.getByRole('button', { name: 'Options' });
     fireEvent.click(optionsButton);
 
-    const profileOption = screen.getByText("Edit Profile");
-    const logoutOption = screen.getByText("Logout");
+    const profileOption = screen.getByText('Edit Profile');
+    const logoutOption = screen.getByText('Logout');
 
     expect(profileOption).toBeInTheDocument();
     expect(logoutOption).toBeInTheDocument();
   });
 
-  it("handles navigation to Profile on clicking Go to Profile", () => {
+  it('handles navigation to Profile on clicking Go to Profile', () => {
     render(<Banner />);
-    const optionsButton = screen.getByRole("button", { name: "Options" });
+    const optionsButton = screen.getByRole('button', { name: 'Options' });
     fireEvent.click(optionsButton);
 
-    const profileOption = screen.getByText("Edit Profile");
+    const profileOption = screen.getByText('Edit Profile');
     fireEvent.click(profileOption);
 
-    expect(mockNavigate).toHaveBeenCalledWith("editProfile");
+    expect(mockNavigate).toHaveBeenCalledWith('editProfile');
   });
 
-  it("handles logout on clicking Logout", () => {
+  it('handles logout on clicking Logout', () => {
     render(<Banner />);
-    const optionsButton = screen.getByRole("button", { name: "Options" });
+    const optionsButton = screen.getByRole('button', { name: 'Options' });
     fireEvent.click(optionsButton);
 
-    const logoutOption = screen.getByText("Logout");
+    const logoutOption = screen.getByText('Logout');
     fireEvent.click(logoutOption);
 
     expect(mockDispatch).toHaveBeenCalledWith(logout());
-    expect(mockNavigate).toHaveBeenCalledWith("/");
+    expect(mockNavigate).toHaveBeenCalledWith('/');
   });
 });

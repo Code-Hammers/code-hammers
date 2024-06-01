@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { fetchAlumni } from "../../features/alumni/alumniSlice";
-import Modal from "../../components/modals/AlumniModal/AlumniModal";
-import { Alum } from "../../../types/alum";
+import React, { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { fetchAlumni } from '../../features/alumni/alumniSlice';
+import Modal from '../../components/modals/AlumniModal/AlumniModal';
+import { Alum } from '../../../types/alum';
 
 const DirectoryPage = (): JSX.Element => {
   const dispatch = useAppDispatch();
-  const { alumni, status, page, totalPages } = useAppSelector(
-    (state) => state.alumni
-  );
-  const [nameSearch, setNameSearch] = useState("");
-  const [companySearch, setCompanySearch] = useState("");
+  const { alumni, status, page, totalPages } = useAppSelector((state) => state.alumni);
+  const [nameSearch, setNameSearch] = useState('');
+  const [companySearch, setCompanySearch] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedAlum, setSelectedAlum] = useState<Alum | null>(null);
   useEffect(() => {
@@ -24,7 +22,7 @@ const DirectoryPage = (): JSX.Element => {
           page: page - 1,
           name: nameSearch,
           company: companySearch,
-        })
+        }),
       );
     }
   };
@@ -36,7 +34,7 @@ const DirectoryPage = (): JSX.Element => {
           page: page + 1,
           name: nameSearch,
           company: companySearch,
-        })
+        }),
       );
     }
   };
@@ -78,8 +76,8 @@ const DirectoryPage = (): JSX.Element => {
           <strong>Company</strong>
           <strong>Email</strong>
         </div>
-        <div className="overflow-auto" style={{ maxHeight: "60vh" }}>
-          {status === "loading" ? (
+        <div className="overflow-auto" style={{ maxHeight: '60vh' }}>
+          {status === 'loading' ? (
             <p>Loading...</p>
           ) : (
             alumni.map((alum) => (
@@ -104,11 +102,7 @@ const DirectoryPage = (): JSX.Element => {
           </button>
         </div>
       </div>
-      <Modal
-        isOpen={modalOpen}
-        onClose={handleCloseModal}
-        alum={selectedAlum}
-      />
+      <Modal isOpen={modalOpen} onClose={handleCloseModal} alum={selectedAlum} />
     </div>
   );
 };

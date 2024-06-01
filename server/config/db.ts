@@ -6,11 +6,11 @@ dotenv.config();
 const connectDB = async (): Promise<void> => {
   try {
     const MONGO_URI = process.env.MONGO_URI;
-    
-    console.log("MONGO_URI", MONGO_URI);
+
+    console.log('MONGO_URI', MONGO_URI);
 
     if (!MONGO_URI) {
-      throw new Error("MONGO_URI must be defined in the environment variables.");
+      throw new Error('MONGO_URI must be defined in the environment variables.');
     }
 
     const connection = await mongoose.connect(MONGO_URI);
@@ -23,4 +23,3 @@ const connectDB = async (): Promise<void> => {
 };
 
 export default connectDB;
-

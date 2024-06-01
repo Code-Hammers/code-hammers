@@ -1,10 +1,10 @@
-import request from "supertest";
-import app, { startServer } from "../server/index";
-import { Server } from "http";
+import request from 'supertest';
+import app, { startServer } from '../server/index';
+import { Server } from 'http';
 
 let server: Server;
 
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 beforeEach(() => {
   server = startServer();
@@ -24,49 +24,47 @@ afterAll(async () => {
   await mongoose.connection.close();
 });
 
-describe("API Endpoints", () => {
-  xit("should get the API Running message in development", async () => {
-    const res = await request(app).get("/api");
+describe('API Endpoints', () => {
+  xit('should get the API Running message in development', async () => {
+    const res = await request(app).get('/api');
     expect(res.statusCode).toEqual(200);
-    expect(res.body).toHaveProperty("message", "API Running - Hazzah!");
+    expect(res.body).toHaveProperty('message', 'API Running - Hazzah!');
   });
 
-  xit("should serve the frontend files in production", async () => {
-    process.env.NODE_ENV = "production";
+  xit('should serve the frontend files in production', async () => {
+    process.env.NODE_ENV = 'production';
 
-    const res = await request(app).get("/");
+    const res = await request(app).get('/');
     expect(res.statusCode).toEqual(200);
 
-    expect(res.headers["content-type"]).toContain("text/html");
+    expect(res.headers['content-type']).toContain('text/html');
   });
 
-  xit("should catch all routes and serve the frontend in production", async () => {
-    process.env.NODE_ENV = "production";
-    const res = await request(app).get("/nonexistentroute");
+  xit('should catch all routes and serve the frontend in production', async () => {
+    process.env.NODE_ENV = 'production';
+    const res = await request(app).get('/nonexistentroute');
     expect(res.statusCode).toEqual(200);
-    expect(res.headers["content-type"]).toContain("text/html");
+    expect(res.headers['content-type']).toContain('text/html');
   });
 });
 
-describe("Server Start-Up", () => {
-  it("should start up the server if required as main module", async () => {
+describe('Server Start-Up', () => {
+  it('should start up the server if required as main module', async () => {
     const originalLog = console.log;
     const logCalls: string[] = [];
     console.log = jest.fn((...args: any[]) => {
-      logCalls.push(args.join(" "));
+      logCalls.push(args.join(' '));
     });
 
     jest.resetModules();
 
     await new Promise((resolve) => {
       if (server) {
-        server.on("listening", resolve);
+        server.on('listening', resolve);
       }
     });
 
-    const hasExpectedLog = logCalls.some((log) =>
-      log.includes("Server running in")
-    );
+    const hasExpectedLog = logCalls.some((log) => log.includes('Server running in'));
     expect(hasExpectedLog).toBe(true);
 
     console.log = originalLog;

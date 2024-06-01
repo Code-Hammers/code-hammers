@@ -1,32 +1,32 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom";
-import Profile from "./Profile";
-import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { fetchUserProfile } from "../../features/userProfile/userProfileSlice";
-import { useParams } from "react-router-dom";
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import Profile from './Profile';
+import { useAppSelector, useAppDispatch } from '../../app/hooks';
+import { fetchUserProfile } from '../../features/userProfile/userProfileSlice';
+import { useParams } from 'react-router-dom';
 
-jest.mock("../../app/hooks", () => ({
+jest.mock('../../app/hooks', () => ({
   useAppDispatch: jest.fn(),
   useAppSelector: jest.fn(),
 }));
 
-jest.mock("react-router-dom", () => ({
-  ...jest.requireActual("react-router-dom"),
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
   useParams: jest.fn(),
 }));
 
-jest.mock("../../features/userProfile/userProfileSlice", () => ({
+jest.mock('../../features/userProfile/userProfileSlice', () => ({
   fetchUserProfile: jest.fn(),
 }));
 
-describe("Profile Component", () => {
+describe('Profile Component', () => {
   const mockDispatch = jest.fn();
-  const mockUserId = "123456";
+  const mockUserId = '123456';
   const mockUserProfile = {
     user: mockUserId,
-    firstName: "John",
-    lastName: "Doh",
+    firstName: 'John',
+    lastName: 'Doh',
   };
   //TODO MOCK BETTER USERPROFILE DATA??
   beforeEach(() => {
@@ -35,7 +35,7 @@ describe("Profile Component", () => {
     (useAppSelector as jest.Mock).mockImplementation((selector) =>
       selector({
         userProfile: { profile: mockUserProfile },
-      })
+      }),
     );
   });
 
@@ -43,13 +43,13 @@ describe("Profile Component", () => {
     jest.clearAllMocks();
   });
 
-  it("renders the Profile component", () => {
+  it('renders the Profile component', () => {
     render(<Profile />);
-    const profileTitle = screen.getByText("Profile");
+    const profileTitle = screen.getByText('Profile');
     expect(profileTitle).toBeInTheDocument();
   });
 
-  it("dispatches fetchUserProfile on component mount", () => {
+  it('dispatches fetchUserProfile on component mount', () => {
     render(<Profile />);
     expect(mockDispatch).toHaveBeenCalledWith(fetchUserProfile(mockUserId));
   });
@@ -58,7 +58,7 @@ describe("Profile Component", () => {
     render(<Profile />);
 
     const userNameDisplay = screen.getByText(
-      `${mockUserProfile.firstName} ${mockUserProfile.lastName}`
+      `${mockUserProfile.firstName} ${mockUserProfile.lastName}`,
     );
 
     expect(userNameDisplay).toBeInTheDocument();

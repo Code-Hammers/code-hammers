@@ -1,11 +1,11 @@
-version: "3"
+version: '3'
 
 services:
   test:
     image: codehammers/ch-dev-dep-test:latest
     container_name: ch-test
     ports:
-      - "3000:3000"
+      - '3000:3000'
     volumes:
       - ./:/usr/src/app
       - node_modules:/usr/src/app/node_modules
@@ -20,7 +20,7 @@ services:
   mongo:
     image: mongo
     ports:
-      - "27017:27017"
+      - '27017:27017'
     environment:
       - MONGO_INITDB_DATABASE=ch-testdb
     # mute mongo container logs

@@ -1,5 +1,5 @@
-import React from "react";
-import { Alum } from "../../../../types/alum";
+import React from 'react';
+import { Alum } from '../../../../types/alum';
 
 interface ModalProps {
   isOpen: boolean;
@@ -16,12 +16,12 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, alum }) => {
         <h2 className="text-2xl font-bold text-white">{alum.name}</h2>
         <p className="text-white">Company: {alum.company}</p>
         <p className="text-white">Email: {alum.email}</p>
-        <p className="text-white">LinkedIn: {alum.linkedIn || "N/A"}</p>
-        <p className="text-white">Campus: {alum.campus || "N/A"}</p>
+        <p className="text-white">LinkedIn: {alum.linkedIn || 'N/A'}</p>
+        <p className="text-white">Campus: {alum.campus || 'N/A'}</p>
         <p className="text-white">Cohort: {alum.cohort}</p>
-        <p className="text-white">Job Title: {alum.jobTitle || "N/A"}</p>
-        <p className="text-white">Industry: {alum.industry || "N/A"}</p>
-        <p className="text-white">Cities: {alum.cities.join(", ")}</p>
+        <p className="text-white">Job Title: {alum.jobTitle || 'N/A'}</p>
+        <p className="text-white">Industry: {alum.industry || 'N/A'}</p>
+        <p className="text-white">Cities: {alum.cities.join(', ')}</p>
         <button
           onClick={onClose}
           className="mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none"
