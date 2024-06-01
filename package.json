@@ -8,7 +8,7 @@
     "build": "tsc --build",
     "lint": "bash ./scripts/lint.sh",
     "lint:fix": "bash ./scripts/lint.sh --fix",
-    "test": "jest --detectOpenHandles --coverage",
+    "test": "jest --colors --detectOpenHandles --coverage",
     "client": "cd client && npm start",
     "server": "node server/index.ts",
     "server-ts": "ts-node-dev server/index.ts",
@@ -19,6 +19,7 @@
     "docker-lint:fix": "LINT_COMMAND=lint:fix docker-compose -f docker-compose-lint.yml up --abort-on-container-exit",
     "docker-test:all": "docker-compose -f docker-compose-test.yml up --abort-on-container-exit",
     "docker-remove-all": "bash ./scripts/docker-remove-all.sh ch ch-dev-dep-test cd-testv1 code-hammers",
+    "docker-build-check": "bash ./scripts/build-check.sh",
     "test:client": "cd client && npm test",
     "test:all": "concurrently \"npm test\" \"npm run test:client\""
   },
