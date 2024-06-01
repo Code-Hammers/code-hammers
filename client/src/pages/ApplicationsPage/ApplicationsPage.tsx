@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAppSelector } from "../../app/hooks";
 import { IApplication } from "../../../types/applications";
+import ApplicationDashboard from "../../components/ApplicationDashBoard/ApplicationDashBoard";
 
 const ApplicationsPage = (): JSX.Element => {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ const ApplicationsPage = (): JSX.Element => {
 
   return (
     <div className="bg-gray-900 flex flex-col items-center justify-center min-h-screen p-4 pt-40 text-white">
+      <ApplicationDashboard />
       <h1 className="font-extrabold mb-4 text-4xl">Applications!</h1>
       <button
         onClick={() => navigate("/app/create-application")}

@@ -10,8 +10,8 @@ import {
 
 const router = express.Router();
 
-router.get("/statuses", getStatuses);
 router.get("/aggregated-user-stats", getAggregatedUserStats);
+router.get("/statuses", getStatuses);
 router.get("/", getAllApplications);
 router.get("/:id", getApplicationById);
 router.post("/", createApplication);
