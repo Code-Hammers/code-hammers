@@ -27,7 +27,7 @@ const EditProfilePage = () => {
     linkedin: "",
     nickName: "",
     personalBio: "",
-    skills: [] as String[],
+    skills: [] as string[],
   });
 
   // THIS MIGHT BE ABLE TO BE REPLACED BY ALREADY EXSITING CODE
@@ -87,8 +87,9 @@ const EditProfilePage = () => {
     }
   }, [profile]);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement> | HTMLTextAreaElement) => {
     const { name, value } = e.target;
+    // if (name === "personalBio" && value.length > 985) return;
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value,
@@ -184,13 +185,15 @@ const EditProfilePage = () => {
           </label>
           <label className="block font-bold mb-2 text-sm" htmlFor="personalBio">
             Personal Bio
-            <input
+            <textarea
               className="bg-gray-800 p-2 rounded text-white w-full"
               id="personalBio"
               name="personalBio"
               type="text"
               value={formData.personalBio}
               onChange={handleChange}
+              style={{ maxHeight: '200px' }}
+              maxLength={1000}
             />
           </label>
           <label className="block font-bold mb-2 text-sm" htmlFor="linkedin">
