@@ -33,20 +33,38 @@ const ApplicationDashboard = (): JSX.Element => {
   return (
     <div className="bg-gray-800 p-4 rounded-lg shadow-lg mb-4 w-full max-w-4xl">
       <h2 className="font-extrabold text-2xl mb-2">Dashboard</h2>
-      <div className="mb-2">
-        <span className="font-bold">Total Applications:</span>{" "}
-        {totalApplications}
-      </div>
-      <div>
-        <h3 className="font-bold">Applications by Status:</h3>
-        <ul className="list-disc ml-4">
-          {applicationsByStatus.map((status) => (
-            <li key={status.status}>
-              {status.status}: {status.count}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <table className="min-w-full divide-y divide-gray-700">
+        <thead>
+          <tr>
+            <th className="px-6 py-3 text-center text-xs font-medium text-gray-400 uppercase tracking-wider">
+              Total Applications
+            </th>
+            {applicationsByStatus.map((status) => (
+              <th
+                key={status.status}
+                className="px-6 py-3 text-center text-xs font-medium text-gray-400 uppercase tracking-wider"
+              >
+                {status.status}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-gray-700">
+          <tr>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-white">
+              {totalApplications}
+            </td>
+            {applicationsByStatus.map((status) => (
+              <td
+                key={status.status}
+                className="px-6 py-4 whitespace-nowrap text-sm text-center text-white"
+              >
+                {status.count}
+              </td>
+            ))}
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 };
