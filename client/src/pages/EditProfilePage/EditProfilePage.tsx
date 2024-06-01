@@ -21,13 +21,11 @@ const EditProfilePage = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [formData, setFormData] = useState({
+    cohort: "",
     email: "",
-    personalBio: "",
-    nickname: "",
-    firstname: "",
-    lastname: "",
-    cohort: "", 
     linkedin: "",
+    nickname: "",
+    personalBio: "",
     skills: [] as String[],
   });
 
@@ -77,13 +75,11 @@ const EditProfilePage = () => {
   useEffect(() => {
     if (profile) {
       setFormData({
-        email: profile.email || "",
-        personalBio: profile.personalBio || "",
-        nickname: profile.nickname || "",
-        firstname: profile.firstname || "",
-        lastname: profile.lastname || "",
         cohort: profile.cohort || "",
+        email: profile.email || "",
         linkedin: profile.linkedin || "",
+        nickname: profile.nickname || "",
+        personalBio: profile.personalBio || "",
         skills: profile.skills || [],
       });
     }
@@ -146,28 +142,6 @@ const EditProfilePage = () => {
               />
             </div>
           )}
-          <label className="block text-sm font-bold mb-2" htmlFor="firstname">
-            First Name
-            <input
-            className="bg-gray-800 p-2 rounded text-white w-full"
-            id="firstname"
-            name="firstname"
-            type="text"
-            value={formData.firstname}
-            onChange={handleChange}
-            />
-          </label>
-          <label className="block text-sm font-bold mb-2" htmlFor="lastname">
-            Last Name
-            <input
-            className="bg-gray-800 p-2 rounded text-white w-full"
-            id="lastname"
-            name="lastname"
-            type="text"
-            value={formData.lastname}
-            onChange={handleChange}
-            />
-          </label>
           <label className="block font-bold mb-2 text-sm" htmlFor="email">
             Email
             <input
