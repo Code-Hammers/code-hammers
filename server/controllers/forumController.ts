@@ -64,7 +64,7 @@ const getForumById = async (
     }
 
     const threadsQuery = Thread.find({ forum: forumId });
-    const threads = sortAndPopulate(threadsQuery);
+    const threads = await sortAndPopulate(threadsQuery);
 
     res.status(200).json({ forum, threads });
   } catch (error) {
