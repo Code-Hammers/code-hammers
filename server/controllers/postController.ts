@@ -1,7 +1,8 @@
+import { Request, Response, NextFunction } from "express";
 import Post from "../models/postModel";
 import Thread from "../models/threadModel";
-import { Request, Response, NextFunction } from "express";
 import { CustomRequest } from "../types/customRequest";
+import { sortAndPopulate } from "./helpers/queryHelpers";
 
 // ENDPOINT  GET api/forums/:forumId/threads/:threadId/posts
 // PURPOSE   Retrieve all posts from a specific thread
@@ -14,9 +15,8 @@ const listPostsByThreadId = async (
   const { threadId } = req.params;
 
   try {
-    const posts = await Post.find({ thread: threadId })
-      .populate("user", "firstName lastName")
-      .exec();
+    const postsQuery = Post.find({ thread: threadId });
+    const posts = await sortAndPopulate(postsQuery);
 
     res.status(200).json(posts);
   } catch (error) {
@@ -88,11 +88,13 @@ const updatePost = async (
         .json({ message: "Not authorized to update this post" });
     }
 
-    const updatedPost = await Post.findByIdAndUpdate(
+    const updatedPostQuery = Post.findByIdAndUpdate(
       postId,
       { $set: { content } },
       { new: true, runValidators: true }
-    ).populate("user", "firstName lastName");
+    );
+
+    const updatedPost = await sortAndPopulate(updatedPostQuery);
 
     if (!updatedPost) {
       return res
