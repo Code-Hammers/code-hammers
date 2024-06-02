@@ -29,16 +29,13 @@ const EditProfilePage = () => {
     nickName: "",
     personalBio: "",
     skills: [] as string[],
-    //specializations: [] as string[],
     specializations: [] as string[],
   });
 
   // THIS MIGHT BE ABLE TO BE REPLACED BY ALREADY EXSITING CODE
-  // State for skills input
   const [skillInput, setSkillInput] = useState("");
 
   // THIS MIGHT BE ABLE TO BE REPLACED BY ALREADY EXSITING CODE
-  // Handling the addition of characters in the "Skills" field
   const handleSkillChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSkillInput(e.target.value);
   };
@@ -56,7 +53,6 @@ const EditProfilePage = () => {
     });
   };
 
-  // Handling the addition of a new skill
   const handleSkillKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && skillInput.trim() !== "") {
       e.preventDefault();
@@ -68,12 +64,10 @@ const EditProfilePage = () => {
           skills: [...prevData.skills, skillInput.trim()],
         }));
       }
-      // emptying the Skill input box when typed skill is officially added
       setSkillInput("");
     }
   };
 
-  // Handling the removal of a skill
   const handleSkillRemove = (skill: string, specialty: boolean) => {
     if (specialty) {
       setFormData((prevData) => ({
@@ -83,7 +77,6 @@ const EditProfilePage = () => {
     } else {
     setFormData((prevData) => ({
       ...prevData,
-      // Filtering skills array to no longer include the removed skill
       skills: prevData.skills.filter((s) => s !== skill),
     }));
     }
@@ -311,8 +304,7 @@ const EditProfilePage = () => {
               </div>
             ))}
           </div>
-
-
+          
           <button
             className='bg-blue-500 font-bold hover:bg-blue-700 mt-4 px-4 py-2 rounded text-white'
             type='submit'
