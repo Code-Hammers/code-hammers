@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import logo from '../../assets/hammer.png';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useAppDispatch } from '../../app/hooks';
 import { logout } from '../../features/user/userSlice';
 import { useNavigate } from 'react-router-dom';
 
-const Banner = (): JSX.Element => {
-  const user = useAppSelector((state) => state.user.userData);
+const Banner = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [showDropdown, setShowDropdown] = useState(false);

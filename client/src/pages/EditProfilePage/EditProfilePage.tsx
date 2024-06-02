@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, ChangeEvent, FormEvent } from 'react';
+import { useEffect, useState, useRef, ChangeEvent, FormEvent } from 'react';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import {
   fetchUserProfile,

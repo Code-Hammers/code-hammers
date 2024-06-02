@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import { useState, ChangeEvent, FormEvent } from 'react';
 import axios from 'axios';
 
 interface CreatePostProps {
@@ -7,7 +7,7 @@ interface CreatePostProps {
   onClose: () => void;
 }
 
-const CreatePost: React.FC<CreatePostProps> = ({ forumId, threadId, onClose }) => {
+const CreatePost = ({ forumId, threadId, onClose }: CreatePostProps) => {
   const [content, setContent] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
@@ -21,7 +21,7 @@ const CreatePost: React.FC<CreatePostProps> = ({ forumId, threadId, onClose }) =
     setIsLoading(true);
 
     try {
-      const response = await axios.post(
+      await axios.post(
         `/api/forums/${forumId}/threads/${threadId}/posts`,
         {
           content,

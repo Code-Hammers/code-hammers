@@ -1,5 +1,5 @@
 import path from 'path';
-import express, { Request, Response, Application, NextFunction } from 'express';
+import express, { Request, Response, Application } from 'express';
 import userRoutes from './routes/userRoutes';
 import profileRoutes from './routes/profileRoutes';
 import authRoutes from './routes/authRoutes';

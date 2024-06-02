@@ -9,11 +9,11 @@ import GraduateInvitation from '../models/graduateInvitationModel';
 // PURPOSE   Register a new user
 // ACCESS    Public
 const registerUser = async (req: Request, res: Response, next: NextFunction) => {
-  const { firstName, lastName, email, password } = req.body;
+  const { email, password } = req.body;
   const { token } = req.query;
 
   try {
-    const isValidEmail = email.match(/[\w\d\.]+@[a-z]+\.[\w]+$/gim);
+    const isValidEmail = email.match(/[\w\d.]+@[a-z]+.[\w]+$/gim);
     if (!isValidEmail) {
       return res.status(400).json('Invalid Email');
     }
@@ -74,7 +74,7 @@ const registerUser = async (req: Request, res: Response, next: NextFunction) => 
 const authUser = async (req: Request, res: Response, next: NextFunction) => {
   const { email, password } = req.body;
 
-  const isValidEmail = email.match(/[\w\d\.]+@[a-z]+\.[\w]+$/gim);
+  const isValidEmail = email.match(/[\w\d.]+@[a-z]+.[\w]+$/gim);
   if (!isValidEmail) {
     return res.status(400).json({ msg: 'Please enter a valid email' }); //TODO Move to global error handler
   }

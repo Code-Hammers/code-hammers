@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ForumsList from '../../components/Forums/ForumsList/ForumsList';
 import ThreadsDisplay from '../../components/Forums/ThreadsDisplay/ThreadsDisplay';
 import ThreadDetails from '../../components/Forums/ThreadDetails/ThreadDetails';
 
-const Forums = (): JSX.Element => {
+const Forums = () => {
   const [selectedForumId, setSelectedForumId] = useState<string | null>(null);
   const [selectedThreadId, setSelectedThreadId] = useState<string | null>(null);
 

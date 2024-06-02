@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../app/hooks';
 import { loginUser } from '../../features/user/userSlice';
 
-const RegistrationPage: React.FC = () => {
+const RegistrationPage = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',

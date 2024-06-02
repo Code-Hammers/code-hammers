@@ -1,4 +1,3 @@
-import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import Navbar from './Navbar';
 import { MemoryRouter } from 'react-router-dom';

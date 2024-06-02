@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import { useState, ChangeEvent, FormEvent } from 'react';
 import axios from 'axios';
 
 interface CreateThreadProps {
@@ -6,7 +6,7 @@ interface CreateThreadProps {
   onClose: () => void;
 }
 
-const CreateThread: React.FC<CreateThreadProps> = ({ forumId, onClose }) => {
+const CreateThread = ({ forumId, onClose }: CreateThreadProps) => {
   const [formData, setFormData] = useState<{ title: string; content: string }>({
     title: '',
     content: '',

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 interface Forum {
@@ -12,7 +12,7 @@ interface ForumsListProps {
   selectedForumId: string | null;
 }
 
-const ForumsList: React.FC<ForumsListProps> = ({ onForumSelect, selectedForumId }) => {
+const ForumsList = ({ onForumSelect, selectedForumId }: ForumsListProps) => {
   const [forums, setForums] = useState<Forum[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);

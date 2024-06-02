@@ -1,16 +1,16 @@
 import axios from 'axios';
+import { UnknownAction } from '@reduxjs/toolkit';
 import userReducer, { initialState, loginUser, logout, UserState } from './userSlice';
 import { AppDispatch } from '../../app/store';
 
 import { IUser } from '../../../types/user';
-import { error } from 'console';
 
 jest.mock('axios');
 
 describe('userSlice', () => {
   describe('reducers', () => {
     it('should return the initial state', () => {
-      expect(userReducer(undefined, {} as any)).toEqual(initialState);
+      expect(userReducer(undefined, {} as UnknownAction)).toEqual(initialState);
     });
 
     it('should handle logout', () => {

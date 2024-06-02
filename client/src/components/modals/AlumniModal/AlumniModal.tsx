@@ -1,4 +1,3 @@
-import React from 'react';
 import { Alum } from '../../../../types/alum';
 
 interface ModalProps {
@@ -7,7 +6,7 @@ interface ModalProps {
   alum: Alum | null;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, alum }) => {
+const Modal = ({ isOpen, onClose, alum }: ModalProps) => {
   if (!isOpen || !alum) return null;
 
   return (

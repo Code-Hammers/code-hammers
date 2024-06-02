@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Header from './components/Header/Header';
 import MainPage from './pages/MainPage/MainPage';
@@ -12,7 +12,6 @@ import { useNavigate } from 'react-router-dom';
 
 const AuthenticatedApp = () => {
   const navigate = useNavigate();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     const validateSession = async () => {
@@ -23,9 +22,7 @@ const AuthenticatedApp = () => {
         });
 
         const data = await response.json();
-        if (response.ok && data.isAuthenticated) {
-          setIsAuthenticated(true);
-        } else {
+        if (!response.ok || !data.isAuthenticated) {
           navigate('/');
         }
       } catch (error) {

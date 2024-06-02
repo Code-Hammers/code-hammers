@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction, SerializedError } from '@reduxjs/toolkit';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import { IUser } from '../../../types/user';
 
 export interface UserState {

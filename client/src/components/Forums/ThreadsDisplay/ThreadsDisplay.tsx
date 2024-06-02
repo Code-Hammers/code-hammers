@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import CreateThread from '../CreateThread/CreateThread';
 import { Thread, IForum } from '../../../../types/forums';
@@ -8,7 +8,7 @@ interface ThreadsDisplayProps {
   onThreadSelect: (threadId: string) => void;
 }
 
-const ThreadsDisplay: React.FC<ThreadsDisplayProps> = ({ forumId, onThreadSelect }) => {
+const ThreadsDisplay = ({ forumId, onThreadSelect }: ThreadsDisplayProps) => {
   const [threads, setThreads] = useState<Thread[]>([]);
   const [forum, setForum] = useState<IForum | null>(null);
   const [loading, setLoading] = useState(false);

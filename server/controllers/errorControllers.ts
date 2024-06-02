@@ -3,10 +3,10 @@ import { Request, Response, NextFunction } from 'express';
 const notFound = (req: Request, res: Response, next: NextFunction): void => {
   const error = new Error(`Not found - ${req.originalUrl}`);
   res.status(404);
-  next({});
+  next(error);
 };
 
-const errorHandler = (err: any, req: Request, res: Response, next: NextFunction): void => {
+const errorHandler = (err: Error, _req: Request, res: Response, _next: NextFunction): void => {
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error',
     status: 400,

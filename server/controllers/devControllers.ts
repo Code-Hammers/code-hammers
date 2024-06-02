@@ -1,7 +1,7 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import { seedDatabase } from '../../dev-tools/scripts/alumniDatabaseSeeder';
 
-const seedRegistrationDatabase = async (req: Request, res: Response, next: NextFunction) => {
+const seedRegistrationDatabase = async (_req: Request, res: Response) => {
   try {
     await seedDatabase();
     res.status(200).send('Database seeded successfully.');

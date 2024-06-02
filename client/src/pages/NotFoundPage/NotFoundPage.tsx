@@ -1,6 +1,4 @@
-import React from 'react';
-
-const NotFoundPage = (): JSX.Element => {
+const NotFoundPage = () => {
   return <div>NotFoundPage</div>;
 };
 

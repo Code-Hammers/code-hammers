@@ -3,7 +3,7 @@ import {
   registerUser,
   authUser,
   getUserById,
-  deleteUserByEmail,
+  // deleteUserByEmail,
 } from '../controllers/userController';
 import { protect } from '../middleware/authMiddleware';
 

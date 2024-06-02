@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { ObjectId } from 'mongoose';
-import profileReducer, { initialState, fetchUserProfile, ProfileState } from './userProfileSlice';
+import { UnknownAction } from '@reduxjs/toolkit';
+import profileReducer, { initialState, fetchUserProfile } from './userProfileSlice';
 import { AppDispatch } from '../../app/store';
 
 jest.mock('axios');
@@ -8,7 +8,7 @@ jest.mock('axios');
 describe('userProfileSlice', () => {
   describe('reducers', () => {
     it('should return the initial state', () => {
-      expect(profileReducer(undefined, {} as any)).toEqual(initialState);
+      expect(profileReducer(undefined, {} as UnknownAction)).toEqual(initialState);
     });
   });
 

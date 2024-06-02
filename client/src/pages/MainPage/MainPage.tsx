@@ -1,9 +1,4 @@
-import React from 'react';
-import { useAppSelector } from '../../app/hooks';
-
-const MainPage = (): JSX.Element => {
-  const user = useAppSelector((state) => state.user.userData);
-
+const MainPage = () => {
   return (
     <div className="pt-40 min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center p-4">
       <h1 className="text-4xl font-extrabold mb-4">Welcome!</h1>

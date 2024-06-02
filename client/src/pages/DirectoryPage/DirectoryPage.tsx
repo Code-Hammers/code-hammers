@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { fetchAlumni } from '../../features/alumni/alumniSlice';
 import Modal from '../../components/modals/AlumniModal/AlumniModal';
 import { Alum } from '../../../types/alum';
 
-const DirectoryPage = (): JSX.Element => {
+const DirectoryPage = () => {
   const dispatch = useAppDispatch();
   const { alumni, status, page, totalPages } = useAppSelector((state) => state.alumni);
   const [nameSearch, setNameSearch] = useState('');

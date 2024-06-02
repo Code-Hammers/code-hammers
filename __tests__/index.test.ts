@@ -1,10 +1,12 @@
 import request from 'supertest';
 import app, { startServer } from '../server/index';
 import { Server } from 'http';
+import mongoose from 'mongoose';
+
+// TODO
+/*eslint jest/no-disabled-tests: "off"*/
 
 let server: Server;
-
-import mongoose from 'mongoose';
 
 beforeEach(() => {
   server = startServer();
@@ -52,7 +54,7 @@ describe('Server Start-Up', () => {
   it('should start up the server if required as main module', async () => {
     const originalLog = console.log;
     const logCalls: string[] = [];
-    console.log = jest.fn((...args: any[]) => {
+    console.log = jest.fn((...args: string[]) => {
       logCalls.push(args.join(' '));
     });
 

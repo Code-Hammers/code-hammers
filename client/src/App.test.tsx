@@ -1,5 +1,5 @@
-import React from 'react';
-import { render, RenderResult, screen } from '@testing-library/react';
+import { ReactNode } from 'react';
+import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from './App';
 import { Provider } from 'react-redux';
@@ -19,16 +19,14 @@ jest.mock('react-router-dom', () => {
   const originalModule = jest.requireActual('react-router-dom');
   return {
     ...originalModule,
-    BrowserRouter: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+    BrowserRouter: ({ children }: { children: ReactNode }) => <div>{children}</div>,
   };
 });
 
 describe('App Component', () => {
-  let component: RenderResult;
-
   beforeEach(() => {
     const store = mockStore(initialState);
-    component = render(
+    render(
       <Provider store={store}>
         <MemoryRouter initialEntries={['/']}>
           <App />

@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { Alum } from '../../../types/alum';
 
 interface AlumniState {
-  alumni: any[];
+  alumni: Alum[];
   status: 'idle' | 'loading' | 'failed';
   error: string | null;
   page: number;

@@ -1,4 +1,3 @@
-import React from 'react';
 import { create } from 'react-test-renderer';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';

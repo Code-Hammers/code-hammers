@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import Profile from '../models/profileModel';
 import AWS from 'aws-sdk';
 
@@ -10,7 +10,7 @@ AWS.config.update({
 
 const s3 = new AWS.S3();
 
-export const uploadProfilePicture = async (req: Request, res: Response, next: NextFunction) => {
+export const uploadProfilePicture = async (req: Request, res: Response) => {
   if (!req.file) {
     return res.status(400).send('No file uploaded.');
   }
@@ -32,7 +32,7 @@ export const uploadProfilePicture = async (req: Request, res: Response, next: Ne
   console.log(req.file);
 
   try {
-    const uploadResult = await s3.upload(params).promise();
+    await s3.upload(params).promise();
     const updatedProfile = await Profile.findOneAndUpdate(
       { user: userID },
       { profilePhoto: s3Key },

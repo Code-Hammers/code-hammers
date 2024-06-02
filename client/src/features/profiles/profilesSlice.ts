@@ -45,7 +45,7 @@ const profilesSlice = createSlice({
         state.profiles = action.payload;
         state.status = 'idle';
       })
-      .addCase(fetchProfiles.rejected, (state, action) => {
+      .addCase(fetchProfiles.rejected, (state, _action) => {
         state.status = 'failed';
         //state.error = action.payload as string; WHAT WOULD PAYLOAD LOOK LIKE HERE?
         //TODO BUILD AN ERROR STATE TRACKER FOR CURRENT ERROR INFO

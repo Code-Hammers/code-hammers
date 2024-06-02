@@ -1,7 +1,6 @@
-import React from 'react';
 import Login from '../components/Login/Login';
 
-const LandingPage: React.FC = () => {
+const LandingPage = () => {
   return (
     <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center p-4">
       <h1 className="text-5xl font-extrabold mb-6">Code Hammers</h1>

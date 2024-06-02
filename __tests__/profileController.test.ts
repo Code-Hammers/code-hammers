@@ -7,6 +7,9 @@ import {
 } from '../server/controllers/profileController';
 import Profile from '../server/models/profileModel';
 
+// TODO
+/*eslint jest/no-disabled-tests: "off"*/
+
 jest.mock('../server/models/profileModel', () => ({
   findOneAndUpdate: jest.fn(),
   findOne: jest.fn(),

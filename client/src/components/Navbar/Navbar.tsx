@@ -1,7 +1,6 @@
-import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
 
-const Navbar = (): JSX.Element => {
+const Navbar = () => {
   const location = useLocation();
 
   return (

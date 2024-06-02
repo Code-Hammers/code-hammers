@@ -1,11 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/hammer.png';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useAppDispatch } from '../../app/hooks';
 import { logout } from '../../features/user/userSlice';
 
-const Header = (): JSX.Element => {
-  const user = useAppSelector((state) => state.user.userData);
+const Header = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
