@@ -20,8 +20,10 @@ const ApplicationDashboard = (): JSX.Element => {
         const response = await axios.get(
           `/api/applications/aggregated-user-stats?user_id=${user?._id}`
         );
-        setTotalApplications(response.data.totalApplications);
-        setApplicationsByStatus(response.data.applicationsByStatus);
+        const { totalApplications = 0, applicationsByStatus = [] } =
+          response.data || {};
+        setTotalApplications(totalApplications);
+        setApplicationsByStatus(applicationsByStatus);
       } catch (error) {
         console.error("Error fetching aggregated data:", error);
       }
