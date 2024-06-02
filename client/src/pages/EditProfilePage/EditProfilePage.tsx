@@ -89,9 +89,8 @@ const EditProfilePage = () => {
     }
   }, [profile]);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement> | HTMLTextAreaElement) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement >) => {
     const { name, value } = e.target;
-    // if (name === "personalBio" && value.length > 985) return;
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value,

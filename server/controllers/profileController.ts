@@ -28,6 +28,7 @@ const createProfile = async (
     graduationYear,
     email,
     linkedInProfile,
+    gitHubProfile,
     professionalSummary,
     skills,
     specializations,
@@ -56,6 +57,7 @@ const createProfile = async (
       graduationYear,
       email,
       linkedInProfile,
+      gitHubProfile,
       professionalSummary,
       skills,
       specializations,
@@ -98,7 +100,7 @@ const updateProfile = async (
   next: NextFunction
 ) => {
   const { userID } = req.params;
-  const { firstName, lastName, nickName, email, personalBio, linkedInProfile, cohort } = req.body;
+  const { firstName, lastName, nickName, email, personalBio, linkedInProfile, gitHubProfile, cohort } = req.body;
 
   const newProfile = {
     firstName,
@@ -107,6 +109,7 @@ const updateProfile = async (
     email,
     personalBio,
     linkedInProfile,
+    gitHubProfile,
     cohort,
   };
 
