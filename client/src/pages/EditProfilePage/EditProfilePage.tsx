@@ -12,6 +12,7 @@ import {
   updateUserProfile,
   uploadProfilePicture,
 } from "../../features/userProfile/userProfileSlice";
+import { isatty } from "tty";
 
 const EditProfilePage = () => {
   const dispatch = useAppDispatch();
@@ -41,15 +42,14 @@ const EditProfilePage = () => {
   };
 
   const handleSpecialization = (skill: string) => {
-    console.log('Handle Specialization hit')
     setFormData((prevData) => {
-      const isAlreadySpecialized = prevData.specializations.includes(skill);
-      return {
-        ...prevData,
-        specializations: isAlreadySpecialized
-          ? prevData.specializations.filter((s) => s !== skill)
-          : [...prevData.specializations, skill],
-      };
+      const isAlreadySpecialized = prevData.specializations.includes(skill); 
+      return isAlreadySpecialized
+      ? prevData
+      : {
+          ...prevData,
+          specializations: [...prevData.specializations, skill],
+        };
     });
   };
 
@@ -75,10 +75,10 @@ const EditProfilePage = () => {
         specializations: prevData.specializations.filter((s) => s !== skill),
       }));
     } else {
-    setFormData((prevData) => ({
-      ...prevData,
-      skills: prevData.skills.filter((s) => s !== skill),
-    }));
+      setFormData((prevData) => ({
+        ...prevData,
+        skills: prevData.skills.filter((s) => s !== skill),
+      }));
     }
   };
 
@@ -147,7 +147,7 @@ const EditProfilePage = () => {
   };
 
   const getDisplayName = () => {
-    console.log('PROFILE HERE', profile);
+    console.log("PROFILE HERE", profile);
     return profile?.nickName || profile?.firstName;
   };
 
@@ -259,7 +259,11 @@ const EditProfilePage = () => {
           </label>
           <div className='flex flex-wrap gap-2 mb-2 mt-4'>
             {formData.skills.map((skill, index) => (
-              <div key={index} className='mr-2 mb-2' onClick={() => handleSpecialization(skill)}>
+              <div
+                key={index}
+                className='mr-2 mb-2'
+                onClick={() => handleSpecialization(skill)}
+              >
                 <span
                   // kept to avoid key warning
                   key={index}
@@ -279,10 +283,16 @@ const EditProfilePage = () => {
             ))}
           </div>
 
-          <label className='block font-bold mb-2 text-sm' htmlFor='specializations'>
-            Specializations 
-            <div className="text-xs text-gray-500">click on the skills you specialize in</div>
+          <label
+            className='block font-bold mb-2 text-sm'
+            htmlFor='specializations'
+          >
+            Specializations
+            <span className='ml-2 text-gray-500 text-xs'>
+              click on the skills you specialize in
+            </span>
           </label>
+
           <div className='flex flex-wrap gap-2 mb-2 mt-4'>
             {formData.specializations.map((skill, index) => (
               <div key={index} className='mr-2 mb-2'>
@@ -304,7 +314,7 @@ const EditProfilePage = () => {
               </div>
             ))}
           </div>
-          
+
           <button
             className='bg-blue-500 font-bold hover:bg-blue-700 mt-4 px-4 py-2 rounded text-white'
             type='submit'
