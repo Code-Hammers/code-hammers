@@ -1,7 +1,8 @@
+import { Request, Response, NextFunction } from "express";
 import Post from "../models/postModel";
 import Thread from "../models/threadModel";
-import { Request, Response, NextFunction } from "express";
 import { CustomRequest } from "../types/customRequest";
+import { sortAndPopulate } from "./helpers/queryHelpers";
 
 // ENDPOINT  POST api/:forumId/threads
 // PURPOSE   Create a new thread
@@ -47,9 +48,8 @@ const getAllThreads = async (
   next: NextFunction
 ) => {
   try {
-    const threads = await Thread.find({})
-      .populate("user", "firstName lastName")
-      .exec();
+    const threadsQuery = Thread.find({});
+    const threads = await sortAndPopulate(threadsQuery);
     res.status(200).json(threads);
   } catch (error) {
     next({
@@ -71,10 +71,8 @@ const listThreadsByForumId = async (
   const { forumId } = req.params;
 
   try {
-    const threads = await Thread.find({ forum: forumId })
-      .populate("user", "firstName lastName")
-      .exec();
-
+    const threadsQuery = Thread.find({ forum: forumId });
+    const threads = await sortAndPopulate(threadsQuery);
     res.status(200).json(threads);
   } catch (error) {
     next({
@@ -96,17 +94,15 @@ const getThreadById = async (
   const { threadId } = req.params;
 
   try {
-    const thread = await Thread.findOne({ _id: threadId })
-      .populate("user", "firstName lastName")
-      .exec();
+    const threadQuery = Thread.findOne({ _id: threadId });
+    const thread = await sortAndPopulate(threadQuery);
 
     if (!thread) {
       return res.status(404).json({ message: "Thread not found" });
     }
 
-    const posts = await Post.find({ thread: threadId })
-      .populate("user", "firstName lastName")
-      .exec();
+    const postsQuery = Post.find({ thread: threadId });
+    const posts = await sortAndPopulate(postsQuery);
 
     res.status(200).json({ thread, posts });
   } catch (error) {
@@ -141,12 +137,16 @@ const updateThread = async (
         .json({ message: "Not authorized to update this thread" });
     }
 
-    const updatedThread = await Thread.findByIdAndUpdate(
+    const updateThreadQuery = Thread.findByIdAndUpdate(
       threadId,
       { $set: { title, content } },
       { new: true, runValidators: true }
-    ).populate("user", "firstName lastName");
-
+    );
+    const updatedThread = await sortAndPopulate(
+      updateThreadQuery,
+      "createdAt",
+      1
+    );
     res.status(200).json(updatedThread);
   } catch (error) {
     next({
