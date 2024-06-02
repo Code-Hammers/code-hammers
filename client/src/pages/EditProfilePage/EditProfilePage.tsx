@@ -31,6 +31,12 @@ const EditProfilePage = () => {
     personalBio: "",
     skills: [] as string[],
     specializations: [] as string[],
+    careerInformation: {
+      currentPosition: {
+        title: "",
+        company: "",
+      },
+    },
   });
 
   // THIS MIGHT BE ABLE TO BE REPLACED BY ALREADY EXSITING CODE
@@ -43,13 +49,13 @@ const EditProfilePage = () => {
 
   const handleSpecialization = (skill: string) => {
     setFormData((prevData) => {
-      const isAlreadySpecialized = prevData.specializations.includes(skill); 
+      const isAlreadySpecialized = prevData.specializations.includes(skill);
       return isAlreadySpecialized
-      ? prevData
-      : {
-          ...prevData,
-          specializations: [...prevData.specializations, skill],
-        };
+        ? prevData
+        : {
+            ...prevData,
+            specializations: [...prevData.specializations, skill],
+          };
     });
   };
 
@@ -82,6 +88,35 @@ const EditProfilePage = () => {
     }
   };
 
+  const handleCompanyChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      careerInformation: {
+        ...prevData.careerInformation,
+        currentPosition: {
+          ...prevData.careerInformation.currentPosition,
+          company: value,
+        },
+      },
+    }));
+  };
+
+  // Handling the change for title
+  const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      careerInformation: {
+        ...prevData.careerInformation,
+        currentPosition: {
+          ...prevData.careerInformation.currentPosition,
+          title: value,
+        },
+      },
+    }));
+  };
+
   const [file, setFile] = useState<File | null>(null);
 
   useEffect(() => {
@@ -100,6 +135,12 @@ const EditProfilePage = () => {
         personalBio: profile.personalBio || "",
         skills: profile.skills || [],
         specializations: profile.specializations || [],
+        careerInformation: {
+          currentPosition: {
+            title: profile.careerInformation?.currentPosition?.title || "",
+            company: profile.careerInformation?.currentPosition?.company || "",
+          },
+        },
       });
     }
   }, [profile]);
@@ -127,7 +168,16 @@ const EditProfilePage = () => {
       console.error("UserID is undefined.");
       return;
     }
-    dispatch(updateUserProfile({ ...formData, userID, navigate }));
+    const payload = {
+      ...formData,
+      careerInformation: {
+        currentPosition: {
+          company: formData.careerInformation.currentPosition.company,
+          title: formData.careerInformation.currentPosition.title,
+        }
+      }
+    };
+    dispatch(updateUserProfile({ ...payload, userID, navigate }));
   };
 
   const handleImageUpload = () => {
@@ -216,6 +266,31 @@ const EditProfilePage = () => {
               maxLength={1000}
             />
           </label>
+
+          <label className='block font-bold mb-2 text-sm' htmlFor='company'>
+            Current Company
+            <input
+              className='bg-gray-800 p-2 rounded text-white w-full'
+              id='company'
+              name='company'
+              type='text'
+              value={formData.careerInformation.currentPosition.company}
+              onChange={handleCompanyChange}
+            />
+          </label>
+
+          <label className='block font-bold mb-2 text-sm' htmlFor='title'>
+            Current Title
+            <input
+              className='bg-gray-800 p-2 rounded text-white w-full'
+              id='title'
+              name='title'
+              type='text'
+              value={formData.careerInformation.currentPosition.title}
+              onChange={handleTitleChange}
+            />
+          </label>
+
           <label
             className='block font-bold mb-2 text-sm'
             htmlFor='linkedInProfile'
