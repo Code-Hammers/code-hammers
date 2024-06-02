@@ -1,7 +1,6 @@
 const globals = require('globals');
 const js = require('@eslint/js');
 const tseslint = require('typescript-eslint');
-const reactPlugin = require('eslint-plugin-react');
 const pluginReactConfig = require('eslint-plugin-react/configs/recommended.js');
 const jestPlugin = require('eslint-plugin-jest');
 const eslintConfigPrettier = require('eslint-config-prettier');
@@ -29,7 +28,18 @@ module.exports = [
   ...tseslint.configs.recommended.map((config) => {
     if (config.name === 'typescript-eslint/recommended') {
       return {
-        ...config,
+        name: config.name,
+        rules: {
+          ...config.rules,
+          // Override any tslint rules after this line
+          '@typescript-eslint/no-unused-vars': [
+            'error',
+            // Allow unused arguments when prefixed with underscore
+            {
+              argsIgnorePattern: '^_',
+            },
+          ],
+        },
         // Have this configuration ignore these files
         ignores: ['**/*.config.js'],
       };
@@ -40,48 +50,30 @@ module.exports = [
   // React Recommended Rules
   {
     name: 'eslint-plugin-react:recommended',
-    ...pluginReactConfig,
+    plugins: pluginReactConfig.plugins,
+    rules: {
+      ...pluginReactConfig.rules,
+
+      // React recommended rule overrides
+      'react/react-in-jsx-scope': 'off',
+    },
+    settings: {
+      react: {
+        // Must set manually - cannot auto-detect from /client/package.json
+        version: '18.3.1',
+      },
+    },
   },
-  // React Additional Rules
-  // {
-  //   name: 'eslint-plugin-react:additional',
-  //   files: ['**/*.{js,jsx,ts,tsx}'],
-  //   plugins: {
-  //     reactPlugin,
-  //   },
-  //   languageOptions: {
-  //     parserOptions: {
-  //       ecmaFeatures: {
-  //         jsx: true,
-  //       },
-  //     },
-  //     globals: {
-  //       ...globals.browser,
-  //     },
-  //   },
-  //   rules: {
-  //     'react/jsx-uses-react': 'error',
-  //     'react/jsx-uses-vars': 'error',
-  //   },
-  //   settings: {
-  //     react: {
-  //       // Must set manually - cannot auto-detect from /client/package.json
-  //       version: '18.3.1',
-  //     },
-  //   },
-  // },
   // Jest Recommended Rules
   {
     name: 'eslint-plugin-jest:recommended',
     files: ['**/*.test.ts', '**/*.test.tsx'],
     ...jestPlugin.configs['flat/recommended'],
-  },
-  // Jest Recommended Rule Overrides
-  {
-    name: 'eslint-plugin-jest:overrides',
-    files: ['**/*.test.ts', '**/*.test.tsx'],
+    plugins: jestPlugin.configs['flat/recommended'].plugins,
+    languageOptions: jestPlugin.configs['flat/recommended'].languageOptions,
     rules: {
-      // TODO - do we want these rules?
+      ...jestPlugin.configs['flat/recommended'].rules,
+      // Jest recommended rule OVERRIDES
       'jest/no-disabled-tests': 'warn',
       'jest/no-test-prefixes': 'off',
       'jest/no-done-callback': 'off',
