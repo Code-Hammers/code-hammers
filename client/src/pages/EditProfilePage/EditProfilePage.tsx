@@ -44,6 +44,7 @@ const EditProfilePage = () => {
   };
 
   const handleSpecialization = (skill: string) => {
+    console.log('Handle Specialization hit')
     setFormData((prevData) => {
       const isAlreadySpecialized = prevData.specializations.includes(skill);
       return {
@@ -74,19 +75,19 @@ const EditProfilePage = () => {
 
   // Handling the removal of a skill
   const handleSkillRemove = (skill: string, specialty: boolean) => {
-    // if (specialty) {
-    //   setFormData((prevData) => {
-    //     ...prevData,
-    //     specializations: prevData.specializations.filter((s) => s !== skill),
-    //   })
-    // } else {
+    if (specialty) {
+      setFormData((prevData) => ({
+        ...prevData,
+        specializations: prevData.specializations.filter((s) => s !== skill),
+      }));
+    } else {
     setFormData((prevData) => ({
       ...prevData,
       // Filtering skills array to no longer include the removed skill
       skills: prevData.skills.filter((s) => s !== skill),
     }));
+    }
   };
-  // };
 
   const [file, setFile] = useState<File | null>(null);
 
@@ -153,7 +154,7 @@ const EditProfilePage = () => {
   };
 
   const getDisplayName = () => {
-    // console.log('PROFILE HERE', profile);
+    console.log('PROFILE HERE', profile);
     return profile?.nickName || profile?.firstName;
   };
 
@@ -265,22 +266,13 @@ const EditProfilePage = () => {
           </label>
           <div className='flex flex-wrap gap-2 mb-2 mt-4'>
             {formData.skills.map((skill, index) => (
-              <div key={index} className='mr-2 mb-2'>
+              <div key={index} className='mr-2 mb-2' onClick={() => handleSpecialization(skill)}>
                 <span
                   // kept to avoid key warning
                   key={index}
                   className='bg-blue-500 incline-flex items-center px-4 py-1 rounded-full text-sm text-white'
                 >
                   {skill}
-                  <button
-                    type='button'
-                    className={`ml-2 mr-2 w-4 h-4 border-2 ${
-                      formData.specializations.includes(skill)
-                        ? "bg-yellow-500 border-yellow-500"
-                        : "bg-transparent border-white"
-                    }`}
-                    onClick={() => handleSpecialization(skill)}
-                  ></button>
                   <button
                     type='button'
                     className='ml-2 text-white'
@@ -294,12 +286,32 @@ const EditProfilePage = () => {
             ))}
           </div>
 
-          <label
-            className='block font-bold mb-2 text-sm'
-            htmlFor='specializations'
-          >
-            Specializations
+          <label className='block font-bold mb-2 text-sm' htmlFor='specializations'>
+            Specializations 
+            <div className="text-xs text-gray-500">click on the skills you specialize in</div>
           </label>
+          <div className='flex flex-wrap gap-2 mb-2 mt-4'>
+            {formData.specializations.map((skill, index) => (
+              <div key={index} className='mr-2 mb-2'>
+                <span
+                  // kept to avoid key warning
+                  key={index}
+                  className='bg-yellow-500 incline-flex items-center px-4 py-1 rounded-full text-sm text-black'
+                >
+                  {skill}
+                  <button
+                    type='button'
+                    className='ml-2 text-black'
+                    onClick={() => handleSkillRemove(skill, true)}
+                  >
+                    {/* HTML entity for multiplication sign */}
+                    &times;
+                  </button>
+                </span>
+              </div>
+            ))}
+          </div>
+
 
           <button
             className='bg-blue-500 font-bold hover:bg-blue-700 mt-4 px-4 py-2 rounded text-white'
