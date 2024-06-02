@@ -190,7 +190,6 @@ const EditProfilePage = () => {
               className="bg-gray-800 p-2 rounded text-white w-full"
               id="personalBio"
               name="personalBio"
-              type="text"
               value={formData.personalBio}
               onChange={handleChange}
               style={{ maxHeight: '200px' }}
