@@ -1,11 +1,10 @@
-import React from 'react';
 import { IProfile } from '../../../types/profile';
 
 interface ProfileThumbProps {
   profile: IProfile;
 }
 
-const ProfileThumb = ({ profile }: ProfileThumbProps): JSX.Element => {
+const ProfileThumb = ({ profile }: ProfileThumbProps) => {
   const defaultImage = 'https://picsum.photos/200';
 
   return (
