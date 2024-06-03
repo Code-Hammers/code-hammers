@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { fetchUserProfile } from '../../features/userProfile/userProfileSlice';
 
-const Profile = (): JSX.Element => {
+const Profile = () => {
   const dispatch = useAppDispatch();
   const { userId } = useParams();
   const userProfile = useAppSelector((state) => state.userProfile.profile);
