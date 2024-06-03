@@ -4,14 +4,9 @@ import asyncHandler from 'express-async-handler';
 
 const authSession = asyncHandler(async (req, res) => {
   let token;
-  console.log('PROTECT HIT');
-  console.log(req.headers);
-  console.log('cookies:', req.cookies);
 
   if (req.cookies.token) {
-    console.log(req.headers);
     try {
-      console.log('try block hit!');
       token = req.cookies.token;
       const secret = process.env.JWT_SECRET as string;
       const decoded = jwt.verify(token, secret) as jwt.JwtPayload;

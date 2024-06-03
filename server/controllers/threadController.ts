@@ -7,7 +7,6 @@ import { CustomRequest } from '../types/customRequest';
 // PURPOSE   Create a new thread
 // ACCESS    Private
 const createThread = async (req: CustomRequest, res: Response, next: NextFunction) => {
-  console.log('TEST!');
   const { forumId } = req.params;
   const { title, content } = req.body;
 

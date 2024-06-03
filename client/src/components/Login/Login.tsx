@@ -15,16 +15,14 @@ const Login = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Dispatch the loginUser async thunk with formData
+
     dispatch(loginUser({ email, password }))
       .unwrap()
-      .then((user) => {
-        console.log('User logged in:', user);
-        navigate('/app/main'); // navigate to the main app
+      .then(() => {
+        navigate('/app/main');
       })
       .catch((error) => {
         console.error('Login failed:', error);
-        // Handle login failure (e.g., show error message)
       });
   };
 

@@ -28,9 +28,6 @@ export const uploadProfilePicture = async (req: Request, res: Response) => {
     ACL: 'private',
   };
 
-  console.log('params.Body', params.Body);
-  console.log(req.file);
-
   try {
     await s3.upload(params).promise();
     const updatedProfile = await Profile.findOneAndUpdate(

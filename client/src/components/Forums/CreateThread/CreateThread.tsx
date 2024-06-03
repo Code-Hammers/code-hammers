@@ -21,10 +21,9 @@ const CreateThread = ({ forumId, onClose }: CreateThreadProps) => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`/api/forums/${forumId}/threads`, formData, {
+      await axios.post(`/api/forums/${forumId}/threads`, formData, {
         withCredentials: true,
       });
-      console.log('Thread created:', response.data);
       onClose();
     } catch (error) {
       console.error('Failed to create thread:', error);
