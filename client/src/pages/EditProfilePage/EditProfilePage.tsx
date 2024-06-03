@@ -44,50 +44,7 @@ const EditProfilePage = () => {
     availabilityForNetworking: false,
   });
 
-  const [skillInput, setSkillInput] = useState("");
-
-  const handleSkillChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSkillInput(e.target.value);
-  };
-
-  const handleSpecialization = (skill: string) => {
-    setFormData((prevData) => {
-      const isAlreadySpecialized = prevData.specializations.includes(skill);
-      return isAlreadySpecialized
-        ? prevData
-        : {
-            ...prevData,
-            specializations: [...prevData.specializations, skill],
-          };
-    });
-  };
-
-  const handleSkillKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && skillInput.trim() !== "") {
-      e.preventDefault();
-      if (!formData.skills.includes(skillInput.trim())) {
-        setFormData((prevData) => ({
-          ...prevData,
-          skills: [...prevData.skills, skillInput.trim()],
-        }));
-      }
-      setSkillInput("");
-    }
-  };
-
-  const handleSkillRemove = (skill: string, specialty: boolean) => {
-    if (specialty) {
-      setFormData((prevData) => ({
-        ...prevData,
-        specializations: prevData.specializations.filter((s) => s !== skill),
-      }));
-    } else {
-      setFormData((prevData) => ({
-        ...prevData,
-        skills: prevData.skills.filter((s) => s !== skill),
-      }));
-    }
-  };
+ 
 
   const [file, setFile] = useState<File | null>(null);
 
@@ -143,6 +100,51 @@ const EditProfilePage = () => {
         },
       },
     }));
+  };
+  
+ const [skillInput, setSkillInput] = useState("");
+
+  const handleSkillChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSkillInput(e.target.value);
+  };
+
+  const handleSpecialization = (skill: string) => {
+    setFormData((prevData) => {
+      const isAlreadySpecialized = prevData.specializations.includes(skill);
+      return isAlreadySpecialized
+        ? prevData
+        : {
+            ...prevData,
+            specializations: [...prevData.specializations, skill],
+          };
+    });
+  };
+
+  const handleSkillKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && skillInput.trim() !== "") {
+      e.preventDefault();
+      if (!formData.skills.includes(skillInput.trim())) {
+        setFormData((prevData) => ({
+          ...prevData,
+          skills: [...prevData.skills, skillInput.trim()],
+        }));
+      }
+      setSkillInput("");
+    }
+  };
+
+  const handleSkillRemove = (skill: string, specialty: boolean) => {
+    if (specialty) {
+      setFormData((prevData) => ({
+        ...prevData,
+        specializations: prevData.specializations.filter((s) => s !== skill),
+      }));
+    } else {
+      setFormData((prevData) => ({
+        ...prevData,
+        skills: prevData.skills.filter((s) => s !== skill),
+      }));
+    }
   };
 
   // Handling the change for title
