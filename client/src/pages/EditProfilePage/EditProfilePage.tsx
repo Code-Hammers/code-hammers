@@ -40,7 +40,8 @@ const EditProfilePage = () => {
     socialMediaLinks: {
       twitter: "",
       blog: "",
-    }
+    },
+    availabilityForNetworking: false,
   });
 
   // THIS MIGHT BE ABLE TO BE REPLACED BY ALREADY EXSITING CODE
@@ -92,9 +93,6 @@ const EditProfilePage = () => {
     }
   };
 
-
-
-
   const [file, setFile] = useState<File | null>(null);
 
   useEffect(() => {
@@ -122,7 +120,8 @@ const EditProfilePage = () => {
         socialMediaLinks: {
           twitter: profile.socialMediaLinks?.twitter || "",
           blog: profile.socialMediaLinks?.blog || "",
-        }
+        },
+        availabilityForNetworking: profile.availabilityForNetworking || false,
       });
     }
   }, [profile]);
@@ -137,7 +136,6 @@ const EditProfilePage = () => {
       [name]: value,
     }));
   };
-  
   const handleCompanyChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setFormData((prevData) => ({
@@ -188,7 +186,6 @@ const EditProfilePage = () => {
       },
     }));
   };
-
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const fileList = e.target.files;
     if (!fileList) return;
@@ -207,12 +204,12 @@ const EditProfilePage = () => {
         currentPosition: {
           company: formData.careerInformation.currentPosition.company,
           title: formData.careerInformation.currentPosition.title,
-        }
+        },
       },
       socialMediaLinks: {
         twitter: formData.socialMediaLinks.twitter,
         blog: formData.socialMediaLinks.blog,
-      }
+      },
     };
     dispatch(updateUserProfile({ ...payload, userID, navigate }));
   };
@@ -328,9 +325,33 @@ const EditProfilePage = () => {
 
           <label
             className='block font-bold mb-2 text-sm'
+            htmlFor='availabilityForNetworking'
+          >
+            Available for Networking?
+            <div
+              className={`ml-2 mt-2 w-3 h-3 cursor-pointer inline-block ${
+                formData.availabilityForNetworking
+                  ? "bg-yellow-500"
+                  : "bg-blue-500"
+              }`}
+              onClick={() =>
+                setFormData((prevData) => ({
+                  ...prevData,
+                  availabilityForNetworking:
+                    !prevData.availabilityForNetworking,
+                }))
+              }
+            ></div>
+            <span className="ml-2 text-xs">
+              {formData.availabilityForNetworking ? 'Yes' : 'No'}
+            </span>
+          </label>
+
+          <label
+            className='block font-bold mb-2 text-sm'
             htmlFor='linkedInProfile'
           >
-            LinkedIn 
+            LinkedIn
             <input
               className='bg-gray-800 p-2 rounded text-white w-full'
               id='linkedInProfile'
@@ -344,7 +365,7 @@ const EditProfilePage = () => {
             className='block font-bold mb-2 text-sm'
             htmlFor='gitHubProfile'
           >
-            GitHub 
+            GitHub
             <input
               className='bg-gray-800 p-2 rounded text-white w-full'
               id='gitHubProfile'
@@ -354,10 +375,7 @@ const EditProfilePage = () => {
               onChange={handleChange}
             />
           </label>
-          <label
-            className='block font-bold mb-2 text-sm'
-            htmlFor='twitter'
-          >
+          <label className='block font-bold mb-2 text-sm' htmlFor='twitter'>
             Twitter
             <input
               className='bg-gray-800 p-2 rounded text-white w-full'
@@ -368,10 +386,7 @@ const EditProfilePage = () => {
               onChange={handleTwitterChange}
             />
           </label>
-          <label
-            className='block font-bold mb-2 text-sm'
-            htmlFor='blog'
-          >
+          <label className='block font-bold mb-2 text-sm' htmlFor='blog'>
             Blog
             <input
               className='bg-gray-800 p-2 rounded text-white w-full'

@@ -100,7 +100,7 @@ const updateProfile = async (
   next: NextFunction
 ) => {
   const { userID } = req.params;
-  const { firstName, lastName, nickName, email, personalBio, linkedInProfile, gitHubProfile, cohort, skills, specializations, careerInformation, socialMediaLinks } = req.body;
+  const { firstName, lastName, nickName, email, personalBio, linkedInProfile, gitHubProfile, cohort, skills, specializations, careerInformation, socialMediaLinks, availabilityForNetworking } = req.body;
 
   const newProfile = {
     firstName,
@@ -115,6 +115,7 @@ const updateProfile = async (
     specializations,
     careerInformation,
     socialMediaLinks,
+    availabilityForNetworking,
   };
 
   try {
