@@ -273,7 +273,7 @@ const EditProfilePage = () => {
               onChange={handleChange}
             />
           </label>
-          <label className='block text-sm font-bold mb-2' htmlFor='cohort'>
+          <label className='block font-bold mb-2 text-sm' htmlFor='cohort'>
             Cohort
             <input
               className='bg-gray-800 p-2 rounded text-white w-full'
@@ -325,7 +325,7 @@ const EditProfilePage = () => {
           >
             Available for Networking?
             <div
-              className={`ml-2 mt-2 w-3 h-3 cursor-pointer inline-block ${
+              className={`cursor-pointer h-3 inline-block ml-2 mt-2 w-3 ${
                 formData.availabilityForNetworking
                   ? "bg-yellow-500"
                   : "bg-blue-500"
@@ -410,7 +410,7 @@ const EditProfilePage = () => {
             {formData.skills.map((skill, index) => (
               <div
                 key={index}
-                className='mr-2 mb-2'
+                className='mb-2 mr-2 '
                 onClick={() => handleSpecialization(skill)}
               >
                 <span
@@ -442,13 +442,13 @@ const EditProfilePage = () => {
             </span>
           </label>
 
-          <div className='flex flex-wrap gap-2 mb-2 mt-4'>
+          <div className='flex flex-wrap gap-2 mt-4 mb-2'>
             {formData.specializations.map((skill, index) => (
-              <div key={index} className='mr-2 mb-2'>
+              <div key={index} className='mb-2 mr-2 '>
                 <span
                   // kept to avoid key warning
                   key={index}
-                  className='bg-yellow-500 incline-flex items-center px-4 py-1 rounded-full text-sm text-black'
+                  className='bg-yellow-500 incline-flex items-center px-4 py-1 rounded-full text-black text-sm'
                 >
                   {skill}
                   <button
