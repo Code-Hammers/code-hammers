@@ -37,6 +37,10 @@ const EditProfilePage = () => {
         company: "",
       },
     },
+    socialMediaLinks: {
+      twitter: "",
+      blog: "",
+    }
   });
 
   // THIS MIGHT BE ABLE TO BE REPLACED BY ALREADY EXSITING CODE
@@ -88,6 +92,52 @@ const EditProfilePage = () => {
     }
   };
 
+
+
+
+  const [file, setFile] = useState<File | null>(null);
+
+  useEffect(() => {
+    if (userID) dispatch(fetchUserProfile(userID as string));
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (profile) {
+      setFormData({
+        cohort: profile.cohort || "",
+        email: profile.email || "",
+        firstName: profile.firstName || "",
+        linkedInProfile: profile.linkedInProfile || "",
+        gitHubProfile: profile.gitHubProfile || "",
+        nickName: profile.nickName || "",
+        personalBio: profile.personalBio || "",
+        skills: profile.skills || [],
+        specializations: profile.specializations || [],
+        careerInformation: {
+          currentPosition: {
+            title: profile.careerInformation?.currentPosition?.title || "",
+            company: profile.careerInformation?.currentPosition?.company || "",
+          },
+        },
+        socialMediaLinks: {
+          twitter: profile.socialMediaLinks?.twitter || "",
+          blog: profile.socialMediaLinks?.blog || "",
+        }
+      });
+    }
+  }, [profile]);
+
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    console.log("PROFILE", profile);
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+  
   const handleCompanyChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setFormData((prevData) => ({
@@ -117,42 +167,25 @@ const EditProfilePage = () => {
     }));
   };
 
-  const [file, setFile] = useState<File | null>(null);
+  const handleTwitterChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      socialMediaLinks: {
+        ...prevData.socialMediaLinks,
+        twitter: value,
+      },
+    }));
+  };
 
-  useEffect(() => {
-    if (userID) dispatch(fetchUserProfile(userID as string));
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (profile) {
-      setFormData({
-        cohort: profile.cohort || "",
-        email: profile.email || "",
-        firstName: profile.firstName || "",
-        linkedInProfile: profile.linkedInProfile || "",
-        gitHubProfile: profile.gitHubProfile || "",
-        nickName: profile.nickName || "",
-        personalBio: profile.personalBio || "",
-        skills: profile.skills || [],
-        specializations: profile.specializations || [],
-        careerInformation: {
-          currentPosition: {
-            title: profile.careerInformation?.currentPosition?.title || "",
-            company: profile.careerInformation?.currentPosition?.company || "",
-          },
-        },
-      });
-    }
-  }, [profile]);
-
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    console.log("PROFILE", profile);
-    const { name, value } = e.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
+  const handleBlogChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      socialMediaLinks: {
+        ...prevData.socialMediaLinks,
+        blog: value,
+      },
     }));
   };
 
@@ -175,6 +208,10 @@ const EditProfilePage = () => {
           company: formData.careerInformation.currentPosition.company,
           title: formData.careerInformation.currentPosition.title,
         }
+      },
+      socialMediaLinks: {
+        twitter: formData.socialMediaLinks.twitter,
+        blog: formData.socialMediaLinks.blog,
       }
     };
     dispatch(updateUserProfile({ ...payload, userID, navigate }));
@@ -266,7 +303,6 @@ const EditProfilePage = () => {
               maxLength={1000}
             />
           </label>
-
           <label className='block font-bold mb-2 text-sm' htmlFor='company'>
             Current Company
             <input
@@ -278,7 +314,6 @@ const EditProfilePage = () => {
               onChange={handleCompanyChange}
             />
           </label>
-
           <label className='block font-bold mb-2 text-sm' htmlFor='title'>
             Current Title
             <input
@@ -295,7 +330,7 @@ const EditProfilePage = () => {
             className='block font-bold mb-2 text-sm'
             htmlFor='linkedInProfile'
           >
-            LinkedIn Profile
+            LinkedIn 
             <input
               className='bg-gray-800 p-2 rounded text-white w-full'
               id='linkedInProfile'
@@ -309,7 +344,7 @@ const EditProfilePage = () => {
             className='block font-bold mb-2 text-sm'
             htmlFor='gitHubProfile'
           >
-            GitHub Profile
+            GitHub 
             <input
               className='bg-gray-800 p-2 rounded text-white w-full'
               id='gitHubProfile'
@@ -317,6 +352,34 @@ const EditProfilePage = () => {
               type='text'
               value={formData.gitHubProfile}
               onChange={handleChange}
+            />
+          </label>
+          <label
+            className='block font-bold mb-2 text-sm'
+            htmlFor='twitter'
+          >
+            Twitter
+            <input
+              className='bg-gray-800 p-2 rounded text-white w-full'
+              id='twitter'
+              name='twitter'
+              type='text'
+              value={formData.socialMediaLinks.twitter}
+              onChange={handleTwitterChange}
+            />
+          </label>
+          <label
+            className='block font-bold mb-2 text-sm'
+            htmlFor='blog'
+          >
+            Blog
+            <input
+              className='bg-gray-800 p-2 rounded text-white w-full'
+              id='blog'
+              name='blog'
+              type='text'
+              value={formData.socialMediaLinks.blog}
+              onChange={handleBlogChange}
             />
           </label>
           <label className='block font-bold mb-2 text-sm' htmlFor='skills'>
