@@ -18,7 +18,7 @@ const Login = () => {
 
     dispatch(loginUser({ email, password }))
       .unwrap()
-      .then((user) => {
+      .then(() => {
         navigate('/app/main');
       })
       .catch((error) => {
