@@ -101,7 +101,7 @@ const updateProfile = async (req: Request, res: Response, next: NextFunction) =>
     const profile: IProfile | null = await Profile.findOneAndUpdate({ user: userID }, newProfile, {
       new: true,
     });
-    console.log(profile);
+
     if (!profile) {
       return next({
         log: 'Express error in updateProfile Middleware - NO PROFILE FOUND',

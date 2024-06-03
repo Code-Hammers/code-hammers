@@ -9,7 +9,6 @@ const Profile = (): JSX.Element => {
   const userProfile = useAppSelector((state) => state.userProfile.profile);
 
   useEffect(() => {
-    console.log('userId', userId);
     if (userId) dispatch(fetchUserProfile(userId));
   }, [dispatch]);
   return (

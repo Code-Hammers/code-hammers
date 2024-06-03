@@ -44,7 +44,7 @@ const RegistrationPage = () => {
       if (!response.ok) {
         throw new Error(data.message || 'An error occurred during registration.');
       }
-      console.log('Registration successful', data);
+
       dispatch(loginUser({ email: formData.email, password: formData.password }))
         .unwrap()
         .then(() => {

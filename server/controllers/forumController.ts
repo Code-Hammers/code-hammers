@@ -106,7 +106,6 @@ const deleteForum = async (req: Request, res: Response, next: NextFunction) => {
     //TODO add auth check for admin status
 
     const deletedForum = await Forum.findByIdAndDelete(forumId);
-    console.log('deletedForum', deletedForum);
 
     if (!deletedForum) {
       return res.status(404).json({ message: 'Forum not found' });
