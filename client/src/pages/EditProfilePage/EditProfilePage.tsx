@@ -44,10 +44,8 @@ const EditProfilePage = () => {
     availabilityForNetworking: false,
   });
 
-  // THIS MIGHT BE ABLE TO BE REPLACED BY ALREADY EXSITING CODE
   const [skillInput, setSkillInput] = useState("");
 
-  // THIS MIGHT BE ABLE TO BE REPLACED BY ALREADY EXSITING CODE
   const handleSkillChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSkillInput(e.target.value);
   };
@@ -67,8 +65,6 @@ const EditProfilePage = () => {
   const handleSkillKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && skillInput.trim() !== "") {
       e.preventDefault();
-      console.log("handleSkillKeyDown");
-      // ensuring the current skills array does not already include the typed skill
       if (!formData.skills.includes(skillInput.trim())) {
         setFormData((prevData) => ({
           ...prevData,
@@ -129,7 +125,6 @@ const EditProfilePage = () => {
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    console.log("PROFILE", profile);
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
@@ -231,7 +226,6 @@ const EditProfilePage = () => {
   };
 
   const getDisplayName = () => {
-    console.log("PROFILE HERE", profile);
     return profile?.nickName || profile?.firstName;
   };
 
