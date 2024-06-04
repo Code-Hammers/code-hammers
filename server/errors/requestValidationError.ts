@@ -1,5 +1,5 @@
-import { CustomError } from './customError';
-import { ValidationError } from './validationError';
+import { CustomError } from "./customError";
+import { ValidationError } from "./validationError";
 
 export class RequestValidationError extends CustomError {
   statusCode = 400;
@@ -15,8 +15,8 @@ export class RequestValidationError extends CustomError {
   }
 
   serializeErrors() {
-    return this.errors.map((err) => {
-      return { message: err.message, field: err.field };
+    return this.errors.map(({ message, field }) => {
+      return { message, field };
     });
   }
 }
