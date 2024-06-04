@@ -12,10 +12,13 @@ const ApplicationDashboard = (): JSX.Element => {
   const [applicationsByStatus, setApplicationsByStatus] = useState<
     IStatusCount[]
   >([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const user = useAppSelector((state) => state.user.userData);
 
   useEffect(() => {
     async function fetchAggregatedData() {
+      setLoading(true);
       try {
         const response = await axios.get(
           `/api/applications/aggregated-user-stats/${user?._id}`
@@ -24,8 +27,12 @@ const ApplicationDashboard = (): JSX.Element => {
           response.data || {};
         setTotalApplications(totalApplications);
         setApplicationsByStatus(applicationsByStatus);
-      } catch (error) {
+        setLoading(false);
+      } catch (err) {
+        const error = err as Error;
         console.error("Error fetching aggregated data:", error);
+        setError(error.message);
+        setLoading(false);
       }
     }
 
