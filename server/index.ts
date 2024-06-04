@@ -1,5 +1,6 @@
 import path from "path";
 import express, { Request, Response, Application, NextFunction } from "express";
+import "express-async-errors";
 import userRoutes from "./routes/userRoutes";
 import profileRoutes from "./routes/profileRoutes";
 import authRoutes from "./routes/authRoutes";
