@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from "express";
+import { CustomRequest } from "../types/customRequest";
 import { pool } from "../config/sql-db";
 
 interface StatusCount {
@@ -101,7 +102,7 @@ const createApplication = async (
 };
 
 const getApplicationById = async (
-  req: Request,
+  req: CustomRequest,
   res: Response,
   next: NextFunction
 ) => {
@@ -147,7 +148,7 @@ const getApplicationById = async (
 };
 
 const updateApplication = async (
-  req: Request,
+  req: CustomRequest,
   res: Response,
   next: NextFunction
 ) => {
@@ -188,7 +189,7 @@ const updateApplication = async (
 };
 
 const getAggregatedUserStats = async (
-  req: Request,
+  req: CustomRequest,
   res: Response,
   next: NextFunction
 ) => {
