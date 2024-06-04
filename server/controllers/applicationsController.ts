@@ -102,12 +102,12 @@ const createApplication = async (
 };
 
 const getApplicationById = async (
-  req: CustomRequest,
+  req: CustomRequest<{ id: string }>,
   res: Response,
   next: NextFunction
 ) => {
   const { id } = req.params;
-  if (req.user !== id)
+  if (!req.user || req.user.id !== id)
     return res
       .status(401)
       .json({ message: "You are not authorized to retrieve those records" });
@@ -148,12 +148,12 @@ const getApplicationById = async (
 };
 
 const updateApplication = async (
-  req: CustomRequest,
+  req: CustomRequest<{ id: string }>,
   res: Response,
   next: NextFunction
 ) => {
   const { id } = req.params;
-  if (req.user !== id)
+  if (!req.user || req.user.id !== id)
     return res
       .status(401)
       .json({ message: "You are not authorized to retrieve those records" });
@@ -189,12 +189,12 @@ const updateApplication = async (
 };
 
 const getAggregatedUserStats = async (
-  req: CustomRequest,
+  req: CustomRequest<{ userId: string }>,
   res: Response,
   next: NextFunction
 ) => {
   const { userId } = req.params;
-  if (req.user !== userId)
+  if (!req.user || req.user.id !== userId)
     return res
       .status(401)
       .json({ message: "You are not authorized to retrieve those records" });
