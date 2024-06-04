@@ -105,8 +105,12 @@ const getApplicationById = async (
   res: Response,
   next: NextFunction
 ) => {
+  const { id } = req.params;
+  if (req.user !== id)
+    return res
+      .status(401)
+      .json({ message: "You are not authorized to retrieve those records" });
   try {
-    const { id } = req.params;
     const query = `
       SELECT
         applications.id,
@@ -147,9 +151,13 @@ const updateApplication = async (
   res: Response,
   next: NextFunction
 ) => {
+  const { id } = req.params;
+  if (req.user !== id)
+    return res
+      .status(401)
+      .json({ message: "You are not authorized to retrieve those records" });
   try {
     const { id } = req.params;
-
     const {
       job_id,
       status_id,
@@ -184,9 +192,12 @@ const getAggregatedUserStats = async (
   res: Response,
   next: NextFunction
 ) => {
+  const { userId } = req.params;
+  if (req.user !== userId)
+    return res
+      .status(401)
+      .json({ message: "You are not authorized to retrieve those records" });
   try {
-    const { userId } = req.params;
-
     const applicationsByStatusQuery = `
       SELECT statuses.name AS status, COUNT(*) AS count
       FROM applications 
