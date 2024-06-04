@@ -39,6 +39,9 @@ const ApplicationDashboard = (): JSX.Element => {
     fetchAggregatedData();
   }, [user?._id]);
 
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+
   return (
     <div className="bg-gray-800 p-4 rounded-lg shadow-lg mb-4 w-full max-w-4xl">
       <h2 className="font-extrabold text-2xl mb-2">Dashboard</h2>
