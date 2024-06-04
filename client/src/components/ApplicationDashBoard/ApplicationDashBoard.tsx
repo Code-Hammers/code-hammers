@@ -18,7 +18,7 @@ const ApplicationDashboard = (): JSX.Element => {
     async function fetchAggregatedData() {
       try {
         const response = await axios.get(
-          `/api/applications/aggregated-user-stats?user_id=${user?._id}`
+          `/api/applications/aggregated-user-stats/${user?._id}`
         );
         const { totalApplications = 0, applicationsByStatus = [] } =
           response.data || {};

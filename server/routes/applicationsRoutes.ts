@@ -10,7 +10,7 @@ import {
 
 const router = express.Router();
 
-router.get("/aggregated-user-stats", getAggregatedUserStats);
+router.get("/aggregated-user-stats/:userId", getAggregatedUserStats);
 router.get("/statuses", getStatuses);
 router.get("/", getAllApplications);
 router.get("/:id", getApplicationById);

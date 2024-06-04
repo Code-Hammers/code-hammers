@@ -185,7 +185,7 @@ const getAggregatedUserStats = async (
   next: NextFunction
 ) => {
   try {
-    const userId = req.query.user_id;
+    const { userId } = req.params;
 
     const applicationsByStatusQuery = `
       SELECT statuses.name AS status, COUNT(*) AS count
