@@ -1,21 +1,17 @@
-import Post from "../models/postModel";
-import Thread from "../models/threadModel";
-import { Request, Response, NextFunction } from "express";
-import { CustomRequest } from "../types/customRequest";
+import Post from '../models/postModel';
+import Thread from '../models/threadModel';
+import { Request, Response, NextFunction } from 'express';
+import { CustomRequest } from '../types/customRequest';
 
 // ENDPOINT  GET api/forums/:forumId/threads/:threadId/posts
 // PURPOSE   Retrieve all posts from a specific thread
 // ACCESS    Private
-const listPostsByThreadId = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+const listPostsByThreadId = async (req: Request, res: Response, next: NextFunction) => {
   const { threadId } = req.params;
 
   try {
     const posts = await Post.find({ thread: threadId })
-      .populate("user", "firstName lastName")
+      .populate('user', 'firstName lastName')
       .exec();
 
     res.status(200).json(posts);
@@ -23,7 +19,7 @@ const listPostsByThreadId = async (
     next({
       log: `Express error in listPostsByThreadId controller: ${error}`,
       status: 500,
-      message: { err: "Server error fetching posts" },
+      message: { err: 'Server error fetching posts' },
     });
   }
 };
@@ -31,22 +27,18 @@ const listPostsByThreadId = async (
 // ENDPOINT  POST api/forums/:forumId/threads/:threadId/posts
 // PURPOSE   Create a new post on thread
 // ACCESS    Private
-const createPost = async (
-  req: CustomRequest,
-  res: Response,
-  next: NextFunction
-) => {
+const createPost = async (req: CustomRequest, res: Response, next: NextFunction) => {
   const { threadId } = req.params;
   const { content } = req.body;
 
   if (!req.user || !req.user.id) {
-    return res.status(401).json({ message: "Not authenticated" });
+    return res.status(401).json({ message: 'Not authenticated' });
   }
 
   try {
     const threadExists = await Thread.findById(threadId);
     if (!threadExists) {
-      return res.status(404).json({ message: "Thread not found" });
+      return res.status(404).json({ message: 'Thread not found' });
     }
 
     const newPost = await Post.create({
@@ -60,7 +52,7 @@ const createPost = async (
     next({
       log: `Express error in createPost controller: ${error}`,
       status: 500,
-      message: { err: "Server error creating post" },
+      message: { err: 'Server error creating post' },
     });
   }
 };
@@ -68,36 +60,28 @@ const createPost = async (
 // ENDPOINT  PUT api/forums/:forumId/threads/:threadId/:postId
 // PURPOSE   Update an existing post
 // ACCESS    Private
-const updatePost = async (
-  req: CustomRequest,
-  res: Response,
-  next: NextFunction
-) => {
+const updatePost = async (req: CustomRequest, res: Response, next: NextFunction) => {
   const { postId } = req.params;
   const { content } = req.body;
 
   try {
-    const postToCheck = await Post.findById(postId).populate("user");
+    const postToCheck = await Post.findById(postId).populate('user');
     if (!postToCheck) {
-      return res.status(404).json({ message: "Post not found" });
+      return res.status(404).json({ message: 'Post not found' });
     }
 
     if (!req.user || postToCheck.user._id.toString() !== req.user.id) {
-      return res
-        .status(403)
-        .json({ message: "Not authorized to update this post" });
+      return res.status(403).json({ message: 'Not authorized to update this post' });
     }
 
     const updatedPost = await Post.findByIdAndUpdate(
       postId,
       { $set: { content } },
-      { new: true, runValidators: true }
-    ).populate("user", "firstName lastName");
+      { new: true, runValidators: true },
+    ).populate('user', 'firstName lastName');
 
     if (!updatedPost) {
-      return res
-        .status(404)
-        .json({ message: "Unable to update post or post not found" });
+      return res.status(404).json({ message: 'Unable to update post or post not found' });
     }
 
     res.status(200).json(updatedPost);
@@ -105,7 +89,7 @@ const updatePost = async (
     next({
       log: `Express error in updatePost controller: ${error}`,
       status: 500,
-      message: { err: "Server error updating post" },
+      message: { err: 'Server error updating post' },
     });
   }
 };
@@ -113,40 +97,32 @@ const updatePost = async (
 // ENDPOINT  DELETE api/forums/:forumId/threads/:threadId/:postId
 // PURPOSE   Delete an existing post
 // ACCESS    Private, Admin
-const deletePost = async (
-  req: CustomRequest,
-  res: Response,
-  next: NextFunction
-) => {
+const deletePost = async (req: CustomRequest, res: Response, next: NextFunction) => {
   const { postId } = req.params;
 
   try {
-    const postToCheck = await Post.findById(postId).populate("user");
+    const postToCheck = await Post.findById(postId).populate('user');
     if (!postToCheck) {
-      return res.status(404).json({ message: "Post not found" });
+      return res.status(404).json({ message: 'Post not found' });
     }
 
     //TODO Add admin rights to delete posts for Jimmy
     if (!req.user || postToCheck.user._id.toString() !== req.user.id) {
-      return res
-        .status(403)
-        .json({ message: "Not authorized to delete this post" });
+      return res.status(403).json({ message: 'Not authorized to delete this post' });
     }
 
     const deletedPost = await Post.findByIdAndDelete(postId);
 
     if (!deletedPost) {
-      return res
-        .status(404)
-        .json({ message: "Post not found or already deleted" });
+      return res.status(404).json({ message: 'Post not found or already deleted' });
     }
 
-    res.status(200).json({ message: "Post deleted successfully" });
+    res.status(200).json({ message: 'Post deleted successfully' });
   } catch (error) {
     next({
       log: `Express error in deletePost controller: ${error}`,
       status: 500,
-      message: { err: "Server error deleting post" },
+      message: { err: 'Server error deleting post' },
     });
   }
 };

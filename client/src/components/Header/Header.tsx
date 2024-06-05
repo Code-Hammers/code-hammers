@@ -1,11 +1,10 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import logo from "../../assets/hammer.png";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { logout } from "../../features/user/userSlice";
+import { useState, useRef, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import logo from '../../assets/hammer.png';
+import { useAppDispatch } from '../../app/hooks';
+import { logout } from '../../features/user/userSlice';
 
-const Header = (): JSX.Element => {
-  const user = useAppSelector((state) => state.user.userData);
+const Header = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -14,30 +13,27 @@ const Header = (): JSX.Element => {
 
   const handleLogout = () => {
     dispatch(logout());
-    navigate("/");
+    navigate('/');
     //TODO CLEAR ALL STATE
   };
 
-  const currentPath = location.pathname.replace("/app/", "");
+  const currentPath = location.pathname.replace('/app/', '');
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setShowDropdown(false);
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [dropdownRef]);
 
   return (
     <div
       className="fixed top-0 left-0 right-0 bg-gray-600 text-white p-4 md:p-6 flex items-center justify-between"
-      style={{ margin: "10px 20px 0 20px", zIndex: 1000 }}
+      style={{ margin: '10px 20px 0 20px', zIndex: 1000 }}
     >
       <Link to="/app/main" className="flex items-center">
         <img src={logo} alt="Code Hammers Logo" className="h-12 md:h-16" />
@@ -49,7 +45,7 @@ const Header = (): JSX.Element => {
           <Link
             to="/app/directory"
             className={`text-lg md:text-xl ${
-              currentPath === "main" ? "text-gray-300" : "hover:text-gray-300"
+              currentPath === 'main' ? 'text-gray-300' : 'hover:text-gray-300'
             } transition transform hover:scale-105`}
           >
             Alumni
@@ -57,9 +53,7 @@ const Header = (): JSX.Element => {
           <Link
             to="/app/profiles"
             className={`text-lg md:text-xl ${
-              currentPath === "profiles"
-                ? "text-gray-300"
-                : "hover:text-gray-300"
+              currentPath === 'profiles' ? 'text-gray-300' : 'hover:text-gray-300'
             } transition transform hover:scale-105`}
           >
             Profiles
@@ -67,7 +61,7 @@ const Header = (): JSX.Element => {
           <Link
             to="/app/forums"
             className={`text-lg md:text-xl ${
-              currentPath === "forums" ? "text-gray-300" : "hover:text-gray-300"
+              currentPath === 'forums' ? 'text-gray-300' : 'hover:text-gray-300'
             } transition transform hover:scale-105`}
           >
             Forums
@@ -90,7 +84,7 @@ const Header = (): JSX.Element => {
               href="#!"
               className="block px-4 py-2 text-sm text-white hover:bg-gray-800"
               onClick={() => {
-                navigate("/app/editProfile");
+                navigate('/app/editProfile');
                 setShowDropdown(false);
               }}
             >
