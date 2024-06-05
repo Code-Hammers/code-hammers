@@ -2,7 +2,7 @@ version: '3'
 
 services:
   test:
-    image: codehammers/ch-dev-dep-test:latest
+    image: codehammers/ch-dev-dep-v2:latest
     container_name: ch-test
     ports:
       - '3000:3000'
