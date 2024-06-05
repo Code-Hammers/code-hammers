@@ -107,10 +107,6 @@ const getApplicationById = async (
   next: NextFunction
 ) => {
   const { id } = req.params;
-  if (!req.user || req.user.id !== id)
-    return res
-      .status(401)
-      .json({ message: "You are not authorized to retrieve those records" });
   try {
     const query = `
       SELECT
@@ -139,6 +135,12 @@ const getApplicationById = async (
     if (rows.length === 0) {
       return res.status(404).json({ message: "Application not found" });
     }
+    console.log("user id: ", rows[0].user_id);
+
+    if (!req.user || req.user.id !== rows[0].user_id)
+      return res
+        .status(401)
+        .json({ message: "You are not authorized to retrieve those records" });
 
     res.json(rows[0]);
   } catch (error) {
