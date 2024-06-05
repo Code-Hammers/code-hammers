@@ -12,7 +12,6 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/',
   },
-  mode: process.env.NODE_ENV,
   plugins: [
     new HtmlWebPackPlugin({
       title: 'Development',

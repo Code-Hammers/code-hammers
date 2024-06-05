@@ -21,7 +21,6 @@ This document provides some best practices when using TypeScript and standards t
   - [13. Leverage Type Inference](#13-leverage-type-inference)
   - [14. Use Index Signatures for Dynamic Data](#14-use-index-signatures-for-dynamic-data)
   - [15. Use Generics for Reusable Components](#15-use-generics-for-reusable-components)
-  - [16. Use the `JSX.Element` type for React Components](#16-use-jsxelement-type-for-react-components)
 
   <hr>
 
