@@ -1,5 +1,11 @@
 import { Request, Response, NextFunction } from "express";
+import { CustomRequest } from "../types/customRequest";
 import { pool } from "../config/sql-db";
+
+interface StatusCount {
+  status: string;
+  count: string;
+}
 
 const getAllApplications = async (
   req: Request,
@@ -96,12 +102,12 @@ const createApplication = async (
 };
 
 const getApplicationById = async (
-  req: Request,
+  req: CustomRequest<{ id: string }>,
   res: Response,
   next: NextFunction
 ) => {
+  const { id } = req.params;
   try {
-    const { id } = req.params;
     const query = `
       SELECT
         applications.id,
@@ -129,6 +135,12 @@ const getApplicationById = async (
     if (rows.length === 0) {
       return res.status(404).json({ message: "Application not found" });
     }
+    console.log("user id: ", rows[0].user_id);
+
+    if (!req.user || req.user.id !== rows[0].user_id)
+      return res
+        .status(401)
+        .json({ message: "You are not authorized to retrieve those records" });
 
     res.json(rows[0]);
   } catch (error) {
@@ -138,13 +150,17 @@ const getApplicationById = async (
 };
 
 const updateApplication = async (
-  req: Request,
+  req: CustomRequest<{ id: string }>,
   res: Response,
   next: NextFunction
 ) => {
+  const { id } = req.params;
+  if (!req.user || req.user.id !== id)
+    return res
+      .status(401)
+      .json({ message: "You are not authorized to retrieve those records" });
   try {
     const { id } = req.params;
-
     const {
       job_id,
       status_id,
@@ -174,10 +190,49 @@ const updateApplication = async (
   }
 };
 
+const getAggregatedUserStats = async (
+  req: CustomRequest<{ userId: string }>,
+  res: Response,
+  next: NextFunction
+) => {
+  const { userId } = req.params;
+  if (!req.user || req.user.id !== userId)
+    return res
+      .status(401)
+      .json({ message: "You are not authorized to retrieve those records" });
+  try {
+    const applicationsByStatusQuery = `
+      SELECT statuses.name AS status, COUNT(*) AS count
+      FROM applications 
+      JOIN statuses ON applications.status_id = statuses.id 
+      WHERE applications.user_id = $1 
+      GROUP BY statuses.name
+    `;
+    const applicationsByStatusResult = await pool.query<StatusCount>(
+      applicationsByStatusQuery,
+      [userId]
+    );
+
+    const totalApplications = applicationsByStatusResult.rows.reduce(
+      (sum: number, row: StatusCount) => sum + parseInt(row.count, 10),
+      0
+    );
+
+    res.json({
+      totalApplications,
+      applicationsByStatus: applicationsByStatusResult.rows,
+    });
+  } catch (error) {
+    console.error("Error fetching aggregated data:", error);
+    res.status(500).send("Internal server error");
+  }
+};
+
 export {
   getAllApplications,
   getStatuses,
   createApplication,
   updateApplication,
   getApplicationById,
+  getAggregatedUserStats,
 };
