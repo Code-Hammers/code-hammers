@@ -4,7 +4,7 @@ import { Request, Response } from 'express';
 const sendPasswordResetEmail = async (_req: Request, res: Response) => {
   try {
     //build out controller logic to use nodemailer and send email
-    res.status(200).send('Database seeded successfully.');
+    res.status(200).send('Email sent successfully.');
   } catch (error) {
     console.error('Error sending email:', error);
     res.status(500).send('Error sending email.');
