@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../app/hooks";
-import { loginUser } from "../../features/user/userSlice";
+import { useState, ChangeEvent, FormEvent } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../app/hooks';
+import { loginUser } from '../../features/user/userSlice';
 
-const RegistrationPage: React.FC = () => {
+const RegistrationPage = () => {
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    password2: "",
+    email: '',
+    password: '',
+    password2: '',
   });
 
   const location = useLocation();
@@ -15,69 +15,60 @@ const RegistrationPage: React.FC = () => {
   const navigate = useNavigate();
 
   const query = new URLSearchParams(location.search);
-  const token = query.get("token");
+  const token = query.get('token');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!token) {
-      console.error("Token is missing.");
+      console.error('Token is missing.');
       return; //TODO Display error feedback for user
     }
     //TODO User feedback needed
     if (formData.password !== formData.password2) return;
     try {
       const response = await fetch(`/api/users/register?token=${token}`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
       });
       const data = await response.json();
       if (!response.ok) {
-        throw new Error(
-          data.message || "An error occurred during registration."
-        );
+        throw new Error(data.message || 'An error occurred during registration.');
       }
-      console.log("Registration successful", data);
-      dispatch(
-        loginUser({ email: formData.email, password: formData.password })
-      )
+
+      dispatch(loginUser({ email: formData.email, password: formData.password }))
         .unwrap()
         .then(() => {
-          navigate("/app/main");
+          navigate('/app/main');
         })
         .catch((error) => {
-          console.error("Error adding user to state:", error);
+          console.error('Error adding user to state:', error);
         });
     } catch (error) {
       //TODO Needs better error handling and user feedback
-      console.error("Registration error:", error);
+      console.error('Registration error:', error);
     }
   };
 
   return (
     <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-xs">
-        <h1 className="text-4xl font-extrabold mb-4 text-center">
-          Registration Page
-        </h1>
+        <h1 className="text-4xl font-extrabold mb-4 text-center">Registration Page</h1>
         <form
           className="bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 shadow-lg rounded px-8 pt-6 pb-8 mb-4"
           onSubmit={handleSubmit}
         >
           <div className="mb-4">
-            <label
-              className="block text-gray-300 text-sm font-bold mb-2"
-              htmlFor="email"
-            >
+            <label className="block text-gray-300 text-sm font-bold mb-2" htmlFor="email">
               Email
             </label>
             <input
@@ -91,10 +82,7 @@ const RegistrationPage: React.FC = () => {
             />
           </div>
           <div className="mb-6">
-            <label
-              className="block text-gray-300 text-sm font-bold mb-2"
-              htmlFor="password"
-            >
+            <label className="block text-gray-300 text-sm font-bold mb-2" htmlFor="password">
               Password
             </label>
             <input
@@ -108,10 +96,7 @@ const RegistrationPage: React.FC = () => {
             />
           </div>
           <div className="mb-6">
-            <label
-              className="block text-gray-300 text-sm font-bold mb-2"
-              htmlFor="password2"
-            >
+            <label className="block text-gray-300 text-sm font-bold mb-2" htmlFor="password2">
               Password
             </label>
             <input

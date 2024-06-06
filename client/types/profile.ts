@@ -1,4 +1,4 @@
-import { Document, ObjectId } from "mongoose";
+import { Document, ObjectId } from 'mongoose';
 
 interface ISocialLinks {
   twitter?: string;
