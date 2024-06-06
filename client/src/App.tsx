@@ -3,6 +3,7 @@ import LandingPage from './pages/LandingPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import AuthenticatedApp from './AuthenticatedApp';
 import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
+import PasswordResetPage from './pages/PasswordResetPage/PasswordResetPage';
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/registration/" element={<RegistrationPage />} />
+        <Route path="/password-reset" element={<PasswordResetPage />} />
         <Route path="/app/*" element={<AuthenticatedApp />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

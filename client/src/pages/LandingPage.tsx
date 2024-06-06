@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Login from '../components/Login/Login';
 
 const LandingPage = () => {
@@ -8,6 +9,9 @@ const LandingPage = () => {
         Welcome to Code Hammers! Please log in to continue to the main application.
       </p>
       <Login />
+      <Link to="./password-reset" className="mt-4 text-blue-500 hover:underline">
+        Forgot Password?
+      </Link>
     </div>
   );
 };
