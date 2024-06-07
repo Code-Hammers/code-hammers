@@ -4,10 +4,10 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest --colors --coverage",
     "type-check": "tsc --noEmit",
-    "start": "webpack serve --open --hot --mode development",
-    "build": "webpack --mode production"
+    "start": "webpack serve --open --hot --mode=development",
+    "build": "webpack --mode=production"
   },
   "author": "",
   "license": "ISC",
