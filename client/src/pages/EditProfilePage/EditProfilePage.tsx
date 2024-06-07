@@ -1,17 +1,11 @@
-import React, {
-  useEffect,
-  useState,
-  useRef,
-  ChangeEvent,
-  FormEvent,
-} from "react";
-import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState, useRef, ChangeEvent, FormEvent } from 'react';
+import { useAppSelector, useAppDispatch } from '../../app/hooks';
+import { useNavigate } from 'react-router-dom';
 import {
   fetchUserProfile,
   updateUserProfile,
   uploadProfilePicture,
-} from "../../features/userProfile/userProfileSlice";
+} from '../../features/userProfile/userProfileSlice';
 
 const EditProfilePage = () => {
   const dispatch = useAppDispatch();
@@ -21,8 +15,8 @@ const EditProfilePage = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [formData, setFormData] = useState({
-    email: "",
-    personalBio: "",
+    email: '',
+    personalBio: '',
   });
 
   const [file, setFile] = useState<File | null>(null);
@@ -33,8 +27,8 @@ const EditProfilePage = () => {
   useEffect(() => {
     if (profile) {
       setFormData({
-        email: profile.email || "",
-        personalBio: profile.personalBio || "",
+        email: profile.email || '',
+        personalBio: profile.personalBio || '',
       });
     }
   }, [profile]);
@@ -56,7 +50,7 @@ const EditProfilePage = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!userID) {
-      console.error("UserID is undefined.");
+      console.error('UserID is undefined.');
       return;
     }
     dispatch(updateUserProfile({ ...formData, userID, navigate }));
@@ -64,12 +58,12 @@ const EditProfilePage = () => {
 
   const handleImageUpload = () => {
     if (!file || !userID) {
-      console.error("File or UserID is undefined.");
+      console.error('File or UserID is undefined.');
       return;
     }
 
     const formData = new FormData();
-    formData.append("profilePicture", file);
+    formData.append('profilePicture', file);
 
     dispatch(uploadProfilePicture({ formData, userID }));
   };
@@ -78,7 +72,7 @@ const EditProfilePage = () => {
     fileInputRef.current?.click();
   };
 
-  if (status === "loading" || !userID) {
+  if (status === 'loading' || !userID) {
     return <div>Loading...</div>;
   }
 
@@ -132,7 +126,7 @@ const EditProfilePage = () => {
             ref={fileInputRef}
             type="file"
             onChange={handleFileChange}
-            style={{ display: "none" }}
+            style={{ display: 'none' }}
           />
           {file && <p className="mt-2 text-lg">{file.name}</p>}
           <button

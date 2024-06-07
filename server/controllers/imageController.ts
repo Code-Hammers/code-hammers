@@ -1,6 +1,6 @@
-import { Request, Response, NextFunction } from "express";
-import Profile from "../models/profileModel";
-import AWS from "aws-sdk";
+import { Request, Response } from 'express';
+import Profile from '../models/profileModel';
+import AWS from 'aws-sdk';
 
 AWS.config.update({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -10,13 +10,9 @@ AWS.config.update({
 
 const s3 = new AWS.S3();
 
-export const uploadProfilePicture = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const uploadProfilePicture = async (req: Request, res: Response) => {
   if (!req.file) {
-    return res.status(400).send("No file uploaded.");
+    return res.status(400).send('No file uploaded.');
   }
 
   const { userID } = req.params;
@@ -24,26 +20,23 @@ export const uploadProfilePicture = async (
   const file = req.file as Express.Multer.File;
   const s3Key = `profile-pictures/${Date.now()}_${file.originalname}`;
 
-  let params = {
+  const params = {
     Bucket: process.env.BUCKET_NAME as string,
     Key: s3Key,
     Body: file.buffer,
     ContentType: file.mimetype,
-    ACL: "private",
+    ACL: 'private',
   };
 
-  console.log("params.Body", params.Body);
-  console.log(req.file);
-
   try {
-    const uploadResult = await s3.upload(params).promise();
+    await s3.upload(params).promise();
     const updatedProfile = await Profile.findOneAndUpdate(
       { user: userID },
       { profilePhoto: s3Key },
-      { new: true }
+      { new: true },
     );
 
-    const presignedUrl = s3.getSignedUrl("getObject", {
+    const presignedUrl = s3.getSignedUrl('getObject', {
       Bucket: process.env.BUCKET_NAME,
       Key: s3Key,
       Expires: 60 * 5,
@@ -53,7 +46,7 @@ export const uploadProfilePicture = async (
     }
     res.status(201).send(updatedProfile);
   } catch (err) {
-    console.error("Error uploading to S3:", err);
+    console.error('Error uploading to S3:', err);
   }
 };
 
@@ -66,11 +59,11 @@ export const generatePresignedUrl = (req: Request, res: Response) => {
     Expires: 60,
   };
 
-  s3.getSignedUrl("putObject", params, (err, url) => {
+  s3.getSignedUrl('putObject', params, (err, url) => {
     if (err) {
-      console.error("Error generating URL:", err);
-      return res.status(500).send("Error generating URL");
+      console.error('Error generating URL:', err);
+      return res.status(500).send('Error generating URL');
     }
-    res.status(200).send({ message: "URL generated successfully", url });
+    res.status(200).send({ message: 'URL generated successfully', url });
   });
 };
