@@ -246,4 +246,6 @@ export {
   updateApplication,
   getApplicationById,
   getAggregatedUserStats,
+  updateNotificationPeriod,
+  pauseNotifications,
 };
