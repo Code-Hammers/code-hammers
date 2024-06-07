@@ -56,6 +56,9 @@ CREATE TABLE applications (
     quick_apply BOOLEAN NOT NULL,
     date_applied TIMESTAMPTZ DEFAULT NOW(),
     general_notes TEXT,
+    last_updated TIMESTAMPTZ DEFAULT NOW(),
+    notification_period INT DEFAULT 3,
+    notifications_paused BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (job_id) REFERENCES jobs(id),
     FOREIGN KEY (status_id) REFERENCES statuses(id)
 );
