@@ -1,0 +1,9 @@
+# These files should always be ignored by Prettier.
+
+build/
+coverage/
+dist/
+node_modules/
+package-lock.json
+*.test.jsx.snap
+*.test.tsx.snap

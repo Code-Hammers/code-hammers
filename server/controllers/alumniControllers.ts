@@ -1,24 +1,25 @@
-import Alumni from "../models/alumniModel";
-import { Request, Response, NextFunction } from "express";
-import { IAlumni } from "../types/alumni";
+import Alumni from '../models/alumniModel';
+import { Request, Response } from 'express';
+import { IAlumni } from '../types/alumni';
 
-const getAllAlumniData = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+interface SearchQuery {
+  name?: { $regex: string; $options: string };
+  company?: { $regex: string; $options: string };
+}
+
+const getAllAlumniData = async (req: Request, res: Response) => {
   const page = parseInt(req.query.page as string) || 1;
   const limit = parseInt(req.query.limit as string) || 10;
-  const nameSearch = (req.query.name as string) || "";
-  const companySearch = (req.query.company as string) || "";
+  const nameSearch = (req.query.name as string) || '';
+  const companySearch = (req.query.company as string) || '';
 
   try {
-    const searchQuery: any = {};
+    const searchQuery: SearchQuery = {};
     if (nameSearch) {
-      searchQuery.name = { $regex: nameSearch, $options: "i" };
+      searchQuery.name = { $regex: nameSearch, $options: 'i' };
     }
     if (companySearch) {
-      searchQuery.company = { $regex: companySearch, $options: "i" };
+      searchQuery.company = { $regex: companySearch, $options: 'i' };
     }
 
     const alumni: IAlumni[] = await Alumni.find(searchQuery)
@@ -33,7 +34,7 @@ const getAllAlumniData = async (
       currentPage: page,
     });
   } catch (error) {
-    console.log("Awesome error handling");
+    console.log('Awesome error handling');
   }
 };
 

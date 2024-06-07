@@ -15,8 +15,7 @@ echo ''
 
 CONTAINER_SEARCH_NAME=$1
 IMAGE_SEARCH_NAME_DEV=$2
-IMAGE_SEARCH_NAME_TEST=$3
-VOLUME_SEARCH_NAME=$4
+VOLUME_SEARCH_NAME=$3
 
 # Remove containers
 echo -e "${CYAN}Removing existing containers from local environment:${NC}"
@@ -28,23 +27,9 @@ else
   echo 'Removed containers.'
 fi
 
-# Remove dev images
+# Remove images
 echo -e "${CYAN}Removing existing dev images from local environment:${NC}"
-IMAGES=$(docker images codehammers/$IMAGE_SEARCH_NAME_DEV -q)
-REMOVEDIMAGES=0
-if [ ! -z "$IMAGES" ]; then
-  docker rmi $IMAGES --force
-  REMOVEDIMAGES=1
-fi
-if [ "$REMOVEDIMAGES" = 1 ]; then
-  echo 'Removed images.'
-else
-  echo 'No images to remove.'
-fi
-
-# Remove test images
-echo -e "${CYAN}Removing existing dev images from local environment:${NC}"
-IMAGES=$(docker images codehammers/$IMAGE_SEARCH_NAME_TEST -q)
+IMAGES=$(docker images codehammers/$IMAGE_SEARCH_NAME_DEV* -q)
 REMOVEDIMAGES=0
 if [ ! -z "$IMAGES" ]; then
   docker rmi $IMAGES --force
@@ -58,7 +43,7 @@ fi
 
 # Remove volumes
 echo -e "${CYAN}Removing existing volumes from local environment:${NC}"
-VOLUMES=$(docker volume ls -q -f name=$VOLUME_SEARCH_NAME)
+VOLUMES=$(docker volume ls -q -f name=$VOLUME_SEARCH_NAME*)
 if [ ! -z "$VOLUMES" ]; then
   docker volume rm $VOLUMES --force
   echo 'Removed volumes.'

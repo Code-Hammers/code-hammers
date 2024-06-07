@@ -1,5 +1,5 @@
 # Set Node.js version
-FROM node:18.17.1 as builder
+FROM node:20.14.0 as builder
 
 # Set the working directory
 WORKDIR /usr/src/app
@@ -22,7 +22,7 @@ RUN cd client && npm run build
 RUN npm run build
 
 # Set up the final image
-FROM node:18.17.1
+FROM node:20.14.0
 
 # Set the working directory
 WORKDIR /usr/src/app
