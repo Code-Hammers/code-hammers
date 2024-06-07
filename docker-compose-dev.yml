@@ -1,12 +1,11 @@
-version: "3"
+version: '3'
 services:
   dev:
     #image: codehammers/ch-dev:latest
-    #image: codehammers/ch-dev-dep-test:latest
-    image: codehammers/sql-dev-test:latest
+    image: codehammers/ch-dev-dep-v2:latest
     container_name: ch-dev
     ports:
-      - "8080:8080"
+      - '8080:8080'
     volumes:
       - .:/usr/src/app
       - node_modules:/usr/src/app/node_modules
@@ -33,7 +32,7 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - '5432:5432'
 volumes:
   node_modules:
   client_node_modules:
