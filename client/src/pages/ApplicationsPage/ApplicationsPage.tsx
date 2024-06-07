@@ -29,7 +29,7 @@ const ApplicationsPage = (): JSX.Element => {
 
     const lastUpdatedDate = new Date(last_updated);
     const notificationPeriodMs = notification_period * 24 * 60 * 60 * 1000;
-    return new Date() - lastUpdatedDate > notificationPeriodMs;
+    return new Date().getTime() - lastUpdatedDate.getTime() > notificationPeriodMs;
   };
 
   return (
