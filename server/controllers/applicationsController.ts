@@ -17,7 +17,10 @@ const getAllApplications = async (req: Request, res: Response, next: NextFunctio
         jobs.company,
         jobs.title,
         statuses.name AS status,
-        applications.general_notes
+        applications.general_notes,
+        applications.last_updated,
+        applications.notification_period,
+        applications.notifications_paused
       FROM
         applications
         INNER JOIN jobs ON applications.job_id = jobs.id
