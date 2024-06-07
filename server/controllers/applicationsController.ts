@@ -152,7 +152,7 @@ const updateApplication = async (
     const { job_id, status_id, user_id, quick_apply, date_applied, general_notes } = req.body;
     const query = `
       UPDATE applications
-      SET job_id = $1, status_id = $2, user_id = $3, quick_apply = $4, date_applied = $5, general_notes = $6
+      SET job_id = $1, status_id = $2, user_id = $3, quick_apply = $4, date_applied = $5, general_notes = $6, last_updated = NOW()
       WHERE id = $7
     `;
     await pool.query(query, [
