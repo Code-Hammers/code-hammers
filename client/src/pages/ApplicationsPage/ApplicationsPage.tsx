@@ -32,6 +32,17 @@ const ApplicationsPage = (): JSX.Element => {
     return new Date().getTime() - lastUpdatedDate.getTime() > notificationPeriodMs;
   };
 
+  const handleTogglePause = async (id: number, pause: boolean) => {
+    try {
+      await axios.put(`/api/applications/${id}/pause-notifications`, { pause });
+      setApplications((prevApps) =>
+        prevApps.map((app) => (app.id === id ? { ...app, notifications_paused: pause } : app)),
+      );
+    } catch (error) {
+      console.error('Error updating notification pause:', error);
+    }
+  };
+
   return (
     <div className="bg-gray-900 flex flex-col items-center justify-center min-h-screen p-4 pt-40 text-white">
       <ApplicationDashboard />
@@ -56,6 +67,18 @@ const ApplicationsPage = (): JSX.Element => {
                   This application needs attention!
                 </div>
               )}
+              <div className="flex items-center mt-2">
+                <label className="mr-2 text-gray-400">Notifications:</label>
+                <input
+                  type="checkbox"
+                  checked={!application.notifications_paused}
+                  onChange={(e) => handleTogglePause(application.id, !e.target.checked)}
+                  className="bg-gray-700 text-white p-1 rounded"
+                />
+                <span className="ml-2 text-gray-400">
+                  {application.notifications_paused ? 'Paused' : 'Active'}
+                </span>
+              </div>
               <button
                 className="bg-blue-500 focus:outline-none focus:shadow-outline font-bold hover:bg-blue-700 mt-2 px-4 py-2 rounded text-white"
                 onClick={() => navigate(`/app/update-application/${application.id}`)}
