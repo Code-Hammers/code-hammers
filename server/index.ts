@@ -1,17 +1,17 @@
-import path from "path";
-import express, { Request, Response, Application } from "express";
-import "express-async-errors";
-import userRoutes from "./routes/userRoutes";
-import profileRoutes from "./routes/profileRoutes";
-import authRoutes from "./routes/authRoutes";
-import imageRoutes from "./routes/imageRoutes";
-import alumniRoutes from "./routes/alumniRoutes";
-import forumRoutes from "./routes/forumRoutes";
-import devRoutes from "./routes/devRoutes";
-import connectDB from "./config/db";
-import dotenv from "dotenv";
-import cookieParser from "cookie-parser";
-import { notFound, errorHandler } from "./controllers/errorControllers";
+import path from 'path';
+import express, { Request, Response, Application } from 'express';
+import 'express-async-errors';
+import userRoutes from './routes/userRoutes';
+import profileRoutes from './routes/profileRoutes';
+import authRoutes from './routes/authRoutes';
+import imageRoutes from './routes/imageRoutes';
+import alumniRoutes from './routes/alumniRoutes';
+import forumRoutes from './routes/forumRoutes';
+import devRoutes from './routes/devRoutes';
+import connectDB from './config/db';
+import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
+import { notFound, errorHandler } from './controllers/errorControllers';
 
 dotenv.config();
 
