@@ -8,7 +8,6 @@ interface StatusCount {
 }
 
 const getAllApplications = async (req: Request, res: Response) => {
-const getAllApplications = async (req: Request, res: Response) => {
   try {
     const userId = req.query.user_id;
 

@@ -1,10 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { useAppSelector } from '../../app/hooks';
-import { IApplication } from '../../../types/applications';
-import ApplicationDashboard from '../../components/ApplicationDashBoard/ApplicationDashBoard';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAppSelector } from '../../app/hooks';
@@ -20,7 +14,7 @@ const ApplicationsPage = (): JSX.Element => {
     async function fetchApplications() {
       try {
         const response = await axios.get(`/api/applications?user_id=${user?._id}`);
-        const response = await axios.get(`/api/applications?user_id=${user?._id}`);
+
         setApplications(response.data);
       } catch (error) {
         console.error('Error fetching applications:', error);
