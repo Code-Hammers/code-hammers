@@ -37,7 +37,7 @@ const EditProfilePage = () => {
     availabilityForNetworking: false,
   });
 
- 
+ const [skillInput, setSkillInput] = useState("");
 
   const [file, setFile] = useState<File | null>(null);
 
@@ -94,7 +94,7 @@ const EditProfilePage = () => {
     }));
   };
   
- const [skillInput, setSkillInput] = useState("");
+ 
 
   const handleSkillChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSkillInput(e.target.value);
@@ -219,10 +219,6 @@ const EditProfilePage = () => {
     fileInputRef.current?.click();
   };
 
-  const getDisplayName = () => {
-    return profile?.nickName || profile?.firstName;
-  };
-
   if (status === 'loading' || !userID) {
     return <div>Loading...</div>;
   }
@@ -230,7 +226,7 @@ const EditProfilePage = () => {
   return (
     <div className='bg-gray-900 flex flex-col items-center justify-start min-h-screen p-4 pt-20 text-white'>
       <h1 className='font-extrabold mb-4 mt-16 text-4xl'>
-        Hello {getDisplayName()}, Edit Your Profile Here
+        Hello {profile?.nickName || profile?.firstName}, Edit Your Profile Here
       </h1>
       <div className='bg-gradient-to-r flex flex-col from-gray-700 items-center max-w-4xl pb-6 pl-6 pr-6 pt-6 rounded-lg shadow-lg to-gray-900 via-gray-800 w-full'>
         <form onSubmit={handleSubmit} className=' w-full'>
