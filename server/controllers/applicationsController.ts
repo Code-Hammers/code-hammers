@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import { CustomRequest } from '../types/customRequest';
 import { pool } from '../config/sql-db';
 
@@ -7,6 +7,7 @@ interface StatusCount {
   count: string;
 }
 
+const getAllApplications = async (req: Request, res: Response) => {
 const getAllApplications = async (req: Request, res: Response) => {
   try {
     const userId = req.query.user_id;

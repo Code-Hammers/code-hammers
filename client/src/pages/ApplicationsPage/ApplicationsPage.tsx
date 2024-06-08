@@ -4,6 +4,12 @@ import axios from 'axios';
 import { useAppSelector } from '../../app/hooks';
 import { IApplication } from '../../../types/applications';
 import ApplicationDashboard from '../../components/ApplicationDashBoard/ApplicationDashBoard';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useAppSelector } from '../../app/hooks';
+import { IApplication } from '../../../types/applications';
+import ApplicationDashboard from '../../components/ApplicationDashBoard/ApplicationDashBoard';
 
 const ApplicationsPage = (): JSX.Element => {
   const navigate = useNavigate();
@@ -14,8 +20,10 @@ const ApplicationsPage = (): JSX.Element => {
     async function fetchApplications() {
       try {
         const response = await axios.get(`/api/applications?user_id=${user?._id}`);
+        const response = await axios.get(`/api/applications?user_id=${user?._id}`);
         setApplications(response.data);
       } catch (error) {
+        console.error('Error fetching applications:', error);
         console.error('Error fetching applications:', error);
       }
     }
@@ -59,6 +67,7 @@ const ApplicationsPage = (): JSX.Element => {
       <ApplicationDashboard />
       <h1 className="font-extrabold mb-4 text-4xl">Applications!</h1>
       <button
+        onClick={() => navigate('/app/create-application')}
         onClick={() => navigate('/app/create-application')}
         className="bg-blue-500 focus:shadow-outline font-bold hover:bg-blue-700 mb-4 py-2 px-4 rounded selection:focus:outline-none text-white"
       >
