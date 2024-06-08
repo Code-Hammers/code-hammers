@@ -1,12 +1,8 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { createApplication } from "../../features/applications/applicationSlice";
-import {
-  IApplication,
-  IStatus,
-  IApplicationFormData,
-} from "../../../types/applications";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useAppSelector, useAppDispatch } from '../../app/hooks';
+import { createApplication } from '../../features/applications/applicationSlice';
+import { IStatus, IApplicationFormData } from '../../../types/applications';
 
 const CreateApplicationPage = (): JSX.Element => {
   const user = useAppSelector((state) => state.user.userData);
@@ -14,16 +10,16 @@ const CreateApplicationPage = (): JSX.Element => {
 
   const [statuses, setStatuses] = useState<IStatus[]>([]);
   const [formData, setFormData] = useState<IApplicationFormData>({
-    title: "",
-    company: "",
-    location: "",
-    description: "",
-    url: "",
+    title: '',
+    company: '',
+    location: '',
+    description: '',
+    url: '',
     status_id: 1,
-    user_id: user?._id || "",
+    user_id: user?._id || '',
     quick_apply: false,
-    date_applied: new Date().toISOString().split("T")[0],
-    general_notes: "",
+    date_applied: new Date().toISOString().split('T')[0],
+    general_notes: '',
     job_id: 0,
   });
 
@@ -32,10 +28,10 @@ const CreateApplicationPage = (): JSX.Element => {
   useEffect(() => {
     async function fetchStatuses() {
       try {
-        const response = await axios.get("/api/applications/statuses");
+        const response = await axios.get('/api/applications/statuses');
         setStatuses(response.data);
       } catch (error) {
-        console.error("Error fetching statuses:", error);
+        console.error('Error fetching statuses:', error);
       }
     }
 
@@ -49,12 +45,10 @@ const CreateApplicationPage = (): JSX.Element => {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
   ) => {
     const { name, value, type } = e.target;
-    if (type === "checkbox") {
+    if (type === 'checkbox') {
       const checked = (e.target as HTMLInputElement).checked;
       setFormData((prevFormData) => ({
         ...prevFormData,
@@ -185,7 +179,7 @@ const CreateApplicationPage = (): JSX.Element => {
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="submit"
         >
-          {status === "creating" ? "Creating..." : "Create Application"}
+          {status === 'creating' ? 'Creating...' : 'Create Application'}
         </button>
       </form>
     </div>
