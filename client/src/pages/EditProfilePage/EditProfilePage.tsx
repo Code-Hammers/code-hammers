@@ -115,7 +115,10 @@ const EditProfilePage = () => {
   const handleSkillKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && skillInput.trim() !== "") {
       e.preventDefault();
-      if (!formData.skills.includes(skillInput.trim())) {
+      const lowerCasedSkillInput = skillInput.trim().toLowerCase();
+      const lowerCasedSkillSet = new Set(formData.skills.map(skill => skill.toLowerCase()));
+
+      if (!lowerCasedSkillSet.has(lowerCasedSkillInput)) {
         setFormData((prevData) => ({
           ...prevData,
           skills: [...prevData.skills, skillInput.trim()],
@@ -322,6 +325,8 @@ const EditProfilePage = () => {
                   ? "bg-yellow-500"
                   : "bg-blue-500"
               }`}
+              role='button'
+              tabIndex={0}
               onClick={() =>
                 setFormData((prevData) => ({
                   ...prevData,
