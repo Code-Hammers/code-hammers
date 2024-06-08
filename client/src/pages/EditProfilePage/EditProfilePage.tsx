@@ -6,7 +6,7 @@ import {
   updateUserProfile,
   uploadProfilePicture,
 } from "../../features/userProfile/userProfileSlice";
-import { isatty } from "tty";
+
 
 const EditProfilePage = () => {
   const dispatch = useAppDispatch();
@@ -18,7 +18,6 @@ const EditProfilePage = () => {
   const [formData, setFormData] = useState({
     cohort: "",
     email: "",
-    firstName: "",
     linkedInProfile: "",
     gitHubProfile: "",
     nickName: "",
@@ -51,7 +50,6 @@ const EditProfilePage = () => {
       setFormData({
         cohort: profile.cohort || "",
         email: profile.email || "",
-        firstName: profile.firstName || "",
         linkedInProfile: profile.linkedInProfile || "",
         gitHubProfile: profile.gitHubProfile || "",
         nickName: profile.nickName || "",
