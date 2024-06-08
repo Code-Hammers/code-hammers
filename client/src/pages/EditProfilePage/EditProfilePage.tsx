@@ -43,7 +43,7 @@ const EditProfilePage = () => {
 
   useEffect(() => {
     if (userID) dispatch(fetchUserProfile(userID as string));
-  }, [dispatch]);
+  }, [dispatch, userID]);
 
   useEffect(() => {
     if (profile) {
