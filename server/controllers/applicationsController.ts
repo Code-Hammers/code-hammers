@@ -34,7 +34,7 @@ const getAllApplications = async (req: Request, res: Response) => {
   }
 };
 
-const getStatuses = async (req: Request, res: Response, next: NextFunction) => {
+const getStatuses = async (req: Request, res: Response) => {
   try {
     const { rows } = await pool.query('SELECT * FROM statuses');
     res.json(rows);
