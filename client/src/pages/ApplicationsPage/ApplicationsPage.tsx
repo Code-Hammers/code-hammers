@@ -43,6 +43,17 @@ const ApplicationsPage = (): JSX.Element => {
     }
   };
 
+  const handlePeriodChange = async (id: number, period: number) => {
+    try {
+      await axios.put(`/api/applications/${id}/notification-period`, { period });
+      setApplications((prevApps) =>
+        prevApps.map((app) => (app.id === id ? { ...app, notification_period: period } : app)),
+      );
+    } catch (error) {
+      console.error('Error updating notification period:', error);
+    }
+  };
+
   return (
     <div className="bg-gray-900 flex flex-col items-center justify-center min-h-screen p-4 pt-40 text-white">
       <ApplicationDashboard />
@@ -67,6 +78,20 @@ const ApplicationsPage = (): JSX.Element => {
                   This application needs attention!
                 </div>
               )}
+              <div className="flex items-center mt-2">
+                <label className="mr-2 text-gray-400">Notification Period:</label>
+                <select
+                  className="bg-gray-700 text-white p-1 rounded"
+                  value={application.notification_period}
+                  onChange={(e) => handlePeriodChange(application.id, parseInt(e.target.value))}
+                >
+                  <option value={30}>30 seconds</option>
+                  <option value={86400}>1 day</option>
+                  <option value={259200}>3 days</option>
+                  <option value={604800}>1 week</option>
+                  <option value={2592000}>1 month</option>
+                </select>
+              </div>
               <div className="flex items-center mt-2">
                 <label className="mr-2 text-gray-400">Notifications:</label>
                 <input
