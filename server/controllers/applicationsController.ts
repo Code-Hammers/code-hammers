@@ -127,7 +127,6 @@ const getApplicationById = async (
     if (rows.length === 0) {
       return res.status(404).json({ message: 'Application not found' });
     }
-    console.log('user id: ', rows[0].user_id);
 
     if (!req.user || req.user.id !== rows[0].user_id)
       return res.status(401).json({ message: 'You are not authorized to retrieve those records' });
@@ -145,17 +144,20 @@ const updateApplication = async (
   next: NextFunction,
 ) => {
   const { id } = req.params;
-  if (!req.user || req.user.id !== id)
-    return res.status(401).json({ message: 'You are not authorized to retrieve those records' });
+
+  if (!req.user) {
+    return res.status(401).json({ message: 'You are not authorized to update this record' });
+  }
+
   try {
-    const { id } = req.params;
     const { job_id, status_id, user_id, quick_apply, date_applied, general_notes } = req.body;
     const query = `
       UPDATE applications
       SET job_id = $1, status_id = $2, user_id = $3, quick_apply = $4, date_applied = $5, general_notes = $6, last_updated = NOW()
-      WHERE id = $7
+      WHERE id = $7 AND user_id = $8
+      RETURNING id
     `;
-    await pool.query(query, [
+    const { rows } = await pool.query(query, [
       job_id,
       status_id,
       user_id,
@@ -163,7 +165,15 @@ const updateApplication = async (
       date_applied,
       general_notes,
       id,
+      req.user.id,
     ]);
+
+    if (rows.length === 0) {
+      return res
+        .status(401)
+        .json({ message: 'You are not authorized to update this record or application not found' });
+    }
+
     res.status(200).json({ message: 'Application updated successfully' });
   } catch (error) {
     console.error('Error updating application:', error);
