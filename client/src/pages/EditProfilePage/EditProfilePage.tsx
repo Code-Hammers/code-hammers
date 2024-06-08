@@ -5,7 +5,7 @@ import {
   fetchUserProfile,
   updateUserProfile,
   uploadProfilePicture,
-} from "../../features/userProfile/userProfileSlice";
+} from '../../features/userProfile/userProfileSlice';
 import EditProfileInput from '../../components/ProfileInput/ProfileInput';
 
 const EditProfilePage = () => {
@@ -16,28 +16,28 @@ const EditProfilePage = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [formData, setFormData] = useState({
-    cohort: "",
-    email: "",
-    linkedInProfile: "",
-    gitHubProfile: "",
-    nickName: "",
-    personalBio: "",
+    cohort: '',
+    email: '',
+    linkedInProfile: '',
+    gitHubProfile: '',
+    nickName: '',
+    personalBio: '',
     skills: [] as string[],
     specializations: [] as string[],
     careerInformation: {
       currentPosition: {
-        title: "",
-        company: "",
+        title: '',
+        company: '',
       },
     },
     socialMediaLinks: {
-      twitter: "",
-      blog: "",
+      twitter: '',
+      blog: '',
     },
     availabilityForNetworking: false,
   });
 
-  const [skillInput, setSkillInput] = useState("");
+  const [skillInput, setSkillInput] = useState('');
 
   const [file, setFile] = useState<File | null>(null);
 
@@ -48,32 +48,30 @@ const EditProfilePage = () => {
   useEffect(() => {
     if (profile) {
       setFormData({
-        cohort: profile.cohort || "",
-        email: profile.email || "",
-        linkedInProfile: profile.linkedInProfile || "",
-        gitHubProfile: profile.gitHubProfile || "",
-        nickName: profile.nickName || "",
-        personalBio: profile.personalBio || "",
+        cohort: profile.cohort || '',
+        email: profile.email || '',
+        linkedInProfile: profile.linkedInProfile || '',
+        gitHubProfile: profile.gitHubProfile || '',
+        nickName: profile.nickName || '',
+        personalBio: profile.personalBio || '',
         skills: profile.skills || [],
         specializations: profile.specializations || [],
         careerInformation: {
           currentPosition: {
-            title: profile.careerInformation?.currentPosition?.title || "",
-            company: profile.careerInformation?.currentPosition?.company || "",
+            title: profile.careerInformation?.currentPosition?.title || '',
+            company: profile.careerInformation?.currentPosition?.company || '',
           },
         },
         socialMediaLinks: {
-          twitter: profile.socialMediaLinks?.twitter || "",
-          blog: profile.socialMediaLinks?.blog || "",
+          twitter: profile.socialMediaLinks?.twitter || '',
+          blog: profile.socialMediaLinks?.blog || '',
         },
         availabilityForNetworking: profile.availabilityForNetworking || false,
       });
     }
   }, [profile]);
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
@@ -93,7 +91,7 @@ const EditProfilePage = () => {
       },
     }));
   };
-  
+
   const handleSkillChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setSkillInput(e.target.value);
   };
@@ -101,17 +99,17 @@ const EditProfilePage = () => {
   const handleSpecialization = (skill: string) => {
     if (!formData.specializations.includes(skill)) {
       setFormData((prevData) => ({
-        ...prevData, 
+        ...prevData,
         specializations: [...prevData.specializations, skill],
-      }))
+      }));
     }
   };
 
   const handleSkillKeyDown = (e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    if (e.key === "Enter" && skillInput.trim() !== "") {
+    if (e.key === 'Enter' && skillInput.trim() !== '') {
       e.preventDefault();
       const lowerCasedSkillInput = skillInput.trim().toLowerCase();
-      const lowerCasedSkillSet = new Set(formData.skills.map(skill => skill.toLowerCase()));
+      const lowerCasedSkillSet = new Set(formData.skills.map((skill) => skill.toLowerCase()));
 
       if (!lowerCasedSkillSet.has(lowerCasedSkillInput)) {
         setFormData((prevData) => ({
@@ -119,7 +117,7 @@ const EditProfilePage = () => {
           skills: [...prevData.skills, skillInput.trim()],
         }));
       }
-      setSkillInput("");
+      setSkillInput('');
     }
   };
 
@@ -222,18 +220,18 @@ const EditProfilePage = () => {
   }
 
   return (
-    <div className='bg-gray-900 flex flex-col items-center justify-start min-h-screen p-4 pt-20 text-white'>
-      <h1 className='font-extrabold mb-4 mt-16 text-4xl'>
+    <div className="bg-gray-900 flex flex-col items-center justify-start min-h-screen p-4 pt-20 text-white">
+      <h1 className="font-extrabold mb-4 mt-16 text-4xl">
         Hello {profile?.nickName || profile?.firstName}, Edit Your Profile Here
       </h1>
-      <div className='bg-gradient-to-r flex flex-col from-gray-700 items-center max-w-4xl pb-6 pl-6 pr-6 pt-6 rounded-lg shadow-lg to-gray-900 via-gray-800 w-full'>
-        <form onSubmit={handleSubmit} className=' w-full'>
+      <div className="bg-gradient-to-r flex flex-col from-gray-700 items-center max-w-4xl pb-6 pl-6 pr-6 pt-6 rounded-lg shadow-lg to-gray-900 via-gray-800 w-full">
+        <form onSubmit={handleSubmit} className=" w-full">
           {profile?.profilePhoto && (
-            <div className='mb-4 text-center'>
+            <div className="mb-4 text-center">
               <img
                 src={profile.profilePhoto}
-                alt='Profile'
-                className='h-32 mx-auto object-cover rounded-full w-32'
+                alt="Profile"
+                className="h-32 mx-auto object-cover rounded-full w-32"
               />
             </div>
           )}
@@ -279,28 +277,21 @@ const EditProfilePage = () => {
             value={formData.careerInformation.currentPosition.title}
             onChange={handleTitleChange}
           />
-          <label
-            className='block font-bold mb-2 text-sm'
-            htmlFor='availabilityForNetworking'
-          >
+          <label className="block font-bold mb-2 text-sm" htmlFor="availabilityForNetworking">
             Available for Networking?
             <div
               className={`cursor-pointer h-3 inline-block ml-2 mt-2 w-3 ${
-                formData.availabilityForNetworking
-                  ? "bg-yellow-500"
-                  : "bg-blue-500"
+                formData.availabilityForNetworking ? 'bg-yellow-500' : 'bg-blue-500'
               }`}
-              role='button'
+              role="button"
               tabIndex={0}
               onClick={() =>
                 setFormData((prevData) => ({
                   ...prevData,
-                  availabilityForNetworking:
-                    !prevData.availabilityForNetworking,
+                  availabilityForNetworking: !prevData.availabilityForNetworking,
                 }))
               }
-            >
-            </div>
+            ></div>
             <span className="ml-2 text-xs">
               {formData.availabilityForNetworking ? 'Yes' : 'No'}
             </span>
@@ -342,22 +333,18 @@ const EditProfilePage = () => {
             onKeyDown={handleSkillKeyDown}
             placeholder="Type a skill and press Enter"
           />
-          <div className='flex flex-wrap gap-2 mb-2 mt-4'>
+          <div className="flex flex-wrap gap-2 mb-2 mt-4">
             {formData.skills.map((skill, index) => (
-              <div
-                key={index}
-                className='mb-2 mr-2 '
-                onClick={() => handleSpecialization(skill)}
-              >
+              <div key={index} className="mb-2 mr-2 " onClick={() => handleSpecialization(skill)}>
                 <span
                   // kept to avoid key warning
                   key={index}
-                  className='bg-blue-500 incline-flex items-center px-4 py-1 rounded-full text-sm text-white'
+                  className="bg-blue-500 incline-flex items-center px-4 py-1 rounded-full text-sm text-white"
                 >
                   {skill}
                   <button
-                    type='button'
-                    className='ml-2 text-white'
+                    type="button"
+                    className="ml-2 text-white"
                     onClick={(e) => {
                       e.stopPropagation();
                       handleSkillRemove(skill, false);
@@ -370,26 +357,23 @@ const EditProfilePage = () => {
               </div>
             ))}
           </div>
-          <label
-            className='block font-bold mb-2 text-sm'
-            htmlFor='specializations'
-          >
+          <label className="block font-bold mb-2 text-sm" htmlFor="specializations">
             Specializations
-            <span className='ml-2 text-gray-500 text-xs'>
+            <span className="ml-2 text-gray-500 text-xs">
               click on the skills you specialize in
             </span>
           </label>
-          <div className='flex flex-wrap gap-2 mt-4 mb-2'>
+          <div className="flex flex-wrap gap-2 mt-4 mb-2">
             {formData.specializations.map((skill, index) => (
-              <div key={index} className='mb-2 mr-2 '>
+              <div key={index} className="mb-2 mr-2 ">
                 <span
                   key={index}
-                  className='bg-yellow-500 incline-flex items-center px-4 py-1 rounded-full text-black text-sm'
+                  className="bg-yellow-500 incline-flex items-center px-4 py-1 rounded-full text-black text-sm"
                 >
                   {skill}
                   <button
-                    type='button'
-                    className='ml-2 text-black'
+                    type="button"
+                    className="ml-2 text-black"
                     onClick={() => handleSkillRemove(skill, true)}
                   >
                     &times;
@@ -399,29 +383,29 @@ const EditProfilePage = () => {
             ))}
           </div>
           <button
-            className='bg-blue-500 font-bold hover:bg-blue-700 mt-4 px-4 py-2 rounded text-white'
-            type='submit'
+            className="bg-blue-500 font-bold hover:bg-blue-700 mt-4 px-4 py-2 rounded text-white"
+            type="submit"
           >
             Save Changes
           </button>
         </form>
-        <div className='mt-6'>
-          <h3 className='font-bold mb-4 text-2xl'>Upload Profile Picture</h3>
+        <div className="mt-6">
+          <h3 className="font-bold mb-4 text-2xl">Upload Profile Picture</h3>
           <input
             ref={fileInputRef}
-            type='file'
+            type="file"
             onChange={handleFileChange}
             style={{ display: 'none' }}
           />
-          {file && <p className='mt-2 text-lg'>{file.name}</p>}
+          {file && <p className="mt-2 text-lg">{file.name}</p>}
           <button
-            className='bg-blue-500 font-bold hover:bg-blue-700 mr-2 mt-4 px-4 py-2 rounded text-white'
+            className="bg-blue-500 font-bold hover:bg-blue-700 mr-2 mt-4 px-4 py-2 rounded text-white"
             onClick={handleFileInputClick}
           >
             Choose File
           </button>
           <button
-            className='bg-blue-500 font-bold hover:bg-blue-700 ml-2 mt-4 px-4 py-2 rounded text-white'
+            className="bg-blue-500 font-bold hover:bg-blue-700 ml-2 mt-4 px-4 py-2 rounded text-white"
             onClick={handleImageUpload}
           >
             Upload Image

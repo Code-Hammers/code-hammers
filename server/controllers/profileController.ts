@@ -92,7 +92,19 @@ const createProfile = async (req: Request, res: Response, next: NextFunction) =>
 // ACCESS    Private
 const updateProfile = async (req: Request, res: Response, next: NextFunction) => {
   const { userID } = req.params;
-  const { nickName, email, personalBio, linkedInProfile, gitHubProfile, cohort, skills, specializations, careerInformation, socialMediaLinks, availabilityForNetworking } = req.body;
+  const {
+    nickName,
+    email,
+    personalBio,
+    linkedInProfile,
+    gitHubProfile,
+    cohort,
+    skills,
+    specializations,
+    careerInformation,
+    socialMediaLinks,
+    availabilityForNetworking,
+  } = req.body;
 
   const newProfile = {
     nickName,
