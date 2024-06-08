@@ -6,7 +6,7 @@ import {
   updateUserProfile,
   uploadProfilePicture,
 } from "../../features/userProfile/userProfileSlice";
-
+import EditProfileInput from '../../components/ProfileInput/ProfileInput';
 
 const EditProfilePage = () => {
   const dispatch = useAppDispatch();
@@ -80,7 +80,7 @@ const EditProfilePage = () => {
       [name]: value,
     }));
   };
-  const handleCompanyChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleCompanyChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -94,9 +94,7 @@ const EditProfilePage = () => {
     }));
   };
   
- 
-
-  const handleSkillChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleSkillChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setSkillInput(e.target.value);
   };
 
@@ -109,7 +107,7 @@ const EditProfilePage = () => {
     }
   };
 
-  const handleSkillKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleSkillKeyDown = (e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     if (e.key === "Enter" && skillInput.trim() !== "") {
       e.preventDefault();
       const lowerCasedSkillInput = skillInput.trim().toLowerCase();
@@ -140,7 +138,7 @@ const EditProfilePage = () => {
   };
 
   // Handling the change for title
-  const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleTitleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -154,7 +152,7 @@ const EditProfilePage = () => {
     }));
   };
 
-  const handleTwitterChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleTwitterChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -165,7 +163,7 @@ const EditProfilePage = () => {
     }));
   };
 
-  const handleBlogChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleBlogChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -239,74 +237,48 @@ const EditProfilePage = () => {
               />
             </div>
           )}
-          <label className='block font-bold mb-2 text-sm' htmlFor='email'>
-            Email
-            <input
-              className='bg-gray-800 p-2 rounded text-white w-full'
-              id='email'
-              name='email'
-              type='email'
-              value={formData.email}
-              onChange={handleChange}
-            />
-          </label>
-          <label className='block text-sm font-bold mb-2' htmlFor='nickName'>
-            Nickname
-            <input
-              className='bg-gray-800 p-2 rounded text-white w-full'
-              id='nickName'
-              name='nickName'
-              type='text'
-              value={formData.nickName}
-              onChange={handleChange}
-            />
-          </label>
-          <label className='block font-bold mb-2 text-sm' htmlFor='cohort'>
-            Cohort
-            <input
-              className='bg-gray-800 p-2 rounded text-white w-full'
-              id='cohort'
-              name='cohort'
-              type='text'
-              value={formData.cohort}
-              onChange={handleChange}
-            />
-          </label>
-          <label className='block font-bold mb-2 text-sm' htmlFor='personalBio'>
-            Personal Bio
-            <textarea
-              className='bg-gray-800 p-2 rounded text-white w-full'
-              id='personalBio'
-              name='personalBio'
-              value={formData.personalBio}
-              onChange={handleChange}
-              style={{ maxHeight: "200px" }}
-              maxLength={1000}
-            />
-          </label>
-          <label className='block font-bold mb-2 text-sm' htmlFor='company'>
-            Current Company
-            <input
-              className='bg-gray-800 p-2 rounded text-white w-full'
-              id='company'
-              name='company'
-              type='text'
-              value={formData.careerInformation.currentPosition.company}
-              onChange={handleCompanyChange}
-            />
-          </label>
-          <label className='block font-bold mb-2 text-sm' htmlFor='title'>
-            Current Title
-            <input
-              className='bg-gray-800 p-2 rounded text-white w-full'
-              id='title'
-              name='title'
-              type='text'
-              value={formData.careerInformation.currentPosition.title}
-              onChange={handleTitleChange}
-            />
-          </label>
-
+          <EditProfileInput
+            label="Email"
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          <EditProfileInput
+            label="Nickname"
+            type="text"
+            name="nickName"
+            value={formData.nickName}
+            onChange={handleChange}
+          />
+          <EditProfileInput
+            label="Cohort"
+            type="text"
+            name="cohort"
+            value={formData.cohort}
+            onChange={handleChange}
+          />
+          <EditProfileInput
+            label="Personal Bio"
+            type="textarea"
+            name="personalBio"
+            value={formData.personalBio}
+            onChange={handleChange}
+          />
+          <EditProfileInput
+            label="Current Company"
+            type="text"
+            name="company"
+            value={formData.careerInformation.currentPosition.company}
+            onChange={handleCompanyChange}
+          />
+          <EditProfileInput
+            label="Current Title"
+            type="text"
+            name="title"
+            value={formData.careerInformation.currentPosition.title}
+            onChange={handleTitleChange}
+          />
           <label
             className='block font-bold mb-2 text-sm'
             htmlFor='availabilityForNetworking'
@@ -327,75 +299,49 @@ const EditProfilePage = () => {
                     !prevData.availabilityForNetworking,
                 }))
               }
-            ></div>
+            >
+            </div>
             <span className="ml-2 text-xs">
               {formData.availabilityForNetworking ? 'Yes' : 'No'}
             </span>
           </label>
-
-          <label
-            className='block font-bold mb-2 text-sm'
-            htmlFor='linkedInProfile'
-          >
-            LinkedIn
-            <input
-              className='bg-gray-800 p-2 rounded text-white w-full'
-              id='linkedInProfile'
-              name='linkedInProfile'
-              type='text'
-              value={formData.linkedInProfile}
-              onChange={handleChange}
-            />
-          </label>
-          <label
-            className='block font-bold mb-2 text-sm'
-            htmlFor='gitHubProfile'
-          >
-            GitHub
-            <input
-              className='bg-gray-800 p-2 rounded text-white w-full'
-              id='gitHubProfile'
-              name='gitHubProfile'
-              type='text'
-              value={formData.gitHubProfile}
-              onChange={handleChange}
-            />
-          </label>
-          <label className='block font-bold mb-2 text-sm' htmlFor='twitter'>
-            Twitter
-            <input
-              className='bg-gray-800 p-2 rounded text-white w-full'
-              id='twitter'
-              name='twitter'
-              type='text'
-              value={formData.socialMediaLinks.twitter}
-              onChange={handleTwitterChange}
-            />
-          </label>
-          <label className='block font-bold mb-2 text-sm' htmlFor='blog'>
-            Blog
-            <input
-              className='bg-gray-800 p-2 rounded text-white w-full'
-              id='blog'
-              name='blog'
-              type='text'
-              value={formData.socialMediaLinks.blog}
-              onChange={handleBlogChange}
-            />
-          </label>
-          <label className='block font-bold mb-2 text-sm' htmlFor='skills'>
-            Skills
-            <input
-              className='bg-gray-800 p-2 rounded text-white w-full'
-              id='skills'
-              name='skills'
-              type='text'
-              value={skillInput}
-              onChange={handleSkillChange}
-              onKeyDown={handleSkillKeyDown}
-              placeholder='Type a skill and press Enter'
-            />
-          </label>
+          <EditProfileInput
+            label="LinkedIn"
+            type="text"
+            name="linkedInProfile"
+            value={formData.linkedInProfile}
+            onChange={handleChange}
+          />
+          <EditProfileInput
+            label="GitHub"
+            type="text"
+            name="gitHubProfile"
+            value={formData.gitHubProfile}
+            onChange={handleChange}
+          />
+          <EditProfileInput
+            label="Twitter"
+            type="text"
+            name="twitter"
+            value={formData.socialMediaLinks.twitter}
+            onChange={handleTwitterChange}
+          />
+          <EditProfileInput
+            label="Blog"
+            type="text"
+            name="blog"
+            value={formData.socialMediaLinks.blog}
+            onChange={handleBlogChange}
+          />
+          <EditProfileInput
+            label="Skills"
+            type="text"
+            name="skills"
+            value={skillInput}
+            onChange={handleSkillChange}
+            onKeyDown={handleSkillKeyDown}
+            placeholder="Type a skill and press Enter"
+          />
           <div className='flex flex-wrap gap-2 mb-2 mt-4'>
             {formData.skills.map((skill, index) => (
               <div
@@ -424,7 +370,6 @@ const EditProfilePage = () => {
               </div>
             ))}
           </div>
-
           <label
             className='block font-bold mb-2 text-sm'
             htmlFor='specializations'
@@ -434,12 +379,10 @@ const EditProfilePage = () => {
               click on the skills you specialize in
             </span>
           </label>
-
           <div className='flex flex-wrap gap-2 mt-4 mb-2'>
             {formData.specializations.map((skill, index) => (
               <div key={index} className='mb-2 mr-2 '>
                 <span
-                  // kept to avoid key warning
                   key={index}
                   className='bg-yellow-500 incline-flex items-center px-4 py-1 rounded-full text-black text-sm'
                 >
@@ -449,14 +392,12 @@ const EditProfilePage = () => {
                     className='ml-2 text-black'
                     onClick={() => handleSkillRemove(skill, true)}
                   >
-                    {/* HTML entity for multiplication sign */}
                     &times;
                   </button>
                 </span>
               </div>
             ))}
           </div>
-
           <button
             className='bg-blue-500 font-bold hover:bg-blue-700 mt-4 px-4 py-2 rounded text-white'
             type='submit'
