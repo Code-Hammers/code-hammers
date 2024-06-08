@@ -414,7 +414,10 @@ const EditProfilePage = () => {
                   <button
                     type='button'
                     className='ml-2 text-white'
-                    onClick={() => handleSkillRemove(skill, false)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleSkillRemove(skill, false);
+                    }}
                   >
                     {/* HTML entity for multiplication sign */}
                     &times;
