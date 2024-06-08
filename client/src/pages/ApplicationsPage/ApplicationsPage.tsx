@@ -62,7 +62,6 @@ const ApplicationsPage = (): JSX.Element => {
       <h1 className="font-extrabold mb-4 text-4xl">Applications!</h1>
       <button
         onClick={() => navigate('/app/create-application')}
-        onClick={() => navigate('/app/create-application')}
         className="bg-blue-500 focus:shadow-outline font-bold hover:bg-blue-700 mb-4 py-2 px-4 rounded selection:focus:outline-none text-white"
       >
         Create New Application
