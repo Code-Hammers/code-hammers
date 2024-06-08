@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useAppSelector } from "../../app/hooks";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useAppSelector } from '../../app/hooks';
 
 interface IStatusCount {
   status: string;
@@ -9,9 +9,7 @@ interface IStatusCount {
 
 const ApplicationDashboard = (): JSX.Element => {
   const [totalApplications, setTotalApplications] = useState(0);
-  const [applicationsByStatus, setApplicationsByStatus] = useState<
-    IStatusCount[]
-  >([]);
+  const [applicationsByStatus, setApplicationsByStatus] = useState<IStatusCount[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const user = useAppSelector((state) => state.user.userData);
@@ -20,17 +18,14 @@ const ApplicationDashboard = (): JSX.Element => {
     async function fetchAggregatedData() {
       setLoading(true);
       try {
-        const response = await axios.get(
-          `/api/applications/aggregated-user-stats/${user?._id}`
-        );
-        const { totalApplications = 0, applicationsByStatus = [] } =
-          response.data || {};
+        const response = await axios.get(`/api/applications/aggregated-user-stats/${user?._id}`);
+        const { totalApplications = 0, applicationsByStatus = [] } = response.data || {};
         setTotalApplications(totalApplications);
         setApplicationsByStatus(applicationsByStatus);
         setLoading(false);
       } catch (err) {
         const error = err as Error;
-        console.error("Error fetching aggregated data:", error);
+        console.error('Error fetching aggregated data:', error);
         setError(error.message);
         setLoading(false);
       }
