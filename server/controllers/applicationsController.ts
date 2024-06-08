@@ -7,7 +7,7 @@ interface StatusCount {
   count: string;
 }
 
-const getAllApplications = async (req: Request, res: Response, next: NextFunction) => {
+const getAllApplications = async (req: Request, res: Response) => {
   try {
     const userId = req.query.user_id;
 
@@ -37,7 +37,7 @@ const getAllApplications = async (req: Request, res: Response, next: NextFunctio
   }
 };
 
-const getStatuses = async (req: Request, res: Response, next: NextFunction) => {
+const getStatuses = async (req: Request, res: Response) => {
   try {
     const { rows } = await pool.query('SELECT * FROM statuses');
     res.json(rows);
@@ -47,7 +47,7 @@ const getStatuses = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-const createApplication = async (req: Request, res: Response, next: NextFunction) => {
+const createApplication = async (req: Request, res: Response) => {
   try {
     const {
       title,
@@ -93,11 +93,7 @@ const createApplication = async (req: Request, res: Response, next: NextFunction
   }
 };
 
-const getApplicationById = async (
-  req: CustomRequest<{ id: string }>,
-  res: Response,
-  next: NextFunction,
-) => {
+const getApplicationById = async (req: CustomRequest<{ id: string }>, res: Response) => {
   const { id } = req.params;
   try {
     const query = `
@@ -138,11 +134,7 @@ const getApplicationById = async (
   }
 };
 
-const updateApplication = async (
-  req: CustomRequest<{ id: string }>,
-  res: Response,
-  next: NextFunction,
-) => {
+const updateApplication = async (req: CustomRequest<{ id: string }>, res: Response) => {
   const { id } = req.params;
 
   if (!req.user) {
@@ -181,11 +173,7 @@ const updateApplication = async (
   }
 };
 
-const getAggregatedUserStats = async (
-  req: CustomRequest<{ userId: string }>,
-  res: Response,
-  next: NextFunction,
-) => {
+const getAggregatedUserStats = async (req: CustomRequest<{ userId: string }>, res: Response) => {
   const { userId } = req.params;
   if (!req.user || req.user.id !== userId)
     return res.status(401).json({ message: 'You are not authorized to retrieve those records' });
@@ -216,7 +204,7 @@ const getAggregatedUserStats = async (
   }
 };
 
-const updateNotificationPeriod = async (req: Request, res: Response, next: NextFunction) => {
+const updateNotificationPeriod = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const { period } = req.body;
@@ -234,7 +222,7 @@ const updateNotificationPeriod = async (req: Request, res: Response, next: NextF
   }
 };
 
-const pauseNotifications = async (req: Request, res: Response, next: NextFunction) => {
+const pauseNotifications = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const { pause } = req.body;

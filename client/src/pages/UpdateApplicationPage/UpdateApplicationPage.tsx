@@ -1,57 +1,54 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
-import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { updateApplication } from "../../features/applications/applicationSlice";
-import { IApplicationFormData, IStatus } from "../../../types/applications";
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
+import { useAppSelector, useAppDispatch } from '../../app/hooks';
+import { updateApplication } from '../../features/applications/applicationSlice';
+import { IApplicationFormData, IStatus } from '../../../types/applications';
 
 const UpdateApplicationPage = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
-  console.log("id:", id);
+  console.log('id:', id);
   const user = useAppSelector((state) => state.user.userData);
-  const { application, status, error } = useAppSelector(
-    (state) => state.application
-  );
+  const { status } = useAppSelector((state) => state.application);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const [statuses, setStatuses] = useState<IStatus[]>([]);
   const [formData, setFormData] = useState<IApplicationFormData>({
-    title: "",
-    company: "",
-    location: "",
-    description: "",
-    url: "",
+    title: '',
+    company: '',
+    location: '',
+    description: '',
+    url: '',
     status_id: 1,
-    user_id: user?._id || "",
+    user_id: user?._id || '',
     quick_apply: false,
-    date_applied: new Date().toISOString().split("T")[0],
-    general_notes: "",
+    date_applied: new Date().toISOString().split('T')[0],
+    general_notes: '',
     job_id: 0,
   });
 
   useEffect(() => {
     async function fetchStatuses() {
       try {
-        const response = await axios.get("/api/applications/statuses");
+        const response = await axios.get('/api/applications/statuses');
         setStatuses(response.data);
       } catch (error) {
-        console.error("Error fetching statuses:", error);
+        console.error('Error fetching statuses:', error);
       }
     }
 
     async function fetchApplication() {
       try {
-        console.log("HITTT!!!!!");
         const response = await axios.get(`/api/applications/${id}`);
         const applicationData = response.data;
         applicationData.date_applied = new Date(applicationData.date_applied)
           .toISOString()
-          .split("T")[0];
+          .split('T')[0];
 
         setFormData(applicationData);
       } catch (error) {
-        console.error("Error fetching application:", error);
+        console.error('Error fetching application:', error);
       }
     }
 
@@ -62,16 +59,14 @@ const UpdateApplicationPage = (): JSX.Element => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     dispatch(updateApplication({ id: Number(id), ...formData }));
-    navigate("/app/applications");
+    navigate('/app/applications');
   };
 
   const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
   ) => {
     const { name, value, type } = e.target;
-    if (type === "checkbox") {
+    if (type === 'checkbox') {
       const checked = (e.target as HTMLInputElement).checked;
       setFormData((prevFormData) => ({
         ...prevFormData,
@@ -204,7 +199,7 @@ const UpdateApplicationPage = (): JSX.Element => {
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="submit"
         >
-          {status === "updating" ? "Updating..." : "Update Application"}
+          {status === 'updating' ? 'Updating...' : 'Update Application'}
         </button>
       </form>
     </div>
