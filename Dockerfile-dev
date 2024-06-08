@@ -1,5 +1,5 @@
 # Set Node version
-FROM node:18.17.1
+FROM node:20.14.0
 
 # Install webpack globally
 RUN npm install webpack -g

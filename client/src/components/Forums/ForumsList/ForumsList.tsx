@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 interface Forum {
   _id: string;
@@ -12,10 +12,7 @@ interface ForumsListProps {
   selectedForumId: string | null;
 }
 
-const ForumsList: React.FC<ForumsListProps> = ({
-  onForumSelect,
-  selectedForumId,
-}) => {
+const ForumsList = ({ onForumSelect, selectedForumId }: ForumsListProps) => {
   const [forums, setForums] = useState<Forum[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -24,7 +21,7 @@ const ForumsList: React.FC<ForumsListProps> = ({
     const fetchForums = async () => {
       setLoading(true);
       try {
-        const { data } = await axios.get("/api/forums", {
+        const { data } = await axios.get('/api/forums', {
           withCredentials: true,
         });
         setForums(data);
@@ -49,7 +46,7 @@ const ForumsList: React.FC<ForumsListProps> = ({
         <li
           onClick={() => onForumSelect(null)}
           className={`cursor-pointer p-2 hover:bg-gray-800 rounded-md ${
-            selectedForumId === null ? "bg-gray-700" : ""
+            selectedForumId === null ? 'bg-gray-700' : ''
           }`}
         >
           All Forums
@@ -59,7 +56,7 @@ const ForumsList: React.FC<ForumsListProps> = ({
             key={forum._id}
             onClick={() => onForumSelect(forum._id)}
             className={`cursor-pointer p-2 hover:bg-gray-800 rounded-md ${
-              selectedForumId === forum._id ? "bg-gray-700" : ""
+              selectedForumId === forum._id ? 'bg-gray-700' : ''
             }`}
           >
             {forum.title}

@@ -1,12 +1,6 @@
-import React, {
-  useEffect,
-  useState,
-  useRef,
-  ChangeEvent,
-  FormEvent,
-} from "react";
-import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState, useRef, ChangeEvent, FormEvent } from 'react';
+import { useAppSelector, useAppDispatch } from '../../app/hooks';
+import { useNavigate } from 'react-router-dom';
 import {
   fetchUserProfile,
   updateUserProfile,
@@ -192,7 +186,7 @@ const EditProfilePage = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!userID) {
-      console.error("UserID is undefined.");
+      console.error('UserID is undefined.');
       return;
     }
     const payload = {
@@ -213,12 +207,12 @@ const EditProfilePage = () => {
 
   const handleImageUpload = () => {
     if (!file || !userID) {
-      console.error("File or UserID is undefined.");
+      console.error('File or UserID is undefined.');
       return;
     }
 
     const formData = new FormData();
-    formData.append("profilePicture", file);
+    formData.append('profilePicture', file);
 
     dispatch(uploadProfilePicture({ formData, userID }));
   };
@@ -231,7 +225,7 @@ const EditProfilePage = () => {
     return profile?.nickName || profile?.firstName;
   };
 
-  if (status === "loading" || !userID) {
+  if (status === 'loading' || !userID) {
     return <div>Loading...</div>;
   }
 
@@ -477,7 +471,7 @@ const EditProfilePage = () => {
             ref={fileInputRef}
             type='file'
             onChange={handleFileChange}
-            style={{ display: "none" }}
+            style={{ display: 'none' }}
           />
           {file && <p className='mt-2 text-lg'>{file.name}</p>}
           <button

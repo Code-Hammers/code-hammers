@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { fetchUserProfile } from "../../features/userProfile/userProfileSlice";
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useAppSelector, useAppDispatch } from '../../app/hooks';
+import { fetchUserProfile } from '../../features/userProfile/userProfileSlice';
 
-const Profile = (): JSX.Element => {
+const Profile = () => {
   const dispatch = useAppDispatch();
   const { userId } = useParams();
   const userProfile = useAppSelector((state) => state.userProfile.profile);
@@ -16,7 +16,7 @@ const Profile = (): JSX.Element => {
       <h1 className="text-4xl font-extrabold mb-4 mt-16">Profile</h1>
       <div className="w-full max-w-4xl bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 pt-6 pb-6 pl-6 pr-6 rounded-lg shadow-lg flex flex-col items-center">
         <img
-          src={userProfile?.profilePhoto || "https://picsum.photos/200"}
+          src={userProfile?.profilePhoto || 'https://picsum.photos/200'}
           alt="Profile"
           className="rounded-full h-32 w-32 object-cover mb-4 mt-4"
         />
