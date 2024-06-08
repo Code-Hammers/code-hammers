@@ -37,7 +37,7 @@ const EditProfilePage = () => {
     availabilityForNetworking: false,
   });
 
- const [skillInput, setSkillInput] = useState("");
+  const [skillInput, setSkillInput] = useState("");
 
   const [file, setFile] = useState<File | null>(null);
 
