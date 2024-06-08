@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import { CustomRequest } from '../types/customRequest';
 import { pool } from '../config/sql-db';
 
