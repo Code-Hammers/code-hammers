@@ -101,15 +101,12 @@ const EditProfilePage = () => {
   };
 
   const handleSpecialization = (skill: string) => {
-    setFormData((prevData) => {
-      const isAlreadySpecialized = prevData.specializations.includes(skill);
-      return isAlreadySpecialized
-        ? prevData
-        : {
-            ...prevData,
-            specializations: [...prevData.specializations, skill],
-          };
-    });
+    if (!formData.specializations.includes(skill)) {
+      setFormData((prevData) => ({
+        ...prevData, 
+        specializations: [...prevData.specializations, skill],
+      }))
+    }
   };
 
   const handleSkillKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
