@@ -8,16 +8,12 @@ import GraduateInvitation from '../models/graduateInvitationModel';
 // ENDPOINT  POST api/users/register
 // PURPOSE   Register a new user
 // ACCESS    Public
-const registerUser = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  const { firstName, lastName, email, password } = req.body;
+const registerUser = async (req: Request, res: Response, next: NextFunction) => {
+  const { email, password } = req.body;
   const { token } = req.query;
 
   try {
-    const isValidEmail = email.match(/[\w\d\.]+@[a-z]+\.[\w]+$/gim);
+    const isValidEmail = email.match(/[\w\d.]+@[a-z]+.[\w]+$/gim);
     if (!isValidEmail) {
       return res.status(400).json('Invalid Email');
     }
@@ -31,9 +27,7 @@ const registerUser = async (
 
     //TODO Needs better error handling - this can trigger with situaions other than bad or missing token
     if (!invitation) {
-      return res
-        .status(400)
-        .json({ message: 'Invalid or expired registration token' });
+      return res.status(400).json({ message: 'Invalid or expired registration token' });
     }
     const userExists: UserType | null = await User.findOne({ email });
     if (userExists) {
@@ -81,7 +75,7 @@ const registerUser = async (
 const authUser = async (req: Request, res: Response, next: NextFunction) => {
   const { email, password } = req.body;
 
-  const isValidEmail = email.match(/[\w\d\.]+@[a-z]+\.[\w]+$/gim);
+  const isValidEmail = email.match(/[\w\d.]+@[a-z]+.[\w]+$/gim);
   if (!isValidEmail) {
     return res.status(400).json({ msg: 'Please enter a valid email' }); //TODO Move to global error handler
   }
@@ -152,11 +146,7 @@ const getUserById = async (req: Request, res: Response, next: NextFunction) => {
 // ENDPOINT  DELETE api/users/:email
 // PURPOSE   Delete user by email
 // ACCESS    Private
-const deleteUserByEmail = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+const deleteUserByEmail = async (req: Request, res: Response, next: NextFunction) => {
   const { email } = req.params;
 
   try {

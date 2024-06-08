@@ -21,7 +21,6 @@ This document provides some best practices when using TypeScript and standards t
   - [13. Leverage Type Inference](#13-leverage-type-inference)
   - [14. Use Index Signatures for Dynamic Data](#14-use-index-signatures-for-dynamic-data)
   - [15. Use Generics for Reusable Components](#15-use-generics-for-reusable-components)
-  - [16. Use the `JSX.Element` type for React Components](#16-use-jsxelement-type-for-react-components)
 
   <hr>
 
@@ -81,11 +80,11 @@ interface Person {
 
 const people: readonly Person[] = [
   {
-    name: "John",
+    name: 'John',
     age: 20,
   },
   {
-    name: "Jane",
+    name: 'Jane',
     age: 30,
   },
 ];
@@ -98,9 +97,9 @@ const people: readonly Person[] = [
 - Use `as const` assertion to define readonly object.
 
 ```typescript
-const colors = ["red", "green", "blue"] as const;
+const colors = ['red', 'green', 'blue'] as const;
 const person = {
-  name: "John",
+  name: 'John',
   age: 20,
 } as const;
 ```
@@ -174,7 +173,7 @@ const element = <div>{(name as string).length}</div>; // ok
 class MyClass {
   readonly myReadonlyProperty: number;
 }
-const MY_CONST: string = "constant";
+const MY_CONST: string = 'constant';
 ```
 
 ## 12. Avoid Implicit `any`
@@ -196,7 +195,7 @@ function logSomething(something: any) {
 - TypeScript is good at inferring types in many situations. Allow TypeScript to infer types where possible, this can lead to less verbose and more readable code.
 
 ```typescript
-const myName = "Alice";
+const myName = 'Alice';
 const myAge = 30;
 ```
 
