@@ -18,7 +18,6 @@ const ApplicationsPage = (): JSX.Element => {
         setApplications(response.data);
       } catch (error) {
         console.error('Error fetching applications:', error);
-        console.error('Error fetching applications:', error);
       }
     }
 
