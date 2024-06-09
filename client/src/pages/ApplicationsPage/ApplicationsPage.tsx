@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAppSelector } from '../../app/hooks';
@@ -14,6 +14,7 @@ const ApplicationsPage = (): JSX.Element => {
     async function fetchApplications() {
       try {
         const response = await axios.get(`/api/applications?user_id=${user?._id}`);
+
         setApplications(response.data);
       } catch (error) {
         console.error('Error fetching applications:', error);
@@ -22,6 +23,37 @@ const ApplicationsPage = (): JSX.Element => {
 
     fetchApplications();
   }, []);
+
+  const calculateIsInactive = (application: IApplication) => {
+    const { last_updated, notification_period, notifications_paused } = application;
+    if (notifications_paused) return false;
+
+    const lastUpdatedDate = new Date(last_updated);
+    const notificationPeriodMs = (notification_period * 24 * 60 * 60 * 1000) / 60 / 60 / 24;
+    return new Date().getTime() - lastUpdatedDate.getTime() > notificationPeriodMs;
+  };
+
+  const handleTogglePause = async (id: number, pause: boolean) => {
+    try {
+      await axios.put(`/api/applications/${id}/pause-notifications`, { pause });
+      setApplications((prevApps) =>
+        prevApps.map((app) => (app.id === id ? { ...app, notifications_paused: pause } : app)),
+      );
+    } catch (error) {
+      console.error('Error updating notification pause:', error);
+    }
+  };
+
+  const handlePeriodChange = async (id: number, period: number) => {
+    try {
+      await axios.put(`/api/applications/${id}/notification-period`, { period });
+      setApplications((prevApps) =>
+        prevApps.map((app) => (app.id === id ? { ...app, notification_period: period } : app)),
+      );
+    } catch (error) {
+      console.error('Error updating notification period:', error);
+    }
+  };
 
   return (
     <div className="bg-gray-900 flex flex-col items-center justify-center min-h-screen p-4 pt-40 text-white">
@@ -42,6 +74,37 @@ const ApplicationsPage = (): JSX.Element => {
               </div>
               <div className="text-gray-400 text-sm ">Status: {application.status}</div>
               <div className="text-gray-400 text-sm ">Notes: {application.general_notes}</div>
+              {calculateIsInactive(application) && (
+                <div className="text-red-500 text-sm font-bold">
+                  This application needs attention!
+                </div>
+              )}
+              <div className="flex items-center mt-2">
+                <label className="mr-2 text-gray-400">Notification Period:</label>
+                <select
+                  className="bg-gray-700 text-white p-1 rounded"
+                  value={application.notification_period}
+                  onChange={(e) => handlePeriodChange(application.id, parseInt(e.target.value))}
+                >
+                  <option value={30}>30 seconds</option>
+                  <option value={86400}>1 day</option>
+                  <option value={259200}>3 days</option>
+                  <option value={604800}>1 week</option>
+                  <option value={2592000}>1 month</option>
+                </select>
+              </div>
+              <div className="flex items-center mt-2">
+                <label className="mr-2 text-gray-400">Notifications:</label>
+                <input
+                  type="checkbox"
+                  checked={!application.notifications_paused}
+                  onChange={(e) => handleTogglePause(application.id, !e.target.checked)}
+                  className="bg-gray-700 text-white p-1 rounded"
+                />
+                <span className="ml-2 text-gray-400">
+                  {application.notifications_paused ? 'Paused' : 'Active'}
+                </span>
+              </div>
               <button
                 className="bg-blue-500 focus:outline-none focus:shadow-outline font-bold hover:bg-blue-700 mt-2 px-4 py-2 rounded text-white"
                 onClick={() => navigate(`/app/update-application/${application.id}`)}
