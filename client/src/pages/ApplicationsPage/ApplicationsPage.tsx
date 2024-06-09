@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAppSelector } from '../../app/hooks';
@@ -8,20 +8,30 @@ import ApplicationDashboard from '../../components/ApplicationDashBoard/Applicat
 const ApplicationsPage = (): JSX.Element => {
   const navigate = useNavigate();
   const [applications, setApplications] = useState<IApplication[]>([]);
+  const [showRejected, setShowRejected] = useState(true);
+  const [dateFilter, setDateFilter] = useState('');
   const user = useAppSelector((state) => state.user.userData);
 
   useEffect(() => {
     async function fetchApplications() {
       try {
-        const response = await axios.get(`/api/applications?user_id=${user?._id}`);
+        const params: any = { userId: user?._id };
+        if (!showRejected) params.status = 'Rejected';
+
+        //TODO adjust time delay for production - Let user select dif times from dropdown?
+        if (dateFilter) params.date = new Date(Date.now() - 30 * 1000).toISOString();
+        console.log(params);
+
+        const response = await axios.get(`/api/applications`, { params });
         setApplications(response.data);
+        console.log(applications);
       } catch (error) {
         console.error('Error fetching applications:', error);
       }
     }
 
     fetchApplications();
-  }, []);
+  }, [showRejected, dateFilter]);
 
   return (
     <div className="bg-gray-900 flex flex-col items-center justify-center min-h-screen p-4 pt-40 text-white">
@@ -34,6 +44,24 @@ const ApplicationsPage = (): JSX.Element => {
         Create New Application
       </button>
       <div className="max-w-4xl w-full bg-gray-800 p-6 rounded-lg shadow-lg">
+        <div className="mb-4">
+          <label className="block mb-2">
+            <input
+              type="checkbox"
+              checked={!showRejected}
+              onChange={() => setShowRejected(!showRejected)}
+            />
+            Remove Rejected Applications
+          </label>
+          <label className="block">
+            <input
+              type="checkbox"
+              checked={!!dateFilter}
+              onChange={() => setDateFilter(dateFilter ? '' : '30-days')}
+            />
+            Remove Applications Older than 30 Days
+          </label>
+        </div>
         <ul className="divide-gray-700 divide-y ">
           {applications.map((application) => (
             <li key={application.id} className="py-4">
