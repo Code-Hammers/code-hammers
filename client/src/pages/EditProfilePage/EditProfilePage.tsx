@@ -16,25 +16,25 @@ const EditProfilePage = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [formData, setFormData] = useState({
-    cohort: '',
     email: '',
-    linkedInProfile: '',
-    gitHubProfile: '',
     nickName: '',
+    cohort: '',
     personalBio: '',
-    skills: [] as string[],
-    specializations: [] as string[],
-    careerInformation: {
+     careerInformation: {
       currentPosition: {
         title: '',
         company: '',
       },
     },
+    availabilityForNetworking: false,
+    linkedInProfile: '',
+    gitHubProfile: '',
     socialMediaLinks: {
       twitter: '',
       blog: '',
     },
-    availabilityForNetworking: false,
+    skills: [] as string[],
+    specializations: [] as string[],
   });
 
   const [skillInput, setSkillInput] = useState('');
@@ -48,25 +48,25 @@ const EditProfilePage = () => {
   useEffect(() => {
     if (profile) {
       setFormData({
-        cohort: profile.cohort || '',
         email: profile.email || '',
-        linkedInProfile: profile.linkedInProfile || '',
-        gitHubProfile: profile.gitHubProfile || '',
         nickName: profile.nickName || '',
+        cohort: profile.cohort || '',
         personalBio: profile.personalBio || '',
-        skills: profile.skills || [],
-        specializations: profile.specializations || [],
         careerInformation: {
           currentPosition: {
             title: profile.careerInformation?.currentPosition?.title || '',
             company: profile.careerInformation?.currentPosition?.company || '',
           },
         },
+        availabilityForNetworking: profile.availabilityForNetworking || false,
+        linkedInProfile: profile.linkedInProfile || '',
+        gitHubProfile: profile.gitHubProfile || '',
         socialMediaLinks: {
           twitter: profile.socialMediaLinks?.twitter || '',
           blog: profile.socialMediaLinks?.blog || '',
         },
-        availabilityForNetworking: profile.availabilityForNetworking || false,
+        skills: profile.skills || [],
+        specializations: profile.specializations || [], 
       });
     }
   }, [profile]);
