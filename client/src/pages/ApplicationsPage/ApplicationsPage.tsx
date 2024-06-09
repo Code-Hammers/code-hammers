@@ -9,7 +9,7 @@ const ApplicationsPage = (): JSX.Element => {
   const navigate = useNavigate();
   const [applications, setApplications] = useState<IApplication[]>([]);
   const [showRejected, setShowRejected] = useState(true);
-  const [dateFilter, setDateFilter] = useState('');
+  const [dateFilter, setDateFilter] = useState(false);
   const user = useAppSelector((state) => state.user.userData);
 
   useEffect(() => {
@@ -19,7 +19,10 @@ const ApplicationsPage = (): JSX.Element => {
         if (!showRejected) params.status = 'Rejected';
 
         //TODO adjust time delay for production - Let user select dif times from dropdown?
-        if (dateFilter) params.date = new Date(Date.now() - 30 * 1000).toISOString();
+        if (dateFilter) {
+          const thirtySecondsAgo = new Date(Date.now() - 30 * 1000);
+          params.date = thirtySecondsAgo.toISOString();
+        }
         console.log(params);
 
         const response = await axios.get(`/api/applications`, { params });
@@ -88,8 +91,8 @@ const ApplicationsPage = (): JSX.Element => {
           <label className="block">
             <input
               type="checkbox"
-              checked={!!dateFilter}
-              onChange={() => setDateFilter(dateFilter ? '' : '30-days')}
+              checked={dateFilter}
+              onChange={() => setDateFilter(!dateFilter)}
             />
             Remove Applications Older than 30 Days
           </label>

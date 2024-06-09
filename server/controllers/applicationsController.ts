@@ -10,6 +10,7 @@ interface StatusCount {
 const getAllApplications = async (req: Request, res: Response) => {
   try {
     const { userId, status, date } = req.query;
+    console.log('data: ', date);
 
     let query = `
       SELECT
@@ -30,14 +31,16 @@ const getAllApplications = async (req: Request, res: Response) => {
     `;
 
     const queryParams = [userId];
+    let paramIndex = 2;
 
     if (status) {
-      query += ' AND statuses.name != $2';
+      query += ` AND statuses.name != $${paramIndex}`;
       queryParams.push(status);
+      paramIndex += 1;
     }
 
     if (date) {
-      query += ' AND applications.date_applied >= $3';
+      query += ` AND applications.date_applied >= $${paramIndex}`;
       queryParams.push(date);
     }
 
