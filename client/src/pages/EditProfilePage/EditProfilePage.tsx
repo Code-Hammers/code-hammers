@@ -95,9 +95,7 @@ const EditProfilePage = () => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    console.log('e.target', e.target)
     const keys = name.split('.');
-    console.log('KEYS', keys)
     if (keys.length === 1) {
       setFormData((prevFormData) => ({
         ...prevFormData,
