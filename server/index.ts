@@ -11,7 +11,8 @@ import devRoutes from './routes/devRoutes';
 import connectDB from './config/db';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
-import { notFound, errorHandler } from './controllers/errorControllers';
+import { notFound } from './controllers/errorControllers';
+import errorHandler from './middleware/errorHandler';
 
 dotenv.config();
 
