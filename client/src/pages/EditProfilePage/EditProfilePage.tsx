@@ -15,7 +15,29 @@ const EditProfilePage = () => {
   const userID = useAppSelector((state) => state.user.userData?._id);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const [formData, setFormData] = useState({
+  type FormDataType = {
+    email: string;
+    nickName: string;
+    cohort: string;
+    personalBio: string;
+    careerInformation: {
+      currentPosition: {
+        title: string;
+        company: string;
+      };
+    };
+    availabilityForNetworking: boolean;
+    linkedInProfile: string;
+    gitHubProfile: string;
+    socialMediaLinks: {
+      twitter: string;
+      blog: string;
+    };
+    skills: string[];
+    specializations: string[];
+  };
+  
+  const [formData, setFormData] = useState<FormDataType>({
     email: '',
     nickName: '',
     cohort: '',
@@ -73,36 +95,31 @@ const EditProfilePage = () => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
-  };
-  const handleCompanyChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      careerInformation: {
-        ...prevData.careerInformation,
-        currentPosition: {
-          ...prevData.careerInformation.currentPosition,
-          company: value,
-        },
-      },
-    }));
+    console.log('e.target', e.target)
+    const keys = name.split('.');
+    console.log('KEYS', keys)
+    if (keys.length === 1) {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: value,
+      }));
+    } else {
+      setFormData((prevFormData) => {
+        const newFormData: any = { ...prevFormData }; // Use 'any' to handle dynamic keys
+        let current: any = newFormData;
+  
+        for (let i = 0; i < keys.length - 1; i++) {
+          current = current[keys[i]];
+        }
+  
+        current[keys[keys.length - 1]] = value;
+        return newFormData;
+      });
+    }
   };
 
   const handleSkillChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setSkillInput(e.target.value);
-  };
-
-  const handleSpecialization = (skill: string) => {
-    if (!formData.specializations.includes(skill)) {
-      setFormData((prevData) => ({
-        ...prevData,
-        specializations: [...prevData.specializations, skill],
-      }));
-    }
   };
 
   const handleSkillKeyDown = (e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -135,42 +152,15 @@ const EditProfilePage = () => {
     }
   };
 
-  // Handling the change for title
-  const handleTitleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      careerInformation: {
-        ...prevData.careerInformation,
-        currentPosition: {
-          ...prevData.careerInformation.currentPosition,
-          title: value,
-        },
-      },
-    }));
+ const handleSpecialization = (skill: string) => {
+    if (!formData.specializations.includes(skill)) {
+      setFormData((prevData) => ({
+        ...prevData,
+        specializations: [...prevData.specializations, skill],
+      }));
+    }
   };
 
-  const handleTwitterChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      socialMediaLinks: {
-        ...prevData.socialMediaLinks,
-        twitter: value,
-      },
-    }));
-  };
-
-  const handleBlogChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      socialMediaLinks: {
-        ...prevData.socialMediaLinks,
-        blog: value,
-      },
-    }));
-  };
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const fileList = e.target.files;
     if (!fileList) return;
@@ -266,16 +256,16 @@ const EditProfilePage = () => {
           <EditProfileInput
             label="Current Company"
             type="text"
-            name="company"
+            name="careerInformation.currentPosition.company"
             value={formData.careerInformation.currentPosition.company}
-            onChange={handleCompanyChange}
+            onChange={handleChange}
           />
           <EditProfileInput
             label="Current Title"
             type="text"
-            name="title"
+            name="careerInformation.currentPosition.title"
             value={formData.careerInformation.currentPosition.title}
-            onChange={handleTitleChange}
+            onChange={handleChange}
           />
           <label className="block font-bold mb-2 text-sm" htmlFor="availabilityForNetworking">
             Available for Networking?
@@ -313,16 +303,16 @@ const EditProfilePage = () => {
           <EditProfileInput
             label="Twitter"
             type="text"
-            name="twitter"
+            name="socialMediaLinks.twitter"
             value={formData.socialMediaLinks.twitter}
-            onChange={handleTwitterChange}
+            onChange={handleChange}
           />
           <EditProfileInput
             label="Blog"
             type="text"
-            name="blog"
+            name="socialMediaLinks.blog"
             value={formData.socialMediaLinks.blog}
-            onChange={handleBlogChange}
+            onChange={handleChange}
           />
           <EditProfileInput
             label="Skills"
