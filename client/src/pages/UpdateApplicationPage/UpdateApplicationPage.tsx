@@ -40,7 +40,6 @@ const UpdateApplicationPage = (): JSX.Element => {
 
     async function fetchApplication() {
       try {
-        console.log('HITTT!!!!!');
         const response = await axios.get(`/api/applications/${id}`);
         const applicationData = response.data;
         applicationData.date_applied = new Date(applicationData.date_applied)

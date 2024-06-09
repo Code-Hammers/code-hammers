@@ -4,6 +4,9 @@ export interface IApplication {
   company: string;
   status: string;
   general_notes: string;
+  last_updated: string;
+  notification_period: number;
+  notifications_paused: boolean;
 }
 
 export interface IApplicationFormData {

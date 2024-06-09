@@ -6,6 +6,8 @@ import {
   updateApplication,
   getApplicationById,
   getAggregatedUserStats,
+  updateNotificationPeriod,
+  pauseNotifications,
 } from '../controllers/applicationsController';
 import { protect } from '../middleware/authMiddleware';
 
@@ -17,5 +19,7 @@ router.get('/', protect, getAllApplications);
 router.get('/:id', protect, getApplicationById);
 router.post('/', protect, createApplication);
 router.put('/:id', protect, updateApplication);
+router.put('/:id/notification-period', protect, updateNotificationPeriod);
+router.put('/:id/pause-notifications', protect, pauseNotifications);
 
 export default router;
