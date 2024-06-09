@@ -9,9 +9,9 @@ interface StatusCount {
 
 const getAllApplications = async (req: Request, res: Response) => {
   try {
-    const userId = req.query.user_id;
+    const { userId, status, date } = req.query;
 
-    const query = `
+    let query = `
       SELECT
         applications.id,
         jobs.company,
@@ -26,7 +26,19 @@ const getAllApplications = async (req: Request, res: Response) => {
         applications.user_id = $1
     `;
 
-    const { rows } = await pool.query(query, [userId]);
+    const queryParams = [userId];
+
+    if (status) {
+      query += ' AND statuses.name != $2';
+      queryParams.push(status);
+    }
+
+    if (date) {
+      query += ' AND applications.date_applied >= $3';
+      queryParams.push(date);
+    }
+
+    const { rows } = await pool.query(query, queryParams);
     res.json(rows);
   } catch (error) {
     console.error('Error fetching job applications:', error);
