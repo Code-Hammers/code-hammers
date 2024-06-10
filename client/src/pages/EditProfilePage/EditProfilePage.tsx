@@ -103,7 +103,9 @@ const EditProfilePage = () => {
       }));
     } else {
       setFormData((prevFormData) => {
-        const newFormData: any = { ...prevFormData }; // Use 'any' to handle dynamic keys
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const newFormData: any = { ...prevFormData }; 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         let current: any = newFormData;
   
         for (let i = 0; i < keys.length - 1; i++) {
