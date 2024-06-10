@@ -4,7 +4,7 @@ import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { createApplication } from '../../features/applications/applicationSlice';
 import { IStatus, IApplicationFormData } from '../../../types/applications';
 
-const CreateApplicationPage = (): JSX.Element => {
+const CreateApplicationPage = () => {
   const user = useAppSelector((state) => state.user.userData);
   const { status } = useAppSelector((state) => state.application);
 
@@ -41,7 +41,6 @@ const CreateApplicationPage = (): JSX.Element => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     dispatch(createApplication(formData));
-    console.log(formData);
   };
 
   const handleChange = (

@@ -5,7 +5,7 @@ import { useAppSelector } from '../../app/hooks';
 import { IApplication } from '../../../types/applications';
 import ApplicationDashboard from '../../components/ApplicationDashBoard/ApplicationDashBoard';
 
-const ApplicationsPage = (): JSX.Element => {
+const ApplicationsPage = () => {
   const navigate = useNavigate();
   const [applications, setApplications] = useState<IApplication[]>([]);
   const [showRejected, setShowRejected] = useState(true);
@@ -23,12 +23,10 @@ const ApplicationsPage = (): JSX.Element => {
           const thirtySecondsAgo = new Date(Date.now() - 30 * 3000);
           params.date = thirtySecondsAgo.toISOString();
         }
-        console.log('Fetching applications with params: ', params);
 
         const response = await axios.get(`/api/applications`, { params });
 
         setApplications(response.data);
-        console.log('Fetched applications: ', applications);
       } catch (error) {
         console.error('Error fetching applications:', error);
       }
