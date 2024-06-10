@@ -21,7 +21,7 @@ const ApplicationsPage = () => {
   useEffect(() => {
     async function fetchApplications() {
       try {
-        const params: Params = { userId: user?._id };
+        const params: Params = { userId: user?._id ?? '' };
         if (!showRejected) params.status = 'Rejected';
 
         //TODO adjust time delay for production - Let user select dif times from dropdown?
