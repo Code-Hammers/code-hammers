@@ -18,7 +18,7 @@ const CreateApplicationPage = (): JSX.Element => {
     status_id: 1,
     user_id: user?._id || '',
     quick_apply: false,
-    date_applied: new Date().toISOString().split('T')[0],
+    date_applied: new Date().toISOString().slice(0, 16),
     general_notes: '',
     job_id: 0,
   });
@@ -53,6 +53,11 @@ const CreateApplicationPage = (): JSX.Element => {
       setFormData((prevFormData) => ({
         ...prevFormData,
         [name]: checked,
+      }));
+    } else if (name === 'date_applied') {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: value,
       }));
     } else {
       setFormData((prevFormData) => ({
@@ -159,8 +164,8 @@ const CreateApplicationPage = (): JSX.Element => {
             className="w-full p-2 rounded bg-gray-800 text-white"
             id="date_applied"
             name="date_applied"
-            type="date"
-            value={formData.date_applied}
+            type="datetime-local"
+            value={new Date(formData.date_applied).toISOString().slice(0, 16)}
             onChange={handleChange}
             required
           />

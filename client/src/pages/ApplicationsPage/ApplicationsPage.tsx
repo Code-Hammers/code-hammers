@@ -20,21 +20,24 @@ const ApplicationsPage = (): JSX.Element => {
 
         //TODO adjust time delay for production - Let user select dif times from dropdown?
         if (dateFilter) {
-          const thirtySecondsAgo = new Date(Date.now() - 30 * 1000);
+          const thirtySecondsAgo = new Date(Date.now() - 30 * 3000);
           params.date = thirtySecondsAgo.toISOString();
         }
-        console.log(params);
+        console.log('Fetching applications with params: ', params);
 
         const response = await axios.get(`/api/applications`, { params });
 
         setApplications(response.data);
-        console.log(applications);
+        console.log('Fetched applications: ', applications);
       } catch (error) {
         console.error('Error fetching applications:', error);
       }
     }
 
     fetchApplications();
+    // TODO Not sure I want to keep this. here for testing
+    const intervalId = setInterval(fetchApplications, 5000);
+    return () => clearInterval(intervalId);
   }, [showRejected, dateFilter]);
 
   const calculateIsInactive = (application: IApplication) => {
@@ -42,7 +45,7 @@ const ApplicationsPage = (): JSX.Element => {
     if (notifications_paused) return false;
 
     const lastUpdatedDate = new Date(last_updated);
-    const notificationPeriodMs = (notification_period * 24 * 60 * 60 * 1000) / 60 / 60 / 24;
+    const notificationPeriodMs = notification_period * 5000;
     return new Date().getTime() - lastUpdatedDate.getTime() > notificationPeriodMs;
   };
 
