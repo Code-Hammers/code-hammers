@@ -8,15 +8,14 @@ interface OldError {
 }
 
 const errorHandler = (err: Error | OldError, _req: Request, res: Response, _next: NextFunction) => {
+  console.error(err);
   // If it is one of our custom errors use its properties/method
   if (err instanceof CustomError) {
-    console.log(err.message);
     return res.status(err.statusCode).send(err.serializeErrors());
   }
 
   // Handle errors thrown the old way
   if (!(err instanceof Error) && err.status && err.log && err.message) {
-    console.log(err.log);
     return res.status(err.status).send([{ message: err.message.err }]);
   }
 
