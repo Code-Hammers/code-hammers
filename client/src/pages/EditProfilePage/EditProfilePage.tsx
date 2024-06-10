@@ -20,19 +20,13 @@ const EditProfilePage = () => {
     nickName: string;
     cohort: string;
     personalBio: string;
-    careerInformation: {
-      currentPosition: {
-        title: string;
-        company: string;
-      };
-    };
+    currentPositionTitle: string;
+    currentPositionCompany: string;
     availabilityForNetworking: boolean;
     linkedInProfile: string;
     gitHubProfile: string;
-    socialMediaLinks: {
-      twitter: string;
-      blog: string;
-    };
+    twitter: string;
+    blog: string;
     skills: string[];
     specializations: string[];
   };
@@ -42,19 +36,13 @@ const EditProfilePage = () => {
     nickName: '',
     cohort: '',
     personalBio: '',
-     careerInformation: {
-      currentPosition: {
-        title: '',
-        company: '',
-      },
-    },
+    currentPositionTitle: '',
+    currentPositionCompany: '',
     availabilityForNetworking: false,
     linkedInProfile: '',
     gitHubProfile: '',
-    socialMediaLinks: {
-      twitter: '',
-      blog: '',
-    },
+    twitter: '',
+    blog: '',
     skills: [] as string[],
     specializations: [] as string[],
   });
@@ -74,19 +62,13 @@ const EditProfilePage = () => {
         nickName: profile.nickName || '',
         cohort: profile.cohort || '',
         personalBio: profile.personalBio || '',
-        careerInformation: {
-          currentPosition: {
-            title: profile.careerInformation?.currentPosition?.title || '',
-            company: profile.careerInformation?.currentPosition?.company || '',
-          },
-        },
+        currentPositionTitle: profile.careerInformation?.currentPosition?.title || '',
+        currentPositionCompany: profile.careerInformation?.currentPosition?.company || '',
         availabilityForNetworking: profile.availabilityForNetworking || false,
         linkedInProfile: profile.linkedInProfile || '',
         gitHubProfile: profile.gitHubProfile || '',
-        socialMediaLinks: {
-          twitter: profile.socialMediaLinks?.twitter || '',
-          blog: profile.socialMediaLinks?.blog || '',
-        },
+        twitter: profile.socialMediaLinks?.twitter || '',
+        blog: profile.socialMediaLinks?.blog || '',
         skills: profile.skills || [],
         specializations: profile.specializations || [], 
       });
@@ -95,28 +77,12 @@ const EditProfilePage = () => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    const keys = name.split('.');
-    if (keys.length === 1) {
       setFormData((prevFormData) => ({
         ...prevFormData,
         [name]: value,
       }));
-    } else {
-      setFormData((prevFormData) => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const newFormData: any = { ...prevFormData }; 
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        let current: any = newFormData;
-  
-        for (let i = 0; i < keys.length - 1; i++) {
-          current = current[keys[i]];
-        }
-  
-        current[keys[keys.length - 1]] = value;
-        return newFormData;
-      });
-    }
-  };
+    } 
+
 
   const handleSkillChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setSkillInput(e.target.value);
@@ -177,13 +143,13 @@ const EditProfilePage = () => {
       ...formData,
       careerInformation: {
         currentPosition: {
-          company: formData.careerInformation.currentPosition.company,
-          title: formData.careerInformation.currentPosition.title,
+          company: formData.currentPositionTitle,
+          title: formData.currentPositionCompany,
         },
       },
       socialMediaLinks: {
-        twitter: formData.socialMediaLinks.twitter,
-        blog: formData.socialMediaLinks.blog,
+        twitter: formData.twitter,
+        blog: formData.blog,
       },
     };
     dispatch(updateUserProfile({ ...payload, userID, navigate }));
@@ -256,15 +222,15 @@ const EditProfilePage = () => {
           <EditProfileInput
             label="Current Company"
             type="text"
-            name="careerInformation.currentPosition.company"
-            value={formData.careerInformation.currentPosition.company}
+            name="currentPositionCompany"
+            value={formData.currentPositionCompany}
             onChange={handleChange}
           />
           <EditProfileInput
             label="Current Title"
             type="text"
-            name="careerInformation.currentPosition.title"
-            value={formData.careerInformation.currentPosition.title}
+            name="currentPositionTitle"
+            value={formData.currentPositionTitle}
             onChange={handleChange}
           />
           <label className="block font-bold mb-2 text-sm" htmlFor="availabilityForNetworking">
@@ -303,15 +269,15 @@ const EditProfilePage = () => {
           <EditProfileInput
             label="Twitter"
             type="text"
-            name="socialMediaLinks.twitter"
-            value={formData.socialMediaLinks.twitter}
+            name="twitter"
+            value={formData.twitter}
             onChange={handleChange}
           />
           <EditProfileInput
             label="Blog"
             type="text"
-            name="socialMediaLinks.blog"
-            value={formData.socialMediaLinks.blog}
+            name="blog"
+            value={formData.blog}
             onChange={handleChange}
           />
           <EditProfileInput
