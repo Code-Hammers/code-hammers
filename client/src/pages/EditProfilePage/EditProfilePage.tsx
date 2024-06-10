@@ -30,7 +30,7 @@ const EditProfilePage = () => {
     skills: string[];
     specializations: string[];
   };
-  
+
   const [formData, setFormData] = useState<FormDataType>({
     email: '',
     nickName: '',
@@ -70,19 +70,18 @@ const EditProfilePage = () => {
         twitter: profile.socialMediaLinks?.twitter || '',
         blog: profile.socialMediaLinks?.blog || '',
         skills: profile.skills || [],
-        specializations: profile.specializations || [], 
+        specializations: profile.specializations || [],
       });
     }
   }, [profile]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        [name]: value,
-      }));
-    } 
-
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
 
   const handleSkillChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setSkillInput(e.target.value);
@@ -118,7 +117,7 @@ const EditProfilePage = () => {
     }
   };
 
- const handleSpecialization = (skill: string) => {
+  const handleSpecialization = (skill: string) => {
     if (!formData.specializations.includes(skill)) {
       setFormData((prevData) => ({
         ...prevData,
