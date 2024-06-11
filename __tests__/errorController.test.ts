@@ -1,7 +1,8 @@
+import app from '../server/index';
+import request from 'supertest';
 import { Request, Response, NextFunction } from 'express';
-import { notFound } from '../server/controllers/errorControllers';
 import errorHandler from '../server/middleware/errorHandler';
-import { BadRequestError } from '../server/errors';
+import { BadRequestError, NotFoundError } from '../server/errors';
 
 describe('Middleware Tests', () => {
   let mockRequest: Partial<Request>;
@@ -18,10 +19,13 @@ describe('Middleware Tests', () => {
   });
 
   describe('notFound Middleware', () => {
-    it('should return 404 and the original URL', () => {
-      notFound(mockRequest as Request, mockResponse as Response, mockNext);
-      expect(mockResponse.status).toHaveBeenCalledWith(404);
-      expect(mockNext).toHaveBeenCalled();
+    it('should return 404 and the original URL', async () => {
+      const exampleNotFoundError = new NotFoundError();
+
+      const response = await request(app).get('/non-existent-route').send();
+
+      expect(response.status).toEqual(404);
+      expect(response.body).toEqual(exampleNotFoundError.serializeErrors());
     });
   });
 
