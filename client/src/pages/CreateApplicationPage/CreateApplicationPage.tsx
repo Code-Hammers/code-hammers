@@ -9,6 +9,7 @@ const CreateApplicationPage = () => {
   const { status } = useAppSelector((state) => state.application);
 
   const [statuses, setStatuses] = useState<IStatus[]>([]);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [formData, setFormData] = useState<IApplicationFormData>({
     title: '',
     company: '',
@@ -40,6 +41,14 @@ const CreateApplicationPage = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const selectedDate = new Date(formData.date_applied);
+    const currentDate = new Date();
+
+    if (selectedDate > currentDate) {
+      setErrorMessage("Sean S says time travel isn't a thing.");
+      return;
+    }
+    setErrorMessage(null);
     dispatch(createApplication(formData));
   };
 
@@ -70,6 +79,9 @@ const CreateApplicationPage = () => {
     <div className="pt-40 min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center p-4">
       <h1 className="text-4xl font-extrabold mb-4">Create Applications</h1>
       <form className="w-full max-w-lg" onSubmit={handleSubmit}>
+        {errorMessage && (
+          <div className="bg-red-500 text-white p-2 rounded mb-4">{errorMessage}</div>
+        )}
         <label className="block text-sm font-bold mb-2" htmlFor="title">
           Job Title
           <input
