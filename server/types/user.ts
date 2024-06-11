@@ -1,4 +1,4 @@
-import { ObjectId, Document } from "mongoose";
+import { ObjectId, Document } from 'mongoose';
 //TODO Do I need both of these?
 export interface IUser extends Document {
   firstName: string;

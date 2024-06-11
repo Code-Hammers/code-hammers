@@ -1,5 +1,5 @@
-import mongoose, { Schema } from "mongoose";
-import { IAlumni } from "../types/alumni";
+import mongoose, { Schema } from 'mongoose';
+import { IAlumni } from '../types/alumni';
 
 const alumniSchema = new Schema<IAlumni>(
   {
@@ -13,19 +13,19 @@ const alumniSchema = new Schema<IAlumni>(
       required: true,
       validate: {
         validator: function (v: string | number) {
-          return typeof v === "string" || typeof v === "number";
+          return typeof v === 'string' || typeof v === 'number';
         },
         message: (props: { value: string | number }) =>
           `${props.value} is not a valid number or string!`,
       },
     },
     jobTitle: { type: String, trim: true },
-    industry: { type: String, trim: true, default: "" },
+    industry: { type: String, trim: true, default: '' },
     cities: [{ type: String, trim: true }],
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
-const Alumni = mongoose.model<IAlumni>("Alumni", alumniSchema);
+const Alumni = mongoose.model<IAlumni>('Alumni', alumniSchema);
 
 export default Alumni;

@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const forumSchema = new mongoose.Schema({
   title: { type: String, required: true },
@@ -7,6 +7,6 @@ const forumSchema = new mongoose.Schema({
   updatedAt: { type: Date, default: Date.now },
 });
 
-const Forum = mongoose.model("Forum", forumSchema);
+const Forum = mongoose.model('Forum', forumSchema);
 
 export default Forum;

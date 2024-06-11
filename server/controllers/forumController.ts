@@ -1,7 +1,7 @@
-import { Request, Response, NextFunction } from "express";
-import Forum from "../models/forumModel";
-import Thread from "../models/threadModel";
-import { sortAndPopulate } from "./helpers/queryHelpers";
+import { Request, Response, NextFunction } from 'express';
+import Forum from '../models/forumModel';
+import Thread from '../models/threadModel';
+import { sortAndPopulate } from './helpers/queryHelpers';
 
 // ENDPOINT  POST api/forums
 // PURPOSE   Create a new forum
@@ -22,7 +22,7 @@ const addForum = async (req: Request, res: Response, next: NextFunction) => {
     next({
       log: `Express error in addForum controller: ${error}`,
       status: 500,
-      message: { err: "Server error creating forum" },
+      message: { err: 'Server error creating forum' },
     });
   }
 };
@@ -30,11 +30,7 @@ const addForum = async (req: Request, res: Response, next: NextFunction) => {
 // ENDPOINT  GET api/forums
 // PURPOSE   Retrieve a list of all forums
 // ACCESS    all users
-const getAllForums = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+const getAllForums = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const forums = await Forum.find({});
     res.status(200).json(forums);
@@ -42,7 +38,7 @@ const getAllForums = async (
     next({
       log: `Express error in getAllForums controller: ${error}`,
       status: 500,
-      message: { err: "Server error fetching forums" },
+      message: { err: 'Server error fetching forums' },
     });
   }
 };
@@ -50,17 +46,13 @@ const getAllForums = async (
 // ENDPOINT  GET api/forums/:forumId
 // PURPOSE   Retrieve a specific forum and its threads
 // ACCESS    all users
-const getForumById = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+const getForumById = async (req: Request, res: Response, next: NextFunction) => {
   const { forumId } = req.params;
 
   try {
     const forum = await Forum.findById(forumId);
     if (!forum) {
-      return res.status(404).json({ message: "Forum not found" });
+      return res.status(404).json({ message: 'Forum not found' });
     }
 
     const threadsQuery = Thread.find({ forum: forumId });
@@ -71,7 +63,7 @@ const getForumById = async (
     next({
       log: `Express error in getForumById controller: ${error}`,
       status: 500,
-      message: { err: "Server error fetching forum details" },
+      message: { err: 'Server error fetching forum details' },
     });
   }
 };
@@ -89,11 +81,11 @@ const updateForum = async (req: Request, res: Response, next: NextFunction) => {
     const forum = await Forum.findByIdAndUpdate(
       forumId,
       { $set: { title, description } },
-      { new: true }
+      { new: true },
     );
 
     if (!forum) {
-      return res.status(404).json({ message: "Forum not found" });
+      return res.status(404).json({ message: 'Forum not found' });
     }
 
     res.status(200).json(forum);
@@ -101,7 +93,7 @@ const updateForum = async (req: Request, res: Response, next: NextFunction) => {
     next({
       log: `Express error in updateForum controller: ${error}`,
       status: 500,
-      message: { err: "Server error updating forum details" },
+      message: { err: 'Server error updating forum details' },
     });
   }
 };
@@ -116,18 +108,17 @@ const deleteForum = async (req: Request, res: Response, next: NextFunction) => {
     //TODO add auth check for admin status
 
     const deletedForum = await Forum.findByIdAndDelete(forumId);
-    console.log("deletedForum", deletedForum);
 
     if (!deletedForum) {
-      return res.status(404).json({ message: "Forum not found" });
+      return res.status(404).json({ message: 'Forum not found' });
     }
 
-    res.status(200).json({ message: "Forum deleted successfully" });
+    res.status(200).json({ message: 'Forum deleted successfully' });
   } catch (error) {
     next({
       log: `Express error in deleteForum controller: ${error}`,
       status: 500,
-      message: { err: "Server error deleting forum" },
+      message: { err: 'Server error deleting forum' },
     });
   }
 };

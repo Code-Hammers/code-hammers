@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useAppSelector } from "../../../app/hooks";
-import CreatePost from "../CreatePost/CreatePost";
-import { Thread, IPost } from "../../../../types/forums";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useAppSelector } from '../../../app/hooks';
+import CreatePost from '../CreatePost/CreatePost';
+import { Thread, IPost } from '../../../../types/forums';
 
 interface ThreadDetailProps {
   forumId: string | null;
   threadId: string;
 }
 
-const ThreadDetail: React.FC<ThreadDetailProps> = ({ forumId, threadId }) => {
+const ThreadDetail = ({ forumId, threadId }: ThreadDetailProps) => {
   const userID = useAppSelector((state) => state.user.userData?._id);
   const [thread, setThread] = useState<Thread | null>(null);
   const [posts, setPosts] = useState<IPost[]>([]);
@@ -47,10 +47,9 @@ const ThreadDetail: React.FC<ThreadDetailProps> = ({ forumId, threadId }) => {
   const handleDeletePost = async (postId: string) => {
     setPending(true);
     try {
-      await axios.delete(
-        `/api/forums/${forumId}/threads/${threadId}/posts/${postId}`,
-        { withCredentials: true }
-      );
+      await axios.delete(`/api/forums/${forumId}/threads/${threadId}/posts/${postId}`, {
+        withCredentials: true,
+      });
       setPosts(posts.filter((post: IPost) => post._id !== postId));
       setPending(false);
     } catch (err) {
@@ -72,14 +71,10 @@ const ThreadDetail: React.FC<ThreadDetailProps> = ({ forumId, threadId }) => {
         onClick={toggleCreatePost}
         className="bg-blue-500 font-bold hover:bg-blue-700 mb-2 py-2 px-4 rounded text-white"
       >
-        {creatingPost ? "Cancel" : "Add Reply"}
+        {creatingPost ? 'Cancel' : 'Add Reply'}
       </button>
       {creatingPost && (
-        <CreatePost
-          forumId={forumId}
-          threadId={threadId}
-          onClose={toggleCreatePost}
-        />
+        <CreatePost forumId={forumId} threadId={threadId} onClose={toggleCreatePost} />
       )}
       <div>
         <h3 className="font-bold text-2xl">Replies</h3>
@@ -87,7 +82,7 @@ const ThreadDetail: React.FC<ThreadDetailProps> = ({ forumId, threadId }) => {
           <div key={post._id} className="mb-4">
             <p>{post.content}</p>
             <small>
-              By {post.user.firstName} {post.user.lastName} on{" "}
+              By {post.user.firstName} {post.user.lastName} on{' '}
               {new Date(post.createdAt).toLocaleDateString()}
             </small>
             {userID === post.user._id && (
