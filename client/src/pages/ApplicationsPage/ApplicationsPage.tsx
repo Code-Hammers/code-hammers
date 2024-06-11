@@ -5,7 +5,13 @@ import { useAppSelector } from '../../app/hooks';
 import { IApplication } from '../../../types/applications';
 import ApplicationDashboard from '../../components/ApplicationDashBoard/ApplicationDashBoard';
 
-const ApplicationsPage = (): JSX.Element => {
+interface Params {
+  userId: string;
+  status?: string;
+  date?: string;
+}
+
+const ApplicationsPage = () => {
   const navigate = useNavigate();
   const [applications, setApplications] = useState<IApplication[]>([]);
   const [showRejected, setShowRejected] = useState(true);
@@ -15,7 +21,7 @@ const ApplicationsPage = (): JSX.Element => {
   useEffect(() => {
     async function fetchApplications() {
       try {
-        const params: any = { userId: user?._id };
+        const params: Params = { userId: user?._id ?? '' };
         if (!showRejected) params.status = 'Rejected';
 
         //TODO adjust time delay for production - Let user select dif times from dropdown?
