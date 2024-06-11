@@ -5,15 +5,32 @@ import { useAppSelector } from '../../app/hooks';
 import { IApplication } from '../../../types/applications';
 import ApplicationDashboard from '../../components/ApplicationDashBoard/ApplicationDashBoard';
 
-const ApplicationsPage = (): JSX.Element => {
+interface Params {
+  userId: string;
+  status?: string;
+  date?: string;
+}
+
+const ApplicationsPage = () => {
   const navigate = useNavigate();
   const [applications, setApplications] = useState<IApplication[]>([]);
+  const [showRejected, setShowRejected] = useState(true);
+  const [dateFilter, setDateFilter] = useState(false);
   const user = useAppSelector((state) => state.user.userData);
 
   useEffect(() => {
     async function fetchApplications() {
       try {
-        const response = await axios.get(`/api/applications?user_id=${user?._id}`);
+        const params: Params = { userId: user?._id ?? '' };
+        if (!showRejected) params.status = 'Rejected';
+
+        //TODO adjust time delay for production - Let user select dif times from dropdown?
+        if (dateFilter) {
+          const thirtySecondsAgo = new Date(Date.now() - 30 * 3000);
+          params.date = thirtySecondsAgo.toISOString();
+        }
+
+        const response = await axios.get(`/api/applications`, { params });
 
         setApplications(response.data);
       } catch (error) {
@@ -22,14 +39,17 @@ const ApplicationsPage = (): JSX.Element => {
     }
 
     fetchApplications();
-  }, []);
+    // TODO Not sure I want to keep this. here for testing
+    const intervalId = setInterval(fetchApplications, 5000);
+    return () => clearInterval(intervalId);
+  }, [showRejected, dateFilter]);
 
   const calculateIsInactive = (application: IApplication) => {
     const { last_updated, notification_period, notifications_paused } = application;
     if (notifications_paused) return false;
 
     const lastUpdatedDate = new Date(last_updated);
-    const notificationPeriodMs = (notification_period * 24 * 60 * 60 * 1000) / 60 / 60 / 24;
+    const notificationPeriodMs = notification_period * 5000;
     return new Date().getTime() - lastUpdatedDate.getTime() > notificationPeriodMs;
   };
 
@@ -66,6 +86,24 @@ const ApplicationsPage = (): JSX.Element => {
         Create New Application
       </button>
       <div className="max-w-4xl w-full bg-gray-800 p-6 rounded-lg shadow-lg">
+        <div className="mb-4">
+          <label className="block mb-2">
+            <input
+              type="checkbox"
+              checked={!showRejected}
+              onChange={() => setShowRejected(!showRejected)}
+            />
+            Remove Rejected Applications
+          </label>
+          <label className="block">
+            <input
+              type="checkbox"
+              checked={dateFilter}
+              onChange={() => setDateFilter(!dateFilter)}
+            />
+            Remove Applications Older than 30 Days
+          </label>
+        </div>
         <ul className="divide-gray-700 divide-y ">
           {applications.map((application) => (
             <li key={application.id} className="py-4">

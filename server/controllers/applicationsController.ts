@@ -9,15 +9,16 @@ interface StatusCount {
 
 const getAllApplications = async (req: Request, res: Response) => {
   try {
-    const userId = req.query.user_id;
+    const { userId, status, date } = req.query;
 
-    const query = `
+    let query = `
       SELECT
         applications.id,
         jobs.company,
         jobs.title,
         statuses.name AS status,
         applications.general_notes,
+        applications.date_applied,
         applications.last_updated,
         applications.notification_period,
         applications.notifications_paused
@@ -29,7 +30,22 @@ const getAllApplications = async (req: Request, res: Response) => {
         applications.user_id = $1
     `;
 
-    const { rows } = await pool.query(query, [userId]);
+    const queryParams = [userId];
+    let paramIndex = 2;
+
+    if (status) {
+      query += ` AND statuses.name != $${paramIndex}`;
+      queryParams.push(status);
+      paramIndex += 1;
+    }
+
+    if (date) {
+      query += ` AND applications.date_applied >= $${paramIndex}`;
+      queryParams.push(date);
+    }
+
+    const { rows } = await pool.query(query, queryParams);
+
     res.json(rows);
   } catch (error) {
     console.error('Error fetching job applications:', error);
@@ -62,6 +78,8 @@ const createApplication = async (req: Request, res: Response) => {
       user_id,
     } = req.body;
 
+    const appliedDate = new Date(date_applied).toISOString();
+
     const jobQuery = `
       INSERT INTO jobs (title, company, location, description, url)
       VALUES ($1, $2, $3, $4, $5)
@@ -76,14 +94,7 @@ const createApplication = async (req: Request, res: Response) => {
       VALUES ($1, $2, $3, $4, $5, $6, NOW())
       RETURNING id
     `;
-    const applicationValues = [
-      job_id,
-      status_id,
-      user_id,
-      quick_apply,
-      date_applied,
-      general_notes,
-    ];
+    const applicationValues = [job_id, status_id, user_id, quick_apply, appliedDate, general_notes];
     const applicationResult = await pool.query(applicationQuery, applicationValues);
 
     res.status(201).json({ id: applicationResult.rows[0].id });

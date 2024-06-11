@@ -15,6 +15,9 @@ services:
     environment:
       - NODE_ENV=development
       - DATABASE_URL=postgres://codehammers:ch-dev@postgres:5432/ch-dev-database
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=ch-dev
+      - POSTGRES_DB=ch-dev-database
     depends_on:
       - postgres
   postgres:

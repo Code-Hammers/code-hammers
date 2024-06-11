@@ -4,11 +4,12 @@ import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { createApplication } from '../../features/applications/applicationSlice';
 import { IStatus, IApplicationFormData } from '../../../types/applications';
 
-const CreateApplicationPage = (): JSX.Element => {
+const CreateApplicationPage = () => {
   const user = useAppSelector((state) => state.user.userData);
   const { status } = useAppSelector((state) => state.application);
 
   const [statuses, setStatuses] = useState<IStatus[]>([]);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [formData, setFormData] = useState<IApplicationFormData>({
     title: '',
     company: '',
@@ -18,7 +19,7 @@ const CreateApplicationPage = (): JSX.Element => {
     status_id: 1,
     user_id: user?._id || '',
     quick_apply: false,
-    date_applied: new Date().toISOString().split('T')[0],
+    date_applied: new Date().toISOString().slice(0, 16),
     general_notes: '',
     job_id: 0,
   });
@@ -40,8 +41,15 @@ const CreateApplicationPage = (): JSX.Element => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const selectedDate = new Date(formData.date_applied);
+    const currentDate = new Date();
+
+    if (selectedDate > currentDate) {
+      setErrorMessage("Sean S says time travel isn't a thing.");
+      return;
+    }
+    setErrorMessage(null);
     dispatch(createApplication(formData));
-    console.log(formData);
   };
 
   const handleChange = (
@@ -53,6 +61,11 @@ const CreateApplicationPage = (): JSX.Element => {
       setFormData((prevFormData) => ({
         ...prevFormData,
         [name]: checked,
+      }));
+    } else if (name === 'date_applied') {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: value,
       }));
     } else {
       setFormData((prevFormData) => ({
@@ -66,6 +79,9 @@ const CreateApplicationPage = (): JSX.Element => {
     <div className="pt-40 min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center p-4">
       <h1 className="text-4xl font-extrabold mb-4">Create Applications</h1>
       <form className="w-full max-w-lg" onSubmit={handleSubmit}>
+        {errorMessage && (
+          <div className="bg-red-500 text-white p-2 rounded mb-4">{errorMessage}</div>
+        )}
         <label className="block text-sm font-bold mb-2" htmlFor="title">
           Job Title
           <input
@@ -159,8 +175,8 @@ const CreateApplicationPage = (): JSX.Element => {
             className="w-full p-2 rounded bg-gray-800 text-white"
             id="date_applied"
             name="date_applied"
-            type="date"
-            value={formData.date_applied}
+            type="datetime-local"
+            value={new Date(formData.date_applied).toISOString().slice(0, 16)}
             onChange={handleChange}
             required
           />
