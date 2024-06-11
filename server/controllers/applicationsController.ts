@@ -10,7 +10,6 @@ interface StatusCount {
 const getAllApplications = async (req: Request, res: Response) => {
   try {
     const { userId, status, date } = req.query;
-    console.log('Filter date: ', date);
 
     let query = `
       SELECT
@@ -45,14 +44,8 @@ const getAllApplications = async (req: Request, res: Response) => {
       queryParams.push(date);
     }
 
-    console.log('date params: ');
-    console.log(' QUERY: ', query);
-
     const { rows } = await pool.query(query, queryParams);
 
-    rows.forEach((row) => {
-      console.log('Application date_applied:', row.date_applied);
-    });
     res.json(rows);
   } catch (error) {
     console.error('Error fetching job applications:', error);
@@ -86,7 +79,6 @@ const createApplication = async (req: Request, res: Response) => {
     } = req.body;
 
     const appliedDate = new Date(date_applied).toISOString();
-    console.log('Inserting application with date_applied:', appliedDate);
 
     const jobQuery = `
       INSERT INTO jobs (title, company, location, description, url)

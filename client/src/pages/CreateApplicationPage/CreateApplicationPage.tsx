@@ -41,7 +41,6 @@ const CreateApplicationPage = (): JSX.Element => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     dispatch(createApplication(formData));
-    console.log(formData);
   };
 
   const handleChange = (
