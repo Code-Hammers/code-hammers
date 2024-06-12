@@ -1,5 +1,5 @@
 import path from 'path';
-import express, { Request, Response, Application } from 'express';
+import express, { Request, Response } from 'express';
 import 'express-async-errors';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
