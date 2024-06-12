@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import CreateThread from '../CreateThread/CreateThread';
 import { Thread, IForum } from '../../../../types/forums';
@@ -50,7 +50,13 @@ const ThreadsDisplay = ({ forumId, onThreadSelect }: ThreadsDisplayProps) => {
     setCreatingThread(!creatingThread);
   };
 
-  const handleEditThread = (threadId: string, title: string, content: string) => {
+  const handleEditThread = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    threadId: string,
+    title: string,
+    content: string,
+  ) => {
+    event.stopPropagation();
     setEditingThreadId(threadId);
     setEditTitle(title);
     setEditContent(content);
@@ -84,15 +90,17 @@ const ThreadsDisplay = ({ forumId, onThreadSelect }: ThreadsDisplayProps) => {
             onClick={() => onThreadSelect(thread._id)}
           >
             {editingThreadId === thread._id ? (
-              <div>
+              <div onClick={(e) => e.stopPropagation()}>
                 <input
                   type="text"
                   value={editTitle}
+                  onClick={(e) => e.stopPropagation()}
                   onChange={(e) => setEditTitle(e.target.value)}
                   className="w-full p-2 mb-2 rounded bg-gray-800 text-white"
                 />
                 <textarea
                   value={editContent}
+                  onClick={(e) => e.stopPropagation()}
                   onChange={(e) => setEditContent(e.target.value)}
                   className="w-full p-2 mb-2 rounded bg-gray-800 text-white"
                 />
@@ -114,7 +122,9 @@ const ThreadsDisplay = ({ forumId, onThreadSelect }: ThreadsDisplayProps) => {
                 </small>
                 {userID === thread.user._id && (
                   <button
-                    onClick={() => handleEditThread(thread._id, thread.title, thread.content)}
+                    onClick={(event) =>
+                      handleEditThread(event, thread._id, thread.title, thread.content)
+                    }
                     className="bg-yellow-500 font-bold hover:bg-yellow-700 ml-2 py-1 px-2 rounded text-white"
                   >
                     Edit
