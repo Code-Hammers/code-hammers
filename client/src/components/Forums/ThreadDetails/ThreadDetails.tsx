@@ -17,6 +17,8 @@ const ThreadDetail = ({ forumId, threadId }: ThreadDetailProps) => {
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [creatingPost, setCreatingPost] = useState(false);
+  const [editingPostId, setEditingPost] = useState<string | null>(null);
+  const [editContent, setEditContent] = useState<string>('');
 
   useEffect(() => {
     const fetchThreadDetails = async () => {
@@ -59,6 +61,11 @@ const ThreadDetail = ({ forumId, threadId }: ThreadDetailProps) => {
     }
   };
 
+  const handleEditPost = (postId: string, content: string) => {
+    setEditingPost(postId);
+    setEditContent(content);
+  };
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
   if (!thread) return <div>Thread not found.</div>;
@@ -86,12 +93,20 @@ const ThreadDetail = ({ forumId, threadId }: ThreadDetailProps) => {
               {new Date(post.createdAt).toLocaleDateString()}
             </small>
             {userID === post.user._id && (
-              <button
-                onClick={() => handleDeletePost(post._id)}
-                className="bg-red-500 font-bold hover:bg-red-700 ml-2 py-1 px-2 rounded text-white"
-              >
-                Delete
-              </button>
+              <>
+                <button
+                  onClick={() => handleDeletePost(post._id)}
+                  className="bg-red-500 font-bold hover:bg-red-700 ml-2 py-1 px-2 rounded text-white"
+                >
+                  Delete
+                </button>
+                <button
+                  onClick={() => handleEditPost(post._id, post.content)}
+                  className="bg-yellow-500 font-bold hover:bg-yellow-700 ml-2 py-1 px-2 rounded text-white"
+                >
+                  Edit
+                </button>
+              </>
             )}
           </div>
         ))}
