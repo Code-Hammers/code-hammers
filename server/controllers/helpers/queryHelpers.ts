@@ -1,5 +1,3 @@
-import { Query } from 'mongoose';
-
 type SortOrder = 1 | -1;
 
 interface SortAndPopulateQuery<T> {
