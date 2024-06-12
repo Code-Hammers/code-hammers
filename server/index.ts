@@ -1,13 +1,15 @@
 import path from 'path';
 import express, { Request, Response, Application } from 'express';
 import 'express-async-errors';
-import userRoutes from './routes/userRoutes';
-import profileRoutes from './routes/profileRoutes';
-import authRoutes from './routes/authRoutes';
-import imageRoutes from './routes/imageRoutes';
-import alumniRoutes from './routes/alumniRoutes';
-import forumRoutes from './routes/forumRoutes';
-import devRoutes from './routes/devRoutes';
+import {
+  userRouter,
+  profileRouter,
+  authRouter,
+  imageRouter,
+  alumniRouter,
+  forumRouter,
+  devRouter,
+} from './routes';
 import connectDB from './config/db';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
@@ -25,13 +27,13 @@ app.get('/health', (req: Request, res: Response) => {
   res.status(200).send('OK');
 });
 
-app.use('/api/users', userRoutes);
-app.use('/api/profiles', profileRoutes);
-app.use('/api/auth', authRoutes);
-app.use('/api/images', imageRoutes);
-app.use('/api/alumni', alumniRoutes);
-app.use('/api/forums', forumRoutes);
-app.use('/api/devRoutes', devRoutes);
+app.use('/api/users', userRouter);
+app.use('/api/profiles', profileRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/images', imageRouter);
+app.use('/api/alumni', alumniRouter);
+app.use('/api/forums', forumRouter);
+app.use('/api/devRoutes', devRouter);
 
 if (process.env.NODE_ENV === 'production') {
   console.log(`SERVER STARTED IN PRODUCTION`);
