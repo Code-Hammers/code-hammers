@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import CreateThread from '../CreateThread/CreateThread';
 import { Thread, IForum } from '../../../../types/forums';
+import { useAppSelector } from '../../../app/hooks';
 
 interface ThreadsDisplayProps {
   forumId?: string | null;
@@ -9,11 +10,15 @@ interface ThreadsDisplayProps {
 }
 
 const ThreadsDisplay = ({ forumId, onThreadSelect }: ThreadsDisplayProps) => {
+  const userID = useAppSelector((state) => state.user.userData?._id);
   const [threads, setThreads] = useState<Thread[]>([]);
   const [forum, setForum] = useState<IForum | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [creatingThread, setCreatingThread] = useState(false);
+  const [editingThreadId, setEditingThreadId] = useState<string | null>(null);
+  const [editTitle, setEditTitle] = useState<string>('');
+  const [editContent, setEditContent] = useState<string>('');
 
   useEffect(() => {
     const fetchForumAndThreads = async () => {
@@ -45,6 +50,12 @@ const ThreadsDisplay = ({ forumId, onThreadSelect }: ThreadsDisplayProps) => {
     setCreatingThread(!creatingThread);
   };
 
+  const handleEditThread = (threadId: string, title: string, content: string) => {
+    setEditingThreadId(threadId);
+    setEditTitle(title);
+    setEditContent(content);
+  };
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
@@ -72,12 +83,45 @@ const ThreadsDisplay = ({ forumId, onThreadSelect }: ThreadsDisplayProps) => {
             className="mb-2 p-2 bg-gray-800 rounded-lg cursor-pointer"
             onClick={() => onThreadSelect(thread._id)}
           >
-            <h4 className="font-bold">{thread.title}</h4>
-            <p>{thread.content}</p>
-            <small>
-              Started by {thread.user.firstName} on{' '}
-              {new Date(thread.createdAt).toLocaleDateString()}
-            </small>
+            {editingThreadId === thread._id ? (
+              <div>
+                <input
+                  type="text"
+                  value={editTitle}
+                  onChange={(e) => setEditTitle(e.target.value)}
+                  className="w-full p-2 mb-2 rounded bg-gray-800 text-white"
+                />
+                <textarea
+                  value={editContent}
+                  onChange={(e) => setEditContent(e.target.value)}
+                  className="w-full p-2 mb-2 rounded bg-gray-800 text-white"
+                />
+
+                <button
+                  onClick={() => setEditingThreadId(null)}
+                  className="bg-gray-500 font-bold hover:bg-gray-700 ml-2 py-1 px-2 rounded text-white"
+                >
+                  Cancel
+                </button>
+              </div>
+            ) : (
+              <div>
+                <h4 className="font-bold">{thread.title}</h4>
+                <p>{thread.content}</p>
+                <small>
+                  Started by {thread.user.firstName} on{' '}
+                  {new Date(thread.createdAt).toLocaleDateString()}
+                </small>
+                {userID === thread.user._id && (
+                  <button
+                    onClick={() => handleEditThread(thread._id, thread.title, thread.content)}
+                    className="bg-yellow-500 font-bold hover:bg-yellow-700 ml-2 py-1 px-2 rounded text-white"
+                  >
+                    Edit
+                  </button>
+                )}
+              </div>
+            )}
           </li>
         ))}
       </ul>
