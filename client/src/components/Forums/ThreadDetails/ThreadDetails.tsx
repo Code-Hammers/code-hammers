@@ -14,7 +14,7 @@ const ThreadDetail = ({ forumId, threadId }: ThreadDetailProps) => {
   const [thread, setThread] = useState<Thread | null>(null);
   const [posts, setPosts] = useState<IPost[]>([]);
   const [loading, setLoading] = useState(false);
-  const [setPending] = useState(false);
+  const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [creatingPost, setCreatingPost] = useState(false);
   const [editingPostId, setEditingPostId] = useState<string | null>(null);
@@ -82,6 +82,8 @@ const ThreadDetail = ({ forumId, threadId }: ThreadDetailProps) => {
     }
   };
 
+  // TODO pending, loading, error to be handled by global once migrated
+  if (pending) return null;
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
   if (!thread) return <div>Thread not found.</div>;
