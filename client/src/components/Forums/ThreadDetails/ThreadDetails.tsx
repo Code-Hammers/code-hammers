@@ -14,7 +14,7 @@ const ThreadDetail = ({ forumId, threadId }: ThreadDetailProps) => {
   const [thread, setThread] = useState<Thread | null>(null);
   const [posts, setPosts] = useState<IPost[]>([]);
   const [loading, setLoading] = useState(false);
-  const [pending, setPending] = useState(false);
+  const [setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [creatingPost, setCreatingPost] = useState(false);
   const [editingPostId, setEditingPostId] = useState<string | null>(null);
