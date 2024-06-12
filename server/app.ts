@@ -43,10 +43,12 @@ if (process.env.NODE_ENV === 'production') {
   );
 }
 
+// Catch all route handler
 app.use((_req, _res) => {
   throw new NotFoundError();
 });
 
+// Global error handler
 app.use(errorHandler);
 
 export default app;
