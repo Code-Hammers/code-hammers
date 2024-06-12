@@ -62,6 +62,35 @@ const ThreadsDisplay = ({ forumId, onThreadSelect }: ThreadsDisplayProps) => {
     setEditContent(content);
   };
 
+  const handleUpdateThread = async (
+    event: React.MouseEvent<HTMLButtonElement>,
+    threadId: string,
+  ) => {
+    event.stopPropagation();
+    setLoading(true);
+    try {
+      console.log('handleUpdateThread HIT: ');
+      await axios.put(
+        `/api/forums/${forumId}/threads/${threadId}`,
+        { title: editTitle, content: editContent },
+        { withCredentials: true },
+      );
+      setThreads(
+        threads.map((thread) =>
+          thread._id === threadId ? { ...thread, title: editTitle, content: editContent } : thread,
+        ),
+      );
+      setEditingThreadId(null);
+      setEditTitle('');
+      setEditContent('');
+      setLoading(false);
+    } catch (err) {
+      const error = err as Error;
+      setError(error.message);
+      setLoading(false);
+    }
+  };
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
@@ -104,7 +133,12 @@ const ThreadsDisplay = ({ forumId, onThreadSelect }: ThreadsDisplayProps) => {
                   onChange={(e) => setEditContent(e.target.value)}
                   className="w-full p-2 mb-2 rounded bg-gray-800 text-white"
                 />
-
+                <button
+                  onClick={(event) => handleUpdateThread(event, thread._id)}
+                  className="bg-blue-500 font-bold hover:bg-blue-700 ml-2 py-1 px-2 rounded text-white"
+                >
+                  Save
+                </button>
                 <button
                   onClick={() => setEditingThreadId(null)}
                   className="bg-gray-500 font-bold hover:bg-gray-700 ml-2 py-1 px-2 rounded text-white"
