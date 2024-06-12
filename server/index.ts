@@ -6,7 +6,7 @@ const PORT: number = Number(process.env.PORT) || 3000;
 // Hazzah!
 const hazzah = process.env.NODE_ENV === 'development' ? 'Hazzah! ' : '';
 
-export const startServer = () => {
+export const startServer = async () => {
   // Environment variable checks
   if (!process.env.JWT_SECRET) throw Error('❌ JWT_SECRET must be defined!');
   if (!process.env.MONGO_URI) throw Error('❌ MONGO_URI must be defined!');
@@ -20,7 +20,7 @@ export const startServer = () => {
   if (!process.env.BUCKET_NAME) throw Error('❌ # BUCKET_NAME must be defined!');
 
   // Connect to MongoDB
-  connectDB();
+  await connectDB(process.env.MONGO_URI);
 
   // Startup the server
   return app.listen(PORT, () =>
