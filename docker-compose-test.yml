@@ -13,8 +13,8 @@ services:
     depends_on:
       - mongo
     environment:
-      - MONGO_URI=mongodb://mongo:27017/ch-testdb
       - JWT_SECRET=${JWT_SECRET}
+      - MONGO_URI=mongodb://mongo:27017/ch-testdb
       - POSTGRES_USER=postgres
       - POSTGRES_DB=ch-dev-database
       - POSTGRES_PASSWORD=ch-dev
