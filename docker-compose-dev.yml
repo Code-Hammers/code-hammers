@@ -24,12 +24,6 @@ services:
     image: codehammers/postgres-dev:latest
     container_name: codehammers-postgres
     environment:
-      #- NODE_ENV=development
-      #- PGUSER=postgres
-      #- POSTGRES_HOST=postgres
-      #- PGDATABASE=ch-dev-database
-      #- PGPASSWORD=ch-dev
-      #- POSTGRES_PORT=5432
       - POSTGRES_USER=postgres
       - POSTGRES_DB=ch-dev-database
       - POSTGRES_PASSWORD=ch-dev
