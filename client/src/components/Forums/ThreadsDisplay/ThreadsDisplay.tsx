@@ -65,13 +65,13 @@ const ThreadsDisplay = ({ forumId, onThreadSelect }: ThreadsDisplayProps) => {
   const handleUpdateThread = async (
     event: React.MouseEvent<HTMLButtonElement>,
     threadId: string,
+    forum: string,
   ) => {
     event.stopPropagation();
     setLoading(true);
     try {
-      console.log('handleUpdateThread HIT: ');
       await axios.put(
-        `/api/forums/${forumId}/threads/${threadId}`,
+        `/api/forums/${forumId || forum}/threads/${threadId}`,
         { title: editTitle, content: editContent },
         { withCredentials: true },
       );
@@ -134,7 +134,7 @@ const ThreadsDisplay = ({ forumId, onThreadSelect }: ThreadsDisplayProps) => {
                   className="w-full p-2 mb-2 rounded bg-gray-800 text-white"
                 />
                 <button
-                  onClick={(event) => handleUpdateThread(event, thread._id)}
+                  onClick={(event) => handleUpdateThread(event, thread._id, thread.forum)}
                   className="bg-blue-500 font-bold hover:bg-blue-700 ml-2 py-1 px-2 rounded text-white"
                 >
                   Save
