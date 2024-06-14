@@ -63,6 +63,9 @@ const ThreadDetail = ({ forumId, threadId }: ThreadDetailProps) => {
   if (error) return <div>Error: {error}</div>;
   if (!thread) return <div>Thread not found.</div>;
 
+  const totalPosts = posts.length + 1;
+  console.log(posts)
+
   return (
     <div>
       <h2 className="font-bold text-3xl">{thread.title}</h2>
@@ -95,6 +98,9 @@ const ThreadDetail = ({ forumId, threadId }: ThreadDetailProps) => {
             )}
           </div>
         ))}
+      </div>
+      <div className="mt-4">
+        <strong>Total Posts:</strong> {totalPosts}
       </div>
     </div>
   );
