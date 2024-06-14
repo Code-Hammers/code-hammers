@@ -18,11 +18,13 @@ const createProfile = async (req: Request, res: Response, next: NextFunction) =>
   const {
     user,
     fullName,
+    nickname,
     profilePhoto,
     cohort,
     graduationYear,
     email,
     linkedInProfile,
+    gitHubProfile,
     professionalSummary,
     skills,
     specializations,
@@ -45,11 +47,13 @@ const createProfile = async (req: Request, res: Response, next: NextFunction) =>
     const profile = await Profile.create({
       user,
       fullName,
+      nickname,
       profilePhoto,
       cohort,
       graduationYear,
       email,
       linkedInProfile,
+      gitHubProfile,
       professionalSummary,
       skills,
       specializations,
@@ -88,13 +92,32 @@ const createProfile = async (req: Request, res: Response, next: NextFunction) =>
 // ACCESS    Private
 const updateProfile = async (req: Request, res: Response, next: NextFunction) => {
   const { userID } = req.params;
-  const { firstName, lastName, email, personalBio } = req.body;
-
-  const newProfile = {
-    firstName,
-    lastName,
+  const {
+    nickName,
     email,
     personalBio,
+    linkedInProfile,
+    gitHubProfile,
+    cohort,
+    skills,
+    specializations,
+    careerInformation,
+    socialMediaLinks,
+    availabilityForNetworking,
+  } = req.body;
+
+  const newProfile = {
+    nickName,
+    email,
+    personalBio,
+    linkedInProfile,
+    gitHubProfile,
+    cohort,
+    skills,
+    specializations,
+    careerInformation,
+    socialMediaLinks,
+    availabilityForNetworking,
   };
 
   try {

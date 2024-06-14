@@ -48,6 +48,7 @@ export interface IProfile extends Document {
   graduationYear?: number;
   email?: string;
   linkedInProfile?: string;
+  gitHubProfile?: string;
   professionalSummary?: string;
   skills?: string[];
   specializations?: string[];
