@@ -10,7 +10,7 @@ interface EditProfileInputProps {
   placeholder?: string;
 }
 
-const EditProfileInput: React.FC<EditProfileInputProps> = ({
+const EditProfileInput = ({
   label,
   type,
   value,
@@ -18,7 +18,7 @@ const EditProfileInput: React.FC<EditProfileInputProps> = ({
   onChange,
   onKeyDown,
   placeholder,
-}) => {
+}: EditProfileInputProps) => {
   return (
     <div className="mb-4">
       <label className="block font-bold mb-2 text-sm" htmlFor={name}>
