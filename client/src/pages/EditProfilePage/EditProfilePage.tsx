@@ -142,8 +142,8 @@ const EditProfilePage = () => {
       ...formData,
       careerInformation: {
         currentPosition: {
-          company: formData.currentPositionTitle,
-          title: formData.currentPositionCompany,
+          company: formData.currentPositionCompany,
+          title: formData.currentPositionTitle,
         },
       },
       socialMediaLinks: {
