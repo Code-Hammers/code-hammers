@@ -290,7 +290,7 @@ const EditProfilePage = () => {
           />
           <div className="flex flex-wrap gap-2 mb-2 mt-4">
             {formData.skills.map((skill, index) => (
-              <div key={index} className="mb-2 mr-2 " onClick={() => handleSpecialization(skill)}>
+              <div key={`skills-key-${index}`} className="mb-2 mr-2 " onClick={() => handleSpecialization(skill)}>
                 <span
                   className="bg-blue-500 incline-flex items-center px-4 py-1 rounded-full text-sm text-white"
                 >
@@ -318,7 +318,7 @@ const EditProfilePage = () => {
           </label>
           <div className="flex flex-wrap gap-2 mt-4 mb-2">
             {formData.specializations.map((skill, index) => (
-              <div key={index} className="mb-2 mr-2 ">
+              <div key={`specialization-key-${index}`} className="mb-2 mr-2 ">
                 <span
                   className="bg-yellow-500 incline-flex items-center px-4 py-1 rounded-full text-black text-sm"
                 >
