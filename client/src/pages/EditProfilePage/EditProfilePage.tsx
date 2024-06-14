@@ -289,8 +289,8 @@ const EditProfilePage = () => {
             placeholder="Type a skill and press Enter"
           />
           <div className="flex flex-wrap gap-2 mb-2 mt-4">
-            {formData.skills.map((skill, index) => (
-              <div key={`skills-key-${index}`} className="mb-2 mr-2 " onClick={() => handleSpecialization(skill)}>
+            {formData.skills.map((skill) => (
+              <div key={skill} className="mb-2 mr-2 " onClick={() => handleSpecialization(skill)}>
                 <span
                   className="bg-blue-500 inline-flex items-center px-4 py-1 rounded-full text-sm text-white"
                 >
@@ -317,8 +317,8 @@ const EditProfilePage = () => {
             </span>
           </label>
           <div className="flex flex-wrap gap-2 mt-4 mb-2">
-            {formData.specializations.map((skill, index) => (
-              <div key={`specialization-key-${index}`} className="mb-2 mr-2 ">
+            {formData.specializations.map((skill) => (
+              <div key={skill} className="mb-2 mr-2 ">
                 <span
                   className="bg-yellow-500 inline-flex items-center px-4 py-1 rounded-full text-black text-sm"
                 >
