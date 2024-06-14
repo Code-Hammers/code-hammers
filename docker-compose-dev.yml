@@ -1,18 +1,41 @@
-version: '3'
 services:
   dev:
-    #image: codehammers/ch-dev:latest
     image: codehammers/ch-dev-dep-v2:latest
     container_name: ch-dev
     ports:
       - '8080:8080'
+      - '3000:3000'
     volumes:
       - .:/usr/src/app
       - node_modules:/usr/src/app/node_modules
       - client_node_modules:/usr/src/app/client/node_modules
-    command: npm run dev-ts
     environment:
       - NODE_ENV=development
+      - JWT_SECRET=${JWT_SECRET}
+      - MONGO_URI=mongodb://root:testpass@ch-mongo-dev:27017/ch-testdb
+      - MONGO_USER=root
+      - MONGO_PASSWORD=testpass
+      - MONGO_DB=ch-testdb
+    depends_on:
+      - ch-mongo-dev
+    command: npm run dev-ts
+
+  ch-mongo-dev:
+    container_name: ch-mongo-dev
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_DATABASE: ch-testdb
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: adminpassword
+    volumes:
+      - ./scripts/db/mongoInit/:/docker-entrypoint-initdb.d
+      - ./scripts/db/mockData:/tmp/data
+      - mongo-dev-volume:/data/db
+    command: mongod --quiet --logpath /dev/null
 volumes:
   node_modules:
   client_node_modules:
+  mongo-dev-volume:
