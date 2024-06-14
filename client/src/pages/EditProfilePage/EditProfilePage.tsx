@@ -292,7 +292,7 @@ const EditProfilePage = () => {
             {formData.skills.map((skill, index) => (
               <div key={`skills-key-${index}`} className="mb-2 mr-2 " onClick={() => handleSpecialization(skill)}>
                 <span
-                  className="bg-blue-500 incline-flex items-center px-4 py-1 rounded-full text-sm text-white"
+                  className="bg-blue-500 inline-flex items-center px-4 py-1 rounded-full text-sm text-white"
                 >
                   {skill}
                   <button
@@ -320,7 +320,7 @@ const EditProfilePage = () => {
             {formData.specializations.map((skill, index) => (
               <div key={`specialization-key-${index}`} className="mb-2 mr-2 ">
                 <span
-                  className="bg-yellow-500 incline-flex items-center px-4 py-1 rounded-full text-black text-sm"
+                  className="bg-yellow-500 inline-flex items-center px-4 py-1 rounded-full text-black text-sm"
                 >
                   {skill}
                   <button
