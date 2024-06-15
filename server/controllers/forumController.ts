@@ -1,7 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
 import Forum from '../models/forumModel';
 import Thread from '../models/threadModel';
+import Post from '../models/postModel';
 import { sortAndPopulate } from './helpers/queryHelpers';
+import mongoose from 'mongoose';
 
 // ENDPOINT  POST api/forums
 // PURPOSE   Create a new forum
@@ -51,12 +53,47 @@ const getForumById = async (req: Request, res: Response, next: NextFunction) => 
 
   try {
     const forum = await Forum.findById(forumId);
+
     if (!forum) {
       return res.status(404).json({ message: 'Forum not found' });
     }
 
-    const threadsQuery = Thread.find({ forum: forumId });
-    const threads = await sortAndPopulate(threadsQuery);
+    // const threadsQuery = Thread.find({ forum: forumId });
+    // const threads = await sortAndPopulate(threadsQuery);
+
+    const threads = await Thread.aggregate([
+      {
+        $match: {
+          forum: new mongoose.Types.ObjectId(forumId),
+        },
+      },
+      {
+        $lookup: {
+          from: 'posts',
+          localField: '_id',
+          foreignField: 'thread',
+          as: 'posts',
+        },
+      },
+      {
+        $addFields: {
+          postCount: { $size: '$posts' },
+        },
+      },
+      {
+        $project: {
+          posts: 0,
+        },
+      },
+      {
+        $sort: {
+          createdAt: -1,
+        },
+      },
+    ]);
+
+    console.log('Forum ID:', forumId);
+    console.log('⭐Threads with Post Counts:', threads);
 
     res.status(200).json({ forum, threads });
   } catch (error) {

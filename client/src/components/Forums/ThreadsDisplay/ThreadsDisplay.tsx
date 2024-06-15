@@ -48,6 +48,9 @@ const ThreadsDisplay = ({ forumId, onThreadSelect }: ThreadsDisplayProps) => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
+  // console.log('Current forum', forum);
+  console.log('Fetched threads:', threads);
+
   return (
     <div>
       <h3 className="text-xl font-bold mb-4">
@@ -73,6 +76,13 @@ const ThreadsDisplay = ({ forumId, onThreadSelect }: ThreadsDisplayProps) => {
             onClick={() => onThreadSelect(thread._id)}
           >
             <h4 className="font-bold">{thread.title}</h4>
+            <small>
+              {thread.postCount === 0
+                ? 'No replies'
+                : thread.postCount === 1
+                  ? '1 reply'
+                  : `${thread.postCount} replies`}
+            </small>
             <p>{thread.content}</p>
             <small>
               Started by {thread.user.firstName} on{' '}

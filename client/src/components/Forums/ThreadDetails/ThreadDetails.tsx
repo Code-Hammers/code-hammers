@@ -59,12 +59,11 @@ const ThreadDetail = ({ forumId, threadId }: ThreadDetailProps) => {
     }
   };
 
+  const totalPosts = posts.length + 1;
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
   if (!thread) return <div>Thread not found.</div>;
-
-  const totalPosts = posts.length + 1;
-  console.log(posts)
 
   return (
     <div>
