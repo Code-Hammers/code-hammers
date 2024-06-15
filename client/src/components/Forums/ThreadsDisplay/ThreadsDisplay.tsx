@@ -73,17 +73,16 @@ const ThreadsDisplay = ({ forumId, onThreadSelect }: ThreadsDisplayProps) => {
             onClick={() => onThreadSelect(thread._id)}
           >
             <h4 className="font-bold">{thread.title}</h4>
+            <p>{thread.content}</p>
             <small>
+              Started by {thread.user.firstName} on{' '}
+              {new Date(thread.createdAt).toLocaleDateString()}
+              &nbsp;|&nbsp;
               {thread.postCount === 0
                 ? 'No replies'
                 : thread.postCount === 1
                   ? '1 reply'
                   : `${thread.postCount} replies`}
-            </small>
-            <p>{thread.content}</p>
-            <small>
-              Started by {thread.user.firstName} on{' '}
-              {new Date(thread.createdAt).toLocaleDateString()}
             </small>
           </li>
         ))}

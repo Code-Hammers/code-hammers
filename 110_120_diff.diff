@@ -1,0 +1,176 @@
+diff --git a/client/src/components/Forums/ThreadDetails/ThreadDetails.tsx b/client/src/components/Forums/ThreadDetails/ThreadDetails.tsx
+index 1ca8192..ecf01af 100644
+--- a/client/src/components/Forums/ThreadDetails/ThreadDetails.tsx
++++ b/client/src/components/Forums/ThreadDetails/ThreadDetails.tsx
+@@ -59,6 +59,8 @@ const ThreadDetail = ({ forumId, threadId }: ThreadDetailProps) => {
+     }
+   };
+ 
++  const totalPosts = posts.length + 1;
++
+   if (loading) return <div>Loading...</div>;
+   if (error) return <div>Error: {error}</div>;
+   if (!thread) return <div>Thread not found.</div>;
+@@ -96,6 +98,9 @@ const ThreadDetail = ({ forumId, threadId }: ThreadDetailProps) => {
+           </div>
+         ))}
+       </div>
++      <div className="mt-4">
++        <strong>Total Posts:</strong> {totalPosts}
++      </div>
+     </div>
+   );
+ };
+diff --git a/client/src/components/Forums/ThreadsDisplay/ThreadsDisplay.tsx b/client/src/components/Forums/ThreadsDisplay/ThreadsDisplay.tsx
+index 8d9f439..3a5e028 100644
+--- a/client/src/components/Forums/ThreadsDisplay/ThreadsDisplay.tsx
++++ b/client/src/components/Forums/ThreadsDisplay/ThreadsDisplay.tsx
+@@ -73,6 +73,13 @@ const ThreadsDisplay = ({ forumId, onThreadSelect }: ThreadsDisplayProps) => {
+             onClick={() => onThreadSelect(thread._id)}
+           >
+             <h4 className="font-bold">{thread.title}</h4>
++            <small>
++              {thread.postCount === 0
++                ? 'No replies'
++                : thread.postCount === 1
++                  ? '1 reply'
++                  : `${thread.postCount} replies`}
++            </small>
+             <p>{thread.content}</p>
+             <small>
+               Started by {thread.user.firstName} on{' '}
+diff --git a/server/controllers/forumController.ts b/server/controllers/forumController.ts
+index cb4a847..9661a1a 100644
+--- a/server/controllers/forumController.ts
++++ b/server/controllers/forumController.ts
+@@ -1,7 +1,8 @@
+ import { Request, Response, NextFunction } from 'express';
+ import Forum from '../models/forumModel';
+ import Thread from '../models/threadModel';
+-import { sortAndPopulate } from './helpers/queryHelpers';
++import { sortAndPopulate, aggregateSort } from './helpers/queryHelpers';
++import mongoose from 'mongoose';
+ 
+ // ENDPOINT  POST api/forums
+ // PURPOSE   Create a new forum
+@@ -51,12 +52,37 @@ const getForumById = async (req: Request, res: Response, next: NextFunction) =>
+ 
+   try {
+     const forum = await Forum.findById(forumId);
++
+     if (!forum) {
+       return res.status(404).json({ message: 'Forum not found' });
+     }
+ 
+-    const threadsQuery = Thread.find({ forum: forumId });
+-    const threads = await sortAndPopulate(threadsQuery);
++    const threadsAggregate = Thread.aggregate([
++      {
++        $match: {
++          forum: new mongoose.Types.ObjectId(forumId),
++        },
++      },
++      {
++        $lookup: {
++          from: 'posts',
++          localField: '_id',
++          foreignField: 'thread',
++          as: 'posts',
++        },
++      },
++      {
++        $addFields: {
++          postCount: { $size: '$posts' },
++        },
++      },
++      {
++        $project: {
++          posts: 0,
++        },
++      },
++    ]);
++    const threads = await aggregateSort(threadsAggregate, 'createdAt', -1);
+ 
+     res.status(200).json({ forum, threads });
+   } catch (error) {
+diff --git a/server/controllers/helpers/queryHelpers.ts b/server/controllers/helpers/queryHelpers.ts
+index 4eefcb3..097bc34 100644
+--- a/server/controllers/helpers/queryHelpers.ts
++++ b/server/controllers/helpers/queryHelpers.ts
+@@ -1,7 +1,8 @@
+-import mongoose, { Query } from "mongoose";
++import mongoose, { Query, Aggregate } from "mongoose";
+ 
+ type SortOrder = 1 | -1;
+ 
++// ? Should the sortOrder here be number or SortOrder type?
+ export const sortAndPopulate = (
+   query: Query<any, any, any>,
+   sortField: string = "createdAt",
+@@ -12,3 +13,12 @@ export const sortAndPopulate = (
+   const sortObj = { [sortField]: sortOrder } as { [key: string]: SortOrder };
+   return query.sort(sortObj).populate(populateField, selectFields).exec();
+ };
++
++export const aggregateSort = (
++  pipeline: Aggregate<any[]>,
++  sortField: string = 'createdAt',
++  sortOrder: SortOrder = -1,
++): Aggregate<any[]> => {
++  const sortStage = { $sort: { [sortField]: sortOrder } };
++  return pipeline.append(sortStage);
++};
+\ No newline at end of file
+diff --git a/server/controllers/threadController.ts b/server/controllers/threadController.ts
+index 9ba69eb..740bcf0 100644
+--- a/server/controllers/threadController.ts
++++ b/server/controllers/threadController.ts
+@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
+ import Post from '../models/postModel';
+ import Thread from '../models/threadModel';
+ import { CustomRequest } from '../types/customRequest';
+-import { sortAndPopulate } from './helpers/queryHelpers';
++import { sortAndPopulate, aggregateSort } from './helpers/queryHelpers';
+ 
+ // ENDPOINT  POST api/:forumId/threads
+ // PURPOSE   Create a new thread
+@@ -39,8 +39,29 @@ const createThread = async (req: CustomRequest, res: Response, next: NextFunctio
+ // ACCESS    Private
+ const getAllThreads = async (req: CustomRequest, res: Response, next: NextFunction) => {
+   try {
+-    const threadsQuery = Thread.find({});
+-    const threads = await sortAndPopulate(threadsQuery);
++
++    const threadsAggregate = Thread.aggregate([
++      {
++        $lookup: {
++          from: 'posts',
++          localField: '_id',
++          foreignField: 'thread',
++          as: 'posts',
++        },
++      },
++      {
++        $addFields: {
++          postCount: { $size: '$posts' },
++        },
++      },
++      {
++        $project: {
++          posts: 0,
++        },
++      },
++    ]);
++    const threads = await aggregateSort(threadsAggregate, 'createdAt', -1);
++
+     res.status(200).json(threads);
+   } catch (error) {
+     next({
+@@ -60,6 +81,7 @@ const listThreadsByForumId = async (req: Request, res: Response, next: NextFunct
+   try {
+     const threadsQuery = Thread.find({ forum: forumId });
+     const threads = await sortAndPopulate(threadsQuery);
++
+     res.status(200).json(threads);
+   } catch (error) {
+     next({
