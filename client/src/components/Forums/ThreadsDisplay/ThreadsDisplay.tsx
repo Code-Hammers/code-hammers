@@ -48,9 +48,6 @@ const ThreadsDisplay = ({ forumId, onThreadSelect }: ThreadsDisplayProps) => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
-  // console.log('Current forum', forum);
-  console.log('Fetched threads:', threads);
-
   return (
     <div>
       <h3 className="text-xl font-bold mb-4">
