@@ -1,4 +1,4 @@
-import app from '../server/index';
+import app from '../server/app';
 import request from 'supertest';
 import { Request, Response, NextFunction } from 'express';
 import errorHandler from '../server/middleware/errorHandler';
