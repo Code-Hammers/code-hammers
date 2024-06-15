@@ -1,3 +1,4 @@
+version: '3'
 services:
   dev:
     image: codehammers/ch-dev-dep-v2:latest
@@ -10,8 +11,9 @@ services:
       - node_modules:/usr/src/app/node_modules
       - client_node_modules:/usr/src/app/client/node_modules
     environment:
+      - PORT=3000
       - NODE_ENV=development
-      - JWT_SECRET=${JWT_SECRET}
+      - JWT_SECRET=fakeDevelopmentSecret
       - MONGO_URI=mongodb://root:rootPass@ch-mongo-dev:27017/ch-testdb
     depends_on:
       - ch-mongo-dev
