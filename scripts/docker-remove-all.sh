@@ -29,7 +29,7 @@ fi
 
 # Remove images
 echo -e "${CYAN}Removing existing dev images from local environment:${NC}"
-IMAGES=$(docker images codehammers/*$IMAGE_SEARCH_NAME_DEV* -q)
+IMAGES=$(docker images $IMAGE_SEARCH_NAME_DEV/* -q)
 REMOVEDIMAGES=0
 if [ ! -z "$IMAGES" ]; then
   docker rmi $IMAGES --force
