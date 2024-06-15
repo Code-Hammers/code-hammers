@@ -12,10 +12,7 @@ services:
     environment:
       - NODE_ENV=development
       - JWT_SECRET=${JWT_SECRET}
-      - MONGO_URI=mongodb://root:testpass@ch-mongo-dev:27017/ch-testdb
-      - MONGO_USER=root
-      - MONGO_PASSWORD=testpass
-      - MONGO_DB=ch-testdb
+      - MONGO_URI=mongodb://root:rootPass@ch-mongo-dev:27017/ch-testdb
     depends_on:
       - ch-mongo-dev
     command: npm run dev-ts
@@ -27,12 +24,14 @@ services:
     ports:
       - 27017:27017
     environment:
-      MONGO_INITDB_DATABASE: ch-testdb
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: adminpassword
+      - MONGO_INITDB_DATABASE=ch-testdb
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=adminpassword
+      - MONGO_HOST=ch-mongo-dev
+      - MONGO_USER=root
+      - MONGO_USER_PWD=rootPass
     volumes:
-      - ./scripts/db/mongoInit/:/docker-entrypoint-initdb.d
-      - ./scripts/db/mockData:/tmp/data
+      - ./scripts/db/mongo-dev-init/:/docker-entrypoint-initdb.d
       - mongo-dev-volume:/data/db
     command: mongod --quiet --logpath /dev/null
 volumes:
