@@ -1,0 +1,622 @@
+[
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352e9d"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f57"
+    },
+    "title": "Career Advice: Frontend vs Backend?",
+    "content": "Considering specializing in either frontend or backend development. What are the pros and cons of each? Which path offers better career opportunities?",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.577Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-03T15:45:40.730Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e353459"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352ed0"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f59"
+    },
+    "title": "Machine Learning for Beginners",
+    "content": "New to machine learning? Let's explore foundational concepts, resources, and hands-on tutorials to get started with machine learning projects.",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.577Z"
+    },
+    "updatedAt": {
+      "$date": "2026-02-13T18:40:16.572Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e35345a"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352eb5"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f5f"
+    },
+    "title": "Remote Work: Challenges and Solutions",
+    "content": "Discussing the challenges faced while working remotely and sharing strategies to stay productive, maintain communication, and foster team collaboration.",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.577Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-14T21:55:23.577Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e35345b"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352eba"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f5b"
+    },
+    "title": "AI in Healthcare: Applications and Innovations",
+    "content": "Exploring AI applications and innovations in the healthcare industry. How is AI transforming patient care and medical research?",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.577Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-14T21:55:23.577Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e35345c"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352ecd"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f56"
+    },
+    "title": "Mobile App Development Trends for 2024",
+    "content": "Predicting and discussing emerging trends and technologies in mobile app development for the upcoming year. What trends are shaping the mobile app landscape?",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.577Z"
+    },
+    "updatedAt": {
+      "$date": "2027-08-22T11:25:13.498Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e35345d"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352ee7"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f5b"
+    },
+    "title": "Full Stack Development: Best Practices",
+    "content": "Best practices, tools, and frameworks for mastering full-stack development. How do you balance frontend and backend development responsibilities?",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.578Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-14T21:55:23.578Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e35345e"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352ead"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f5a"
+    },
+    "title": "JavaScript Frameworks Comparison",
+    "content": "Comparing popular JavaScript frameworks like React, Angular, and Vue.js. Share your experiences, strengths, and weaknesses of each framework.",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.578Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-14T21:55:23.578Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e35345f"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352ed3"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f5f"
+    },
+    "title": "AI in Healthcare: Applications and Innovations",
+    "content": "Exploring AI applications and innovations in the healthcare industry. How is AI transforming patient care and medical research?",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.578Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-14T21:55:23.578Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e353460"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352ea6"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f5a"
+    },
+    "title": "Open Source Contributions: Getting Started",
+    "content": "Tips and advice for beginners on how to get started with contributing to open-source projects. What are the benefits of open-source contributions?",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.578Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-14T21:55:23.578Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e353461"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352ed2"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f57"
+    },
+    "title": "Version Control: Git Tips and Tricks",
+    "content": "Share your favorite Git commands, workflows, and best practices for version control. How do you handle branching, merging, and code collaboration?",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.578Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-14T21:55:23.578Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e353462"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352eda"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f5b"
+    },
+    "title": "Tips for Building Scalable Microservices",
+    "content": "Discussing architectural patterns, communication protocols, and deployment strategies for building scalable microservices architectures.",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.577Z"
+    },
+    "updatedAt": {
+      "$date": "2025-07-08T19:39:08.384Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e353463"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352eda"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f5d"
+    },
+    "title": "Data Privacy Regulations: Compliance Challenges",
+    "content": "Navigating data privacy regulations and compliance challenges in software development. How do you ensure GDPR and CCPA compliance?",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.578Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-14T21:55:23.578Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e353464"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352edb"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f5a"
+    },
+    "title": "Continuous Integration and Deployment (CI/CD)",
+    "content": "Exploring CI/CD pipelines, best practices, and tools for automating software delivery processes. Share your experiences and tips for implementing CI/CD.",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.577Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-21T16:09:36.115Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e353465"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352ebf"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f5c"
+    },
+    "title": "Game Development: Engines, Tools, and Challenges",
+    "content": "Discussing game development engines, tools, and challenges. Share your experiences in creating interactive and immersive gaming experiences.",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.577Z"
+    },
+    "updatedAt": {
+      "$date": "2027-06-03T15:47:41.915Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e353466"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352eef"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f5a"
+    },
+    "title": "Introduction to Docker Containers",
+    "content": "New to Docker and containers? Let's discuss the basics, benefits, and practical applications of Docker in software development and deployment.",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.578Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-14T21:55:23.578Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e353467"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352e8e"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f5d"
+    },
+    "title": "Data Privacy Regulations: Compliance Challenges",
+    "content": "Navigating data privacy regulations and compliance challenges in software development. How do you ensure GDPR and CCPA compliance?",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.577Z"
+    },
+    "updatedAt": {
+      "$date": "2025-08-27T13:34:39.325Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e353468"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352eaa"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f5c"
+    },
+    "title": "Tech Diversity and Inclusion: Initiatives and Impact",
+    "content": "Discussing initiatives and strategies for promoting diversity and inclusion in the tech industry. How can we create more inclusive workplaces?",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.578Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-14T21:55:23.578Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e353469"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352e99"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f5b"
+    },
+    "title": "Cloud Native Applications: Architecture and Benefits",
+    "content": "Exploring the architecture and benefits of cloud-native applications. How do you design and deploy applications for cloud environments?",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.577Z"
+    },
+    "updatedAt": {
+      "$date": "2025-12-16T17:31:16.959Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e35346a"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352eca"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f59"
+    },
+    "title": "Cloud Native Applications: Architecture and Benefits",
+    "content": "Exploring the architecture and benefits of cloud-native applications. How do you design and deploy applications for cloud environments?",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.577Z"
+    },
+    "updatedAt": {
+      "$date": "2026-07-23T06:34:10.278Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e35346b"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352ece"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f5e"
+    },
+    "title": "Introduction to Docker Containers",
+    "content": "New to Docker and containers? Let's discuss the basics, benefits, and practical applications of Docker in software development and deployment.",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.579Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-14T21:55:23.579Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e35346c"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352ed4"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f57"
+    },
+    "title": "Agile Development: Scrum vs Kanban",
+    "content": "Comparing Scrum and Kanban methodologies for Agile software development. Which approach works better for your team and why?",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.577Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-26T03:11:31.562Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e35346d"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352ee7"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f56"
+    },
+    "title": "Cybersecurity Threats: Prevention and Response",
+    "content": "Discussing common cybersecurity threats and strategies for prevention and incident response. How do you secure your applications and data?",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.579Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-14T21:55:23.579Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e35346e"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352eda"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f5b"
+    },
+    "title": "AI Ethics: Bias, Accountability, and Transparency",
+    "content": "Exploring ethical considerations in AI development, including bias mitigation, accountability frameworks, and transparency practices.",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.577Z"
+    },
+    "updatedAt": {
+      "$date": "2027-09-21T06:46:05.141Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e35346f"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352edf"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f5a"
+    },
+    "title": "UX/UI Design Principles for Developers",
+    "content": "Exploring UX/UI design principles and best practices for developers. How can developers contribute to creating user-friendly and visually appealing interfaces?",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.579Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-14T21:55:23.579Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e353470"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352eb1"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f56"
+    },
+    "title": "Python vs Java: Which is Better for Backend Development?",
+    "content": "Debating the pros and cons of Python and Java for backend development. Share your experiences and preferences in choosing a backend programming language.",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.579Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-14T21:55:23.579Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e353471"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352ea7"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f5e"
+    },
+    "title": "Frontend Performance Optimization Techniques",
+    "content": "Exploring strategies and tools to optimize frontend performance. Share tips on reducing page load times, improving rendering efficiency, and optimizing assets.",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.579Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-14T21:55:23.579Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e353472"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352ed8"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f5b"
+    },
+    "title": "Remote Work: Challenges and Solutions",
+    "content": "Discussing the challenges faced while working remotely and sharing strategies to stay productive, maintain communication, and foster team collaboration.",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.579Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-14T21:55:23.579Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e353473"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352eed"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f5d"
+    },
+    "title": "Continuous Integration and Deployment (CI/CD)",
+    "content": "Exploring CI/CD pipelines, best practices, and tools for automating software delivery processes. Share your experiences and tips for implementing CI/CD.",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.577Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-25T14:37:46.226Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e353474"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352ead"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f5b"
+    },
+    "title": "Interview Preparation Tips",
+    "content": "Preparing for software engineering interviews? Discussing strategies, common interview questions, and resources to ace technical interviews.",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.579Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-14T21:55:23.579Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e353475"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352eb0"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f5d"
+    },
+    "title": "Version Control: Git Tips and Tricks",
+    "content": "Share your favorite Git commands, workflows, and best practices for version control. How do you handle branching, merging, and code collaboration?",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.579Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-14T21:55:23.579Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e353476"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "666cbc4240af7b375e352e9d"
+    },
+    "forum": {
+      "$oid": "666cbc4a40af7b375e352f59"
+    },
+    "title": "Continuous Integration and Deployment (CI/CD)",
+    "content": "Exploring CI/CD pipelines, best practices, and tools for automating software delivery processes. Share your experiences and tips for implementing CI/CD.",
+    "createdAt": {
+      "$date": "2024-06-14T21:55:23.579Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-14T21:55:23.579Z"
+    },
+    "_id": {
+      "$oid": "666cbc4b40af7b375e353477"
+    },
+    "__v": 0
+  }
+]
