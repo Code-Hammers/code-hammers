@@ -37,8 +37,8 @@ services:
       - '5432:5432'
 
   ch-mongo-dev:
-    container_name: ch-mongo-dev
     image: mongo
+    container_name: ch-mongo-dev
     restart: always
     ports:
       - 27017:27017
