@@ -61,7 +61,6 @@ const getAllThreads = async (req: CustomRequest, res: Response, next: NextFuncti
       },
     ]);
     const threads = await aggregateSort(threadsAggregate);
-    // console.log(threads)
 
     res.status(200).json(threads);
   } catch (error) {
