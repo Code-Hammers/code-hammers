@@ -84,7 +84,7 @@ const ThreadsDisplay = ({ forumId, onThreadSelect }: ThreadsDisplayProps) => {
               Started by {thread.user.firstName} on{' '}
               {new Date(thread.createdAt).toLocaleDateString()}
               <span className="mx-2 text-gray-400">|</span>
-              <span className="mx-0">{formatReplies(thread.postCount)}</span>
+              <span className="italic">{formatReplies(thread.postCount)}</span>
             </small>
           </li>
         ))}
