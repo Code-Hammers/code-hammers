@@ -1,11 +1,20 @@
-import mongoose, { Query, Aggregate } from "mongoose";
-
 type SortOrder = 1 | -1;
 
 interface SortAndPopulateQuery<T> {
   sort: (arg: { [key: string]: SortOrder }) => SortAndPopulateQuery<T>;
   populate: (field: string, select?: string) => SortAndPopulateQuery<T>;
   exec: () => Promise<T>;
+}
+interface AggregateQuery<T> {
+  sort: (arg: { [key: string]: SortOrder }) => AggregateQuery<T>;
+  project: (field: { [key: string]: 0 | 1 }) => AggregateQuery<T>;
+  lookup: (lookupOptions: {
+    from: string,
+    localField: string,
+    foreignField: string,
+    as: string
+  }) => AggregateQuery<T>;
+  exec: () => Promise<T[]>;
 }
 
 export const sortAndPopulate = <T>(
@@ -19,11 +28,11 @@ export const sortAndPopulate = <T>(
   return query.sort(sortObj).populate(populateField, selectFields).exec();
 };
 
-export const aggregateSort = (
-  pipeline: Aggregate<any[]>,
+export const aggregateSort = <T>(
+  pipeline: AggregateQuery<T>,
   sortField: string = 'createdAt',
   sortOrder: SortOrder = -1,
-): Aggregate<any[]> => {
-  const sortStage = { $sort: { [sortField]: sortOrder } };
-  return pipeline.append(sortStage);
+) => {
+  const sortObj: Record<string, SortOrder> = { [sortField]: sortOrder }
+  return pipeline.sort(sortObj).exec();
 };

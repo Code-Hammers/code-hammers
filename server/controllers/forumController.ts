@@ -82,7 +82,7 @@ const getForumById = async (req: Request, res: Response, next: NextFunction) => 
         },
       },
     ]);
-    const threads = await aggregateSort(threadsAggregate, 'createdAt', -1);
+    const threads = await aggregateSort(threadsAggregate);
 
     res.status(200).json({ forum, threads });
   } catch (error) {
