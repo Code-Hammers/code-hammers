@@ -33,6 +33,6 @@ export const aggregateSort = <T>(
   sortField: string = 'createdAt',
   sortOrder: SortOrder = -1,
 ) => {
-  const sortObj: Record<string, SortOrder> = { [sortField]: sortOrder }
+  const sortObj: Record<string, SortOrder> = { [sortField]: sortOrder };
   return pipeline.sort(sortObj).exec();
 };
