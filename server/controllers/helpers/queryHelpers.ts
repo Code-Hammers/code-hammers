@@ -9,10 +9,10 @@ interface AggregateQuery<T> {
   sort: (arg: { [key: string]: SortOrder }) => AggregateQuery<T>;
   project: (field: { [key: string]: 0 | 1 }) => AggregateQuery<T>;
   lookup: (lookupOptions: {
-    from: string,
-    localField: string,
-    foreignField: string,
-    as: string
+    from: string;
+    localField: string;
+    foreignField: string;
+    as: string;
   }) => AggregateQuery<T>;
   exec: () => Promise<T[]>;
 }

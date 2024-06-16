@@ -39,7 +39,6 @@ const createThread = async (req: CustomRequest, res: Response, next: NextFunctio
 // ACCESS    Private
 const getAllThreads = async (req: CustomRequest, res: Response, next: NextFunction) => {
   try {
-
     const threadsAggregate = Thread.aggregate([
       {
         $lookup: {
