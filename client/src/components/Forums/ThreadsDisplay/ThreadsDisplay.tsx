@@ -45,6 +45,12 @@ const ThreadsDisplay = ({ forumId, onThreadSelect }: ThreadsDisplayProps) => {
     setCreatingThread(!creatingThread);
   };
 
+  function formatReplies(count) {
+    if (count === 0) return 'No replies';
+    if (count === 1) return '1 reply';
+    return `${count} replies`;
+  }
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
@@ -77,12 +83,8 @@ const ThreadsDisplay = ({ forumId, onThreadSelect }: ThreadsDisplayProps) => {
             <small>
               Started by {thread.user.firstName} on{' '}
               {new Date(thread.createdAt).toLocaleDateString()}
-              &nbsp;|&nbsp;
-              {thread.postCount === 0
-                ? 'No replies'
-                : thread.postCount === 1
-                  ? '1 reply'
-                  : `${thread.postCount} replies`}
+              <span className="mx-2 text-gray-400">|</span>
+              <span className="mx-0">{formatReplies(thread.postCount)}</span>
             </small>
           </li>
         ))}
