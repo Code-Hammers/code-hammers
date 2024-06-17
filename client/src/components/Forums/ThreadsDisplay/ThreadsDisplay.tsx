@@ -45,7 +45,7 @@ const ThreadsDisplay = ({ forumId, onThreadSelect }: ThreadsDisplayProps) => {
     setCreatingThread(!creatingThread);
   };
 
-  function formatReplies(count) {
+  function formatReplies(count: number) {
     if (count === 0) return 'No replies';
     if (count === 1) return '1 reply';
     return `${count} replies`;

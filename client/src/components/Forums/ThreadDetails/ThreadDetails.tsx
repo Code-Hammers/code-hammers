@@ -59,7 +59,7 @@ const ThreadDetail = ({ forumId, threadId }: ThreadDetailProps) => {
     }
   };
 
-  const totalPosts = posts.length + 1;
+  const totalPosts: number = posts.length + 1;
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
