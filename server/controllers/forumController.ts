@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import Forum from '../models/forumModel';
 import Thread from '../models/threadModel';
-import { sortAndPopulate, aggregateSort } from './helpers/queryHelpers';
+import { aggregateSort } from './helpers/queryHelpers';
 import mongoose from 'mongoose';
 
 // ENDPOINT  POST api/forums
