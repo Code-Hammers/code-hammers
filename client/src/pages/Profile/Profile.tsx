@@ -20,10 +20,14 @@ const Profile = () => {
           alt="Profile"
           className="h-32 mb-4 mt-4 object-cover rounded-full w-32"
         />
-        <h2 className="font-bold mb-2 text-xl">
+        <h2 className="font-bold mb-1 text-xl">
           {userProfile?.firstName} {userProfile?.lastName}
         </h2>
-        <h3>{userProfile?.cohort}</h3>
+        <h3 className='text-m'>{userProfile?.cohort}</h3>
+        <h2 className="font-bold mb-2 text-l">
+          {userProfile?.careerInformation?.currentPosition?.title} @ {userProfile?.careerInformation?.currentPosition?.company}
+        </h2>
+        
         <p className="mb-4 text-lg">{userProfile?.personalBio}</p>
       </div>
     </div>
