@@ -59,8 +59,6 @@ const ThreadDetail = ({ forumId, threadId }: ThreadDetailProps) => {
     }
   };
 
-  const totalPosts: number = posts.length + 1;
-
   if (pending) return null;
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -98,9 +96,6 @@ const ThreadDetail = ({ forumId, threadId }: ThreadDetailProps) => {
             )}
           </div>
         ))}
-      </div>
-      <div className="mt-4">
-        <strong>Total Posts:</strong> {totalPosts}
       </div>
     </div>
   );
