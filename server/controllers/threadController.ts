@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import Post from '../models/postModel';
 import Thread from '../models/threadModel';
 import { CustomRequest } from '../types/customRequest';
-import { sortAndPopulate, aggregateSort } from './helpers/queryHelpers';
+import { sortAndPopulate, aggregateThreadsWithPostCount } from './helpers/queryHelpers';
 
 // ENDPOINT  POST api/:forumId/threads
 // PURPOSE   Create a new thread
@@ -39,27 +39,7 @@ const createThread = async (req: CustomRequest, res: Response, next: NextFunctio
 // ACCESS    Private
 const getAllThreads = async (req: CustomRequest, res: Response, next: NextFunction) => {
   try {
-    const threadsAggregate = Thread.aggregate([
-      {
-        $lookup: {
-          from: 'posts',
-          localField: '_id',
-          foreignField: 'thread',
-          as: 'posts',
-        },
-      },
-      {
-        $addFields: {
-          postCount: { $size: '$posts' },
-        },
-      },
-      {
-        $project: {
-          posts: 0,
-        },
-      },
-    ]);
-    const threads = await aggregateSort(threadsAggregate);
+    const threads = await aggregateThreadsWithPostCount();
 
     res.status(200).json(threads);
   } catch (error) {

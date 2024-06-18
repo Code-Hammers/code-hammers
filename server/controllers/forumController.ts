@@ -1,8 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import Forum from '../models/forumModel';
-import Thread from '../models/threadModel';
-import { aggregateSort } from './helpers/queryHelpers';
-import mongoose from 'mongoose';
+import { aggregateThreadsWithPostCount } from './helpers/queryHelpers';
 
 // ENDPOINT  POST api/forums
 // PURPOSE   Create a new forum
@@ -57,32 +55,7 @@ const getForumById = async (req: Request, res: Response, next: NextFunction) => 
       return res.status(404).json({ message: 'Forum not found' });
     }
 
-    const threadsAggregate = Thread.aggregate([
-      {
-        $match: {
-          forum: new mongoose.Types.ObjectId(forumId),
-        },
-      },
-      {
-        $lookup: {
-          from: 'posts',
-          localField: '_id',
-          foreignField: 'thread',
-          as: 'posts',
-        },
-      },
-      {
-        $addFields: {
-          postCount: { $size: '$posts' },
-        },
-      },
-      {
-        $project: {
-          posts: 0,
-        },
-      },
-    ]);
-    const threads = await aggregateSort(threadsAggregate);
+    const threads = await aggregateThreadsWithPostCount(forumId);
 
     res.status(200).json({ forum, threads });
   } catch (error) {

@@ -1,3 +1,6 @@
+import Thread from '../../models/threadModel';
+import mongoose from 'mongoose';
+
 type SortOrder = 1 | -1;
 
 interface SortAndPopulateQuery<T> {
@@ -35,4 +38,40 @@ export const aggregateSort = <T>(
 ) => {
   const sortObj: Record<string, SortOrder> = { [sortField]: sortOrder };
   return pipeline.sort(sortObj).exec();
+};
+
+export const aggregateThreadsWithPostCount = (forumId?: string) => {
+  const baseStages = [
+    {
+      $lookup: {
+        from: 'posts',
+        localField: '_id',
+        foreignField: 'thread',
+        as: 'posts',
+      },
+    },
+    {
+      $addFields: {
+        postCount: { $size: '$posts' },
+      },
+    },
+    {
+      $project: {
+        posts: 0,
+      },
+    },
+  ];
+
+  const threadsAggregate = forumId
+    ? [
+        {
+          $match: {
+            forum: new mongoose.Types.ObjectId(forumId),
+          },
+        },
+        ...baseStages,
+      ]
+    : baseStages;
+
+  return aggregateSort(Thread.aggregate(threadsAggregate));
 };
