@@ -55,7 +55,7 @@ const getForumById = async (req: Request, res: Response, next: NextFunction) => 
       return res.status(404).json({ message: 'Forum not found' });
     }
 
-    const threads = await aggregateThreadsWithPostCount(forumId);
+    const threads = await aggregateThreadsWithPostCount(forumId, 'createdAt', -1);
 
     res.status(200).json({ forum, threads });
   } catch (error) {

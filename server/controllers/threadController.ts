@@ -39,7 +39,7 @@ const createThread = async (req: CustomRequest, res: Response, next: NextFunctio
 // ACCESS    Private
 const getAllThreads = async (req: CustomRequest, res: Response, next: NextFunction) => {
   try {
-    const threads = await aggregateThreadsWithPostCount();
+    const threads = await aggregateThreadsWithPostCount(undefined, 'createdAt', -1);
 
     res.status(200).json(threads);
   } catch (error) {

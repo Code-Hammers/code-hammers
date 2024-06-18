@@ -40,7 +40,11 @@ export const aggregateSort = <T>(
   return pipeline.sort(sortObj).exec();
 };
 
-export const aggregateThreadsWithPostCount = (forumId?: string) => {
+export const aggregateThreadsWithPostCount = (
+  forumId?: string,
+  sortField: string = 'createdAt',
+  sortOrder: SortOrder = -1,
+) => {
   const baseStages = [
     {
       $lookup: {
@@ -73,5 +77,5 @@ export const aggregateThreadsWithPostCount = (forumId?: string) => {
       ]
     : baseStages;
 
-  return aggregateSort(Thread.aggregate(threadsAggregate));
+  return aggregateSort(Thread.aggregate(threadsAggregate), sortField, sortOrder);
 };
