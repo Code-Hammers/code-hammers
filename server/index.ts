@@ -7,6 +7,7 @@ import imageRoutes from './routes/imageRoutes';
 import alumniRoutes from './routes/alumniRoutes';
 import forumRoutes from './routes/forumRoutes';
 import devRoutes from './routes/devRoutes';
+import applicationsRoutes from './routes/applicationsRoutes';
 import connectDB from './config/db';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
@@ -32,6 +33,7 @@ app.use('/api/images', imageRoutes);
 app.use('/api/alumni', alumniRoutes);
 app.use('/api/forums', forumRoutes);
 app.use('/api/devRoutes', devRoutes);
+app.use('/api/applications', applicationsRoutes);
 
 if (process.env.NODE_ENV === 'production') {
   console.log(`SERVER STARTED IN PRODUCTION`);

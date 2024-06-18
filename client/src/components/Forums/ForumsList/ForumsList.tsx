@@ -42,6 +42,7 @@ const ForumsList = ({ onForumSelect, selectedForumId }: ForumsListProps) => {
   return (
     <div>
       <h2 className="text-xl font-bold mb-4">Forums</h2>
+
       <ul>
         <li
           onClick={() => onForumSelect(null)}

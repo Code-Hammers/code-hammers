@@ -8,12 +8,16 @@ jobs:
       JWT_SECRET: ${{ secrets.JWT_SECRET }}
     steps:
       - uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.17.1'
       - name: Build Docker Image
-        run: docker build -t codehammers/ch-dev-dep-v2:latest -f Dockerfile-dev .
+        run: docker build -t codehammers/ch-dev-dep-v3:latest -f Dockerfile-dev .
       - name: Install Root Dependencies
-        run: docker run codehammers/ch-dev-dep-v2:latest npm install
+        run: docker run codehammers/ch-dev-dep-v3:latest npm install
       - name: Install Client Dependencies
-        run: docker run codehammers/ch-dev-dep-v2:latest /bin/sh -c "cd client && npm install"
+        run: docker run codehammers/ch-dev-dep-v3:latest /bin/sh -c "cd client && npm install"
       - run: LINT_COMMAND=lint docker-compose -f docker-compose-lint.yml up --abort-on-container-exit
       - run: docker-compose -f docker-compose-test.yml up --abort-on-container-exit
         env:
