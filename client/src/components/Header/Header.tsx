@@ -51,6 +51,14 @@ const Header = () => {
             Alumni
           </Link>
           <Link
+            to="/app/applications"
+            className={`text-lg md:text-xl ${
+              currentPath === 'main' ? 'text-gray-300' : 'hover:text-gray-300'
+            } transition transform hover:scale-105`}
+          >
+            Applications
+          </Link>
+          <Link
             to="/app/profiles"
             className={`text-lg md:text-xl ${
               currentPath === 'profiles' ? 'text-gray-300' : 'hover:text-gray-300'
