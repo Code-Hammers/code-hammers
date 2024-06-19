@@ -97,7 +97,6 @@ const ThreadsDisplay = ({ forumId, onThreadSelect }: ThreadsDisplayProps) => {
     return `${count} replies`;
   }
 
-
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
@@ -125,7 +124,6 @@ const ThreadsDisplay = ({ forumId, onThreadSelect }: ThreadsDisplayProps) => {
             className="mb-2 p-2 bg-gray-800 rounded-lg cursor-pointer"
             onClick={() => onThreadSelect(thread._id)}
           >
-
             {editingThreadId === thread._id ? (
               <div onClick={(e) => e.stopPropagation()}>
                 <input
@@ -183,7 +181,6 @@ const ThreadsDisplay = ({ forumId, onThreadSelect }: ThreadsDisplayProps) => {
               <span className="mx-2 text-gray-400">|</span>
               <span className="italic">{formatReplies(thread.postCount)}</span>
             </small>
-
           </li>
         ))}
       </ul>
