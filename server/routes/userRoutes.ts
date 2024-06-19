@@ -1,11 +1,11 @@
 import express from 'express';
 import { protect } from '../middleware/authMiddleware';
 import {
-  registerUser,
   authUser,
   getUserById,
   // deleteUserByEmail,
-} from '../controllers/userController';
+} from '../controllers/userController/userController';
+import { registerUser } from '../controllers/userController';
 
 const router = express.Router();
 
