@@ -1,10 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
 import {
-  registerUser,
   authUser,
   getUserById,
   deleteUserByEmail,
-} from '../server/controllers/userController';
+} from '../server/controllers/userController/userController';
+import { registerUser } from '../server/controllers/userController';
 import User from '../server/models/userModel';
 
 jest.mock('../server/models/userModel', () => ({
@@ -48,7 +48,7 @@ describe('User Controller Tests', () => {
         password: 'password',
       };
 
-      await registerUser(mockRequest as Request, mockResponse as Response, mockNext);
+      await registerUser(mockRequest as Request, mockResponse as Response);
 
       expect(mockResponse.json).toHaveBeenCalledWith({
         _id: 'someId',
