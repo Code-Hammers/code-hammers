@@ -91,6 +91,13 @@ const ThreadsDisplay = ({ forumId, onThreadSelect }: ThreadsDisplayProps) => {
     }
   };
 
+  function formatReplies(count: number) {
+    if (count === 0) return 'No replies';
+    if (count === 1) return '1 reply';
+    return `${count} replies`;
+  }
+
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
@@ -118,6 +125,7 @@ const ThreadsDisplay = ({ forumId, onThreadSelect }: ThreadsDisplayProps) => {
             className="mb-2 p-2 bg-gray-800 rounded-lg cursor-pointer"
             onClick={() => onThreadSelect(thread._id)}
           >
+
             {editingThreadId === thread._id ? (
               <div onClick={(e) => e.stopPropagation()}>
                 <input
@@ -166,6 +174,16 @@ const ThreadsDisplay = ({ forumId, onThreadSelect }: ThreadsDisplayProps) => {
                 )}
               </div>
             )}
+
+            <h4 className="font-bold">{thread.title}</h4>
+            <p>{thread.content}</p>
+            <small>
+              Started by {thread.user.firstName} on{' '}
+              {new Date(thread.createdAt).toLocaleDateString()}
+              <span className="mx-2 text-gray-400">|</span>
+              <span className="italic">{formatReplies(thread.postCount)}</span>
+            </small>
+
           </li>
         ))}
       </ul>

@@ -17,6 +17,8 @@ const ThreadDetail = ({ forumId, threadId }: ThreadDetailProps) => {
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [creatingPost, setCreatingPost] = useState(false);
+  const [editingPostId, setEditingPostId] = useState<string | null>(null);
+  const [editContent, setEditContent] = useState<string>('');
 
   useEffect(() => {
     const fetchThreadDetails = async () => {
@@ -59,6 +61,29 @@ const ThreadDetail = ({ forumId, threadId }: ThreadDetailProps) => {
     }
   };
 
+  const handleEditPost = (postId: string, content: string) => {
+    setEditingPostId(postId);
+    setEditContent(content);
+  };
+
+  const handleUpdatePost = async (postId: string) => {
+    try {
+      const response = await axios.put(
+        `/api/forums/${forumId}/threads/${threadId}/posts/${postId}`,
+        { content: editContent },
+        { withCredentials: true },
+      );
+      setPosts(posts.map((post) => (post._id === postId ? response.data : post)));
+      setEditingPostId(null);
+      setEditContent('');
+    } catch (err) {
+      const error = err as Error;
+      setError(error.message);
+    }
+  };
+
+  // TODO pending, loading, error to be handled by global once migrated
+
   if (pending) return null;
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -81,18 +106,50 @@ const ThreadDetail = ({ forumId, threadId }: ThreadDetailProps) => {
         <h3 className="font-bold text-2xl">Replies</h3>
         {posts.map((post) => (
           <div key={post._id} className="mb-4">
-            <p>{post.content}</p>
-            <small>
-              By {post.user.firstName} {post.user.lastName} on{' '}
-              {new Date(post.createdAt).toLocaleDateString()}
-            </small>
-            {userID === post.user._id && (
-              <button
-                onClick={() => handleDeletePost(post._id)}
-                className="bg-red-500 font-bold hover:bg-red-700 ml-2 py-1 px-2 rounded text-white"
-              >
-                Delete
-              </button>
+            {editingPostId === post._id ? (
+              <div>
+                <textarea
+                  className="w-full p-2 rounded bg-gray-800 text-white"
+                  value={editContent}
+                  onChange={(e) => setEditContent(e.target.value)}
+                />
+                <button
+                  onClick={() => handleUpdatePost(post._id)}
+                  className="bg-green-500 font-bold hover:bg-green-700 ml-2 py-1 px-2 rounded text-white"
+                >
+                  Save
+                </button>
+                <button
+                  onClick={() => setEditingPostId(null)}
+                  className="bg-red-500 font-bold hover:bg-red-700 ml-2 py-1 px-2 rounded text-white"
+                >
+                  Cancel
+                </button>
+              </div>
+            ) : (
+              <div>
+                <p>{post.content}</p>
+                <small>
+                  By {post.user.firstName} {post.user.lastName} on{' '}
+                  {new Date(post.createdAt).toLocaleDateString()}
+                </small>
+                {userID === post.user._id && (
+                  <>
+                    <button
+                      onClick={() => handleDeletePost(post._id)}
+                      className="bg-red-500 font-bold hover:bg-red-700 ml-2 py-1 px-2 rounded text-white"
+                    >
+                      Delete
+                    </button>
+                    <button
+                      onClick={() => handleEditPost(post._id, post.content)}
+                      className="bg-yellow-500 font-bold hover:bg-yellow-700 ml-2 py-1 px-2 rounded text-white"
+                    >
+                      Edit
+                    </button>
+                  </>
+                )}
+              </div>
             )}
           </div>
         ))}

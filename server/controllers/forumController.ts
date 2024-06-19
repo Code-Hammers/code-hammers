@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import Forum from '../models/forumModel';
-import Thread from '../models/threadModel';
-import { sortAndPopulate } from './helpers/queryHelpers';
+import { aggregateThreadsWithPostCount } from './helpers/queryHelpers';
 
 // ENDPOINT  POST api/forums
 // PURPOSE   Create a new forum
@@ -51,12 +50,12 @@ const getForumById = async (req: Request, res: Response, next: NextFunction) => 
 
   try {
     const forum = await Forum.findById(forumId);
+
     if (!forum) {
       return res.status(404).json({ message: 'Forum not found' });
     }
 
-    const threadsQuery = Thread.find({ forum: forumId });
-    const threads = await sortAndPopulate(threadsQuery);
+    const threads = await aggregateThreadsWithPostCount(forumId, 'createdAt', -1);
 
     res.status(200).json({ forum, threads });
   } catch (error) {
