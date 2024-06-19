@@ -8,6 +8,7 @@ export interface IUser {
 
 export interface Thread {
   _id: string;
+  forum: string;
   title: string;
   content: string;
   user: IUser;

@@ -83,6 +83,7 @@ const ThreadDetail = ({ forumId, threadId }: ThreadDetailProps) => {
   };
 
   // TODO pending, loading, error to be handled by global once migrated
+
   if (pending) return null;
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;

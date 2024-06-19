@@ -8,6 +8,7 @@ interface SortAndPopulateQuery<T> {
   populate: (field: string, select?: string) => SortAndPopulateQuery<T>;
   exec: () => Promise<T>;
 }
+
 interface AggregateQuery<T> {
   sort: (arg: { [key: string]: SortOrder }) => AggregateQuery<T>;
   project: (field: { [key: string]: 0 | 1 }) => AggregateQuery<T>;
