@@ -59,6 +59,7 @@ const ThreadDetail = ({ forumId, threadId }: ThreadDetailProps) => {
     }
   };
 
+  if (pending) return null;
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
   if (!thread) return <div>Thread not found.</div>;

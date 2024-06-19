@@ -12,6 +12,7 @@ export interface Thread {
   content: string;
   user: IUser;
   createdAt: string;
+  postCount: number;
 }
 
 export interface IForum {
