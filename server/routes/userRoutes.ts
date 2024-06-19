@@ -5,6 +5,7 @@ import {
   getUserById,
   // deleteUserByEmail,
 } from '../controllers/userController';
+
 import { protect } from '../middleware/authMiddleware';
 
 const router = express.Router();
