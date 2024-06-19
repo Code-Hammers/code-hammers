@@ -2,36 +2,52 @@ import mongoose, { Schema } from 'mongoose';
 import bcrypt from 'bcryptjs';
 import { IUser } from '../types/user';
 
-const userSchema = new Schema<IUser>({
-  firstName: {
-    type: String,
-    required: true,
+const userSchema = new Schema<IUser>(
+  {
+    firstName: {
+      type: String,
+      required: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    profilePic: {
+      type: String,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    lastVisit: {
+      type: Date,
+      default: Date.now,
+    },
+    date: {
+      type: Date,
+      default: Date.now,
+    },
   },
-  lastName: {
-    type: String,
-    required: true,
+  {
+    toJSON: {
+      transform(doc, ret) {
+        delete ret.password;
+        delete ret.__v;
+      },
+    },
+    toObject: {
+      transform(doc, ret) {
+        delete ret.password;
+        delete ret.__v;
+      },
+    },
   },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  profilePic: {
-    type: String,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  lastVisit: {
-    type: Date,
-    default: Date.now,
-  },
-  date: {
-    type: Date,
-    default: Date.now,
-  },
-});
+);
 
 userSchema.methods.matchPassword = async function (
   this: IUser,
