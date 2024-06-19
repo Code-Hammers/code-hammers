@@ -14,8 +14,17 @@ services:
     depends_on:
       - mongo
     environment:
-      - MONGO_URI=mongodb://mongo:27017/ch-testdb
       - JWT_SECRET=${JWT_SECRET}
+      - MONGO_URI=mongodb://mongo:27017/ch-testdb
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=ch-dev-database
+      - POSTGRES_PASSWORD=ch-dev
+      - AWS_ACCESS_KEY_ID=placeholder-value
+      - AWS_SECRET_ACCESS_KEY=placeholder-value
+      - AWS_REGION=placeholder-value
+      - BUCKET_NAME=placeholder-value
+      # suppress aws sdk v2 deprecation warning
+      - AWS_SDK_JS_SUPPRESS_MAINTENANCE_MODE_MESSAGE=1;
     command: npm run test:all
 
   mongo:

@@ -1,6 +1,5 @@
 import express from 'express';
 import { protect } from '../middleware/authMiddleware';
-
 import {
   addForum,
   deleteForum,
@@ -8,7 +7,6 @@ import {
   getForumById,
   updateForum,
 } from '../controllers/forumController';
-
 import {
   createThread,
   deleteThread,
@@ -17,7 +15,6 @@ import {
   updateThread,
   getAllThreads,
 } from '../controllers/threadController';
-
 import {
   listPostsByThreadId,
   createPost,
@@ -27,28 +24,30 @@ import {
 
 const router = express.Router();
 
-router.get('/threads', protect, getAllThreads);
-router.get('/threads/:threadId', protect, getThreadById);
+router.use(protect); /* Require Auth for ALL routes below */
+
+router.get('/threads', getAllThreads);
+router.get('/threads/:threadId', getThreadById);
 
 //Forum Routes
-router.post('/', protect, addForum); //TODO Protect with admin auth
-router.get('/', protect, getAllForums);
-router.get('/:forumId', protect, getForumById);
-router.put('/:forumId', protect, updateForum); //TODO Protect with admin auth
-router.delete('/:forumId', protect, deleteForum); //TODO Protect with admin auth
+router.post('/', addForum); //TODO Protect with admin auth
+router.get('/', getAllForums);
+router.get('/:forumId', getForumById);
+router.put('/:forumId', updateForum); //TODO Protect with admin auth
+router.delete('/:forumId', deleteForum); //TODO Protect with admin auth
 
 //Thread Routes
 
-router.post('/:forumId/threads', protect, createThread);
-router.get('/:forumId/threads', protect, listThreadsByForumId);
-router.get('/:forumId/threads/:threadId', protect, getThreadById);
-router.put('/:forumId/threads/:threadId', protect, updateThread);
-router.delete('/:forumId/threads/:threadId', protect, deleteThread); //TODO Protect with admin auth
+router.post('/:forumId/threads', createThread);
+router.get('/:forumId/threads', listThreadsByForumId);
+router.get('/:forumId/threads/:threadId', getThreadById);
+router.put('/:forumId/threads/:threadId', updateThread);
+router.delete('/:forumId/threads/:threadId', deleteThread); //TODO Protect with admin auth
 
 //Post Routes
-router.get('/:forumId/threads/:threadId/posts', protect, listPostsByThreadId);
-router.post('/:forumId/threads/:threadId/posts', protect, createPost);
-router.put('/:forumId/threads/:threadId/posts/:postId', protect, updatePost);
-router.delete('/:forumId/threads/:threadId/posts/:postId', protect, deletePost); //TODO Protect with admin auth
+router.get('/:forumId/threads/:threadId/posts', listPostsByThreadId);
+router.post('/:forumId/threads/:threadId/posts', createPost);
+router.put('/:forumId/threads/:threadId/posts/:postId', updatePost);
+router.delete('/:forumId/threads/:threadId/posts/:postId', deletePost); //TODO Protect with admin auth
 
 export default router;

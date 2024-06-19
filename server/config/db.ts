@@ -1,24 +1,15 @@
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-dotenv.config();
+import { DatabaseConnectionError } from '../errors';
 
-const connectDB = async (): Promise<void> => {
+const connectDB = async (mongoUri: string) => {
   try {
-    // Check that MONGO_URI is defined
-    if (!process.env.MONGO_URI) {
-      throw new Error('MONGO_URI must be defined in the environment variables.');
-    }
-
-    const connection = await mongoose.connect(process.env.MONGO_URI);
-
-    console.log(`MongoDB is connected to: ${connection.connection.host}`);
+    const connection = await mongoose.connect(mongoUri);
+    console.log(`🍃 MongoDB is connected to: ${connection.connection.host}`);
   } catch (error) {
     if (error instanceof Error) {
       console.error(error.message);
-    } else {
-      console.error('❌ Error connecting to the database ❌');
     }
-    process.exit(1);
+    throw new DatabaseConnectionError();
   }
 };
 
