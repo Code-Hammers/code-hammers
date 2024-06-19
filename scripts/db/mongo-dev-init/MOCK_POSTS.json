@@ -1,970 +1,989 @@
 [
   {
     "thread": {
-      "$oid": "666cbc4b40af7b375e353468"
+      "$oid": "66723db08f368f285d304f67"
     },
     "user": {
-      "$oid": "666cbc4240af7b375e352ea6"
-    },
-    "content": "Exploring the benefits of using TypeScript in large-scale JavaScript applications. Is it worth the learning curve?",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
-    },
-    "updatedAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e353497"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e353475"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352ecd"
-    },
-    "content": "Discussing the ethics of AI in decision-making processes. How can we ensure fairness and accountability?",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
-    },
-    "updatedAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e353498"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e353471"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352edc"
-    },
-    "content": "What are your thoughts on the future of cybersecurity in the era of AI and automation?",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
-    },
-    "updatedAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e353499"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e35346f"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352eec"
-    },
-    "content": "Discussing the pros and cons of using NoSQL databases like MongoDB versus traditional SQL databases.",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
-    },
-    "updatedAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e35349a"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e35346e"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352e8e"
-    },
-    "content": "How can blockchain technology revolutionize industries beyond finance? Discussing real-world applications.",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
-    },
-    "updatedAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e35349b"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e35345c"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352eef"
-    },
-    "content": "Seeking advice on building a personal brand as a software engineer. How can networking help career growth?",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.688Z"
-    },
-    "updatedAt": {
-      "$date": "2026-02-28T06:59:52.656Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e35349c"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e35345a"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352e90"
-    },
-    "content": "Exploring the challenges of implementing AI-driven chatbots in customer service applications.",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.688Z"
-    },
-    "updatedAt": {
-      "$date": "2026-04-26T12:09:48.915Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e35349d"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e353463"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352eb8"
-    },
-    "content": "I'm new to web development. Can anyone recommend a good beginner-friendly JavaScript framework?",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.690Z"
-    },
-    "updatedAt": {
-      "$date": "2024-06-14T21:55:23.690Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e35349e"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e353460"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352ed9"
-    },
-    "content": "Discussing the evolution of programming languages and their impact on software development practices.",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.690Z"
-    },
-    "updatedAt": {
-      "$date": "2024-06-14T21:55:23.690Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e35349f"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e353464"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352ef0"
-    },
-    "content": "What are your favorite design patterns for building scalable backend systems? Discussing architecture.",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
-    },
-    "updatedAt": {
-      "$date": "2025-07-06T04:53:40.638Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534a0"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e35346b"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352ee3"
-    },
-    "content": "What are the essential skills for a successful software engineering career in the next decade?",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.690Z"
-    },
-    "updatedAt": {
-      "$date": "2024-06-14T21:55:23.690Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534a1"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e353473"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352ee5"
-    },
-    "content": "Exploring the role of microservices in modern software architectures. What are the benefits and challenges?",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
-    },
-    "updatedAt": {
-      "$date": "2027-10-30T01:51:43.225Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534a2"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e353470"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352ee9"
-    },
-    "content": "Discussing the adoption of serverless architecture in enterprise applications. What are the use cases?",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.690Z"
-    },
-    "updatedAt": {
-      "$date": "2024-06-14T21:55:23.690Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534a3"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e353464"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352e9a"
-    },
-    "content": "How can developers contribute to open-source projects? Discussing the impact of community contributions.",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.690Z"
-    },
-    "updatedAt": {
-      "$date": "2024-06-14T21:55:23.690Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534a4"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e35346c"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352ed0"
-    },
-    "content": "Exploring the challenges of implementing AI-driven chatbots in customer service applications.",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.690Z"
-    },
-    "updatedAt": {
-      "$date": "2024-06-14T21:55:23.690Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534a5"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e35346e"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352ee1"
-    },
-    "content": "What are the key factors to consider when choosing a tech stack for a new startup project?",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.691Z"
-    },
-    "updatedAt": {
-      "$date": "2024-06-14T21:55:23.691Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534a6"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e353468"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352eee"
-    },
-    "content": "Exploring the benefits of adopting a microservices architecture over monolithic applications.",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
-    },
-    "updatedAt": {
-      "$date": "2025-10-21T03:07:41.505Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534a7"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e35346f"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352ec7"
-    },
-    "content": "What are your strategies for improving team productivity and motivation in remote work environments?",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.691Z"
-    },
-    "updatedAt": {
-      "$date": "2024-06-14T21:55:23.691Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534a8"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e353465"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352e9f"
-    },
-    "content": "Seeking advice on transitioning from frontend to full-stack development. What skills should I focus on?",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.691Z"
-    },
-    "updatedAt": {
-      "$date": "2024-06-14T21:55:23.691Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534a9"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e35346b"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352edf"
-    },
-    "content": "How do you approach designing intuitive user interfaces? Share your UX/UI design principles.",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.691Z"
-    },
-    "updatedAt": {
-      "$date": "2024-06-14T21:55:23.691Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534aa"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e353459"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352e96"
-    },
-    "content": "Seeking advice on transitioning from academia to industry as a software engineer. What are the challenges?",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
-    },
-    "updatedAt": {
-      "$date": "2027-01-21T02:44:02.416Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534ab"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e353467"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352ebc"
-    },
-    "content": "What are your favorite VS Code extensions for productivity? Looking to optimize my workflow.",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.691Z"
-    },
-    "updatedAt": {
-      "$date": "2024-06-14T21:55:23.691Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534ac"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e353459"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352eaf"
-    },
-    "content": "Discussing the benefits of adopting agile methodologies in non-software development teams.",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.691Z"
-    },
-    "updatedAt": {
-      "$date": "2024-06-14T21:55:23.691Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534ad"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e353467"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352e91"
-    },
-    "content": "What are the essential skills for a successful software engineering career in the next decade?",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.691Z"
-    },
-    "updatedAt": {
-      "$date": "2024-06-14T21:55:23.691Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534ae"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e353464"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352eb4"
-    },
-    "content": "Share your experiences with remote team collaboration tools like Slack, Zoom, and Microsoft Teams.",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
-    },
-    "updatedAt": {
-      "$date": "2025-11-10T19:15:05.483Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534af"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e35346b"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352e9f"
-    },
-    "content": "What are your strategies for improving team productivity and motivation in remote work environments?",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
-    },
-    "updatedAt": {
-      "$date": "2026-11-25T17:35:04.165Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534b0"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e353467"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352eef"
-    },
-    "content": "How do you approach code reviews in your team? Share your process for constructive feedback and improvement.",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.692Z"
-    },
-    "updatedAt": {
-      "$date": "2024-06-14T21:55:23.692Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534b1"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e353464"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352ec5"
-    },
-    "content": "What are the key factors to consider when choosing a tech stack for a new startup project?",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
-    },
-    "updatedAt": {
-      "$date": "2024-10-07T05:10:56.870Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534b2"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e353468"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352ee4"
-    },
-    "content": "Tips for building scalable and maintainable frontend architectures. How do you structure your codebase?",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
-    },
-    "updatedAt": {
-      "$date": "2025-09-19T21:00:34.253Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534b3"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e35346a"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352ed4"
-    },
-    "content": "How do you approach refactoring legacy codebases? Share your strategies for modernization.",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.692Z"
-    },
-    "updatedAt": {
-      "$date": "2024-06-14T21:55:23.692Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534b4"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e353465"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352ed2"
-    },
-    "content": "Exploring the benefits of adopting a microservices architecture over monolithic applications.",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
-    },
-    "updatedAt": {
-      "$date": "2026-02-13T13:41:17.166Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534b5"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e35346f"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352ea2"
-    },
-    "content": "How can AI and machine learning be leveraged to enhance personalized user experiences in applications?",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.692Z"
-    },
-    "updatedAt": {
-      "$date": "2024-06-14T21:55:23.692Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534b6"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e35345c"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352edc"
-    },
-    "content": "What are your thoughts on the future of cybersecurity in the era of AI and automation?",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.692Z"
-    },
-    "updatedAt": {
-      "$date": "2024-06-14T21:55:23.692Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534b7"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e353476"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352ed6"
-    },
-    "content": "How do you approach designing intuitive user interfaces? Share your UX/UI design principles.",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.692Z"
-    },
-    "updatedAt": {
-      "$date": "2024-06-14T21:55:23.692Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534b8"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e353462"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352ec9"
-    },
-    "content": "Discussing the benefits of adopting agile methodologies in non-software development teams.",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
-    },
-    "updatedAt": {
-      "$date": "2027-01-09T13:19:34.035Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534b9"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e35346c"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352eed"
-    },
-    "content": "What are the emerging trends in mobile app development? Discussing technologies like Flutter and React Native.",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
-    },
-    "updatedAt": {
-      "$date": "2026-07-20T00:21:07.415Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534ba"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e35346c"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352ebd"
+      "$oid": "66723da68f368f285d304acb"
     },
     "content": "Exploring the role of AI in enhancing cybersecurity measures. How can AI algorithms detect threats?",
     "createdAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
+      "$date": "2024-06-19T02:08:48.294Z"
     },
     "updatedAt": {
-      "$date": "2027-08-08T01:35:53.686Z"
+      "$date": "2027-01-28T07:33:27.394Z"
     },
     "_id": {
-      "$oid": "666cbc4b40af7b375e3534bb"
+      "$oid": "66723db08f368f285d304f7f"
     },
     "__v": 0
   },
   {
     "thread": {
-      "$oid": "666cbc4b40af7b375e353469"
+      "$oid": "66723db08f368f285d304f5f"
     },
     "user": {
-      "$oid": "666cbc4240af7b375e352eba"
-    },
-    "content": "What are your thoughts on the future of cybersecurity in the era of AI and automation?",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.693Z"
-    },
-    "updatedAt": {
-      "$date": "2024-06-14T21:55:23.693Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534bc"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e35346b"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352e9b"
-    },
-    "content": "Seeking advice on transitioning from frontend to full-stack development. What skills should I focus on?",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
-    },
-    "updatedAt": {
-      "$date": "2025-08-24T02:31:32.213Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534bd"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e35346e"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352e92"
-    },
-    "content": "Discussing the pros and cons of using NoSQL databases like MongoDB versus traditional SQL databases.",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
-    },
-    "updatedAt": {
-      "$date": "2026-09-18T05:57:32.739Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534be"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e353466"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352ed7"
-    },
-    "content": "How do you approach designing intuitive user interfaces? Share your UX/UI design principles.",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.693Z"
-    },
-    "updatedAt": {
-      "$date": "2024-06-14T21:55:23.693Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534bf"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e353474"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352eb2"
+      "$oid": "66723da68f368f285d304acb"
     },
     "content": "Seeking recommendations for online platforms or courses to learn data science and machine learning.",
     "createdAt": {
-      "$date": "2024-06-14T21:55:23.693Z"
+      "$date": "2024-06-19T02:08:48.295Z"
     },
     "updatedAt": {
-      "$date": "2024-06-14T21:55:23.693Z"
+      "$date": "2024-06-19T02:08:48.295Z"
     },
     "_id": {
-      "$oid": "666cbc4b40af7b375e3534c0"
+      "$oid": "66723db08f368f285d304f80"
     },
     "__v": 0
   },
   {
     "thread": {
-      "$oid": "666cbc4b40af7b375e35345b"
+      "$oid": "66723db08f368f285d304f6e"
     },
     "user": {
-      "$oid": "666cbc4240af7b375e352ea6"
-    },
-    "content": "What are your thoughts on the future of cybersecurity in the era of AI and automation?",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
-    },
-    "updatedAt": {
-      "$date": "2026-09-01T11:02:20.422Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534c1"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e353473"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352eb8"
-    },
-    "content": "How do you approach refactoring legacy codebases? Share your strategies for modernization.",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
-    },
-    "updatedAt": {
-      "$date": "2026-10-26T18:24:02.555Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534c2"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e35346e"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352ea0"
-    },
-    "content": "What are your favorite VS Code extensions for productivity? Looking to optimize my workflow.",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.693Z"
-    },
-    "updatedAt": {
-      "$date": "2024-06-14T21:55:23.693Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534c3"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e353463"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352e9b"
-    },
-    "content": "Share your favorite resources for staying updated with the latest tech trends and industry news.",
-    "createdAt": {
-      "$date": "2024-06-14T21:55:23.693Z"
-    },
-    "updatedAt": {
-      "$date": "2024-06-14T21:55:23.693Z"
-    },
-    "_id": {
-      "$oid": "666cbc4b40af7b375e3534c4"
-    },
-    "__v": 0
-  },
-  {
-    "thread": {
-      "$oid": "666cbc4b40af7b375e35345e"
-    },
-    "user": {
-      "$oid": "666cbc4240af7b375e352e9d"
+      "$oid": "66723da68f368f285d304acb"
     },
     "content": "What are the key factors to consider when choosing a tech stack for a new startup project?",
     "createdAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
+      "$date": "2024-06-19T02:08:48.295Z"
     },
     "updatedAt": {
-      "$date": "2027-05-04T21:58:45.216Z"
+      "$date": "2024-06-19T02:08:48.295Z"
     },
     "_id": {
-      "$oid": "666cbc4b40af7b375e3534c5"
+      "$oid": "66723db08f368f285d304f81"
     },
     "__v": 0
   },
   {
     "thread": {
-      "$oid": "666cbc4b40af7b375e353460"
+      "$oid": "66723db08f368f285d304f6e"
     },
     "user": {
-      "$oid": "666cbc4240af7b375e352ef0"
+      "$oid": "66723da68f368f285d304acb"
     },
-    "content": "Comparing popular cloud providers for hosting web applications: AWS, Azure, and Google Cloud Platform.",
+    "content": "Debating the future of AI and its potential impact on industries like healthcare and finance.",
     "createdAt": {
-      "$date": "2024-06-14T21:55:23.694Z"
+      "$date": "2024-06-19T02:08:48.295Z"
     },
     "updatedAt": {
-      "$date": "2024-06-14T21:55:23.694Z"
+      "$date": "2024-06-19T02:08:48.295Z"
     },
     "_id": {
-      "$oid": "666cbc4b40af7b375e3534c6"
+      "$oid": "66723db08f368f285d304f82"
     },
     "__v": 0
   },
   {
     "thread": {
-      "$oid": "666cbc4b40af7b375e353471"
+      "$oid": "66723db08f368f285d304f66"
     },
     "user": {
-      "$oid": "666cbc4240af7b375e352e9b"
+      "$oid": "66723da68f368f285d304ac9"
+    },
+    "content": "Tips for building responsive and accessible user interfaces in web development. Best practices?",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.295Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-19T02:08:48.295Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f83"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f64"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304ac9"
+    },
+    "content": "Discussing the adoption of serverless architecture in enterprise applications. What are the use cases?",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.295Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-19T02:08:48.295Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f84"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f6c"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304acc"
+    },
+    "content": "Tips for optimizing database performance in high-traffic web applications. Best practices?",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.295Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-19T02:08:48.295Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f85"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f6c"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304aca"
+    },
+    "content": "Seeking recommendations for online platforms or courses to learn data science and machine learning.",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.294Z"
+    },
+    "updatedAt": {
+      "$date": "2026-08-29T17:17:05.009Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f86"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f62"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304acb"
+    },
+    "content": "Tips for optimizing database performance in high-traffic web applications. Best practices?",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.294Z"
+    },
+    "updatedAt": {
+      "$date": "2025-12-27T12:52:09.207Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f87"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f67"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304acd"
+    },
+    "content": "What are your favorite design patterns for building scalable backend systems? Discussing architecture.",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.295Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-19T02:08:48.295Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f88"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f6c"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304acd"
+    },
+    "content": "Share your experiences with continuous integration and deployment tools like Jenkins and GitLab CI/CD.",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.295Z"
+    },
+    "updatedAt": {
+      "$date": "2024-10-24T00:40:46.677Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f89"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f66"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304acb"
+    },
+    "content": "Discussing the impact of IoT on everyday life and its implications for software developers.",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.295Z"
+    },
+    "updatedAt": {
+      "$date": "2028-02-01T11:18:34.588Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f8a"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f6b"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304aca"
+    },
+    "content": "Discussing the challenges and benefits of implementing blockchain technology in supply chain management.",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.295Z"
+    },
+    "updatedAt": {
+      "$date": "2025-05-13T00:15:44.168Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f8b"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f66"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304aca"
+    },
+    "content": "Discussing the best practices for securing RESTful APIs. How do you protect against common vulnerabilities?",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.296Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-19T02:08:48.296Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f8c"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f67"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304aca"
+    },
+    "content": "How can AI and machine learning be leveraged to enhance personalized user experiences in applications?",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.295Z"
+    },
+    "updatedAt": {
+      "$date": "2025-06-14T02:00:54.499Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f8d"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f63"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304acc"
+    },
+    "content": "Seeking advice on building a personal brand as a software engineer. How can networking help career growth?",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.296Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-19T02:08:48.296Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f8e"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f67"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304ac9"
+    },
+    "content": "Tips for building scalable and maintainable frontend architectures. How do you structure your codebase?",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.295Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-30T04:39:41.449Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f8f"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f68"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304acc"
+    },
+    "content": "Discussing the evolution of programming languages and their impact on software development practices.",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.296Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-19T02:08:48.296Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f90"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f5f"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304aca"
+    },
+    "content": "Tips for optimizing database performance in high-traffic web applications. Best practices?",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.296Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-19T02:08:48.296Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f91"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f66"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304aca"
+    },
+    "content": "Tips for managing technical debt in software projects. How do you prioritize and refactor?",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.296Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-19T02:08:48.296Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f92"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f61"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304acb"
+    },
+    "content": "How do you approach refactoring legacy codebases? Share your strategies for modernization.",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.295Z"
+    },
+    "updatedAt": {
+      "$date": "2027-04-01T08:54:19.130Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f93"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f6d"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304ad5"
+    },
+    "content": "What are the essential skills for a successful software engineering career in the next decade?",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.295Z"
+    },
+    "updatedAt": {
+      "$date": "2025-10-07T14:22:25.733Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f94"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f65"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304afb"
+    },
+    "content": "Discussing the adoption of serverless architecture in enterprise applications. What are the use cases?",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.297Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-19T02:08:48.297Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f95"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f63"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304b06"
+    },
+    "content": "Discussing the impact of IoT on everyday life and its implications for software developers.",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.297Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-19T02:08:48.297Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f96"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f64"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304adb"
+    },
+    "content": "Discussing the challenges and benefits of implementing blockchain technology in supply chain management.",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.295Z"
+    },
+    "updatedAt": {
+      "$date": "2027-06-28T20:40:39.345Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f97"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f62"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304b0c"
+    },
+    "content": "Tips for managing technical debt in software projects. How do you prioritize and refactor?",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.297Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-19T02:08:48.297Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f98"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f6e"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304b00"
+    },
+    "content": "What are the emerging trends in mobile app development? Discussing technologies like Flutter and React Native.",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.295Z"
+    },
+    "updatedAt": {
+      "$date": "2027-07-29T13:28:02.709Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f99"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f6b"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304aec"
+    },
+    "content": "Seeking advice on transitioning from frontend to full-stack development. What skills should I focus on?",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.297Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-19T02:08:48.297Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f9a"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f6d"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304b05"
+    },
+    "content": "Share your insights on DevOps culture and its impact on software development teams.",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.297Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-19T02:08:48.297Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f9b"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f61"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304b16"
+    },
+    "content": "Seeking advice on transitioning from frontend to full-stack development. What skills should I focus on?",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.295Z"
+    },
+    "updatedAt": {
+      "$date": "2026-11-17T19:55:23.566Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f9c"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f69"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304b0c"
+    },
+    "content": "Tips for effective project management in software development teams. How do you ensure deadlines are met?",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.297Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-19T02:08:48.297Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f9d"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f61"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304b2a"
+    },
+    "content": "How do you approach code reviews in your team? Share your process for constructive feedback and improvement.",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.295Z"
+    },
+    "updatedAt": {
+      "$date": "2024-09-30T19:35:44.170Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f9e"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f65"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304b14"
+    },
+    "content": "Seeking recommendations for online platforms or courses to learn data science and machine learning.",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.298Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-19T02:08:48.298Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304f9f"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f66"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304b1c"
+    },
+    "content": "Exploring the benefits of adopting a microservices architecture over monolithic applications.",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.298Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-19T02:08:48.298Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304fa0"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f66"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304ae8"
+    },
+    "content": "Tips for building responsive and accessible user interfaces in web development. Best practices?",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.298Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-19T02:08:48.298Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304fa1"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f69"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304af0"
     },
     "content": "How do you balance feature development with technical debt reduction in agile development?",
     "createdAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
+      "$date": "2024-06-19T02:08:48.298Z"
     },
     "updatedAt": {
-      "$date": "2025-09-11T04:24:08.049Z"
+      "$date": "2024-06-19T02:08:48.298Z"
     },
     "_id": {
-      "$oid": "666cbc4b40af7b375e3534c7"
+      "$oid": "66723db08f368f285d304fa2"
     },
     "__v": 0
   },
   {
     "thread": {
-      "$oid": "666cbc4b40af7b375e353461"
+      "$oid": "66723db08f368f285d304f5f"
     },
     "user": {
-      "$oid": "666cbc4240af7b375e352ea7"
+      "$oid": "66723da68f368f285d304b23"
     },
-    "content": "How do you balance feature development with technical debt reduction in agile development?",
+    "content": "What are your favorite VS Code extensions for productivity? Looking to optimize my workflow.",
     "createdAt": {
-      "$date": "2024-06-14T21:55:23.689Z"
+      "$date": "2024-06-19T02:08:48.295Z"
     },
     "updatedAt": {
-      "$date": "2025-06-23T04:28:57.616Z"
+      "$date": "2026-05-18T11:23:04.320Z"
     },
     "_id": {
-      "$oid": "666cbc4b40af7b375e3534c8"
+      "$oid": "66723db08f368f285d304fa3"
     },
     "__v": 0
   },
   {
     "thread": {
-      "$oid": "666cbc4b40af7b375e353475"
+      "$oid": "66723db08f368f285d304f6a"
     },
     "user": {
-      "$oid": "666cbc4240af7b375e352ee6"
+      "$oid": "66723da68f368f285d304ad0"
     },
-    "content": "Share your favorite resources for staying updated with the latest tech trends and industry news.",
+    "content": "Discussing the benefits of adopting agile methodologies in non-software development teams.",
     "createdAt": {
-      "$date": "2024-06-14T21:55:23.694Z"
+      "$date": "2024-06-19T02:08:48.295Z"
     },
     "updatedAt": {
-      "$date": "2024-06-14T21:55:23.694Z"
+      "$date": "2026-01-04T06:30:01.252Z"
     },
     "_id": {
-      "$oid": "666cbc4b40af7b375e3534c9"
+      "$oid": "66723db08f368f285d304fa4"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f63"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304ad5"
+    },
+    "content": "Tips for managing technical debt in software projects. How do you prioritize and refactor?",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.295Z"
+    },
+    "updatedAt": {
+      "$date": "2027-10-19T08:27:55.399Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304fa5"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f6e"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304ac9"
+    },
+    "content": "Discussing the impact of IoT on everyday life and its implications for software developers.",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.295Z"
+    },
+    "updatedAt": {
+      "$date": "2027-10-18T22:55:00.577Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304fa6"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f66"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304ae4"
+    },
+    "content": "How do you approach designing intuitive user interfaces? Share your UX/UI design principles.",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.295Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-20T05:46:36.489Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304fa7"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f60"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304ad5"
+    },
+    "content": "Seeking advice on transitioning from academia to industry as a software engineer. What are the challenges?",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.298Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-19T02:08:48.298Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304fa8"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f69"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304ace"
+    },
+    "content": "Exploring the role of microservices in modern software architectures. What are the benefits and challenges?",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.298Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-19T02:08:48.298Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304fa9"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f67"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304af4"
+    },
+    "content": "How can blockchain technology revolutionize industries beyond finance? Discussing real-world applications.",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.298Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-19T02:08:48.298Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304faa"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f68"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304acd"
+    },
+    "content": "Discussing the evolution of programming languages and their impact on software development practices.",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.295Z"
+    },
+    "updatedAt": {
+      "$date": "2028-04-27T19:50:20.860Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304fab"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f63"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304ac9"
+    },
+    "content": "Discussing the adoption of serverless architecture in enterprise applications. What are the use cases?",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.298Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-19T02:08:48.298Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304fac"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f5f"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304adc"
+    },
+    "content": "How can blockchain technology revolutionize industries beyond finance? Discussing real-world applications.",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.299Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-19T02:08:48.299Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304fad"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f6a"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304af7"
+    },
+    "content": "Exploring the challenges of scaling applications globally. How do you design for international users?",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.299Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-19T02:08:48.299Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304fae"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f6c"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304b0d"
+    },
+    "content": "How do you handle software architecture design in agile development? Share your strategies and experiences.",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.299Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-19T02:08:48.299Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304faf"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f60"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304ad6"
+    },
+    "content": "Seeking advice on preparing for technical interviews at top tech companies. What are common interview questions?",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.299Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-19T02:08:48.299Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304fb0"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f64"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304adf"
+    },
+    "content": "How do you approach code reviews in your team? Share your process for constructive feedback and improvement.",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.299Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-19T02:08:48.299Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304fb1"
+    },
+    "__v": 0
+  },
+  {
+    "thread": {
+      "$oid": "66723db08f368f285d304f6b"
+    },
+    "user": {
+      "$oid": "66723da68f368f285d304adc"
+    },
+    "content": "How do you handle software architecture design in agile development? Share your strategies and experiences.",
+    "createdAt": {
+      "$date": "2024-06-19T02:08:48.295Z"
+    },
+    "updatedAt": {
+      "$date": "2027-01-29T01:00:15.398Z"
+    },
+    "_id": {
+      "$oid": "66723db08f368f285d304fb2"
     },
     "__v": 0
   }

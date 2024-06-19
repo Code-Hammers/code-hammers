@@ -8,18 +8,18 @@
     "isRegistered": true,
     "firstName": "Alonso",
     "lastName": "Carradice",
-    "cohort": "WCRI 86",
+    "cohort": "FTRI 69",
     "registeredAt": {
       "$date": "1970-01-20T09:52:04.950Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dc4"
+      "$oid": "66723da58f368f285d304a01"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.909Z"
+      "$date": "2024-06-19T02:08:37.643Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.909Z"
+      "$date": "2024-06-19T02:08:37.643Z"
     },
     "__v": 0
   },
@@ -32,18 +32,18 @@
     "isRegistered": false,
     "firstName": "Wilton",
     "lastName": "Bleaden",
-    "cohort": "NYC 65",
+    "cohort": "PTRI 93",
     "registeredAt": {
       "$date": "1970-01-20T19:09:48.748Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dc5"
+      "$oid": "66723da58f368f285d304a02"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.909Z"
+      "$date": "2024-06-19T02:08:37.643Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.909Z"
+      "$date": "2024-06-19T02:08:37.643Z"
     },
     "__v": 0
   },
@@ -56,18 +56,18 @@
     "isRegistered": true,
     "firstName": "Gannon",
     "lastName": "Halso",
-    "cohort": "WCRI 94",
+    "cohort": "FTRI 0",
     "registeredAt": {
       "$date": "1970-01-20T12:18:04.782Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dc6"
+      "$oid": "66723da58f368f285d304a03"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.909Z"
+      "$date": "2024-06-19T02:08:37.643Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.909Z"
+      "$date": "2024-06-19T02:08:37.643Z"
     },
     "__v": 0
   },
@@ -80,18 +80,18 @@
     "isRegistered": false,
     "firstName": "Doralynn",
     "lastName": "Grinter",
-    "cohort": "WCRI 88",
+    "cohort": "CTRI 6",
     "registeredAt": {
       "$date": "1970-01-20T14:33:07.127Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dc7"
+      "$oid": "66723da58f368f285d304a04"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.910Z"
+      "$date": "2024-06-19T02:08:37.644Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.910Z"
+      "$date": "2024-06-19T02:08:37.644Z"
     },
     "__v": 0
   },
@@ -104,18 +104,18 @@
     "isRegistered": true,
     "firstName": "Winn",
     "lastName": "Weatherley",
-    "cohort": "LA 0",
+    "cohort": "WCRI 39",
     "registeredAt": {
       "$date": "1970-01-20T19:01:06.414Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dc8"
+      "$oid": "66723da58f368f285d304a05"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.910Z"
+      "$date": "2024-06-19T02:08:37.644Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.910Z"
+      "$date": "2024-06-19T02:08:37.644Z"
     },
     "__v": 0
   },
@@ -128,18 +128,18 @@
     "isRegistered": true,
     "firstName": "Hermon",
     "lastName": "Regis",
-    "cohort": "WCRI 77",
+    "cohort": "NYC 5",
     "registeredAt": {
       "$date": "1970-01-20T14:35:42.909Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dc9"
+      "$oid": "66723da58f368f285d304a06"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.910Z"
+      "$date": "2024-06-19T02:08:37.644Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.910Z"
+      "$date": "2024-06-19T02:08:37.644Z"
     },
     "__v": 0
   },
@@ -152,18 +152,18 @@
     "isRegistered": false,
     "firstName": "Cordie",
     "lastName": "Rousby",
-    "cohort": "NYC 93",
+    "cohort": "LA 22",
     "registeredAt": {
       "$date": "1970-01-20T11:13:45.913Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dca"
+      "$oid": "66723da58f368f285d304a07"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.910Z"
+      "$date": "2024-06-19T02:08:37.644Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.910Z"
+      "$date": "2024-06-19T02:08:37.644Z"
     },
     "__v": 0
   },
@@ -176,18 +176,18 @@
     "isRegistered": false,
     "firstName": "Maureene",
     "lastName": "Riseborough",
-    "cohort": "LA 82",
+    "cohort": "NYC 14",
     "registeredAt": {
       "$date": "1970-01-20T12:21:32.791Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dcb"
+      "$oid": "66723da58f368f285d304a08"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.910Z"
+      "$date": "2024-06-19T02:08:37.644Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.910Z"
+      "$date": "2024-06-19T02:08:37.644Z"
     },
     "__v": 0
   },
@@ -200,18 +200,18 @@
     "isRegistered": false,
     "firstName": "Orelle",
     "lastName": "Lawson",
-    "cohort": "LA 56",
+    "cohort": "CTRI 44",
     "registeredAt": {
       "$date": "1970-01-20T13:15:33.880Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dcc"
+      "$oid": "66723da58f368f285d304a09"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.910Z"
+      "$date": "2024-06-19T02:08:37.644Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.910Z"
+      "$date": "2024-06-19T02:08:37.644Z"
     },
     "__v": 0
   },
@@ -224,18 +224,18 @@
     "isRegistered": false,
     "firstName": "Jess",
     "lastName": "Emer",
-    "cohort": "LA 93",
+    "cohort": "PTRI 80",
     "registeredAt": {
       "$date": "1970-01-20T13:02:37.374Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dcd"
+      "$oid": "66723da58f368f285d304a0a"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.910Z"
+      "$date": "2024-06-19T02:08:37.644Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.910Z"
+      "$date": "2024-06-19T02:08:37.644Z"
     },
     "__v": 0
   },
@@ -248,18 +248,18 @@
     "isRegistered": true,
     "firstName": "Mariel",
     "lastName": "Tubbles",
-    "cohort": "CTRI 92",
+    "cohort": "PTRI 10",
     "registeredAt": {
       "$date": "1970-01-20T10:33:43.674Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dce"
+      "$oid": "66723da58f368f285d304a0b"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.910Z"
+      "$date": "2024-06-19T02:08:37.644Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.910Z"
+      "$date": "2024-06-19T02:08:37.644Z"
     },
     "__v": 0
   },
@@ -272,18 +272,18 @@
     "isRegistered": true,
     "firstName": "Perice",
     "lastName": "Keightley",
-    "cohort": "LA 96",
+    "cohort": "WCRI 3",
     "registeredAt": {
       "$date": "1970-01-20T13:31:16.231Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dcf"
+      "$oid": "66723da58f368f285d304a0c"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.910Z"
+      "$date": "2024-06-19T02:08:37.645Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.910Z"
+      "$date": "2024-06-19T02:08:37.645Z"
     },
     "__v": 0
   },
@@ -296,18 +296,18 @@
     "isRegistered": false,
     "firstName": "Eula",
     "lastName": "Falcus",
-    "cohort": "WCRI 92",
+    "cohort": "ECRI 37",
     "registeredAt": {
       "$date": "1970-01-20T18:29:02.836Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dd0"
+      "$oid": "66723da58f368f285d304a0d"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.910Z"
+      "$date": "2024-06-19T02:08:37.645Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.910Z"
+      "$date": "2024-06-19T02:08:37.645Z"
     },
     "__v": 0
   },
@@ -320,18 +320,18 @@
     "isRegistered": true,
     "firstName": "Jacqui",
     "lastName": "Baldini",
-    "cohort": "NYC 63",
+    "cohort": "LA 69",
     "registeredAt": {
       "$date": "1970-01-20T14:11:21.038Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dd1"
+      "$oid": "66723da58f368f285d304a0e"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.911Z"
+      "$date": "2024-06-19T02:08:37.645Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.911Z"
+      "$date": "2024-06-19T02:08:37.645Z"
     },
     "__v": 0
   },
@@ -344,18 +344,18 @@
     "isRegistered": true,
     "firstName": "Scottie",
     "lastName": "Northridge",
-    "cohort": "ECRI 44",
+    "cohort": "CTRI 6",
     "registeredAt": {
       "$date": "1970-01-20T13:47:43.603Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dd2"
+      "$oid": "66723da58f368f285d304a0f"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.911Z"
+      "$date": "2024-06-19T02:08:37.645Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.911Z"
+      "$date": "2024-06-19T02:08:37.645Z"
     },
     "__v": 0
   },
@@ -368,18 +368,18 @@
     "isRegistered": false,
     "firstName": "Dorie",
     "lastName": "Hedger",
-    "cohort": "WCRI 8",
+    "cohort": "ECRI 37",
     "registeredAt": {
       "$date": "1970-01-20T12:40:26.473Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dd3"
+      "$oid": "66723da58f368f285d304a10"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.911Z"
+      "$date": "2024-06-19T02:08:37.645Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.911Z"
+      "$date": "2024-06-19T02:08:37.645Z"
     },
     "__v": 0
   },
@@ -392,18 +392,18 @@
     "isRegistered": false,
     "firstName": "Nadia",
     "lastName": "Skeen",
-    "cohort": "CTRI 56",
+    "cohort": "FTRI 38",
     "registeredAt": {
       "$date": "1970-01-20T14:58:04.577Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dd4"
+      "$oid": "66723da58f368f285d304a11"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.911Z"
+      "$date": "2024-06-19T02:08:37.645Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.911Z"
+      "$date": "2024-06-19T02:08:37.645Z"
     },
     "__v": 0
   },
@@ -416,18 +416,18 @@
     "isRegistered": true,
     "firstName": "Mickie",
     "lastName": "Groom",
-    "cohort": "WCRI 35",
+    "cohort": "PTRI 97",
     "registeredAt": {
       "$date": "1970-01-20T13:47:19.049Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dd5"
+      "$oid": "66723da58f368f285d304a12"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.911Z"
+      "$date": "2024-06-19T02:08:37.645Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.911Z"
+      "$date": "2024-06-19T02:08:37.645Z"
     },
     "__v": 0
   },
@@ -440,18 +440,18 @@
     "isRegistered": true,
     "firstName": "Leticia",
     "lastName": "Kupisz",
-    "cohort": "WCRI 69",
+    "cohort": "CTRI 83",
     "registeredAt": {
       "$date": "1970-01-20T11:33:31.294Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dd6"
+      "$oid": "66723da58f368f285d304a13"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.911Z"
+      "$date": "2024-06-19T02:08:37.645Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.911Z"
+      "$date": "2024-06-19T02:08:37.645Z"
     },
     "__v": 0
   },
@@ -464,18 +464,18 @@
     "isRegistered": false,
     "firstName": "Babb",
     "lastName": "Dean",
-    "cohort": "PTRI 46",
+    "cohort": "ECRI 29",
     "registeredAt": {
       "$date": "1970-01-20T12:25:42.997Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dd7"
+      "$oid": "66723da58f368f285d304a14"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.911Z"
+      "$date": "2024-06-19T02:08:37.646Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.911Z"
+      "$date": "2024-06-19T02:08:37.646Z"
     },
     "__v": 0
   },
@@ -488,18 +488,18 @@
     "isRegistered": false,
     "firstName": "Burtie",
     "lastName": "Lilley",
-    "cohort": "NYC 83",
+    "cohort": "ECRI 86",
     "registeredAt": {
       "$date": "1970-01-20T10:38:22.087Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dd8"
+      "$oid": "66723da58f368f285d304a15"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.911Z"
+      "$date": "2024-06-19T02:08:37.646Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.911Z"
+      "$date": "2024-06-19T02:08:37.646Z"
     },
     "__v": 0
   },
@@ -512,18 +512,18 @@
     "isRegistered": true,
     "firstName": "Dorelle",
     "lastName": "Woodland",
-    "cohort": "PTRI 5",
+    "cohort": "NYC 49",
     "registeredAt": {
       "$date": "1970-01-20T21:05:10.004Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dd9"
+      "$oid": "66723da58f368f285d304a16"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.911Z"
+      "$date": "2024-06-19T02:08:37.646Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.911Z"
+      "$date": "2024-06-19T02:08:37.646Z"
     },
     "__v": 0
   },
@@ -536,18 +536,18 @@
     "isRegistered": false,
     "firstName": "Burk",
     "lastName": "Dunlap",
-    "cohort": "WCRI 20",
+    "cohort": "WCRI 32",
     "registeredAt": {
       "$date": "1970-01-20T10:46:36.642Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dda"
+      "$oid": "66723da58f368f285d304a17"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.911Z"
+      "$date": "2024-06-19T02:08:37.646Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.911Z"
+      "$date": "2024-06-19T02:08:37.646Z"
     },
     "__v": 0
   },
@@ -560,18 +560,18 @@
     "isRegistered": false,
     "firstName": "Cecilius",
     "lastName": "Darrel",
-    "cohort": "NYC 34",
+    "cohort": "PTRI 92",
     "registeredAt": {
       "$date": "1970-01-20T18:04:03.899Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352ddb"
+      "$oid": "66723da58f368f285d304a18"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.911Z"
+      "$date": "2024-06-19T02:08:37.646Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.911Z"
+      "$date": "2024-06-19T02:08:37.646Z"
     },
     "__v": 0
   },
@@ -584,18 +584,18 @@
     "isRegistered": true,
     "firstName": "Brod",
     "lastName": "Budcock",
-    "cohort": "NYC 43",
+    "cohort": "FTRI 69",
     "registeredAt": {
       "$date": "1970-01-20T09:40:43.900Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352ddc"
+      "$oid": "66723da58f368f285d304a19"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.912Z"
+      "$date": "2024-06-19T02:08:37.646Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.912Z"
+      "$date": "2024-06-19T02:08:37.646Z"
     },
     "__v": 0
   },
@@ -608,18 +608,18 @@
     "isRegistered": false,
     "firstName": "Bayard",
     "lastName": "Thickin",
-    "cohort": "CTRI 53",
+    "cohort": "LA 72",
     "registeredAt": {
       "$date": "1970-01-20T14:59:50.750Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352ddd"
+      "$oid": "66723da58f368f285d304a1a"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.912Z"
+      "$date": "2024-06-19T02:08:37.646Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.912Z"
+      "$date": "2024-06-19T02:08:37.646Z"
     },
     "__v": 0
   },
@@ -632,18 +632,18 @@
     "isRegistered": true,
     "firstName": "Lorenza",
     "lastName": "Larrington",
-    "cohort": "LA 28",
+    "cohort": "FTRI 61",
     "registeredAt": {
       "$date": "1970-01-20T11:34:38.978Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dde"
+      "$oid": "66723da58f368f285d304a1b"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.912Z"
+      "$date": "2024-06-19T02:08:37.646Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.912Z"
+      "$date": "2024-06-19T02:08:37.646Z"
     },
     "__v": 0
   },
@@ -656,18 +656,18 @@
     "isRegistered": true,
     "firstName": "Ranna",
     "lastName": "Stanton",
-    "cohort": "FTRI 13",
+    "cohort": "NYC 55",
     "registeredAt": {
       "$date": "1970-01-20T14:35:02.332Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352ddf"
+      "$oid": "66723da58f368f285d304a1c"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.912Z"
+      "$date": "2024-06-19T02:08:37.646Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.912Z"
+      "$date": "2024-06-19T02:08:37.646Z"
     },
     "__v": 0
   },
@@ -680,18 +680,18 @@
     "isRegistered": false,
     "firstName": "Silvan",
     "lastName": "Cowdroy",
-    "cohort": "CTRI 29",
+    "cohort": "ECRI 43",
     "registeredAt": {
       "$date": "1970-01-20T15:46:38.807Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352de0"
+      "$oid": "66723da58f368f285d304a1d"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.912Z"
+      "$date": "2024-06-19T02:08:37.646Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.912Z"
+      "$date": "2024-06-19T02:08:37.646Z"
     },
     "__v": 0
   },
@@ -704,18 +704,18 @@
     "isRegistered": false,
     "firstName": "Pepita",
     "lastName": "Skirling",
-    "cohort": "NYC 79",
+    "cohort": "WCRI 90",
     "registeredAt": {
       "$date": "1970-01-20T17:04:37.019Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352de1"
+      "$oid": "66723da58f368f285d304a1e"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.912Z"
+      "$date": "2024-06-19T02:08:37.646Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.912Z"
+      "$date": "2024-06-19T02:08:37.646Z"
     },
     "__v": 0
   },
@@ -728,18 +728,18 @@
     "isRegistered": true,
     "firstName": "Brinna",
     "lastName": "Spensley",
-    "cohort": "LA 97",
+    "cohort": "PTRI 14",
     "registeredAt": {
       "$date": "1970-01-20T13:33:35.190Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352de2"
+      "$oid": "66723da58f368f285d304a1f"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.912Z"
+      "$date": "2024-06-19T02:08:37.646Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.912Z"
+      "$date": "2024-06-19T02:08:37.646Z"
     },
     "__v": 0
   },
@@ -752,18 +752,18 @@
     "isRegistered": true,
     "firstName": "Leta",
     "lastName": "Blais",
-    "cohort": "FTRI 35",
+    "cohort": "ECRI 27",
     "registeredAt": {
       "$date": "1970-01-20T17:20:30.885Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352de3"
+      "$oid": "66723da58f368f285d304a20"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.912Z"
+      "$date": "2024-06-19T02:08:37.646Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.912Z"
+      "$date": "2024-06-19T02:08:37.646Z"
     },
     "__v": 0
   },
@@ -776,18 +776,18 @@
     "isRegistered": true,
     "firstName": "Onfre",
     "lastName": "Le Huquet",
-    "cohort": "ECRI 81",
+    "cohort": "WCRI 22",
     "registeredAt": {
       "$date": "1970-01-20T16:24:15.434Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352de4"
+      "$oid": "66723da58f368f285d304a21"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.912Z"
+      "$date": "2024-06-19T02:08:37.647Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.912Z"
+      "$date": "2024-06-19T02:08:37.647Z"
     },
     "__v": 0
   },
@@ -800,18 +800,18 @@
     "isRegistered": false,
     "firstName": "Cairistiona",
     "lastName": "Edworthie",
-    "cohort": "CTRI 12",
+    "cohort": "LA 34",
     "registeredAt": {
       "$date": "1970-01-20T14:57:07.010Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352de5"
+      "$oid": "66723da58f368f285d304a22"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.912Z"
+      "$date": "2024-06-19T02:08:37.647Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.912Z"
+      "$date": "2024-06-19T02:08:37.647Z"
     },
     "__v": 0
   },
@@ -824,18 +824,18 @@
     "isRegistered": true,
     "firstName": "Jonas",
     "lastName": "Chong",
-    "cohort": "NYC 8",
+    "cohort": "CTRI 51",
     "registeredAt": {
       "$date": "1970-01-20T16:23:24.074Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352de6"
+      "$oid": "66723da58f368f285d304a23"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.913Z"
+      "$date": "2024-06-19T02:08:37.647Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.913Z"
+      "$date": "2024-06-19T02:08:37.647Z"
     },
     "__v": 0
   },
@@ -848,18 +848,18 @@
     "isRegistered": true,
     "firstName": "Ezra",
     "lastName": "Minto",
-    "cohort": "WCRI 46",
+    "cohort": "LA 55",
     "registeredAt": {
       "$date": "1970-01-20T16:45:04.952Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352de7"
+      "$oid": "66723da58f368f285d304a24"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.913Z"
+      "$date": "2024-06-19T02:08:37.647Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.913Z"
+      "$date": "2024-06-19T02:08:37.647Z"
     },
     "__v": 0
   },
@@ -872,18 +872,18 @@
     "isRegistered": false,
     "firstName": "Virgina",
     "lastName": "Licari",
-    "cohort": "PTRI 30",
+    "cohort": "FTRI 90",
     "registeredAt": {
       "$date": "1970-01-20T18:31:24.774Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352de8"
+      "$oid": "66723da58f368f285d304a25"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.913Z"
+      "$date": "2024-06-19T02:08:37.647Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.913Z"
+      "$date": "2024-06-19T02:08:37.647Z"
     },
     "__v": 0
   },
@@ -896,18 +896,18 @@
     "isRegistered": true,
     "firstName": "Rickert",
     "lastName": "Lambrick",
-    "cohort": "FTRI 50",
+    "cohort": "FTRI 81",
     "registeredAt": {
       "$date": "1970-01-20T10:22:28.854Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352de9"
+      "$oid": "66723da58f368f285d304a26"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.913Z"
+      "$date": "2024-06-19T02:08:37.647Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.913Z"
+      "$date": "2024-06-19T02:08:37.647Z"
     },
     "__v": 0
   },
@@ -920,18 +920,18 @@
     "isRegistered": true,
     "firstName": "Jesselyn",
     "lastName": "Madner",
-    "cohort": "ECRI 24",
+    "cohort": "LA 98",
     "registeredAt": {
       "$date": "1970-01-20T12:18:09.400Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dea"
+      "$oid": "66723da58f368f285d304a27"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.913Z"
+      "$date": "2024-06-19T02:08:37.647Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.913Z"
+      "$date": "2024-06-19T02:08:37.647Z"
     },
     "__v": 0
   },
@@ -944,18 +944,18 @@
     "isRegistered": false,
     "firstName": "Peirce",
     "lastName": "Test",
-    "cohort": "FTRI 49",
+    "cohort": "WCRI 75",
     "registeredAt": {
       "$date": "1970-01-20T10:10:01.051Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352deb"
+      "$oid": "66723da58f368f285d304a28"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.913Z"
+      "$date": "2024-06-19T02:08:37.647Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.913Z"
+      "$date": "2024-06-19T02:08:37.647Z"
     },
     "__v": 0
   },
@@ -968,18 +968,18 @@
     "isRegistered": true,
     "firstName": "Saraann",
     "lastName": "Walcher",
-    "cohort": "PTRI 41",
+    "cohort": "CTRI 7",
     "registeredAt": {
       "$date": "1970-01-20T19:08:59.027Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dec"
+      "$oid": "66723da58f368f285d304a29"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.913Z"
+      "$date": "2024-06-19T02:08:37.648Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.913Z"
+      "$date": "2024-06-19T02:08:37.648Z"
     },
     "__v": 0
   },
@@ -992,18 +992,18 @@
     "isRegistered": true,
     "firstName": "Giff",
     "lastName": "Bank",
-    "cohort": "FTRI 49",
+    "cohort": "WCRI 44",
     "registeredAt": {
       "$date": "1970-01-20T12:07:22.746Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352ded"
+      "$oid": "66723da58f368f285d304a2a"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.913Z"
+      "$date": "2024-06-19T02:08:37.648Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.913Z"
+      "$date": "2024-06-19T02:08:37.648Z"
     },
     "__v": 0
   },
@@ -1016,18 +1016,18 @@
     "isRegistered": false,
     "firstName": "Ronny",
     "lastName": "Allmen",
-    "cohort": "PTRI 94",
+    "cohort": "NYC 50",
     "registeredAt": {
       "$date": "1970-01-20T12:51:39.673Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dee"
+      "$oid": "66723da58f368f285d304a2b"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.913Z"
+      "$date": "2024-06-19T02:08:37.648Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.913Z"
+      "$date": "2024-06-19T02:08:37.648Z"
     },
     "__v": 0
   },
@@ -1040,18 +1040,18 @@
     "isRegistered": true,
     "firstName": "Kimmi",
     "lastName": "Yarrow",
-    "cohort": "FTRI 28",
+    "cohort": "WCRI 92",
     "registeredAt": {
       "$date": "1970-01-20T13:45:24.672Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352def"
+      "$oid": "66723da58f368f285d304a2c"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.914Z"
+      "$date": "2024-06-19T02:08:37.648Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.914Z"
+      "$date": "2024-06-19T02:08:37.648Z"
     },
     "__v": 0
   },
@@ -1064,18 +1064,18 @@
     "isRegistered": false,
     "firstName": "Portia",
     "lastName": "Shepard",
-    "cohort": "LA 75",
+    "cohort": "CTRI 53",
     "registeredAt": {
       "$date": "1970-01-20T08:36:25.642Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352df0"
+      "$oid": "66723da58f368f285d304a2d"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.914Z"
+      "$date": "2024-06-19T02:08:37.648Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.914Z"
+      "$date": "2024-06-19T02:08:37.648Z"
     },
     "__v": 0
   },
@@ -1088,18 +1088,18 @@
     "isRegistered": false,
     "firstName": "Emlen",
     "lastName": "Gook",
-    "cohort": "PTRI 57",
+    "cohort": "FTRI 47",
     "registeredAt": {
       "$date": "1970-01-20T11:42:55.506Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352df1"
+      "$oid": "66723da58f368f285d304a2e"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.914Z"
+      "$date": "2024-06-19T02:08:37.648Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.914Z"
+      "$date": "2024-06-19T02:08:37.648Z"
     },
     "__v": 0
   },
@@ -1112,18 +1112,18 @@
     "isRegistered": false,
     "firstName": "Debee",
     "lastName": "Rocks",
-    "cohort": "CTRI 22",
+    "cohort": "FTRI 55",
     "registeredAt": {
       "$date": "1970-01-20T17:53:43.454Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352df2"
+      "$oid": "66723da58f368f285d304a2f"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.914Z"
+      "$date": "2024-06-19T02:08:37.648Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.914Z"
+      "$date": "2024-06-19T02:08:37.648Z"
     },
     "__v": 0
   },
@@ -1136,18 +1136,18 @@
     "isRegistered": false,
     "firstName": "Valina",
     "lastName": "Dhennin",
-    "cohort": "PTRI 69",
+    "cohort": "CTRI 33",
     "registeredAt": {
       "$date": "1970-01-20T10:57:45.096Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352df3"
+      "$oid": "66723da58f368f285d304a30"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.914Z"
+      "$date": "2024-06-19T02:08:37.648Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.914Z"
+      "$date": "2024-06-19T02:08:37.648Z"
     },
     "__v": 0
   },
@@ -1160,18 +1160,18 @@
     "isRegistered": false,
     "firstName": "Dwayne",
     "lastName": "Cheasman",
-    "cohort": "WCRI 30",
+    "cohort": "CTRI 40",
     "registeredAt": {
       "$date": "1970-01-20T11:36:58.150Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352df4"
+      "$oid": "66723da58f368f285d304a31"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.914Z"
+      "$date": "2024-06-19T02:08:37.648Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.914Z"
+      "$date": "2024-06-19T02:08:37.648Z"
     },
     "__v": 0
   },
@@ -1184,18 +1184,18 @@
     "isRegistered": false,
     "firstName": "Nellie",
     "lastName": "Gladhill",
-    "cohort": "ECRI 47",
+    "cohort": "LA 31",
     "registeredAt": {
       "$date": "1970-01-20T13:09:23.480Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352df5"
+      "$oid": "66723da58f368f285d304a32"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.914Z"
+      "$date": "2024-06-19T02:08:37.648Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.914Z"
+      "$date": "2024-06-19T02:08:37.648Z"
     },
     "__v": 0
   },
@@ -1208,18 +1208,18 @@
     "isRegistered": true,
     "firstName": "Eziechiele",
     "lastName": "Livzey",
-    "cohort": "CTRI 32",
+    "cohort": "NYC 87",
     "registeredAt": {
       "$date": "1970-01-20T11:12:55.403Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352df6"
+      "$oid": "66723da58f368f285d304a33"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.914Z"
+      "$date": "2024-06-19T02:08:37.649Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.914Z"
+      "$date": "2024-06-19T02:08:37.649Z"
     },
     "__v": 0
   },
@@ -1232,18 +1232,18 @@
     "isRegistered": true,
     "firstName": "Sallyanne",
     "lastName": "Mingasson",
-    "cohort": "PTRI 12",
+    "cohort": "NYC 38",
     "registeredAt": {
       "$date": "1970-01-20T11:45:13.073Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352df7"
+      "$oid": "66723da58f368f285d304a34"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.915Z"
+      "$date": "2024-06-19T02:08:37.649Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.915Z"
+      "$date": "2024-06-19T02:08:37.649Z"
     },
     "__v": 0
   },
@@ -1256,18 +1256,18 @@
     "isRegistered": true,
     "firstName": "Heall",
     "lastName": "Pattullo",
-    "cohort": "FTRI 36",
+    "cohort": "WCRI 72",
     "registeredAt": {
       "$date": "1970-01-20T10:34:33.540Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352df8"
+      "$oid": "66723da58f368f285d304a35"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.915Z"
+      "$date": "2024-06-19T02:08:37.649Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.915Z"
+      "$date": "2024-06-19T02:08:37.649Z"
     },
     "__v": 0
   },
@@ -1280,18 +1280,18 @@
     "isRegistered": true,
     "firstName": "Amaleta",
     "lastName": "Scarlan",
-    "cohort": "WCRI 67",
+    "cohort": "WCRI 81",
     "registeredAt": {
       "$date": "1970-01-20T19:45:01.940Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352df9"
+      "$oid": "66723da58f368f285d304a36"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.916Z"
+      "$date": "2024-06-19T02:08:37.649Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.916Z"
+      "$date": "2024-06-19T02:08:37.649Z"
     },
     "__v": 0
   },
@@ -1304,18 +1304,18 @@
     "isRegistered": true,
     "firstName": "Zonda",
     "lastName": "Lawlance",
-    "cohort": "CTRI 99",
+    "cohort": "NYC 59",
     "registeredAt": {
       "$date": "1970-01-20T16:45:24.480Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dfa"
+      "$oid": "66723da58f368f285d304a37"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.916Z"
+      "$date": "2024-06-19T02:08:37.649Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.916Z"
+      "$date": "2024-06-19T02:08:37.649Z"
     },
     "__v": 0
   },
@@ -1328,18 +1328,18 @@
     "isRegistered": false,
     "firstName": "Livvy",
     "lastName": "Romney",
-    "cohort": "PTRI 15",
+    "cohort": "CTRI 36",
     "registeredAt": {
       "$date": "1970-01-20T17:22:54.160Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dfb"
+      "$oid": "66723da58f368f285d304a38"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.916Z"
+      "$date": "2024-06-19T02:08:37.649Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.916Z"
+      "$date": "2024-06-19T02:08:37.649Z"
     },
     "__v": 0
   },
@@ -1352,18 +1352,18 @@
     "isRegistered": true,
     "firstName": "Brockie",
     "lastName": "Allardyce",
-    "cohort": "LA 10",
+    "cohort": "NYC 61",
     "registeredAt": {
       "$date": "1970-01-20T10:24:01.128Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dfc"
+      "$oid": "66723da58f368f285d304a39"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.916Z"
+      "$date": "2024-06-19T02:08:37.649Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.916Z"
+      "$date": "2024-06-19T02:08:37.649Z"
     },
     "__v": 0
   },
@@ -1376,18 +1376,18 @@
     "isRegistered": false,
     "firstName": "Jaquelyn",
     "lastName": "Atthowe",
-    "cohort": "FTRI 47",
+    "cohort": "WCRI 33",
     "registeredAt": {
       "$date": "1970-01-20T18:20:08.705Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dfd"
+      "$oid": "66723da58f368f285d304a3a"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.916Z"
+      "$date": "2024-06-19T02:08:37.649Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.916Z"
+      "$date": "2024-06-19T02:08:37.649Z"
     },
     "__v": 0
   },
@@ -1400,18 +1400,18 @@
     "isRegistered": true,
     "firstName": "Barn",
     "lastName": "Guerre",
-    "cohort": "NYC 24",
+    "cohort": "ECRI 56",
     "registeredAt": {
       "$date": "1970-01-20T20:43:22.221Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dfe"
+      "$oid": "66723da58f368f285d304a3b"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.916Z"
+      "$date": "2024-06-19T02:08:37.650Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.916Z"
+      "$date": "2024-06-19T02:08:37.650Z"
     },
     "__v": 0
   },
@@ -1424,18 +1424,18 @@
     "isRegistered": false,
     "firstName": "Carina",
     "lastName": "Millions",
-    "cohort": "CTRI 74",
+    "cohort": "CTRI 56",
     "registeredAt": {
       "$date": "1970-01-20T15:50:36.752Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352dff"
+      "$oid": "66723da58f368f285d304a3c"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.916Z"
+      "$date": "2024-06-19T02:08:37.650Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.916Z"
+      "$date": "2024-06-19T02:08:37.650Z"
     },
     "__v": 0
   },
@@ -1448,18 +1448,18 @@
     "isRegistered": true,
     "firstName": "Micaela",
     "lastName": "Grigorini",
-    "cohort": "WCRI 28",
+    "cohort": "LA 81",
     "registeredAt": {
       "$date": "1970-01-20T09:06:40.482Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e00"
+      "$oid": "66723da58f368f285d304a3d"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.916Z"
+      "$date": "2024-06-19T02:08:37.650Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.916Z"
+      "$date": "2024-06-19T02:08:37.650Z"
     },
     "__v": 0
   },
@@ -1472,18 +1472,18 @@
     "isRegistered": false,
     "firstName": "Fran",
     "lastName": "Redwin",
-    "cohort": "WCRI 85",
+    "cohort": "CTRI 27",
     "registeredAt": {
       "$date": "1970-01-20T13:29:42.467Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e01"
+      "$oid": "66723da58f368f285d304a3e"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.916Z"
+      "$date": "2024-06-19T02:08:37.650Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.916Z"
+      "$date": "2024-06-19T02:08:37.650Z"
     },
     "__v": 0
   },
@@ -1496,18 +1496,18 @@
     "isRegistered": true,
     "firstName": "Kalina",
     "lastName": "Firmager",
-    "cohort": "ECRI 87",
+    "cohort": "CTRI 63",
     "registeredAt": {
       "$date": "1970-01-20T15:14:33.707Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e02"
+      "$oid": "66723da58f368f285d304a3f"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.917Z"
+      "$date": "2024-06-19T02:08:37.650Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.917Z"
+      "$date": "2024-06-19T02:08:37.650Z"
     },
     "__v": 0
   },
@@ -1520,18 +1520,18 @@
     "isRegistered": true,
     "firstName": "Lurline",
     "lastName": "Blyth",
-    "cohort": "CTRI 98",
+    "cohort": "PTRI 8",
     "registeredAt": {
       "$date": "1970-01-20T14:18:34.651Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e03"
+      "$oid": "66723da58f368f285d304a40"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.917Z"
+      "$date": "2024-06-19T02:08:37.650Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.917Z"
+      "$date": "2024-06-19T02:08:37.650Z"
     },
     "__v": 0
   },
@@ -1544,18 +1544,18 @@
     "isRegistered": true,
     "firstName": "Julianne",
     "lastName": "Stowte",
-    "cohort": "PTRI 77",
+    "cohort": "ECRI 92",
     "registeredAt": {
       "$date": "1970-01-20T10:56:05.284Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e04"
+      "$oid": "66723da58f368f285d304a41"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.917Z"
+      "$date": "2024-06-19T02:08:37.650Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.917Z"
+      "$date": "2024-06-19T02:08:37.650Z"
     },
     "__v": 0
   },
@@ -1568,18 +1568,18 @@
     "isRegistered": true,
     "firstName": "Tierney",
     "lastName": "Patrie",
-    "cohort": "NYC 88",
+    "cohort": "LA 71",
     "registeredAt": {
       "$date": "1970-01-20T16:53:05.719Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e05"
+      "$oid": "66723da58f368f285d304a42"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.917Z"
+      "$date": "2024-06-19T02:08:37.650Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.917Z"
+      "$date": "2024-06-19T02:08:37.650Z"
     },
     "__v": 0
   },
@@ -1592,18 +1592,18 @@
     "isRegistered": false,
     "firstName": "Gerladina",
     "lastName": "Sherborne",
-    "cohort": "CTRI 10",
+    "cohort": "PTRI 71",
     "registeredAt": {
       "$date": "1970-01-20T19:28:48.496Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e06"
+      "$oid": "66723da58f368f285d304a43"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.917Z"
+      "$date": "2024-06-19T02:08:37.650Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.917Z"
+      "$date": "2024-06-19T02:08:37.650Z"
     },
     "__v": 0
   },
@@ -1616,18 +1616,18 @@
     "isRegistered": true,
     "firstName": "Phil",
     "lastName": "Farress",
-    "cohort": "WCRI 14",
+    "cohort": "FTRI 7",
     "registeredAt": {
       "$date": "1970-01-20T14:30:52.128Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e07"
+      "$oid": "66723da58f368f285d304a44"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.917Z"
+      "$date": "2024-06-19T02:08:37.650Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.917Z"
+      "$date": "2024-06-19T02:08:37.650Z"
     },
     "__v": 0
   },
@@ -1640,18 +1640,18 @@
     "isRegistered": false,
     "firstName": "Elisha",
     "lastName": "Allsop",
-    "cohort": "WCRI 72",
+    "cohort": "FTRI 56",
     "registeredAt": {
       "$date": "1970-01-20T20:03:21.737Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e08"
+      "$oid": "66723da58f368f285d304a45"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.917Z"
+      "$date": "2024-06-19T02:08:37.650Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.917Z"
+      "$date": "2024-06-19T02:08:37.650Z"
     },
     "__v": 0
   },
@@ -1664,18 +1664,18 @@
     "isRegistered": false,
     "firstName": "Carline",
     "lastName": "Skipton",
-    "cohort": "NYC 21",
+    "cohort": "CTRI 95",
     "registeredAt": {
       "$date": "1970-01-20T16:49:15.150Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e09"
+      "$oid": "66723da58f368f285d304a46"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.917Z"
+      "$date": "2024-06-19T02:08:37.650Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.917Z"
+      "$date": "2024-06-19T02:08:37.650Z"
     },
     "__v": 0
   },
@@ -1688,18 +1688,18 @@
     "isRegistered": false,
     "firstName": "Mia",
     "lastName": "Northridge",
-    "cohort": "LA 39",
+    "cohort": "CTRI 62",
     "registeredAt": {
       "$date": "1970-01-20T11:07:10.387Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e0a"
+      "$oid": "66723da58f368f285d304a47"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.917Z"
+      "$date": "2024-06-19T02:08:37.650Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.917Z"
+      "$date": "2024-06-19T02:08:37.650Z"
     },
     "__v": 0
   },
@@ -1712,18 +1712,18 @@
     "isRegistered": true,
     "firstName": "Isaiah",
     "lastName": "Friedenbach",
-    "cohort": "FTRI 66",
+    "cohort": "ECRI 21",
     "registeredAt": {
       "$date": "1970-01-20T16:50:30.245Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e0b"
+      "$oid": "66723da58f368f285d304a48"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.917Z"
+      "$date": "2024-06-19T02:08:37.651Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.917Z"
+      "$date": "2024-06-19T02:08:37.651Z"
     },
     "__v": 0
   },
@@ -1736,18 +1736,18 @@
     "isRegistered": true,
     "firstName": "Tallulah",
     "lastName": "Dulton",
-    "cohort": "WCRI 83",
+    "cohort": "NYC 84",
     "registeredAt": {
       "$date": "1970-01-20T13:17:09.264Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e0c"
+      "$oid": "66723da58f368f285d304a49"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.918Z"
+      "$date": "2024-06-19T02:08:37.651Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.918Z"
+      "$date": "2024-06-19T02:08:37.651Z"
     },
     "__v": 0
   },
@@ -1760,18 +1760,18 @@
     "isRegistered": false,
     "firstName": "Bel",
     "lastName": "Esherwood",
-    "cohort": "WCRI 94",
+    "cohort": "PTRI 37",
     "registeredAt": {
       "$date": "1970-01-20T19:40:17.366Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e0d"
+      "$oid": "66723da58f368f285d304a4a"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.918Z"
+      "$date": "2024-06-19T02:08:37.651Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.918Z"
+      "$date": "2024-06-19T02:08:37.651Z"
     },
     "__v": 0
   },
@@ -1784,18 +1784,18 @@
     "isRegistered": true,
     "firstName": "Anatol",
     "lastName": "Kiley",
-    "cohort": "WCRI 26",
+    "cohort": "FTRI 30",
     "registeredAt": {
       "$date": "1970-01-20T20:15:39.754Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e0e"
+      "$oid": "66723da58f368f285d304a4b"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.918Z"
+      "$date": "2024-06-19T02:08:37.651Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.918Z"
+      "$date": "2024-06-19T02:08:37.651Z"
     },
     "__v": 0
   },
@@ -1808,18 +1808,18 @@
     "isRegistered": true,
     "firstName": "Corabel",
     "lastName": "Meth",
-    "cohort": "CTRI 0",
+    "cohort": "LA 31",
     "registeredAt": {
       "$date": "1970-01-20T11:26:24.205Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e0f"
+      "$oid": "66723da58f368f285d304a4c"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.918Z"
+      "$date": "2024-06-19T02:08:37.651Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.918Z"
+      "$date": "2024-06-19T02:08:37.651Z"
     },
     "__v": 0
   },
@@ -1832,18 +1832,18 @@
     "isRegistered": false,
     "firstName": "Shae",
     "lastName": "Terrill",
-    "cohort": "ECRI 29",
+    "cohort": "CTRI 15",
     "registeredAt": {
       "$date": "1970-01-20T12:46:02.944Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e10"
+      "$oid": "66723da58f368f285d304a4d"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.918Z"
+      "$date": "2024-06-19T02:08:37.651Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.918Z"
+      "$date": "2024-06-19T02:08:37.651Z"
     },
     "__v": 0
   },
@@ -1856,18 +1856,18 @@
     "isRegistered": false,
     "firstName": "Dotty",
     "lastName": "Mahedy",
-    "cohort": "LA 11",
+    "cohort": "ECRI 86",
     "registeredAt": {
       "$date": "1970-01-20T17:04:00.599Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e11"
+      "$oid": "66723da58f368f285d304a4e"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.918Z"
+      "$date": "2024-06-19T02:08:37.652Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.918Z"
+      "$date": "2024-06-19T02:08:37.652Z"
     },
     "__v": 0
   },
@@ -1880,18 +1880,18 @@
     "isRegistered": false,
     "firstName": "Salaidh",
     "lastName": "Attiwill",
-    "cohort": "WCRI 23",
+    "cohort": "ECRI 78",
     "registeredAt": {
       "$date": "1970-01-20T19:08:51.917Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e12"
+      "$oid": "66723da58f368f285d304a4f"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.918Z"
+      "$date": "2024-06-19T02:08:37.652Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.918Z"
+      "$date": "2024-06-19T02:08:37.652Z"
     },
     "__v": 0
   },
@@ -1904,18 +1904,18 @@
     "isRegistered": true,
     "firstName": "Billi",
     "lastName": "Bomb",
-    "cohort": "FTRI 34",
+    "cohort": "LA 16",
     "registeredAt": {
       "$date": "1970-01-20T17:13:38.131Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e13"
+      "$oid": "66723da58f368f285d304a50"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.918Z"
+      "$date": "2024-06-19T02:08:37.652Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.918Z"
+      "$date": "2024-06-19T02:08:37.652Z"
     },
     "__v": 0
   },
@@ -1928,18 +1928,18 @@
     "isRegistered": true,
     "firstName": "Burty",
     "lastName": "Bedells",
-    "cohort": "FTRI 36",
+    "cohort": "PTRI 76",
     "registeredAt": {
       "$date": "1970-01-20T17:08:45.382Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e14"
+      "$oid": "66723da58f368f285d304a51"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.918Z"
+      "$date": "2024-06-19T02:08:37.652Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.918Z"
+      "$date": "2024-06-19T02:08:37.652Z"
     },
     "__v": 0
   },
@@ -1952,18 +1952,18 @@
     "isRegistered": false,
     "firstName": "De",
     "lastName": "Lemin",
-    "cohort": "PTRI 5",
+    "cohort": "PTRI 97",
     "registeredAt": {
       "$date": "1970-01-20T19:38:34.981Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e15"
+      "$oid": "66723da58f368f285d304a52"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.918Z"
+      "$date": "2024-06-19T02:08:37.652Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.918Z"
+      "$date": "2024-06-19T02:08:37.652Z"
     },
     "__v": 0
   },
@@ -1976,18 +1976,18 @@
     "isRegistered": true,
     "firstName": "Morgen",
     "lastName": "Draco",
-    "cohort": "LA 74",
+    "cohort": "FTRI 92",
     "registeredAt": {
       "$date": "1970-01-20T11:40:37.999Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e16"
+      "$oid": "66723da58f368f285d304a53"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.918Z"
+      "$date": "2024-06-19T02:08:37.652Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.918Z"
+      "$date": "2024-06-19T02:08:37.652Z"
     },
     "__v": 0
   },
@@ -2000,18 +2000,18 @@
     "isRegistered": true,
     "firstName": "Urban",
     "lastName": "Grassin",
-    "cohort": "ECRI 17",
+    "cohort": "FTRI 85",
     "registeredAt": {
       "$date": "1970-01-20T19:01:11.474Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e17"
+      "$oid": "66723da58f368f285d304a54"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.919Z"
+      "$date": "2024-06-19T02:08:37.652Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.919Z"
+      "$date": "2024-06-19T02:08:37.652Z"
     },
     "__v": 0
   },
@@ -2024,18 +2024,18 @@
     "isRegistered": false,
     "firstName": "Archy",
     "lastName": "Atto",
-    "cohort": "CTRI 25",
+    "cohort": "CTRI 32",
     "registeredAt": {
       "$date": "1970-01-20T19:34:03.526Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e18"
+      "$oid": "66723da58f368f285d304a55"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.919Z"
+      "$date": "2024-06-19T02:08:37.652Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.919Z"
+      "$date": "2024-06-19T02:08:37.652Z"
     },
     "__v": 0
   },
@@ -2048,18 +2048,18 @@
     "isRegistered": true,
     "firstName": "Lothaire",
     "lastName": "Murfill",
-    "cohort": "CTRI 49",
+    "cohort": "CTRI 10",
     "registeredAt": {
       "$date": "1970-01-20T17:22:13.684Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e19"
+      "$oid": "66723da58f368f285d304a56"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.919Z"
+      "$date": "2024-06-19T02:08:37.653Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.919Z"
+      "$date": "2024-06-19T02:08:37.653Z"
     },
     "__v": 0
   },
@@ -2072,18 +2072,18 @@
     "isRegistered": true,
     "firstName": "Anne",
     "lastName": "O'Crigan",
-    "cohort": "WCRI 61",
+    "cohort": "ECRI 61",
     "registeredAt": {
       "$date": "1970-01-20T09:36:48.159Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e1a"
+      "$oid": "66723da58f368f285d304a57"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.919Z"
+      "$date": "2024-06-19T02:08:37.653Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.919Z"
+      "$date": "2024-06-19T02:08:37.653Z"
     },
     "__v": 0
   },
@@ -2096,18 +2096,18 @@
     "isRegistered": true,
     "firstName": "Nisse",
     "lastName": "Meacher",
-    "cohort": "NYC 54",
+    "cohort": "NYC 98",
     "registeredAt": {
       "$date": "1970-01-20T11:07:19.572Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e1b"
+      "$oid": "66723da58f368f285d304a58"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.919Z"
+      "$date": "2024-06-19T02:08:37.653Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.919Z"
+      "$date": "2024-06-19T02:08:37.653Z"
     },
     "__v": 0
   },
@@ -2120,18 +2120,18 @@
     "isRegistered": false,
     "firstName": "Dix",
     "lastName": "Traill",
-    "cohort": "CTRI 55",
+    "cohort": "WCRI 96",
     "registeredAt": {
       "$date": "1970-01-20T13:00:41.678Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e1c"
+      "$oid": "66723da58f368f285d304a59"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.919Z"
+      "$date": "2024-06-19T02:08:37.653Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.919Z"
+      "$date": "2024-06-19T02:08:37.653Z"
     },
     "__v": 0
   },
@@ -2144,18 +2144,18 @@
     "isRegistered": false,
     "firstName": "Verla",
     "lastName": "Proske",
-    "cohort": "WCRI 13",
+    "cohort": "PTRI 67",
     "registeredAt": {
       "$date": "1970-01-20T13:09:03.295Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e1d"
+      "$oid": "66723da58f368f285d304a5a"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.919Z"
+      "$date": "2024-06-19T02:08:37.653Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.919Z"
+      "$date": "2024-06-19T02:08:37.653Z"
     },
     "__v": 0
   },
@@ -2168,18 +2168,18 @@
     "isRegistered": false,
     "firstName": "Pennie",
     "lastName": "Dahmke",
-    "cohort": "FTRI 44",
+    "cohort": "PTRI 75",
     "registeredAt": {
       "$date": "1970-01-20T17:46:08.448Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e1e"
+      "$oid": "66723da58f368f285d304a5b"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.919Z"
+      "$date": "2024-06-19T02:08:37.653Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.919Z"
+      "$date": "2024-06-19T02:08:37.653Z"
     },
     "__v": 0
   },
@@ -2192,18 +2192,18 @@
     "isRegistered": true,
     "firstName": "Anestassia",
     "lastName": "Kilroy",
-    "cohort": "CTRI 13",
+    "cohort": "LA 33",
     "registeredAt": {
       "$date": "1970-01-20T18:12:42.650Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e1f"
+      "$oid": "66723da58f368f285d304a5c"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.919Z"
+      "$date": "2024-06-19T02:08:37.653Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.919Z"
+      "$date": "2024-06-19T02:08:37.653Z"
     },
     "__v": 0
   },
@@ -2216,18 +2216,18 @@
     "isRegistered": true,
     "firstName": "Remus",
     "lastName": "Vanelli",
-    "cohort": "NYC 77",
+    "cohort": "PTRI 99",
     "registeredAt": {
       "$date": "1970-01-20T13:01:08.428Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e20"
+      "$oid": "66723da58f368f285d304a5d"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.919Z"
+      "$date": "2024-06-19T02:08:37.653Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.919Z"
+      "$date": "2024-06-19T02:08:37.653Z"
     },
     "__v": 0
   },
@@ -2240,18 +2240,18 @@
     "isRegistered": true,
     "firstName": "Gil",
     "lastName": "Tarbert",
-    "cohort": "FTRI 32",
+    "cohort": "NYC 2",
     "registeredAt": {
       "$date": "1970-01-20T12:06:31.965Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e21"
+      "$oid": "66723da58f368f285d304a5e"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.920Z"
+      "$date": "2024-06-19T02:08:37.653Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.920Z"
+      "$date": "2024-06-19T02:08:37.653Z"
     },
     "__v": 0
   },
@@ -2264,18 +2264,18 @@
     "isRegistered": true,
     "firstName": "Yulma",
     "lastName": "Smelley",
-    "cohort": "NYC 48",
+    "cohort": "NYC 44",
     "registeredAt": {
       "$date": "1970-01-20T20:28:53.795Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e22"
+      "$oid": "66723da58f368f285d304a5f"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.920Z"
+      "$date": "2024-06-19T02:08:37.653Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.920Z"
+      "$date": "2024-06-19T02:08:37.653Z"
     },
     "__v": 0
   },
@@ -2288,18 +2288,18 @@
     "isRegistered": false,
     "firstName": "Timmy",
     "lastName": "Longworth",
-    "cohort": "LA 64",
+    "cohort": "CTRI 3",
     "registeredAt": {
       "$date": "1970-01-20T18:47:58.351Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e23"
+      "$oid": "66723da58f368f285d304a60"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.920Z"
+      "$date": "2024-06-19T02:08:37.653Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.920Z"
+      "$date": "2024-06-19T02:08:37.653Z"
     },
     "__v": 0
   },
@@ -2312,18 +2312,18 @@
     "isRegistered": true,
     "firstName": "Arthur",
     "lastName": "Mollatt",
-    "cohort": "LA 25",
+    "cohort": "FTRI 43",
     "registeredAt": {
       "$date": "1970-01-20T18:28:04.127Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e24"
+      "$oid": "66723da58f368f285d304a61"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.920Z"
+      "$date": "2024-06-19T02:08:37.654Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.920Z"
+      "$date": "2024-06-19T02:08:37.654Z"
     },
     "__v": 0
   },
@@ -2336,18 +2336,18 @@
     "isRegistered": false,
     "firstName": "Griffin",
     "lastName": "Taylor",
-    "cohort": "PTRI 62",
+    "cohort": "NYC 38",
     "registeredAt": {
       "$date": "1970-01-20T18:10:31.385Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e25"
+      "$oid": "66723da58f368f285d304a62"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.920Z"
+      "$date": "2024-06-19T02:08:37.654Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.920Z"
+      "$date": "2024-06-19T02:08:37.654Z"
     },
     "__v": 0
   },
@@ -2360,18 +2360,18 @@
     "isRegistered": true,
     "firstName": "Odelinda",
     "lastName": "Studholme",
-    "cohort": "PTRI 81",
+    "cohort": "WCRI 26",
     "registeredAt": {
       "$date": "1970-01-20T09:11:35.487Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e26"
+      "$oid": "66723da58f368f285d304a63"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.920Z"
+      "$date": "2024-06-19T02:08:37.654Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.920Z"
+      "$date": "2024-06-19T02:08:37.654Z"
     },
     "__v": 0
   },
@@ -2384,18 +2384,18 @@
     "isRegistered": true,
     "firstName": "Ardith",
     "lastName": "Duffill",
-    "cohort": "NYC 44",
+    "cohort": "CTRI 91",
     "registeredAt": {
       "$date": "1970-01-20T14:21:35.088Z"
     },
     "_id": {
-      "$oid": "666cbc4140af7b375e352e27"
+      "$oid": "66723da58f368f285d304a64"
     },
     "createdAt": {
-      "$date": "2024-06-14T21:55:13.920Z"
+      "$date": "2024-06-19T02:08:37.655Z"
     },
     "lastEmailSent": {
-      "$date": "2024-06-14T21:55:13.920Z"
+      "$date": "2024-06-19T02:08:37.655Z"
     },
     "__v": 0
   }
