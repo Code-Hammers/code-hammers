@@ -134,6 +134,11 @@ const getAllProfiles = async (req: Request, res: Response, next: NextFunction) =
         message: { err: 'There were no profiles to retrieve' },
       });
     } else {
+      // Development mode profile pics - Temporary
+      if (process.env.NODE_ENV === 'development') {
+        return res.status(201).json(profiles);
+      }
+
       const processedProfiles = await Promise.all(
         profiles.map(async (profile) => {
           if (profile.profilePhoto) {
@@ -174,6 +179,11 @@ const getProfileById = async (req: Request, res: Response, next: NextFunction) =
         message: { err: 'An error occurred during profile retrieval' },
       });
     }
+    // Development mode profile pics - Temporary
+    if (process.env.NODE_ENV === 'development') {
+      return res.status(201).json(profile);
+    }
+
     if (profile.profilePhoto) {
       const presignedUrl = s3.getSignedUrl('getObject', {
         Bucket: process.env.BUCKET_NAME,
