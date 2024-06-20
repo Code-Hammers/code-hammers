@@ -1,5 +1,6 @@
 import request from 'supertest';
-import app, { startServer } from '../server/index';
+import { startServer } from '../server/index';
+import app from '../server/app';
 import { Server } from 'http';
 import mongoose from 'mongoose';
 
@@ -8,8 +9,8 @@ import mongoose from 'mongoose';
 
 let server: Server;
 
-beforeEach(() => {
-  server = startServer();
+beforeEach(async () => {
+  server = await startServer();
 });
 
 afterEach((done) => {
