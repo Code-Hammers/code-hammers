@@ -1,12 +1,15 @@
-import Alumni from '../models/alumniModel';
+import Alumni from '../../../models/alumniModel';
 import { Request, Response } from 'express';
-import { IAlumni } from '../types/alumni';
+import { IAlumni } from '../../../types/alumni';
 
 interface SearchQuery {
   name?: { $regex: string; $options: string };
   company?: { $regex: string; $options: string };
 }
 
+// ENDPOINT  GET api/users/login
+// PURPOSE   Retrieve all alumni data
+// ACCESS    Private
 const getAllAlumniData = async (req: Request, res: Response) => {
   const page = parseInt(req.query.page as string) || 1;
   const limit = parseInt(req.query.limit as string) || 10;
@@ -38,4 +41,4 @@ const getAllAlumniData = async (req: Request, res: Response) => {
   }
 };
 
-export { getAllAlumniData };
+export default getAllAlumniData;

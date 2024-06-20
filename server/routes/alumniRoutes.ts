@@ -1,7 +1,7 @@
 import express from 'express';
 
 import { protect } from '../middleware/authMiddleware';
-import { getAllAlumniData } from '../controllers/alumniControllers';
+import { getAllAlumniData } from '../controllers/alumniController';
 
 const router = express.Router();
 
