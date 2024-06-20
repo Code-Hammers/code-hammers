@@ -8,7 +8,7 @@ import {
   getAggregatedUserStats,
   updateNotificationPeriod,
   pauseNotifications,
-} from '../controllers/applicationsController';
+} from '../controllers/applicationController';
 import { protect } from '../middleware/authMiddleware';
 
 const router = express.Router();
