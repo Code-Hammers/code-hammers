@@ -24,6 +24,11 @@ app.use(express.json());
 // Middleware to parse request cookies
 app.use(cookieParser());
 
+// AWS Production Health Check
+app.get('/health', (_req: Request, res: Response) => {
+  res.status(200).send('OK');
+});
+
 // API routers
 app.use('/api/users', userRouter);
 app.use('/api/profiles', profileRouter);
@@ -38,7 +43,7 @@ if (process.env.NODE_ENV === 'production') {
   console.log(`SERVER STARTED IN PRODUCTION`);
   app.use(express.static(path.join(__dirname, '../../client/build')));
 
-  app.get('*', (req: Request, res: Response) =>
+  app.get('*', (_req: Request, res: Response) =>
     res.sendFile(path.resolve(__dirname, '../../client/build/index.html')),
   );
 }
