@@ -11,21 +11,11 @@ const testUserEmail = 'theDude@Duderino.com';
 const testUserPassword = 'jackieTreehorn';
 
 beforeAll(async () => {
-  console.log('⚡️ Jest Setup: beforeAll');
-
   process.env.JWT_KEY = 'asdfasdfasdf';
   await mongoose.connect('mongodb://ch-mongo-test:27017/ch-testdb', {});
-
-  await User.create({
-    firstName: 'Sean',
-    lastName: 'Kelly',
-    email: testUserEmail,
-    password: testUserPassword,
-  });
 });
 
 beforeEach(async () => {
-  console.log('⚡️ Jest Setup: beforeEach');
   const collections = await mongoose.connection.db.collections();
 
   for (const collection of collections) {
@@ -34,12 +24,17 @@ beforeEach(async () => {
 });
 
 afterAll(async () => {
-  console.log('⚡️ Jest Setup: afterAll');
   await mongoose.connection.close();
 });
 
 global.login = async () => {
-  console.log('⚡️ Global Login');
+  await User.create({
+    firstName: 'Sean',
+    lastName: 'Kelly',
+    email: testUserEmail,
+    password: testUserPassword,
+  });
+
   const response = await request(app)
     .post('/api/users/login')
     .send({
