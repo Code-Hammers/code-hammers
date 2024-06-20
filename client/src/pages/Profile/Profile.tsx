@@ -21,6 +21,11 @@ const Profile = () => {
     careerInformation,
     availabilityForNetworking,
     personalBio,
+    skills,
+    specializations, 
+    gitHubProfile, 
+    linkedInProfile,
+    socialMediaLinks,
   } = userProfile || {};
 
   const position = careerInformation?.currentPosition;
@@ -46,17 +51,31 @@ const Profile = () => {
         <h3 className="mb-2 text-sm">
           {networkingStatus}
         </h3>
-        <p className="mb-4 text-base bg-gray-700 rounded-lg">{personalBio}</p>
-        <div className='flex w-full space-x-4 mb-4'>
-        <div className='flex-1 ml-10 bg-gray-800 p-4 rounded-lg border-red-500 border-2'>
-          <h2 className='font-bold mb-2 text-xl text-center'>Skills</h2>
+        <p className="bg-gray-700 mb-4 rounded-lg text-base">{personalBio}</p>
+        <div className='flex mb-4 pb-0 space-x-4 w-full'>
+        <div className='bg-gray-800 border-red-500 border-2 flex-1 ml-10 p-4 rounded-lg'>
+          <h2 className='font-bold mb-2 text-center text-xl'>Skills</h2>
+          <ul className='flex flex-wrap gap-2 justify-center list-inside'>
+            {skills?.map((skill: string) => (
+              <li className='bg-blue-500 inline-flex items-center px-4 py-1 rounded-full text-sm text-white'>
+                {skill}
+              </li>
+            ))}
+          </ul>
         </div>
-        <div className= 'flex-1 ml-10 bg-gray-800 p-4 rounded-lg border-red-500 border-2'>
-            <h2 className='font-bold mb-2 text-xl text-center'>Specializations</h2>
+        <div className= 'bg-gray-800 border-2 border-red-500 flex-1 ml-10 p-4 rounded-lg'>
+            <h2 className='font-bold mb-2 text-center text-xl'>Specializations</h2>
+            <ul className='flex flex-wrap gap-2 justify-center list-inside'>
+            {specializations?.map((specialization: string) => (
+              <li className='bg-yellow-500 inline-flex items-center px-4 py-1 rounded-full text-sm text-white'>
+                {specialization}
+              </li>
+            ))}
+          </ul>
         </div>
         </div>
-        <div className='flex-1 justify-center space-x-4 mt-4 border-red-500 border-2'>
-          <h1>Socials</h1>
+        <div className='border-2 border-red-500 flex-1 justify-center mt-4 space-x-4'>
+          <h1 className='font-bold text-xl'>Socials</h1>
         </div>
       </div>
     </div>
