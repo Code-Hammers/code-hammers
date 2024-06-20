@@ -1,0 +1,41 @@
+version: '3'
+services:
+  test:
+    image: codehammers/ch-dev-dep-v3:latest
+    container_name: ch-test
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./:/usr/src/app
+      - node_modules:/usr/src/app/node_modules
+      - client_node_modules:/usr/src/app/client/node_modules
+    depends_on:
+      - ch-mongo-test
+    environment:
+      - JWT_SECRET=${JWT_SECRET}
+      - MONGO_URI=mongodb://ch-mongo-test:27017/ch-testdb
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=ch-dev-database
+      - POSTGRES_PASSWORD=ch-dev
+      - AWS_ACCESS_KEY_ID=placeholder-value
+      - AWS_SECRET_ACCESS_KEY=placeholder-value
+      - AWS_REGION=placeholder-value
+      - BUCKET_NAME=placeholder-value
+      # suppress aws sdk v2 deprecation warning
+      - AWS_SDK_JS_SUPPRESS_MAINTENANCE_MODE_MESSAGE=1;
+      - TEST_FILE=${TEST_FILE}
+    command: npm run test ${TEST_FILE}
+
+  ch-mongo-test:
+    image: mongo
+    container_name: ch-mongo-test
+    ports:
+      - '27017:27017'
+    environment:
+      - MONGO_INITDB_DATABASE=ch-testdb
+    # mute mongo container logs
+    command: mongod --quiet --logpath /dev/null
+
+volumes:
+  node_modules:
+  client_node_modules:
