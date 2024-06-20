@@ -12,6 +12,7 @@ import {
   alumniRouter,
   forumRouter,
   devRouter,
+  applicationsRoutes,
 } from './routes';
 import errorHandler from './middleware/errorHandler';
 import { NotFoundError } from './errors';
@@ -37,6 +38,7 @@ app.use('/api/images', imageRouter);
 app.use('/api/alumni', alumniRouter);
 app.use('/api/forums', forumRouter);
 app.use('/api/devRoutes', devRouter);
+app.use('/api/applications', applicationsRoutes);
 
 // Serve client from build in production
 if (process.env.NODE_ENV === 'production') {
