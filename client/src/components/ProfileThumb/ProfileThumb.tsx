@@ -27,9 +27,6 @@ const ProfileThumb = ({ profile }: ProfileThumbProps) => {
       <h1 className="font-bold mb-2 text-xl">
         {profile.firstName} {profile.lastName}
       </h1>
-      <h1 className="font-bold mb-2 text-xs">
-        {profile.careerInformation?.currentPosition?.title} @ {profile.careerInformation?.currentPosition?.company}
-      </h1>
       <h2 className="max-h-10 mb-2 text-xs">{shortenBio(profile.personalBio, 8)}</h2>
     </div>
   );
