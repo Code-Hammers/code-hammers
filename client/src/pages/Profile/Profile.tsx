@@ -30,24 +30,34 @@ const Profile = () => {
 
   return (
     <div className="bg-gray-900 flex flex-col items-center justify-start min-h-screen p-4 pt-20 text-white">
-      <h1 className="font-extrabold mb-4 mt-16 text-4xl">Profile</h1>
-      <div className="bg-gradient-to-r flex flex-col from-gray-700 items-center max-w-4xl pb-6 pl-6 pr-6 pt-6 rounded-lg shadow-lg to-gray-900 via-gray-800 w-full">
+      <h1 className="font-extrabold mb-4 mt-16 text-4xl">Profile</h1>  
+      <div className="bg-gradient-to-r from-gray-700 flex flex-col items-center max-w-4xl pb-6 pl-6 pr-6 pt-6 rounded-lg shadow-lg to-gray-900 via-gray-800 w-full">
         <img
           src={profilePhoto || 'https://picsum.photos/200'}
           alt="Profile"
           className="h-32 mb-4 mt-4 object-cover rounded-full w-32"
         />
         <h2 className="font-bold mb-1 text-xl">
-          {firstName} {lastName}
+          {firstName} {lastName} [{cohort}]
         </h2>
-        <h3 className='text-m'>{cohort}</h3>
-        <h2 className="font-bold mb-2 text-l">
+        <h2 className="mb-2 text-base">
           {position?.title} @ {position?.company}
         </h2>
-        <h3 className="font-bold mb-2 text-xs">
+        <h3 className="mb-2 text-sm">
           {networkingStatus}
         </h3>
-        <p className="mb-4 text-s">{personalBio}</p>
+        <p className="mb-4 text-base bg-gray-700 rounded-lg">{personalBio}</p>
+        <div className='flex w-full space-x-4 mb-4'>
+        <div className='flex-1 ml-10 bg-gray-800 p-4 rounded-lg border-red-500 border-2'>
+          <h2 className='font-bold mb-2 text-xl text-center'>Skills</h2>
+        </div>
+        <div className= 'flex-1 ml-10 bg-gray-800 p-4 rounded-lg border-red-500 border-2'>
+            <h2 className='font-bold mb-2 text-xl text-center'>Specializations</h2>
+        </div>
+        </div>
+        <div className='flex-1 justify-center space-x-4 mt-4 border-red-500 border-2'>
+          <h1>Socials</h1>
+        </div>
       </div>
     </div>
   );
