@@ -11,7 +11,7 @@ services:
       - node_modules:/usr/src/app/node_modules
       - client_node_modules:/usr/src/app/client/node_modules
     depends_on:
-      - mongo
+      - ch-mongo-test
     environment:
       - JWT_SECRET=${JWT_SECRET}
       - MONGO_URI=mongodb://ch-mongo-test:27017/ch-testdb
@@ -33,12 +33,9 @@ services:
       - '27017:27017'
     environment:
       - MONGO_INITDB_DATABASE=ch-testdb
-    # volumes:
-    #   - mongo-test-volume:/data/db
     # mute mongo container logs
     command: mongod --quiet --logpath /dev/null
 
 volumes:
   node_modules:
   client_node_modules:
-  # mongo-test-volume:
