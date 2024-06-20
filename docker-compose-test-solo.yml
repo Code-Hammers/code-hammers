@@ -23,8 +23,9 @@ services:
       - BUCKET_NAME=placeholder-value
       # suppress aws sdk v2 deprecation warning
       - AWS_SDK_JS_SUPPRESS_MAINTENANCE_MODE_MESSAGE=1;
+      - TEST_CMD=${TEST_CMD}
       - TEST_FILE=${TEST_FILE}
-    command: npm run test ${TEST_FILE}
+    command: npm run ${TEST_CMD} ${TEST_FILE}
 
   ch-mongo-test:
     image: mongo
