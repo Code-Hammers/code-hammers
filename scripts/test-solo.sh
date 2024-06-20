@@ -18,8 +18,8 @@ fi
 printf $"${YELLOW}\nAre you running a server or client test? (Enter S for server or C for client) [S/C]${NC}\n"
 read -r SC
 
-while [[ $SC != 'S' && $SC != 's' && $SC != '' && $SC != 'C' && $SC != 'c' ]]; do
-  echo -e "${RED}\nCommand not recognized. Please choose ${GREEN}S${RED} for server test or ${GREEN}C${RED} for client test (or Ctrl C to cancel)${NC}\n"
+while [[ $SC != 'S' && $SC != 's' && $SC != '' && $SC != 'C' && $SC != 'c' && $SC != 'derp' ]]; do
+  echo -e "${RED}\nCommand not recognized\nPlease choose ${GREEN}S${RED} for server test or ${GREEN}C${RED} for client test (or Ctrl C to cancel)${NC}\n"
   printf $"${YELLOW}\nAre you running a server or client test? (Enter S for server or C for client) [S/C]${NC}\n"
   read -r SC
 done
@@ -32,4 +32,9 @@ fi
 if [[ $SC == "C" || $SC == "c" ]]; then
   echo -e "${GREEN}\nGotcha. Looking for test files matching \"$1\" in the client${NC}\n"
   TEST_CMD="test:client" TEST_FILE=$1 docker-compose -f docker-compose-test-solo.yml up --abort-on-container-exit
+fi
+
+if [[ $SC == "derp" ]]; then
+  echo -e "${CORNBLUE}\nWhy are you the way you are? ${RED}Goodbye${NC}\n"
+  exit 1
 fi
