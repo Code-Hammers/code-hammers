@@ -83,6 +83,6 @@ INSERT INTO jobs (title, company, location, description, url) VALUES
 
 
 INSERT INTO applications (job_id, status_id, user_id, quick_apply, date_applied, general_notes, last_updated, notification_period, notifications_paused) VALUES
-    (1, 1, '6644c602515c654def9b2ae7', true, NOW(), 'Quick applied for Software Engineer at Dogs R Us.', NOW(), 3, false),
-    (2, 1, '6644c768515c654def9b2b09', true, NOW(), 'Full CS style application.', NOW(), 3, false),
-    (3, 2, '6644c7f7515c654def9b2b18', true, NOW(), 'Phone screen scheduled!', NOW(), 3, false);
+    (1, 1, '66723da68f368f285d304acb', true, NOW(), 'Quick applied for Software Engineer at Dogs R Us.', NOW(), 3, false),
+    (2, 1, '66723da68f368f285d304aca', true, NOW(), 'Full CS style application.', NOW(), 3, false),
+    (3, 2, '66723da68f368f285d304acc', true, NOW(), 'Phone screen scheduled!', NOW(), 3, false);
