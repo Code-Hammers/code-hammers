@@ -134,7 +134,8 @@ const getAllProfiles = async (req: Request, res: Response, next: NextFunction) =
         message: { err: 'There were no profiles to retrieve' },
       });
     } else {
-      // Development mode profile pics - Temporary
+      // Route bypass for development - need AWS credentials to work on this route
+      // This allows Mock Profile Photos to work in development
       if (process.env.NODE_ENV === 'development' && !process.env.IS_SK) {
         return res.status(200).send(profiles);
       }
@@ -179,7 +180,8 @@ const getProfileById = async (req: Request, res: Response, next: NextFunction) =
         message: { err: 'An error occurred during profile retrieval' },
       });
     }
-    // Development mode profile pics - Temporary
+    // Route bypass for development - need AWS credentials to work on this route
+    // This allows Mock Profile Photos to work in development
     if (process.env.NODE_ENV === 'development' && !process.env.IS_SK) {
       return res.status(200).json(profile);
     }
