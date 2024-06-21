@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { seedDatabase } from '../../dev-tools/scripts/alumniDatabaseSeeder';
+import { seedDatabase } from '../../../../dev-tools/scripts/alumniDatabaseSeeder';
 
 const seedRegistrationDatabase = async (_req: Request, res: Response) => {
   try {
@@ -11,4 +11,4 @@ const seedRegistrationDatabase = async (_req: Request, res: Response) => {
   }
 };
 
-export { seedRegistrationDatabase };
+export default seedRegistrationDatabase;
