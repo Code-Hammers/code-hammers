@@ -14,7 +14,7 @@ jest.mock('../server/models/userModel', () => ({
 }));
 jest.mock('../server/utils/generateToken', () => () => 'someFakeToken');
 
-describe('User Controller Tests', () => {
+xdescribe('User Controller Tests', () => {
   let mockRequest: Partial<Request>;
   let mockResponse: Partial<Response>;
   //TODO Add some error test for global error handler

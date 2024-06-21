@@ -7,19 +7,12 @@ declare global {
   function login(): Promise<string[] | undefined>;
 }
 
-const testUserEmail = 'tester@codehammers.com';
-const testUserPassword = 'ilovetesting';
+const testUserEmail = 'theDude@Duderino.com';
+const testUserPassword = 'jackieTreehorn';
 
 beforeAll(async () => {
   process.env.JWT_KEY = 'asdfasdfasdf';
   await mongoose.connect('mongodb://ch-mongo-test:27017/ch-testdb', {});
-
-  await User.create({
-    firstName: 'Sean',
-    lastName: 'Kelly',
-    email: testUserEmail,
-    password: testUserPassword,
-  });
 });
 
 beforeEach(async () => {
@@ -35,6 +28,13 @@ afterAll(async () => {
 });
 
 global.login = async () => {
+  await User.create({
+    firstName: 'Sean',
+    lastName: 'Kelly',
+    email: testUserEmail,
+    password: testUserPassword,
+  });
+
   const response = await request(app)
     .post('/api/users/login')
     .send({
@@ -44,6 +44,7 @@ global.login = async () => {
     .expect(200);
 
   const cookie = response.get('Set-Cookie');
+  console.log(cookie);
 
   return cookie;
 };
