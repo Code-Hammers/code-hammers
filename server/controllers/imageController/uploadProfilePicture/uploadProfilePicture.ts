@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import Profile from '../models/profileModel';
+import Profile from '../../../models/profileModel';
 import AWS from 'aws-sdk';
 
 AWS.config.update({
@@ -50,20 +50,4 @@ export const uploadProfilePicture = async (req: Request, res: Response) => {
   }
 };
 
-//TODO Currently not being used. Built into getProfileByID controller.
-export const generatePresignedUrl = (req: Request, res: Response) => {
-  const key = req.query.key;
-  const params = {
-    Bucket: process.env.BUCKET_NAME,
-    Key: key as string,
-    Expires: 60,
-  };
-
-  s3.getSignedUrl('putObject', params, (err, url) => {
-    if (err) {
-      console.error('Error generating URL:', err);
-      return res.status(500).send('Error generating URL');
-    }
-    res.status(200).send({ message: 'URL generated successfully', url });
-  });
-};
+export default uploadProfilePicture;
