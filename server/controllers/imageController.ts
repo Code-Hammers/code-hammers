@@ -11,8 +11,12 @@ AWS.config.update({
 const s3 = new AWS.S3();
 
 export const uploadProfilePicture = async (req: Request, res: Response) => {
+  // Route bypass for development - need AWS credentials to work on this route
   if (process.env.NODE_ENV === 'development' && !process.env.IS_SK) {
-    return res.status(200).send({ message: "Uh uh uh you didn't say the magic word" });
+    console.log('Big Sean approval / credentials required to work on this route');
+    return res
+      .status(201)
+      .send({ message: 'Big Sean approval / credentials required to work on this route' });
   }
 
   if (!req.file) {
