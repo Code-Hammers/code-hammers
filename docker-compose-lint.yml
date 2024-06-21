@@ -1,7 +1,6 @@
 version: '3'
 services:
   dev:
-    #image: codehammers/ch-tracker-dev:latest
     image: codehammers/ch-dev-dep-v3:latest
     container_name: ch-lint
     ports:
