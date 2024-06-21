@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { CustomRequest } from '../types/customRequest';
 import { pool } from '../config/sql-db';
 
 interface StatusCount {
@@ -104,7 +103,7 @@ const createApplication = async (req: Request, res: Response) => {
   }
 };
 
-const getApplicationById = async (req: CustomRequest<{ id: string }>, res: Response) => {
+const getApplicationById = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
     const query = `
@@ -145,7 +144,7 @@ const getApplicationById = async (req: CustomRequest<{ id: string }>, res: Respo
   }
 };
 
-const updateApplication = async (req: CustomRequest<{ id: string }>, res: Response) => {
+const updateApplication = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   if (!req.user) {
@@ -184,7 +183,7 @@ const updateApplication = async (req: CustomRequest<{ id: string }>, res: Respon
   }
 };
 
-const getAggregatedUserStats = async (req: CustomRequest<{ userId: string }>, res: Response) => {
+const getAggregatedUserStats = async (req: Request, res: Response) => {
   const { userId } = req.params;
   if (!req.user || req.user.id !== userId)
     return res.status(401).json({ message: 'You are not authorized to retrieve those records' });

@@ -1,13 +1,12 @@
 import { Request, Response, NextFunction } from 'express';
 import Post from '../models/postModel';
 import Thread from '../models/threadModel';
-import { CustomRequest } from '../types/customRequest';
 import { sortAndPopulate, aggregateThreadsWithPostCount } from './helpers/queryHelpers';
 
 // ENDPOINT  POST api/:forumId/threads
 // PURPOSE   Create a new thread
 // ACCESS    Private
-const createThread = async (req: CustomRequest, res: Response, next: NextFunction) => {
+const createThread = async (req: Request, res: Response, next: NextFunction) => {
   const { forumId } = req.params;
   const { title, content } = req.body;
 
@@ -37,7 +36,7 @@ const createThread = async (req: CustomRequest, res: Response, next: NextFunctio
 // ENDPOINT  GET api/threads
 // PURPOSE   Retrieve all threads
 // ACCESS    Private
-const getAllThreads = async (req: CustomRequest, res: Response, next: NextFunction) => {
+const getAllThreads = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const threads = await aggregateThreadsWithPostCount(undefined, 'createdAt', -1);
 
@@ -101,7 +100,7 @@ const getThreadById = async (req: Request, res: Response, next: NextFunction) =>
 // ENDPOINT  PUT api/forums/:forumId/threads/:threadId
 // PURPOSE   Update a specific thread
 // ACCESS    Private/Admin
-const updateThread = async (req: CustomRequest, res: Response, next: NextFunction) => {
+const updateThread = async (req: Request, res: Response, next: NextFunction) => {
   const { forumId, threadId } = req.params;
   const { title, content } = req.body;
 
@@ -134,7 +133,7 @@ const updateThread = async (req: CustomRequest, res: Response, next: NextFunctio
 // ENDPOINT  DELETE api/forums/:forumId/threads/:threadId
 // PURPOSE   Delete a specific thread
 // ACCESS    Private/Admin
-const deleteThread = async (req: CustomRequest, res: Response, next: NextFunction) => {
+const deleteThread = async (req: Request, res: Response, next: NextFunction) => {
   const { forumId, threadId } = req.params;
 
   try {

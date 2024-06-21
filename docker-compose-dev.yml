@@ -1,9 +1,6 @@
 version: '3'
 services:
   dev:
-    #image: codehammers/ch-dev:latest
-    #image: codehammers/ch-dev-dep-v2:latest
-    #image: codehammers/ch-tracker-dev:latest
     image: codehammers/ch-dev-dep-v3:latest
     container_name: ch-dev
     ports:
@@ -19,6 +16,12 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=ch-dev
       - POSTGRES_DB=ch-dev-database
+      - AWS_ACCESS_KEY_ID=placeholder-value
+      - AWS_SECRET_ACCESS_KEY=placeholder-value
+      - AWS_REGION=placeholder-value
+      - BUCKET_NAME=placeholder-value
+      # suppress aws sdk v2 deprecation warning
+      - AWS_SDK_JS_SUPPRESS_MAINTENANCE_MODE_MESSAGE=1;
     depends_on:
       - postgres
   postgres:
