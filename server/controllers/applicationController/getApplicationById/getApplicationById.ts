@@ -1,8 +1,7 @@
 import { Request, Response } from 'express';
-import { CustomRequest } from '../../../types/customRequest';
 import { pool } from '../../../config/sql-db';
 
-const getApplicationById = async (req: CustomRequest<{ id: string }>, res: Response) => {
+const getApplicationById = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
     const query = `

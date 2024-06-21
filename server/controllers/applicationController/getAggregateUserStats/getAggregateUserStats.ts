@@ -1,5 +1,4 @@
-import { Response } from 'express';
-import { CustomRequest } from '../../../types/customRequest';
+import { Request, Response } from 'express';
 import { pool } from '../../../config/sql-db';
 
 interface StatusCount {
@@ -7,7 +6,7 @@ interface StatusCount {
   count: string;
 }
 
-const getAggregatedUserStats = async (req: CustomRequest<{ userId: string }>, res: Response) => {
+const getAggregatedUserStats = async (req: Request, res: Response) => {
   const { userId } = req.params;
   if (!req.user || req.user.id !== userId)
     return res.status(401).json({ message: 'You are not authorized to retrieve those records' });

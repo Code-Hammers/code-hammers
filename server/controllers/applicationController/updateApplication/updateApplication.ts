@@ -1,8 +1,7 @@
-import { Response } from 'express';
-import { CustomRequest } from '../../../types/customRequest';
+import { Request, Response } from 'express';
 import { pool } from '../../../config/sql-db';
 
-const updateApplication = async (req: CustomRequest<{ id: string }>, res: Response) => {
+const updateApplication = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   if (!req.user) {
