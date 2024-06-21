@@ -42,18 +42,15 @@ const Profile = () => {
           alt="Profile"
           className="h-32 mb-4 mt-4 object-cover rounded-full w-32"
         />
-        <h2 className="font-bold mb-1 text-xl">
+        <h2 className="font-bold mb-1 text-blue-500 text-xl">
           {firstName} {lastName} [{cohort}]
         </h2>
         <h2 className="mb-2 text-base">
           {position?.title} @ {position?.company}
         </h2>
-        <h3 className="mb-2 text-sm">
-          {networkingStatus}
-        </h3>
         <p className="mb-4 rounded-lg text-base">{personalBio}</p>
         <div className='flex justify-center mb-4 pb-0 space-x-4 w-full '>
-        <div className='bg-gray-800 border-red-500 border-2 flex-1 p-4 rounded-lg'>
+        <div className='bg-gray-800 border-2 flex-1 p-4 rounded-lg'>
           <h2 className='font-bold mb-2 text-center text-xl'>Skills</h2>
           <ul className='flex flex-wrap gap-2 justify-center list-inside'>
             {skills?.map((skill: string) => (
@@ -63,7 +60,7 @@ const Profile = () => {
             ))}
           </ul>
         </div>
-        <div className= 'bg-gray-800 border-2 border-red-500 flex-1 p-4 rounded-lg'>
+        <div className= 'bg-gray-800 border-2 flex-1 p-4 rounded-lg'>
             <h2 className='font-bold mb-2 text-center text-xl'>Specializations</h2>
             <ul className='flex flex-wrap gap-2 justify-center list-inside'>
             {specializations?.map((specialization: string) => (
@@ -74,7 +71,7 @@ const Profile = () => {
           </ul>
         </div>
         </div>
-        <div className='border-2 border-red-500 flex flex-col items-center justify-center mt-4'>
+        <div className='flex flex-col items-center justify-center mt-2'>
           <h1 className='font-bold text-xl'>Socials</h1>
           {networkingStatus}
         </div>
