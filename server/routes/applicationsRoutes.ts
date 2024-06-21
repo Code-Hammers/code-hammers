@@ -1,4 +1,5 @@
 import express from 'express';
+import { protect } from '../middleware/authMiddleware';
 import {
   createApplication,
   getAllApplications,
@@ -8,18 +9,18 @@ import {
   getAggregatedUserStats,
   updateNotificationPeriod,
   pauseNotifications,
-} from '../controllers/applicationController';
-import { protect } from '../middleware/authMiddleware';
+} from '../controllers/applicationsController';
 
 const router = express.Router();
 
-router.get('/aggregated-user-stats/:userId', protect, getAggregatedUserStats);
-router.get('/statuses', protect, getStatuses);
-router.get('/', protect, getAllApplications);
-router.get('/:id', protect, getApplicationById);
-router.post('/', protect, createApplication);
-router.put('/:id', protect, updateApplication);
-router.put('/:id/notification-period', protect, updateNotificationPeriod);
-router.put('/:id/pause-notifications', protect, pauseNotifications);
+router.use(protect); /* Require Auth for ALL routes below */
+router.get('/aggregated-user-stats/:userId', getAggregatedUserStats);
+router.get('/statuses', getStatuses);
+router.get('/', getAllApplications);
+router.get('/:id', getApplicationById);
+router.post('/', createApplication);
+router.put('/:id', updateApplication);
+router.put('/:id/notification-period', updateNotificationPeriod);
+router.put('/:id/pause-notifications', pauseNotifications);
 
 export default router;
