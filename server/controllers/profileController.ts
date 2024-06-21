@@ -136,7 +136,7 @@ const getAllProfiles = async (req: Request, res: Response, next: NextFunction) =
     } else {
       // Development mode profile pics - Temporary
       if (process.env.NODE_ENV === 'development' && !process.env.IS_SK) {
-        return res.status(201).json(profiles);
+        return res.status(200).send(profiles);
       }
 
       const processedProfiles = await Promise.all(
@@ -181,7 +181,7 @@ const getProfileById = async (req: Request, res: Response, next: NextFunction) =
     }
     // Development mode profile pics - Temporary
     if (process.env.NODE_ENV === 'development' && !process.env.IS_SK) {
-      return res.status(201).json(profile);
+      return res.status(200).json(profile);
     }
 
     if (profile.profilePhoto) {
