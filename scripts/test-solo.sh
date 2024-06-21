@@ -26,12 +26,12 @@ done
 
 if [[ $SC == "S" || $SC == "s" || $SC == "" ]]; then
   echo -e "${GREEN}\nGotcha. Looking for test files matching \"$1\" in the server${NC}\n"
-  TEST_CMD="test" TEST_FILE=$1 docker-compose -f docker-compose-test-solo.yml up --abort-on-container-exit
+  TEST_CMD="test-solo" TEST_FILE=$1 docker-compose -f docker-compose-test-solo.yml up --abort-on-container-exit
 fi
 
 if [[ $SC == "C" || $SC == "c" ]]; then
   echo -e "${GREEN}\nGotcha. Looking for test files matching \"$1\" in the client${NC}\n"
-  TEST_CMD="test:client" TEST_FILE=$1 docker-compose -f docker-compose-test-solo.yml up --abort-on-container-exit
+  TEST_CMD="test-solo:client" TEST_FILE=$1 docker-compose -f docker-compose-test-solo.yml up --abort-on-container-exit
 fi
 
 if [[ $SC == "derp" ]]; then
