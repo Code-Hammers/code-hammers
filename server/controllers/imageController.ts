@@ -11,6 +11,10 @@ AWS.config.update({
 const s3 = new AWS.S3();
 
 export const uploadProfilePicture = async (req: Request, res: Response) => {
+  if (process.env.NODE_ENV === 'development' && !process.env.IS_SK) {
+    return res.status(200).send({ message: "Uh uh uh you didn't say the magic word" });
+  }
+
   if (!req.file) {
     return res.status(400).send('No file uploaded.');
   }

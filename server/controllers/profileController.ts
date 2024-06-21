@@ -135,7 +135,7 @@ const getAllProfiles = async (req: Request, res: Response, next: NextFunction) =
       });
     } else {
       // Development mode profile pics - Temporary
-      if (process.env.NODE_ENV === 'development') {
+      if (process.env.NODE_ENV === 'development' && !process.env.IS_SK) {
         return res.status(201).json(profiles);
       }
 
@@ -180,7 +180,7 @@ const getProfileById = async (req: Request, res: Response, next: NextFunction) =
       });
     }
     // Development mode profile pics - Temporary
-    if (process.env.NODE_ENV === 'development') {
+    if (process.env.NODE_ENV === 'development' && !process.env.IS_SK) {
       return res.status(201).json(profile);
     }
 
