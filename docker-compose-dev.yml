@@ -19,6 +19,13 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=ch-dev
       - POSTGRES_DB=ch-dev-database
+      # AWS credentials and IS_SK environment variables are retrieved from .env file
+      # Leave AWS credentials undefined unless approved to work on profile picture routes by Big Sean
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_REGION=${AWS_REGION}
+      - BUCKET_NAME=${BUCKET_NAME}
+      - IS_SK=${IS_SK}
       # suppress aws sdk v2 deprecation warning
       - AWS_SDK_JS_SUPPRESS_MAINTENANCE_MODE_MESSAGE=1;
     depends_on:
