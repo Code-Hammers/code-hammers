@@ -14,9 +14,8 @@ export const uploadProfilePicture = async (req: Request, res: Response) => {
   // Route bypass for development - need AWS credentials to work on this route
   if (process.env.NODE_ENV === 'development' && !process.env.IS_SK) {
     console.log('Big Sean approval / credentials required to work on this route');
-    return res
-      .status(201)
-      .send({ message: 'Big Sean approval / credentials required to work on this route' });
+    const currentProfile = await Profile.findOne({ user: req.user!.id });
+    return res.status(201).send(currentProfile);
   }
 
   if (!req.file) {
