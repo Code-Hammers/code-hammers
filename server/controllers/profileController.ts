@@ -134,6 +134,12 @@ const getAllProfiles = async (req: Request, res: Response, next: NextFunction) =
         message: { err: 'There were no profiles to retrieve' },
       });
     } else {
+      // Route bypass for development - need AWS credentials to work on this route
+      // This allows Mock Profile Photos to work in development
+      if (process.env.NODE_ENV === 'development' && !process.env.IS_SK) {
+        return res.status(200).send(profiles);
+      }
+
       const processedProfiles = await Promise.all(
         profiles.map(async (profile) => {
           if (profile.profilePhoto) {
@@ -174,6 +180,12 @@ const getProfileById = async (req: Request, res: Response, next: NextFunction) =
         message: { err: 'An error occurred during profile retrieval' },
       });
     }
+    // Route bypass for development - need AWS credentials to work on this route
+    // This allows Mock Profile Photos to work in development
+    if (process.env.NODE_ENV === 'development' && !process.env.IS_SK) {
+      return res.status(200).json(profile);
+    }
+
     if (profile.profilePhoto) {
       const presignedUrl = s3.getSignedUrl('getObject', {
         Bucket: process.env.BUCKET_NAME,

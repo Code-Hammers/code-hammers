@@ -5,25 +5,34 @@ services:
     container_name: ch-dev
     ports:
       - '8080:8080'
+      - '3000:3000'
     volumes:
       - .:/usr/src/app
       - node_modules:/usr/src/app/node_modules
       - client_node_modules:/usr/src/app/client/node_modules
-    command: npm run dev-ts
     environment:
+      - PORT=3000
       - NODE_ENV=development
+      - JWT_SECRET=fakeDevelopmentSecret
+      - MONGO_URI=mongodb://root:rootPass@ch-mongo-dev:27017/ch-testdb
       - DATABASE_URL=postgres://codehammers:ch-dev@postgres:5432/ch-dev-database
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=ch-dev
       - POSTGRES_DB=ch-dev-database
-      - AWS_ACCESS_KEY_ID=placeholder-value
-      - AWS_SECRET_ACCESS_KEY=placeholder-value
-      - AWS_REGION=placeholder-value
-      - BUCKET_NAME=placeholder-value
+      # AWS credentials and IS_SK environment variables are retrieved from .env file
+      # Leave AWS credentials undefined unless approved to work on profile picture routes by Big Sean
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_REGION=${AWS_REGION}
+      - BUCKET_NAME=${BUCKET_NAME}
+      - IS_SK=${IS_SK}
       # suppress aws sdk v2 deprecation warning
       - AWS_SDK_JS_SUPPRESS_MAINTENANCE_MODE_MESSAGE=1;
     depends_on:
       - postgres
+      - ch-mongo-dev
+    command: npm run dev-ts
+
   postgres:
     image: codehammers/postgres-dev:latest
     container_name: codehammers-postgres
@@ -35,7 +44,26 @@ services:
       - postgres-data:/var/lib/postgresql/data
     ports:
       - '5432:5432'
+
+  ch-mongo-dev:
+    image: mongo
+    container_name: ch-mongo-dev
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_DATABASE=ch-testdb
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=adminpassword
+      - MONGO_HOST=ch-mongo-dev
+      - MONGO_USER=root
+      - MONGO_USER_PWD=rootPass
+    volumes:
+      - ./scripts/db/mongo-dev-init/:/docker-entrypoint-initdb.d
+      - mongo-dev-volume:/data/db
+    command: mongod --quiet --logpath /dev/null
 volumes:
   node_modules:
   client_node_modules:
   postgres-data:
+  mongo-dev-volume:
