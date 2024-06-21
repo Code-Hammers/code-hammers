@@ -30,8 +30,8 @@ const Profile = () => {
 
   const position = careerInformation?.currentPosition;
   const networkingStatus = availabilityForNetworking 
-    ? `I'm available for networking!`
-    : `I'm not available for networking right now`;
+    ? <h1 className='text-yellow-200 text-sm'>I'm available for networking!</h1>
+    : <h1 className='text-red-200 text-sm'>I'm not available for networking right now</h1>;
 
   return (
     <div className="bg-gray-900 flex flex-col items-center justify-start min-h-screen p-4 pt-20 text-white">
@@ -51,9 +51,9 @@ const Profile = () => {
         <h3 className="mb-2 text-sm">
           {networkingStatus}
         </h3>
-        <p className="bg-gray-700 mb-4 rounded-lg text-base">{personalBio}</p>
-        <div className='flex mb-4 pb-0 space-x-4 w-full'>
-        <div className='bg-gray-800 border-red-500 border-2 flex-1 ml-10 p-4 rounded-lg'>
+        <p className="mb-4 rounded-lg text-base">{personalBio}</p>
+        <div className='flex justify-center mb-4 pb-0 space-x-4 w-full '>
+        <div className='bg-gray-800 border-red-500 border-2 flex-1 p-4 rounded-lg'>
           <h2 className='font-bold mb-2 text-center text-xl'>Skills</h2>
           <ul className='flex flex-wrap gap-2 justify-center list-inside'>
             {skills?.map((skill: string) => (
@@ -63,19 +63,20 @@ const Profile = () => {
             ))}
           </ul>
         </div>
-        <div className= 'bg-gray-800 border-2 border-red-500 flex-1 ml-10 p-4 rounded-lg'>
+        <div className= 'bg-gray-800 border-2 border-red-500 flex-1 p-4 rounded-lg'>
             <h2 className='font-bold mb-2 text-center text-xl'>Specializations</h2>
             <ul className='flex flex-wrap gap-2 justify-center list-inside'>
             {specializations?.map((specialization: string) => (
-              <li className='bg-yellow-500 inline-flex items-center px-4 py-1 rounded-full text-sm text-white'>
+              <li className='bg-yellow-500 inline-flex items-center px-4 py-1 rounded-full text-sm text-black'>
                 {specialization}
               </li>
             ))}
           </ul>
         </div>
         </div>
-        <div className='border-2 border-red-500 flex-1 justify-center mt-4 space-x-4'>
+        <div className='border-2 border-red-500 flex flex-col items-center justify-center mt-4'>
           <h1 className='font-bold text-xl'>Socials</h1>
+          {networkingStatus}
         </div>
       </div>
     </div>
