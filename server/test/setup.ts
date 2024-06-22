@@ -11,7 +11,7 @@ const testUserEmail = 'theDude@Duderino.com';
 const testUserPassword = 'jackieTreehorn';
 
 beforeAll(async () => {
-  process.env.JWT_KEY = 'asdfasdfasdf';
+  process.env.JWT_SECRET = 'asdfasdfasdf';
   await mongoose.connect('mongodb://ch-mongo-test:27017/ch-testdb', {});
 });
 
