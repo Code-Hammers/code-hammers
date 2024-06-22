@@ -44,7 +44,6 @@ global.login = async () => {
     .expect(200);
 
   const cookie = response.get('Set-Cookie') as string[];
-  console.log(cookie);
 
   return cookie;
 };
