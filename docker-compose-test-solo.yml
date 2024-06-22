@@ -1,5 +1,4 @@
 version: '3'
-
 services:
   test:
     image: codehammers/ch-dev-dep-v3:latest
@@ -20,7 +19,9 @@ services:
       - POSTGRES_PASSWORD=ch-dev
       # suppress aws sdk v2 deprecation warning
       - AWS_SDK_JS_SUPPRESS_MAINTENANCE_MODE_MESSAGE=1;
-    command: npm run test:all
+      - TEST_CMD=${TEST_CMD}
+      - TEST_FILE=${TEST_FILE}
+    command: npm run ${TEST_CMD} ${TEST_FILE}
 
   ch-mongo-test:
     image: mongo
