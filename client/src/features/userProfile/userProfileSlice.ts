@@ -56,6 +56,11 @@ export const uploadProfilePicture = createAsyncThunk(
           'Content-Type': 'multipart/form-data',
         },
       });
+      if (process.env.NODE_ENV === 'development') {
+        console.log('💰 Woah there, that ish costs money 💰');
+        console.log('❓❓Did Big Sean approve you to tax his AWS account❓❓');
+        console.log("I didn't think so, get outta here");
+      }
       return response.data;
     } catch (error) {
       let errorMessage = 'An error occurred during profile picture upload';

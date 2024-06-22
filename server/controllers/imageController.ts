@@ -11,6 +11,13 @@ AWS.config.update({
 const s3 = new AWS.S3();
 
 export const uploadProfilePicture = async (req: Request, res: Response) => {
+  // Route bypass for development - need AWS credentials to work on this route
+  if (process.env.NODE_ENV === 'development' && !process.env.IS_SK) {
+    console.log('Big Sean approval / credentials required to work on this route');
+    const currentProfile = await Profile.findOne({ user: req.user!.id });
+    return res.status(201).send(currentProfile);
+  }
+
   if (!req.file) {
     return res.status(400).send('No file uploaded.');
   }

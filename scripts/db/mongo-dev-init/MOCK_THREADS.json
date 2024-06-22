@@ -1,0 +1,322 @@
+[
+  {
+    "user": {
+      "$oid": "66723da68f368f285d304acd"
+    },
+    "forum": {
+      "$oid": "6674c31e95590f9fd9459e5c"
+    },
+    "title": "Full Stack Development: Best Practices",
+    "content": "Best practices, tools, and frameworks for mastering full-stack development. How do you balance frontend and backend development responsibilities?",
+    "createdAt": {
+      "$date": "2024-06-21T00:02:39.500Z"
+    },
+    "updatedAt": {
+      "$date": "2025-01-08T07:19:52.111Z"
+    },
+    "_id": {
+      "$oid": "6674c31f95590f9fd945a203"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "6644c602515c654def9b2ae7"
+    },
+    "forum": {
+      "$oid": "6674c31e95590f9fd9459e5c"
+    },
+    "title": "AI Ethics: Bias, Accountability, and Transparency",
+    "content": "Exploring ethical considerations in AI development, including bias mitigation, accountability frameworks, and transparency practices.",
+    "createdAt": {
+      "$date": "2024-06-21T00:02:39.500Z"
+    },
+    "updatedAt": {
+      "$date": "2027-08-22T12:54:42.090Z"
+    },
+    "_id": {
+      "$oid": "6674c31f95590f9fd945a204"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "6644c768515c654def9b2b09"
+    },
+    "forum": {
+      "$oid": "6674c31e95590f9fd9459e5c"
+    },
+    "title": "JavaScript Frameworks Comparison",
+    "content": "Comparing popular JavaScript frameworks like React, Angular, and Vue.js. Share your experiences, strengths, and weaknesses of each framework.",
+    "createdAt": {
+      "$date": "2024-06-21T00:02:39.500Z"
+    },
+    "updatedAt": {
+      "$date": "2028-03-07T02:35:36.257Z"
+    },
+    "_id": {
+      "$oid": "6674c31f95590f9fd945a205"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "66723da68f368f285d304acd"
+    },
+    "forum": {
+      "$oid": "6674c31e95590f9fd9459e5a"
+    },
+    "title": "Cybersecurity Threats: Prevention and Response",
+    "content": "Discussing common cybersecurity threats and strategies for prevention and incident response. How do you secure your applications and data?",
+    "createdAt": {
+      "$date": "2024-06-21T00:02:39.501Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-21T00:02:39.501Z"
+    },
+    "_id": {
+      "$oid": "6674c31f95590f9fd945a206"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "6674c31695590f9fd9459dc4"
+    },
+    "forum": {
+      "$oid": "6674c31e95590f9fd9459e5b"
+    },
+    "title": "Interview Preparation Tips",
+    "content": "Preparing for software engineering interviews? Discussing strategies, common interview questions, and resources to ace technical interviews.",
+    "createdAt": {
+      "$date": "2024-06-21T00:02:39.500Z"
+    },
+    "updatedAt": {
+      "$date": "2028-01-03T07:43:52.724Z"
+    },
+    "_id": {
+      "$oid": "6674c31f95590f9fd945a207"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "6674c31695590f9fd9459dde"
+    },
+    "forum": {
+      "$oid": "6674c31e95590f9fd9459e5b"
+    },
+    "title": "Open Source Projects: Contributions and Impact",
+    "content": "Discussing the impact of open-source projects on the tech industry and society. How can open-source initiatives drive innovation and collaboration?",
+    "createdAt": {
+      "$date": "2024-06-21T00:02:39.501Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-21T00:02:39.501Z"
+    },
+    "_id": {
+      "$oid": "6674c31f95590f9fd945a208"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "6674c31695590f9fd9459de7"
+    },
+    "forum": {
+      "$oid": "6674c31e95590f9fd9459e59"
+    },
+    "title": "API Design: Best Practices and Guidelines",
+    "content": "Exploring best practices, design patterns, and guidelines for designing robust and developer-friendly APIs. What makes a good API?",
+    "createdAt": {
+      "$date": "2024-06-21T00:02:39.500Z"
+    },
+    "updatedAt": {
+      "$date": "2024-12-28T14:26:53.154Z"
+    },
+    "_id": {
+      "$oid": "6674c31f95590f9fd945a209"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "6674c31695590f9fd9459dbd"
+    },
+    "forum": {
+      "$oid": "6674c31e95590f9fd9459e59"
+    },
+    "title": "How to Improve Code Review Process?",
+    "content": "Seeking advice on optimizing our team's code review process. What tools and practices do you use to ensure effective code reviews and maintain code quality?",
+    "createdAt": {
+      "$date": "2024-06-21T00:02:39.500Z"
+    },
+    "updatedAt": {
+      "$date": "2026-12-28T21:52:51.888Z"
+    },
+    "_id": {
+      "$oid": "6674c31f95590f9fd945a20a"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "6644c7f7515c654def9b2b18"
+    },
+    "forum": {
+      "$oid": "6674c31e95590f9fd9459e5d"
+    },
+    "title": "Python vs Java: Which is Better for Backend Development?",
+    "content": "Debating the pros and cons of Python and Java for backend development. Share your experiences and preferences in choosing a backend programming language.",
+    "createdAt": {
+      "$date": "2024-06-21T00:02:39.502Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-21T00:02:39.502Z"
+    },
+    "_id": {
+      "$oid": "6674c31f95590f9fd945a20b"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "6674c31695590f9fd9459dae"
+    },
+    "forum": {
+      "$oid": "6674c31e95590f9fd9459e5d"
+    },
+    "title": "Tech Startups: Lessons Learned and Tips",
+    "content": "Sharing lessons learned, success stories, and practical tips for launching and scaling tech startups. What challenges did you face?",
+    "createdAt": {
+      "$date": "2024-06-21T00:02:39.500Z"
+    },
+    "updatedAt": {
+      "$date": "2025-02-16T19:16:47.598Z"
+    },
+    "_id": {
+      "$oid": "6674c31f95590f9fd945a20c"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "6674c31695590f9fd9459dbd"
+    },
+    "forum": {
+      "$oid": "6674c31e95590f9fd9459e5c"
+    },
+    "title": "Continuous Integration and Deployment (CI/CD)",
+    "content": "Exploring CI/CD pipelines, best practices, and tools for automating software delivery processes. Share your experiences and tips for implementing CI/CD.",
+    "createdAt": {
+      "$date": "2024-06-21T00:02:39.500Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-18T11:19:26.269Z"
+    },
+    "_id": {
+      "$oid": "6674c31f95590f9fd945a20d"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "6674c31695590f9fd9459dd1"
+    },
+    "forum": {
+      "$oid": "6674c31e95590f9fd9459e5c"
+    },
+    "title": "AR/VR Development: Tools and Platforms",
+    "content": "Discussing tools, platforms, and development techniques for creating augmented reality (AR) and virtual reality (VR) applications.",
+    "createdAt": {
+      "$date": "2024-06-21T00:02:39.500Z"
+    },
+    "updatedAt": {
+      "$date": "2028-01-03T05:20:56.159Z"
+    },
+    "_id": {
+      "$oid": "6674c31f95590f9fd945a20e"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "6674c31695590f9fd9459dc2"
+    },
+    "forum": {
+      "$oid": "6674c31e95590f9fd9459e5c"
+    },
+    "title": "Big Data Analytics: Tools and Techniques",
+    "content": "Exploring tools, frameworks, and techniques for analyzing and deriving insights from large datasets. How do you handle big data challenges?",
+    "createdAt": {
+      "$date": "2024-06-21T00:02:39.500Z"
+    },
+    "updatedAt": {
+      "$date": "2025-09-06T15:19:26.698Z"
+    },
+    "_id": {
+      "$oid": "6674c31f95590f9fd945a20f"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "6674c31695590f9fd9459dc5"
+    },
+    "forum": {
+      "$oid": "6674c31e95590f9fd9459e59"
+    },
+    "title": "UX/UI Design Principles for Developers",
+    "content": "Exploring UX/UI design principles and best practices for developers. How can developers contribute to creating user-friendly and visually appealing interfaces?",
+    "createdAt": {
+      "$date": "2024-06-21T00:02:39.502Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-21T00:02:39.502Z"
+    },
+    "_id": {
+      "$oid": "6674c31f95590f9fd945a210"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "6674c31695590f9fd9459dd3"
+    },
+    "forum": {
+      "$oid": "6674c31e95590f9fd9459e5a"
+    },
+    "title": "Introduction to Docker Containers",
+    "content": "New to Docker and containers? Let's discuss the basics, benefits, and practical applications of Docker in software development and deployment.",
+    "createdAt": {
+      "$date": "2024-06-21T00:02:39.502Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-21T00:02:39.502Z"
+    },
+    "_id": {
+      "$oid": "6674c31f95590f9fd945a211"
+    },
+    "__v": 0
+  },
+  {
+    "user": {
+      "$oid": "6674c31695590f9fd9459dcc"
+    },
+    "forum": {
+      "$oid": "6674c31e95590f9fd9459e5b"
+    },
+    "title": "Agile Development: Scrum vs Kanban",
+    "content": "Comparing Scrum and Kanban methodologies for Agile software development. Which approach works better for your team and why?",
+    "createdAt": {
+      "$date": "2024-06-21T00:02:39.502Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-21T00:02:39.502Z"
+    },
+    "_id": {
+      "$oid": "6674c31f95590f9fd945a212"
+    },
+    "__v": 0
+  }
+]

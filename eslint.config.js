@@ -17,7 +17,13 @@ module.exports = [
   },
   // Files/Directories to be ignored by ESLint
   {
-    ignores: ['**/node_modules/', 'coverage/', '**/build/', '**/dist/'],
+    ignores: [
+      '**/node_modules/',
+      'coverage/',
+      '**/build/',
+      '**/dist/',
+      '**/scripts/db/mongo-dev-init',
+    ],
   },
   // ESLint Recommended Configuration
   {
