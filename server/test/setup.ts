@@ -4,7 +4,7 @@ import request from 'supertest';
 import User from '../models/userModel';
 
 declare global {
-  function login(): Promise<string[] | undefined>;
+  function login(): Promise<string[]>;
 }
 
 const testUserEmail = 'theDude@Duderino.com';
@@ -43,7 +43,7 @@ global.login = async () => {
     })
     .expect(200);
 
-  const cookie = response.get('Set-Cookie');
+  const cookie = response.get('Set-Cookie') as string[];
   console.log(cookie);
 
   return cookie;
