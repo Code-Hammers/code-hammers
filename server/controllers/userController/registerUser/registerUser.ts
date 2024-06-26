@@ -44,7 +44,9 @@ const registerUser = async (req: Request, res: Response) => {
   }
   // Check if token is expired
   if (invitation.tokenExpiry.getTime() < Date.now()) {
-    throw new BadRequestError('Token is expired, please reach out to TODO to get a new invitation');
+    throw new BadRequestError(
+      'Token is expired, please reach out to brok3turtl3@gmail.com to get a new invitation',
+    );
   }
   if (invitation.isRegistered) {
     // Check if user is already registered

@@ -112,7 +112,7 @@ describe('Tests for userController.registerUser', () => {
       expect(response.status).toEqual(400);
       expect(response.body).toEqual(
         new BadRequestError(
-          'Token is expired, please reach out to TODO to get a new invitation',
+          'Token is expired, please reach out to brok3turtl3@gmail.com to get a new invitation',
         ).serializeErrors(),
       );
     });
