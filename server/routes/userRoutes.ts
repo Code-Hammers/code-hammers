@@ -1,7 +1,7 @@
 import express from 'express';
 import { protect } from '../middleware/authMiddleware';
+import registerUser from '../controllers/userController/registerUser/registerUser';
 import {
-  registerUser,
   authUser,
   getUserById,
   // deleteUserByEmail,
