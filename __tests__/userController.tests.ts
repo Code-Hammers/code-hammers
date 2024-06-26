@@ -1,10 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import {
-  registerUser,
-  authUser,
-  getUserById,
-  deleteUserByEmail,
-} from '../server/controllers/userController';
+import { authUser, getUserById, deleteUserByEmail } from '../server/controllers/userController';
 import User from '../server/models/userModel';
 
 jest.mock('../server/models/userModel', () => ({
@@ -28,41 +23,6 @@ xdescribe('User Controller Tests', () => {
       locals: {},
       cookie: jest.fn().mockReturnThis(),
     };
-  });
-
-  describe('registerUser function', () => {
-    xit('should handle user registration', async () => {
-      (User.findOne as jest.Mock).mockResolvedValue(null);
-      (User.create as jest.Mock).mockResolvedValue({
-        _id: 'someId',
-        firstName: 'John',
-        lastName: 'Doh',
-        email: 'john@example.com',
-        password: 'hashedPassword',
-      });
-
-      mockRequest.body = {
-        firstName: 'John',
-        lastName: 'Doh',
-        email: 'john@example.com',
-        password: 'password',
-      };
-
-      await registerUser(mockRequest as Request, mockResponse as Response, mockNext);
-
-      expect(mockResponse.json).toHaveBeenCalledWith({
-        _id: 'someId',
-        firstName: 'John',
-        lastName: 'Doh',
-        email: 'john@example.com',
-      });
-
-      expect(mockResponse.cookie).toHaveBeenCalledWith(
-        'token',
-        'someFakeToken',
-        expect.any(Object),
-      );
-    });
   });
 
   describe('authUser function', () => {
