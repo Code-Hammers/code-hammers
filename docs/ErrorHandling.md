@@ -80,11 +80,13 @@ Codehammers uses custom error classes for handling the most common types of erro
 - `NotFoundError` : 404
 - `RequestValidationError` : 400 (requires an array of `ValidationError`s as an argument when instantiated - see [below](#request-validation-error))
 
-Each of these error classes extend our `CustomError` abstract class. This abstract class cannot be instantiated, but is used to enforce a structure for our custom error classes: requiring a `statusCode` property, a `message` property, as well as a `serializeErrors` method. The `serializeErrors` method ensures that errors sent back to the client are consistently formatted as an array of objects, each object containing a `message` property and an optional `field` property.
+Each of these error classes extend our `CustomError` abstract class (which itself extends JavaScript's built-in `Error` object). This abstract class cannot be instantiated, but is used to enforce a structure for our custom error classes: requiring a `statusCode` property, a `message` property, as well as a `serializeErrors` method. The `serializeErrors` method ensures that errors sent back to the client are consistently formatted as an array of objects, each object containing a `message` property and an optional `field` property - used for validation errors.
 
 <a href="request-validation-error"></a>
 
 ##### RequestValidationError
+
+Another custom utility error class is `ValidationError`. This error is for user inputs that fail validation, such as an invalid email, or a password that is too short.
 
 When validating multiple user inputs, we create an array for validation errors and push in a `ValidationError` for each failed validation. We then throw a `RequestValidationError` if this array contains any `ValidationError`s. An example of this could be:
 
@@ -94,25 +96,28 @@ const createUser = async (req: Request, res: Response) => {
 
   const validationErrors: ValidationError[] = []
   if (!email) {
-    validationErrors.push(new ValidationError('Invalid email', 'email'))
+    validationErrors.push(new ValidationError('Please provide a valid email', 'email'))
   }
   if (!password) {
-    validationErrors.push(new ValidationError('Invalid password', 'password'))
+    validationErrors.push(new ValidationError('Please provide a valid password', 'password'))
   }
   if (validationErrors.length) {
     throw new RequestValidationError(validationErrors)
   }
+
   // continue if input validation checks pass...
 }
 ```
 
 `ValidationError`s include a relevant `message` for the user, and the `field` representing which input failed validation, passed as arguments when instantiating a `ValidationError`.
 
+Having the ability to collect and send back multiple errors for each validation failure helps our front end developers relay useful information to the user about which inputs were invalid and need fixing.
+
 <a href="global-error-handler"></a>
 
 #### Global Error Handler
 
-We are currently migrating our error handling to make use of `express-async-errors` and our custom error classes. While this migration is ongoing, we still need to handle error objects that have been manually passed to Express's `next` function. Our global error handler (`server/middleware/errorHandler.ts`) is setup to handle both of these cases, while still sending back consistently formatted errors. If an error is neither a custom error class or manually caught error object, we send back a generic `InternalError` with `500` status code
+We are currently migrating our error handling to make use of `express-async-errors` and our custom error classes. While this migration is ongoing, we still need to handle error objects that have been manually passed to Express's `next` function. Our global error handler (`server/middleware/errorHandler.ts`) is setup to handle both of these cases, while still sending back consistently formatted errors. If an error is neither a custom error class or manually caught error object, we send back a generic `InternalError` with `500` status code.
 
 <hr>
 
