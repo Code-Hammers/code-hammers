@@ -65,7 +65,7 @@ const middleware = catchAsync(async (req, res) => {
 })
 ```
 
-Much nicer to not have to manually wrap every route handler and middleware!
+Much nicer not having to manually wrap every route handler and middleware!
 
 <a id="custom-errors"></a>
 
