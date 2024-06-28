@@ -71,7 +71,7 @@ Much nicer not having to manually wrap every route handler and middleware!
 
 #### Custom Error Classes
 
-Codehammers uses reuseable error classes for handling the most common types of errors that occur on the server. These classes can be found in the `server/errors/` directory. These errors and their corresponding status codes are:
+Codehammers uses custom error classes for handling the most common types of errors that occur on the server. These classes can be found in the `server/errors/` directory. These errors and their corresponding status codes are:
 
 - `BadRequestError` : 400 (requires a `message` argument when instantiated)
 - `DatabaseConnectionError` : 500
