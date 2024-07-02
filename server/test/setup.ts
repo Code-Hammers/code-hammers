@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import app from '../app';
 import request from 'supertest';
 import User from '../models/userModel';
+import { pool } from '../config/sql-db';
 
 declare global {
   function login(): Promise<string[]>;
@@ -20,10 +21,28 @@ beforeEach(async () => {
   for (const collection of collections) {
     await collection.deleteMany({});
   }
+
+  await pool.query(`
+    DO
+    $$
+    DECLARE
+        table_name text;
+    BEGIN
+        FOR table_name IN
+            SELECT tablename
+            FROM pg_tables
+            WHERE schemaname = 'public'
+        LOOP
+            EXECUTE format('TRUNCATE TABLE %I CASCADE;', table_name);
+        END LOOP;
+    END
+    $$;
+   `);
 });
 
 afterAll(async () => {
   await mongoose.connection.close();
+  pool.end();
 });
 
 global.login = async () => {
