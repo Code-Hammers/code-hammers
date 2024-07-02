@@ -10,6 +10,7 @@ const RegistrationPage = () => {
     password2: '',
   });
 
+  const [registrationError, setRegistrationError] = useState(false);
   const location = useLocation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -28,8 +29,12 @@ const RegistrationPage = () => {
     e.preventDefault();
     if (!token) {
       console.error('Token is missing.');
-      return; //TODO Display error feedback for user
+      setRegistrationError(true);
+      console.log('here it is:', setRegistrationError)
+      // return; //TODO Display error feedback for user
+      
     }
+    ;
     //TODO User feedback needed
     if (formData.password !== formData.password2) return;
     try {
@@ -42,6 +47,7 @@ const RegistrationPage = () => {
       });
       const data = await response.json();
       if (!response.ok) {
+        setRegistrationError(true)
         throw new Error(data.message || 'An error occurred during registration.');
       }
 
@@ -117,6 +123,9 @@ const RegistrationPage = () => {
               Register
             </button>
           </div>
+          {registrationError && (<div className="mt-4 text-red-500 text-center">
+            Sorry! We're unable to create your account. Please e-mail brok3turtl3@gmail.com for assistance
+          </div>)}
         </form>
       </div>
     </div>
