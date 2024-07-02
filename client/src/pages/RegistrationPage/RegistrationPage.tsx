@@ -23,14 +23,15 @@ const RegistrationPage = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
+    setRegistrationError(false);
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setRegistrationError(false);
     if (!token) {
       console.error('Token is missing.');
       setRegistrationError(true);
-      console.log('here it is:', setRegistrationError)
       // return; //TODO Display error feedback for user
       
     }
@@ -124,7 +125,7 @@ const RegistrationPage = () => {
             </button>
           </div>
           {registrationError && (<div className="mt-4 text-red-500 text-center">
-            Sorry! We're unable to create your account. Please e-mail brok3turtl3@gmail.com for assistance
+            Sorry! We're unable to create your account. Please e-mail brok3turtl3@gmail.com for assistance.
           </div>)}
         </form>
       </div>
