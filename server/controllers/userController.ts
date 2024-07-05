@@ -37,7 +37,6 @@ const registerUser = async (req: Request, res: Response, next: NextFunction) => 
       email,
       password,
     });
-//comment - ELSA
     if (user) {
       invitation.isRegistered = true;
       await invitation?.save();

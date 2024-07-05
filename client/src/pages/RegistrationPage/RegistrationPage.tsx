@@ -10,7 +10,7 @@ const RegistrationPage = () => {
     password2: '',
   });
 
-  const [registrationError, setRegistrationError] = useState(false);
+  const [registrationError, setRegistrationError] = useState(null);
   const location = useLocation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -31,13 +31,15 @@ const RegistrationPage = () => {
     setRegistrationError(false);
     if (!token) {
       console.error('Token is missing.');
-      setRegistrationError(true);
+      setRegistrationError('token');
       // return; //TODO Display error feedback for user
       
     }
     ;
     //TODO User feedback needed
-    if (formData.password !== formData.password2) return;
+    if (formData.password !== formData.password2) {
+      setRegistrationError('passwords do not match')
+    };
     try {
       const response = await fetch(`/api/users/register?token=${token}`, {
         method: 'POST',
@@ -48,7 +50,7 @@ const RegistrationPage = () => {
       });
       const data = await response.json();
       if (!response.ok) {
-        setRegistrationError(true)
+        setRegistrationError('general')
         throw new Error(data.message || 'An error occurred during registration.');
       }
 
@@ -124,9 +126,23 @@ const RegistrationPage = () => {
               Register
             </button>
           </div>
-          {registrationError && (<div className="mt-4 text-red-500 text-center">
-            Sorry! We're unable to create your account. Please e-mail brok3turtl3@gmail.com for assistance.
-          </div>)}
+          {registrationError === 'token' && (
+            <div className="mt-4 text-red-500 text-center">
+              Sorry! That token is invalid or expired. Please e-mail brok3turtl3@gmail.com for
+              assistance.
+            </div>
+          )}
+          {registrationError === 'general' && (
+            <div className="mt-4 text-red-500 text-center">
+              Sorry! It's not you - it's us. We are unable to register you at this time. Please
+              e-mail brok3turtl3@gmail.com for assistance.
+            </div>
+          )}
+          {registrationError === 'passwords do not match' && (
+            <div className="mt-4 text-red-500 text-center">
+              Passwords do not match. Please try again. 
+            </div>
+          )}
         </form>
       </div>
     </div>
