@@ -57,7 +57,7 @@ const RegistrationPage = () => {
         .then(() => {
           navigate('/app/main');
         })
-        .catch((error) => {
+        .catch((error: Error) => {
           console.error('Error adding user to state:', error);
         });
     } catch (error) {
