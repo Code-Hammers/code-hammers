@@ -1,6 +1,7 @@
 import User from '../models/userModel';
 import { Request, Response, NextFunction } from 'express';
 import { UserType } from '../types/user';
+import generateToken from '../utils/generateToken';
 
 // ENDPOINT  POST api/users/login
 // PURPOSE   Authenticate User and get token
@@ -99,4 +100,4 @@ const deleteUserByEmail = async (req: Request, res: Response, next: NextFunction
   }
 };
 
-export { authUser, getUserById, deleteUserByEmail, registerUser };
+export { authUser, getUserById, deleteUserByEmail };
