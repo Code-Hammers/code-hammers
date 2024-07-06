@@ -1,4 +1,5 @@
 import User from '../models/userModel';
+import GraduateInvitation from '../models/graduateInvitationModel';
 import { Request, Response, NextFunction } from 'express';
 import { UserType } from '../types/user';
 
