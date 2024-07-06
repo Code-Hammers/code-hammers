@@ -1,7 +1,7 @@
 import User from '../models/userModel';
-import generateToken from '../utils/generateToken';
 import { Request, Response, NextFunction } from 'express';
 import { UserType } from '../types/user';
+import generateToken from '../utils/generateToken';
 
 // ENDPOINT  POST api/users/login
 // PURPOSE   Authenticate User and get token

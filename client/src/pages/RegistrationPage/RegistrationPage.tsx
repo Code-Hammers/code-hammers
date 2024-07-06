@@ -10,6 +10,7 @@ const RegistrationPage = () => {
     password2: '',
   });
 
+  const [registrationError, setRegistrationError] = useState(null);
   const location = useLocation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -22,16 +23,21 @@ const RegistrationPage = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
+    setRegistrationError(false);
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setRegistrationError(false);
     if (!token) {
       console.error('Token is missing.');
-      return; //TODO Display error feedback for user
+      setRegistrationError('token');
+      // return; //TODO Display error feedback for user
     }
     //TODO User feedback needed
-    if (formData.password !== formData.password2) return;
+    if (formData.password !== formData.password2) {
+      setRegistrationError('passwords do not match');
+    }
     try {
       const response = await fetch(`/api/users/register?token=${token}`, {
         method: 'POST',
@@ -42,6 +48,7 @@ const RegistrationPage = () => {
       });
       const data = await response.json();
       if (!response.ok) {
+        setRegistrationError('general');
         throw new Error(data.message || 'An error occurred during registration.');
       }
 
@@ -50,7 +57,7 @@ const RegistrationPage = () => {
         .then(() => {
           navigate('/app/main');
         })
-        .catch((error) => {
+        .catch((error: Error) => {
           console.error('Error adding user to state:', error);
         });
     } catch (error) {
@@ -117,6 +124,23 @@ const RegistrationPage = () => {
               Register
             </button>
           </div>
+          {registrationError === 'token' && (
+            <div className="mt-4 text-red-500 text-center">
+              Sorry! That token is invalid or expired. Please e-mail brok3turtl3@gmail.com for
+              assistance.
+            </div>
+          )}
+          {registrationError === 'general' && (
+            <div className="mt-4 text-red-500 text-center">
+              Sorry! It is not you - it is us. We are unable to register you at this time. Please
+              e-mail brok3turtl3@gmail.com for assistance.
+            </div>
+          )}
+          {registrationError === 'passwords do not match' && (
+            <div className="mt-4 text-red-500 text-center">
+              Passwords do not match. Please try again.
+            </div>
+          )}
         </form>
       </div>
     </div>
