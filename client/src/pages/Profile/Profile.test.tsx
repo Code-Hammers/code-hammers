@@ -26,6 +26,7 @@ describe('Profile Component', () => {
     user: mockUserId,
     firstName: 'John',
     lastName: 'Doh',
+    cohort: '42'
   };
   //TODO MOCK BETTER USERPROFILE DATA??
   beforeEach(() => {
@@ -44,22 +45,30 @@ describe('Profile Component', () => {
 
   it('renders the Profile component', () => {
     render(<Profile />);
+    screen.debug(); // Print the rendered output to the console
     const profileTitle = screen.getByText('Profile');
     expect(profileTitle).toBeInTheDocument();
   });
-
+  
+  
   it('dispatches fetchUserProfile on component mount', () => {
     render(<Profile />);
     expect(mockDispatch).toHaveBeenCalledWith(fetchUserProfile(mockUserId));
   });
 
-  it("displays the user's fullName", () => {
+  it("displays the user's full name", () => {
     render(<Profile />);
-
-    const userNameDisplay = screen.getByText(
-      `${mockUserProfile.firstName} ${mockUserProfile.lastName}`,
-    );
-
+  
+    const userNameDisplay = screen.getByText((content, element) => {
+      const hasText = (node: Node) => node.textContent === `${mockUserProfile.firstName} ${mockUserProfile.lastName} [${mockUserProfile.cohort}]`;
+      const elementHasText = element ? hasText(element) : false;
+      const childrenDontHaveText = Array.from(element?.children || []).every(
+        (child) => !hasText(child)
+      );
+      return elementHasText && childrenDontHaveText;
+    });
+  
     expect(userNameDisplay).toBeInTheDocument();
   });
+  
 });
