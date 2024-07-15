@@ -33,9 +33,9 @@ const Profile = () => {
 
   const position = careerInformation?.currentPosition;
   const networkingStatus = availabilityForNetworking ? (
-    <h1 className="text-yellow-200 text-sm">I'm available for networking!</h1>
+    <h1 className="text-yellow-200 text-sm">I&apos;m available for networking!</h1>
   ) : (
-    <h1 className="text-red-200 text-sm">I'm not available for networking right now</h1>
+    <h1 className="text-red-200 text-sm">I&apos;m not available for networking right now</h1>
   );
 
   const ensureProtocol = (url: string): string => {
@@ -76,7 +76,10 @@ const Profile = () => {
             <h2 className="font-bold mb-2 text-center text-xl">Skills</h2>
             <ul className="flex flex-wrap gap-2 justify-center list-inside">
               {skills?.map((skill: string) => (
-                <li className="bg-blue-500 inline-flex items-center px-4 py-1 rounded-full text-sm text-white">
+                <li
+                  className="bg-blue-500 inline-flex items-center px-4 py-1 rounded-full text-sm text-white"
+                  key={skill}
+                >
                   {skill}
                 </li>
               ))}
@@ -86,7 +89,10 @@ const Profile = () => {
             <h2 className="font-bold mb-2 text-center text-xl">Specializations</h2>
             <ul className="flex flex-wrap gap-2 justify-center list-inside">
               {specializations?.map((specialization: string) => (
-                <li className="bg-yellow-500 inline-flex items-center px-4 py-1 rounded-full text-sm text-black">
+                <li
+                  className="bg-yellow-500 inline-flex items-center px-4 py-1 rounded-full text-sm text-black"
+                  key={specialization}
+                >
                   {specialization}
                 </li>
               ))}

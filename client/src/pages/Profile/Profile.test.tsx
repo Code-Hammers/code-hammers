@@ -25,10 +25,10 @@ describe('Profile Component', () => {
   const mockUserProfile = {
     user: mockUserId,
     firstName: 'John',
-    lastName: 'Doh',
-    cohort: '42'
+    lastName: 'Doe',
+    cohort: '2023',
   };
-  //TODO MOCK BETTER USERPROFILE DATA??
+
   beforeEach(() => {
     (useAppDispatch as jest.Mock).mockReturnValue(mockDispatch);
     (useParams as jest.Mock).mockReturnValue({ userId: mockUserId });
@@ -45,12 +45,10 @@ describe('Profile Component', () => {
 
   it('renders the Profile component', () => {
     render(<Profile />);
-    screen.debug(); // Print the rendered output to the console
     const profileTitle = screen.getByText('Profile');
     expect(profileTitle).toBeInTheDocument();
   });
-  
-  
+
   it('dispatches fetchUserProfile on component mount', () => {
     render(<Profile />);
     expect(mockDispatch).toHaveBeenCalledWith(fetchUserProfile(mockUserId));
@@ -58,17 +56,18 @@ describe('Profile Component', () => {
 
   it("displays the user's full name", () => {
     render(<Profile />);
-  
+
     const userNameDisplay = screen.getByText((content, element) => {
-      const hasText = (node: Node) => node.textContent === `${mockUserProfile.firstName} ${mockUserProfile.lastName} [${mockUserProfile.cohort}]`;
+      const hasText = (node: Node) =>
+        node.textContent ===
+        `${mockUserProfile.firstName} ${mockUserProfile.lastName} [${mockUserProfile.cohort}]`;
       const elementHasText = element ? hasText(element) : false;
       const childrenDontHaveText = Array.from(element?.children || []).every(
-        (child) => !hasText(child)
+        (child) => !hasText(child),
       );
       return elementHasText && childrenDontHaveText;
     });
-  
+
     expect(userNameDisplay).toBeInTheDocument();
   });
-  
 });

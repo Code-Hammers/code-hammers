@@ -18,20 +18,20 @@ exports[`MainPage Component renders correctly 1`] = `
       onClick={[Function]}
     >
       <div
-        className="bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 text-white p-4 rounded-lg flex flex-col items-center justify-center h-64 w-64"
+        className="bg-gradient-to-r flex flex-col from-gray-700 h-64 items-center justify-center p-4 rounded-lg text-white to-gray-900 via-gray-800 w-64"
       >
         <img
           alt="Default Profile"
-          className="rounded-full h-24 w-24 object-cover mb-4"
+          className="h-24 mb-4 object-cover rounded-full w-24"
           src="https://picsum.photos/200"
         />
         <h1
-          className="text-xl font-bold mb-2"
+          className="font-bold mb-2 text-xl"
         >
            
         </h1>
         <h2
-          className="text-md mb-2"
+          className="max-h-10 mb-2 text-xs"
         />
       </div>
     </a>
@@ -41,20 +41,20 @@ exports[`MainPage Component renders correctly 1`] = `
       onClick={[Function]}
     >
       <div
-        className="bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 text-white p-4 rounded-lg flex flex-col items-center justify-center h-64 w-64"
+        className="bg-gradient-to-r flex flex-col from-gray-700 h-64 items-center justify-center p-4 rounded-lg text-white to-gray-900 via-gray-800 w-64"
       >
         <img
           alt="Default Profile"
-          className="rounded-full h-24 w-24 object-cover mb-4"
+          className="h-24 mb-4 object-cover rounded-full w-24"
           src="https://picsum.photos/200"
         />
         <h1
-          className="text-xl font-bold mb-2"
+          className="font-bold mb-2 text-xl"
         >
            
         </h1>
         <h2
-          className="text-md mb-2"
+          className="max-h-10 mb-2 text-xs"
         />
       </div>
     </a>
