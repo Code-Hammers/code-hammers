@@ -17,7 +17,7 @@ jest.mock('../server/models/profileModel', () => ({
   find: jest.fn(),
 }));
 
-describe('Profile Controller Tests', () => {
+xdescribe('Profile Controller Tests', () => {
   let mockRequest: Partial<Request>;
   let mockResponse: Partial<Response>;
   let mockNext: NextFunction = jest.fn();

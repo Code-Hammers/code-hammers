@@ -1,8 +1,13 @@
 module.exports = {
-  roots: ['<rootDir>/__tests__'],
-  transform: {
-    '^.+\\.tsx?$': 'ts-jest',
-  },
-  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  preset: 'ts-jest',
+  testEnvironment: 'node',
+  setupFilesAfterEnv: ['<rootDir>/server/test/setup.ts'],
+  moduleFileExtensions: ['ts', 'js', 'json'],
+  testPathIgnorePatterns: [
+    '<rootDir>/scripts',
+    '<rootDir>/node_modules',
+    '<rootDir>/dist',
+    '<rootDir>/coverage',
+    '<rootDir>/client',
+  ],
 };
