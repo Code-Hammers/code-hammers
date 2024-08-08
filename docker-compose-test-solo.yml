@@ -11,17 +11,31 @@ services:
       - client_node_modules:/usr/src/app/client/node_modules
     depends_on:
       - ch-mongo-test
+      - ch-pg-test
     environment:
-      - JWT_SECRET=${JWT_SECRET}
+      - NODE_ENV=test
+      - JWT_SECRET=testJwtSecret
       - MONGO_URI=mongodb://ch-mongo-test:27017/ch-testdb
       - POSTGRES_USER=postgres
-      - POSTGRES_DB=ch-dev-database
-      - POSTGRES_PASSWORD=ch-dev
+      - POSTGRES_DB=ch-test-database
+      - POSTGRES_PASSWORD=ch-test
       # suppress aws sdk v2 deprecation warning
       - AWS_SDK_JS_SUPPRESS_MAINTENANCE_MODE_MESSAGE=1;
       - TEST_CMD=${TEST_CMD}
       - TEST_FILE=${TEST_FILE}
     command: npm run ${TEST_CMD} ${TEST_FILE}
+
+  ch-pg-test:
+    image: postgres:16.3
+    container_name: ch-pg-test
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=ch-test-database
+      - POSTGRES_PASSWORD=ch-test
+    volumes:
+      - ./scripts/db/postgres/sql_db_init_test.sql:/docker-entrypoint-initdb.d/sql_db_init_test.sql
+    ports:
+      - '5432:5432'
 
   ch-mongo-test:
     image: mongo
