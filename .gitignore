@@ -4,3 +4,4 @@ dist/
 coverage/
 /client/build/
 /server/config/serviceKey.json
+.DS_Store

@@ -1,0 +1,72 @@
+[
+  {
+    "title": "Code Crunch & Job Hunt: Battle Logs",
+    "description": "Share your epic (or tragic) tales from the job search battlefield. Did you bravely conquer the coding test, or did it conquer you?",
+    "_id": {
+      "$oid": "6674c31e95590f9fd9459e59"
+    },
+    "createdAt": {
+      "$date": "2024-06-21T00:02:38.535Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-21T00:02:38.535Z"
+    },
+    "__v": 0
+  },
+  {
+    "title": "Debugging My Resume",
+    "description": "Need help squashing those pesky resume bugs? Post your CV here and let the community help you refactor it into a job offer magnet.",
+    "_id": {
+      "$oid": "6674c31e95590f9fd9459e5a"
+    },
+    "createdAt": {
+      "$date": "2024-06-21T00:02:38.536Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-21T00:02:38.536Z"
+    },
+    "__v": 0
+  },
+  {
+    "title": "Interview Nightmares & Dream Jobs",
+    "description": "Spill the beans on your worst interview disasters and celebrate those rare moments when it actually went well. Misery loves company, and so do success stories!",
+    "_id": {
+      "$oid": "6674c31e95590f9fd9459e5b"
+    },
+    "createdAt": {
+      "$date": "2024-06-21T00:02:38.536Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-21T00:02:38.536Z"
+    },
+    "__v": 0
+  },
+  {
+    "title": "HR: Humans or Robots?",
+    "description": "Ever wonder if that HR person was a cleverly disguised bot? Share your weirdest and most robotic interactions with hiring departments.",
+    "_id": {
+      "$oid": "6674c31e95590f9fd9459e5c"
+    },
+    "createdAt": {
+      "$date": "2024-06-21T00:02:38.536Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-21T00:02:38.536Z"
+    },
+    "__v": 0
+  },
+  {
+    "title": "Salary Negotiation: The Boss Fight",
+    "description": "Tips, tricks, and epic fails from the final boss battle of job hunting: salary negotiations. Did you get the loot or just a consolation prize?",
+    "_id": {
+      "$oid": "6674c31e95590f9fd9459e5d"
+    },
+    "createdAt": {
+      "$date": "2024-06-21T00:02:38.536Z"
+    },
+    "updatedAt": {
+      "$date": "2024-06-21T00:02:38.536Z"
+    },
+    "__v": 0
+  }
+]
