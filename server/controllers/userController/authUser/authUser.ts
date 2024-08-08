@@ -7,7 +7,7 @@ import { UserType } from '../../../types/user';
 // ENDPOINT  POST api/users/login
 // PURPOSE   Authenticate User and get token
 // ACCESS    Public
-const authUser = async (req: Request, res: Response, next: NextFunction) => {
+const authUser = async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
   if (!email || !password) {

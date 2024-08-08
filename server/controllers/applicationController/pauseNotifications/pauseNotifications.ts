@@ -1,11 +1,6 @@
 import { Request, Response } from 'express';
 import { pool } from '../../../config/sql-db';
 
-interface StatusCount {
-  status: string;
-  count: string;
-}
-
 const pauseNotifications = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;

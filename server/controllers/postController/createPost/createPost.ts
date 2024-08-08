@@ -1,4 +1,3 @@
-import { create } from 'domain';
 import Post from '../../../models/postModel';
 import Thread from '../../../models/threadModel';
 import { Request, Response, NextFunction } from 'express';
