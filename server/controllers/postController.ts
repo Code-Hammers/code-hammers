@@ -1,7 +1,6 @@
 import Post from '../models/postModel';
 import Thread from '../models/threadModel';
 import { Request, Response, NextFunction } from 'express';
-import { CustomRequest } from '../types/customRequest';
 
 // ENDPOINT  GET api/forums/:forumId/threads/:threadId/posts
 // PURPOSE   Retrieve all posts from a specific thread
@@ -27,7 +26,7 @@ const listPostsByThreadId = async (req: Request, res: Response, next: NextFuncti
 // ENDPOINT  POST api/forums/:forumId/threads/:threadId/posts
 // PURPOSE   Create a new post on thread
 // ACCESS    Private
-const createPost = async (req: CustomRequest, res: Response, next: NextFunction) => {
+const createPost = async (req: Request, res: Response, next: NextFunction) => {
   const { threadId } = req.params;
   const { content } = req.body;
 
@@ -60,7 +59,7 @@ const createPost = async (req: CustomRequest, res: Response, next: NextFunction)
 // ENDPOINT  PUT api/forums/:forumId/threads/:threadId/:postId
 // PURPOSE   Update an existing post
 // ACCESS    Private
-const updatePost = async (req: CustomRequest, res: Response, next: NextFunction) => {
+const updatePost = async (req: Request, res: Response, next: NextFunction) => {
   const { postId } = req.params;
   const { content } = req.body;
 
@@ -97,7 +96,7 @@ const updatePost = async (req: CustomRequest, res: Response, next: NextFunction)
 // ENDPOINT  DELETE api/forums/:forumId/threads/:threadId/:postId
 // PURPOSE   Delete an existing post
 // ACCESS    Private, Admin
-const deletePost = async (req: CustomRequest, res: Response, next: NextFunction) => {
+const deletePost = async (req: Request, res: Response, next: NextFunction) => {
   const { postId } = req.params;
 
   try {
