@@ -1,6 +1,6 @@
 import User from '../../../models/userModel';
 import generateToken from '../../../utils/generateToken';
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import { NotAuthorizedError, ValidationError, RequestValidationError } from '../../../errors';
 import { UserType } from '../../../types/user';
 
