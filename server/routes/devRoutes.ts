@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { seedRegistrationDatabase } from '../controllers/devControllers';
+import { seedRegistrationDatabase } from '../controllers/devController';
 
 const router = express.Router();
 
