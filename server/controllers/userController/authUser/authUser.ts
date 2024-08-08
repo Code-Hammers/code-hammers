@@ -10,11 +10,6 @@ import { UserType } from '../../../types/user';
 const authUser = async (req: Request, res: Response, next: NextFunction) => {
   const { email, password } = req.body;
 
-  const isValidEmail = email.match(/[\w\d.]+@[a-z]+.[\w]+$/gim);
-  if (!isValidEmail) {
-    throw new RequestValidationError([new ValidationError('Please enter a valid email', 'email')]);
-  }
-
   if (!email || !password) {
     if (!email)
       throw new RequestValidationError([new ValidationError('You must enter an email', 'email')]);
@@ -22,6 +17,11 @@ const authUser = async (req: Request, res: Response, next: NextFunction) => {
       throw new RequestValidationError([
         new ValidationError('You must enter a password', 'password'),
       ]);
+  }
+
+  const isValidEmail = email.match(/[\w\d.]+@[a-z]+.[\w]+$/gim);
+  if (!isValidEmail) {
+    throw new RequestValidationError([new ValidationError('Please enter a valid email', 'email')]);
   }
 
   const user: UserType | null = await User.findOne({ email });
