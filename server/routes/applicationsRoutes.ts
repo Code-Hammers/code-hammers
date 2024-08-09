@@ -9,7 +9,7 @@ import {
   getAggregatedUserStats,
   updateNotificationPeriod,
   pauseNotifications,
-} from '../controllers/applicationsController';
+} from '../controllers/applicationController';
 
 const router = express.Router();
 
