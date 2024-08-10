@@ -99,9 +99,30 @@ xdescribe('Profile Controller Tests', () => {
       mockRequest = {
         params: { userID: '65117c94f000c9930ef5c0ee' },
         body: {
-          firstName: 'Bobby',
-          lastName: 'Orr',
+          availabilityForNetworking: true,
+          careerInformation: {
+            currentPosition: {
+              company: 'CodeHammers',
+              title: 'Developer',
+            },
+            pastPositions: [
+              {
+                company: 'CodeHammers',
+                title: 'Junior Developer',
+                startDate: '2020-01-01',
+                endDate: '2021-01-01',
+              },
+            ],
+          },
+          cohort: 'ECRI-TEST',
           email: 'test@test.com',
+          gitHubProfile: 'Ghub',
+          linkedInProfile: 'Lin',
+          nickName: 'Johnny',
+          personalBio: 'I love dogs!',
+          skills: ['Javascript', 'Typescript', 'React', 'Nodejs'],
+          socialMediaLinks: 'SMlinks',
+          specializations: ['Javascript', 'React'],
         },
       };
       mockResponse = {
@@ -114,9 +135,30 @@ xdescribe('Profile Controller Tests', () => {
     it('should handle profile update', async () => {
       (Profile.findOneAndUpdate as jest.Mock).mockResolvedValue({
         _id: '65117c94f000c9930ef5c0ee',
-        firstName: 'Bobby',
-        lastName: 'Orr',
+        availabilityForNetworking: true,
+        careerInformation: {
+          currentPosition: {
+            company: 'CodeHammers',
+            title: 'Developer',
+          },
+          pastPositions: [
+            {
+              company: 'CodeHammers',
+              title: 'Junior Developer',
+              startDate: '2020-01-01',
+              endDate: '2021-01-01',
+            },
+          ],
+        },
+        cohort: 'ECRI-TEST',
         email: 'test@test.com',
+        gitHubProfile: 'Ghub',
+        linkedInProfile: 'Lin',
+        nickName: 'Johnny',
+        personalBio: 'I love dogs!',
+        skills: ['Javascript', 'Typescript', 'React', 'Nodejs'],
+        socialMediaLinks: 'SMlinks',
+        specializations: ['Javascript', 'React'],
       });
 
       await updateProfile(mockRequest as Request, mockResponse as Response, mockNext);

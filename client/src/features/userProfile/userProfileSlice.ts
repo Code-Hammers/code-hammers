@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { IProfile } from '../../../types/profile';
+import { NavigateFunction } from 'react-router-dom';
 
 export interface ProfileState {
   profile: IProfile | null;
@@ -31,11 +32,18 @@ export const fetchUserProfile = createAsyncThunk(
   },
 );
 
+interface UpdateUserProfileArgs extends Partial<IProfile> {
+  userID: string;
+  navigate: NavigateFunction;
+}
+
 export const updateUserProfile = createAsyncThunk(
   'profile/updateUserProfile',
-  async ({ userID, ...updateData }: Partial<IProfile> & { userID: string }, thunkAPI) => {
+  async ({ userID, navigate, ...updateData }: UpdateUserProfileArgs, thunkAPI) => {
     try {
+      console.log('userId before axios call: ', userID);
       const response = await axios.put(`/api/profiles/${userID}`, updateData);
+      navigate(`/app/profile/${userID}`);
       return response.data;
     } catch (error) {
       let errorMessage = 'An error occurred during profile update';
