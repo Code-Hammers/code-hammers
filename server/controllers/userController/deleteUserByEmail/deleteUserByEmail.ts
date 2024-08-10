@@ -1,12 +1,12 @@
 import User from '../../../models/userModel';
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import { NotFoundError } from '../../../errors';
 import { UserType } from '../../../types/user';
 
 // ENDPOINT  DELETE api/users/:email
 // PURPOSE   Delete user by email
 // ACCESS    Private
-const deleteUserByEmail = async (req: Request, res: Response, next: NextFunction) => {
+const deleteUserByEmail = async (req: Request, res: Response) => {
   const { email } = req.params;
 
   const user: UserType | null = await User.findOneAndDelete({ email });
