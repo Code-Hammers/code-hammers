@@ -43,7 +43,8 @@ describe('Tests for userController.getUserById', () => {
         .send();
 
       expect(response.status).toEqual(400);
-      expect(response.body.msg).toEqual('Invalid user ID format');
+      expect(response.body[0].message).toEqual('Invalid user ID format');
+      expect(response.body[0].field).toEqual('user ID');
     });
 
     it('🧪 Fails if user is not found', async () => {
@@ -52,8 +53,8 @@ describe('Tests for userController.getUserById', () => {
         .set('Cookie', authCookie)
         .send();
 
-      expect(response.status).toEqual(401);
-      expect(response.body.msg).toEqual('User not found!');
+      expect(response.status).toEqual(404);
+      expect(response.body[0].message).toEqual('Not Found');
     });
   });
 
