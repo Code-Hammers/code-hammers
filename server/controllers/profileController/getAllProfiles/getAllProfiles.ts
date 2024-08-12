@@ -1,5 +1,5 @@
 import Profile from '../../../models/profileModel';
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import { NotFoundError } from '../../../errors';
 import { IProfile } from '../../../types/profile';
 import AWS from 'aws-sdk';
@@ -15,7 +15,7 @@ const s3 = new AWS.S3();
 // ENDPOINT  GET api/profiles
 // PURPOSE   Get all profiles
 // ACCESS    Private
-const getAllProfiles = async (req: Request, res: Response, next: NextFunction) => {
+const getAllProfiles = async (req: Request, res: Response) => {
   const profiles: IProfile[] = await Profile.find({});
 
   if (profiles.length === 0) {

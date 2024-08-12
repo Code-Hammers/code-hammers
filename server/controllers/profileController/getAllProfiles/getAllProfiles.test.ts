@@ -60,9 +60,7 @@ describe('Tests for profileController.getAllProfiles', () => {
 
       expect(response.body[0].firstName).toEqual('John');
       expect(response.body[0].email).toEqual(testEmail1);
-      if (response.body[0].profilePhoto) {
-        expect(response.body[0].profilePhoto).toContain('https://s3.amazonaws.com/');
-      }
+      expect(response.body[0].profilePhoto).toContain('https://s3.amazonaws.com/');
 
       expect(response.body[1].firstName).toEqual('John');
       expect(response.body[1].email).toEqual(testEmail2);
