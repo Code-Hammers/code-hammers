@@ -27,18 +27,19 @@ const loginAndGetCookie = async () => {
   return response.headers['set-cookie'];
 };
 
-const createProfile = async (userId: string, profilePhoto: string | null = null) => {
-  const profile = await Profile.create({
-    user: userId,
-    firstName: 'John',
-    lastName: 'Doe',
-    email: profilePhoto ? testEmail1 : testEmail2,
-    profilePhoto,
-    cohort: 'ECRI 44',
-    graduationYear: 2022,
-  });
-  return profile;
-};
+// Commented out for linting pass - "defined but never used"
+// const createProfile = async (userId: string, profilePhoto: string | null = null) => {
+//   const profile = await Profile.create({
+//     user: userId,
+//     firstName: 'John',
+//     lastName: 'Doe',
+//     email: profilePhoto ? testEmail1 : testEmail2,
+//     profilePhoto,
+//     cohort: 'ECRI 44',
+//     graduationYear: 2022,
+//   });
+//   return profile;
+// };
 //TODO Build this test with S3 mocks to avoid pinging the service every time the test is run.
 describe('Tests for profileController.getAllProfiles', () => {
   const baseUrl = '/api/profiles';
