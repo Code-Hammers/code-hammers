@@ -1,9 +1,9 @@
-import express from "express";
+import express from 'express';
 
-import { seedRegistrationDatabase } from "../controllers/devControllers";
+import { seedRegistrationDatabase } from '../controllers/devController';
 
 const router = express.Router();
 
-router.get("/", seedRegistrationDatabase);
+router.get('/', seedRegistrationDatabase);
 
 export default router;

@@ -1,4 +1,4 @@
-import { Document, ObjectId } from "mongoose";
+import { Document, ObjectId } from 'mongoose';
 
 interface ISocialLinks {
   twitter?: string;
@@ -42,11 +42,13 @@ export interface IProfile extends Document {
   user: ObjectId;
   firstName: string;
   lastName: string;
+  nickName: string;
   profilePhoto?: string;
   cohort?: string;
   graduationYear?: number;
   email?: string;
   linkedInProfile?: string;
+  gitHubProfile?: string;
   professionalSummary?: string;
   skills?: string[];
   specializations?: string[];

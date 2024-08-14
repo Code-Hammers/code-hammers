@@ -1,18 +1,13 @@
-import express from "express";
-import { protect } from "../middleware/authMiddleware";
-
-import {
-  createProfile,
-  getAllProfiles,
-  getProfileById,
-  updateProfile,
-} from "../controllers/profileController";
+import express from 'express';
+import { protect } from '../middleware/authMiddleware';
+import { getAllProfiles, getProfileById, updateProfile } from '../controllers/profileController';
 
 const router = express.Router();
 
-router.post("/", protect, createProfile);
-router.put("/:userID", protect, updateProfile);
-router.get("/:userID", protect, getProfileById);
-router.get("/", protect, getAllProfiles);
+router.use(protect); /* Require Auth for ALL routes below */
+
+router.put('/:userID', updateProfile);
+router.get('/:userID', getProfileById);
+router.get('/', getAllProfiles);
 
 export default router;

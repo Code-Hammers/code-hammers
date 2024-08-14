@@ -1,9 +1,10 @@
-import express from "express";
-
-import { authSession } from "../controllers/authController";
+import express from 'express';
+import { protect } from '../middleware/authMiddleware';
+import { authSession } from '../controllers/authController';
 
 const router = express.Router();
 
-router.get("/validate-session", authSession);
+router.use(protect); /* Require Auth for ALL routes below */
+router.get('/validate-session', authSession);
 
 export default router;

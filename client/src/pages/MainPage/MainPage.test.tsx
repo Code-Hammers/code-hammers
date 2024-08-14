@@ -1,9 +1,8 @@
-import React from "react";
-import { create } from "react-test-renderer";
-import { Provider } from "react-redux";
-import configureStore from "redux-mock-store";
+import { create } from 'react-test-renderer';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
 
-import MainPage from "./MainPage";
+import MainPage from './MainPage';
 
 interface State {
   user: {
@@ -14,17 +13,17 @@ interface State {
 const mockStore = configureStore<State>([]);
 const initialState: State = {
   user: {
-    userName: "TEST",
+    userName: 'TEST',
   },
 };
 
-describe("MainPage Component", () => {
-  it("renders correctly", () => {
+describe('MainPage Component', () => {
+  it('renders correctly', () => {
     const store = mockStore(initialState);
     const tree = create(
       <Provider store={store}>
         <MainPage />
-      </Provider>
+      </Provider>,
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });

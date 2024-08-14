@@ -1,15 +1,17 @@
-import mongoose, { Schema } from "mongoose";
-import { IProfile } from "../types/profile";
+import mongoose, { Schema } from 'mongoose';
+import { IProfile } from '../types/profile';
 
 const profileSchema = new Schema<IProfile>({
-  user: { type: Schema.Types.ObjectId, ref: "User", required: true },
+  user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
+  nickName: { type: String, required: false },
   profilePhoto: String,
   cohort: String,
   graduationYear: Number,
   email: String,
   linkedInProfile: String,
+  gitHubProfile: String,
   professionalSummary: String,
   skills: [String],
   specializations: [String],
@@ -70,6 +72,6 @@ const profileSchema = new Schema<IProfile>({
   ],
 });
 
-const Profile = mongoose.model<IProfile>("profiles", profileSchema);
+const Profile = mongoose.model<IProfile>('profiles', profileSchema);
 
 export default Profile;

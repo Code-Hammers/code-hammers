@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import { IGraduateInvitation } from "../types/graduateInvitation";
+import mongoose from 'mongoose';
+import { IGraduateInvitation } from '../types/graduateInvitation';
 
 const graduateInvitationSchema = new mongoose.Schema<IGraduateInvitation>({
   email: {
@@ -35,8 +35,8 @@ const graduateInvitationSchema = new mongoose.Schema<IGraduateInvitation>({
 });
 
 const GraduateInvitation = mongoose.model<IGraduateInvitation>(
-  "GraduateInvitation",
-  graduateInvitationSchema
+  'GraduateInvitation',
+  graduateInvitationSchema,
 );
 
 export default GraduateInvitation;

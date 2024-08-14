@@ -1,43 +1,36 @@
-import jwt from "jsonwebtoken";
-import User from "../models/userModel";
-import asyncHandler from "express-async-handler";
-import { CustomRequest } from "../types/customRequest";
+import jwt, { JwtPayload } from 'jsonwebtoken';
+import User from '../models/userModel';
+import { Request, Response, NextFunction } from 'express';
+import { NotAuthorizedError } from '../errors';
 
-const protect = asyncHandler(async (req: CustomRequest, res, next) => {
-  let token;
-  console.log("PROTECT HIT");
-  console.log(req.headers);
-  console.log("cookies:", req.cookies);
+interface UserPayload {
+  id: string;
+}
 
-  if (req.cookies.token) {
-    console.log(req.headers);
-    try {
-      console.log("try block hit!");
-      token = req.cookies.token;
-      const secret = process.env.JWT_SECRET as string;
-      const decoded = jwt.verify(token, secret) as jwt.JwtPayload;
-
-      if (!decoded.id) {
-        throw new Error("Invalid token - ID not found");
-      }
-
-      const user = await User.findById(decoded.id).select("-password");
-
-      if (!user) throw new Error("User not found");
-      req.user = { id: user._id.toString() };
-      res.locals.user = user;
-      next();
-    } catch (error) {
-      console.error(error);
-      res.status(401);
-      throw new Error("Not authorized, token failed");
-    }
+declare module 'express-serve-static-core' {
+  interface Request {
+    user?: UserPayload;
   }
+}
 
-  if (!token) {
-    res.status(401);
-    throw new Error("Not authorized, no token");
+const protect = async (req: Request, res: Response, next: NextFunction) => {
+  const { token } = req.cookies;
+
+  if (!token) throw new NotAuthorizedError();
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as JwtPayload;
+
+    const user = await User.findById(decoded.id).select('-password');
+
+    if (!user) throw new NotAuthorizedError();
+
+    req.user = { id: user._id.toString() };
+    res.locals.user = user;
+    next();
+  } catch (error) {
+    throw new NotAuthorizedError();
   }
-});
+};
 
 export { protect };
