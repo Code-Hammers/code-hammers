@@ -16,13 +16,10 @@ import { ToolsComponent } from './pages/tools/tools.component';
     PeopleComponent,
     WebsitesComponent,
     BooksComponent,
-    ToolsComponent
+    ToolsComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
