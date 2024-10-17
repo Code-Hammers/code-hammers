@@ -13,11 +13,11 @@ export default function (config) {
     basePath: '',
     frameworks: ['jasmine', buildAngularPlugin],
     plugins: [
-      karma-jasmine,
-      karma-chrome-launcher,
-      karma-jasmine-html-reporter,
-      karma-coverage,
-      @angular-devkit/build-angular/plugins/karma
+      karmaJasmine,
+      karmaChromeLauncher,
+      karmaJasmineHtmlReporter,
+      karmaCoverage,
+      buildAngularPlugin,
     ],
     client: {
       jasmine: {
@@ -26,18 +26,15 @@ export default function (config) {
         // for example, you can disable the random execution with `random: false`
         // or set a specific seed with `seed: 4321`
       },
-      clearContext: false // leave Jasmine Spec Runner output visible in browser
+      clearContext: false, // leave Jasmine Spec Runner output visible in browser
     },
     jasmineHtmlReporter: {
-      suppressAll: true // removes the duplicated traces
+      suppressAll: true, // removes the duplicated traces
     },
     coverageReporter: {
       dir: join(__dirname, './coverage/angular-contact-page'),
       subdir: '.',
-      reporters: [
-        { type: 'html' },
-        { type: 'text-summary' }
-      ]
+      reporters: [{ type: 'html' }, { type: 'text-summary' }],
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
@@ -46,6 +43,6 @@ export default function (config) {
     autoWatch: true,
     browsers: ['Chrome'],
     singleRun: false,
-    restartOnFileChange: true
+    restartOnFileChange: true,
   });
-};
+}
