@@ -16,7 +16,13 @@ beforeAll(async () => {
 });
 
 beforeEach(async () => {
+  if (!mongoose.connection || !mongoose.connection.db) {
+    throw new Error('Database connection not established.');
+  }
   const collections = await mongoose.connection.db.collections();
+  if (!collections) {
+    throw new Error('Failed to connect to database. Collections are undefined.');
+  }
 
   for (const collection of collections) {
     await collection.deleteMany({});

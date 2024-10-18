@@ -9,5 +9,6 @@ module.exports = {
     '<rootDir>/dist',
     '<rootDir>/coverage',
     '<rootDir>/client',
+    '<rootDir>/angular-resources-page/',
   ],
 };
